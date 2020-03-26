@@ -1,7 +1,11 @@
 package Items;
 
-public abstract class Throwable implements Item, Item {
-	public boolean throw(Field f) {
+import Map.Field;
+
+public abstract class Throwable extends Item {
+	
+	public boolean throwTo(Field f) {
+		return true;
 	}
 	
 	public void pickUp() {

@@ -1,4 +1,4 @@
 package Items;
 
-public class Rocket extends GunPart implements Item {
+public class Rocket extends GunPart{
 }
