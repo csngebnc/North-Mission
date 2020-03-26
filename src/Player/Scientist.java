@@ -1,9 +1,10 @@
 package Player;
 
-public class Scientist extends Player {
-	private void doSkill() {
-	}
+public class Scientist extends Player 
+{
 	
-	private void doSkill() {
+	public void doSkill() 
+	{
+		
 	}
 }

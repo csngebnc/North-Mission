@@ -1,10 +1,11 @@
 package Player;
 
-public class Eskimo extends Player {
+public class Eskimo extends Player 
+{
 	private boolean builtIgloo;
-	private void doSkill() {
-	}
-	
-	private void doSkill() {
+
+	public void doSkill() 
+	{
+		
 	}
 }

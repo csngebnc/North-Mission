@@ -4,7 +4,8 @@ import Items.Item;
 import Map.Field;
 import Map.Map;
 
-public abstract class Player {
+public abstract class Player 
+{
 	private String name;
 	private int health;
 	private int stamina;
@@ -13,19 +14,31 @@ public abstract class Player {
 	private Map players;
 	private Field field;
 	private Item inventory;
-	private abstract void doSkill();
-	private void openInventory() {
+	
+	public abstract void doSkill();
+	
+	private void openInventory() 
+	{
+		
 	}
 	
-	public void doTurn() {
+	public void doTurn() 
+	{
+		
 	}
 	
-	public void changeSuit(DivingSuit dsuit) {
+	public void changeSuit(DivingSuit dsuit) 
+	{
+		
 	}
 	
-	public void alterHealth(int n) {
+	public void alterHealth(int n) 
+	{
+		
 	}
 	
-	public void drainStamina() {
+	public void drainStamina() 
+	{
+		
 	}
 }
