@@ -4,7 +4,6 @@ import Player.Player;
 
 public abstract class Item 
 {
-	
 	public void use(Player p) 
 	{
 		

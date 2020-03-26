@@ -4,7 +4,6 @@ import Player.Player;
 
 public abstract class GunPart extends Item 
 {
-	
 	public void use(Player p) 
 	{
 		
