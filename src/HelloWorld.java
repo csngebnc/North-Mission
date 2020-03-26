@@ -6,6 +6,7 @@ public class HelloWorld {
 		assd
 		BASZADÉK GITHUB
 		EGYETÉRTEK
+		// BENCE
 	}
 
 }
