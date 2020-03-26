@@ -2,8 +2,8 @@ package Map;
 import Items.Item;
 import Player.Player;
 
-public class IceField extends Field {
-	
+public class IceField extends Field 
+{
 	private boolean iglooOnField;
 	private Item frozenItem;
 	private Item itemOnGround;

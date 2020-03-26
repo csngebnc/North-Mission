@@ -5,8 +5,8 @@ import Items.Item;
 import Player.Player;
 
 
-public abstract class Field {
-	
+public abstract class Field
+{
 	private int snowLayers;
 	private int maxplayers;
 	private ArrayList<Player> players;

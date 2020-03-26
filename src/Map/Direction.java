@@ -1,5 +1,6 @@
 package Map;
 
-public enum Direction {
+public enum Direction 
+{
 
 }

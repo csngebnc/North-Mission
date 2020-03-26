@@ -1,7 +1,7 @@
 package Map;
 
-public class Map {
-	
+public class Map 
+{
 	private Field fields;
 	
 	private void initFields() 
