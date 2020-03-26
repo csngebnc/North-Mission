@@ -1,10 +1,16 @@
 package Map;
 
 public class Map {
+	
 	private Field fields;
-	private void initFields() {
+	
+	private void initFields() 
+	{
+		
 	}
 	
-	public void callBlizzardOnFields() {
+	public void callBlizzardOnFields()
+	{
+		
 	}
 }
