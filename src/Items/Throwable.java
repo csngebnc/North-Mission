@@ -2,12 +2,16 @@ package Items;
 
 import Map.Field;
 
-public abstract class Throwable extends Item {
+public abstract class Throwable extends Item 
+{
 	
-	public boolean throwTo(Field f) {
+	public boolean throwTo(Field f) 
+	{
 		return true;
 	}
 	
-	public void pickUp() {
+	public void pickUp() 
+	{
+		
 	}
 }

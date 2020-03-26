@@ -2,15 +2,21 @@ package Items;
 import Map.Field;
 import Player.Player;
 
-public abstract class GunPart extends Item {
+public abstract class GunPart extends Item 
+{
 	
-	public void use(Player p) {
+	public void use(Player p) 
+	{
+		
 	}
 	
-	public boolean throwTo(Field f) {
+	public boolean throwTo(Field f) 
+	{
 		return false;
 	}
 	
-	public void pickUp() {
+	public void pickUp() 
+	{
+		
 	}
 }
