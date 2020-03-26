@@ -12,7 +12,7 @@
 
 
 
-public class Item {
+public abstract class Item {
 	public void use(Player p) {
 	}
 	
