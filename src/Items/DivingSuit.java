@@ -1,5 +1,5 @@
 package Items;
-import Player;
+import Player.Player;
 
 //
 //

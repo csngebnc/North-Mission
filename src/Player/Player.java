@@ -1,5 +1,8 @@
+package Player;
 import Items.DivingSuit;
 import Items.Item;
+import Map.Field;
+import Map.Map;
 
 //
 //

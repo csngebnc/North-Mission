@@ -1,4 +1,6 @@
+package Map;
 import Items.Item;
+import Player.Player;
 
 //
 //
