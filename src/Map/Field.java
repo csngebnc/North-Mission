@@ -7,10 +7,10 @@ import Player.Player;
 
 public abstract class Field
 {
-	private int snowLayers;
-	private int maxplayers;
-	private ArrayList<Player> players;
-	private Field neighbours;
+	protected int snowLayers;
+	protected int maxplayers;
+	protected ArrayList<Player> players;
+	protected Field neighbours;
 	
 	public void generateBlizzard() 
 	{
@@ -19,7 +19,9 @@ public abstract class Field
 	
 	public void moveMeTo(Player p, Direction dir) 
 	{
-		
+		System.out.println("Field.moveMeTo");
+		neighbours.acceptPlayer(p);
+		p.drainStamina();
 	}
 	
 	public void revealLimit() 

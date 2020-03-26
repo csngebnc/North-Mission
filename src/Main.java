@@ -2,13 +2,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import Items.*;
+import Map.*;
+import Player.*;
+
 public class Main {
 
 	public static void main(String[] args) throws IOException {
 		Game game = new Game();
 		
-		String lista = "Választható forgatókönyvek:\n" +
-						"1. Valami";
+		String lista = "Vï¿½laszthatï¿½ forgatï¿½kï¿½nyvek:\n" +
+						"1. valami";
 		
 		String bemenet = "";
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
@@ -18,13 +22,13 @@ public class Main {
 			
 			switch(bemenet) {
 			case "1":
-				System.out.println("forgatókönyv 1");
+				System.out.println("forgatï¿½kï¿½nyv: 1");
 				break;
 			
 			}
 	        
 		}
-//Zalán pórba push
+//Zalï¿½n pï¿½rba push
 	}
 
 }

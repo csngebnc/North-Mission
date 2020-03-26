@@ -39,6 +39,18 @@ public abstract class Player
 	
 	public void drainStamina() 
 	{
-		
+		System.out.println("Player.drainStamina");
+	}
+	
+	public void setField(Field f) 
+	{
+		System.out.println("setField");
+		this.field = f;
+	}
+	
+	public void setIsDrowning(boolean b)
+	{
+		System.out.println("Player.setIsDrowning");
+		this.isDrowning = b;
 	}
 }

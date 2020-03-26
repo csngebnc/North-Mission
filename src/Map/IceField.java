@@ -10,7 +10,8 @@ public class IceField extends Field
 	
 	public void acceptPlayer(Player p)
 	{
-		
+		System.out.println("IceField.acceptPlayer");
+		p.setField(this);
 	}
 	
 	public void acceptItem(Item i) 
