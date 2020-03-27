@@ -21,6 +21,7 @@ public class Game {
 	//Dominik
 	public void callBlizzard() 
 	{
+		System.out.println("Game.callBlizzard()");
 		map.callBlizzardOnFields();
 	}
 	

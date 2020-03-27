@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import Items.*;
 import Map.*;
@@ -43,12 +44,100 @@ public class Main {
 			bemenet = reader.readLine();
 			
 			switch(bemenet) {
+			
+			//Zalán - Kör kezelés
 			case "1":
-				System.out.println("forgatokony: 1");
 				break;
 			
+			//Norbi - Stabilra lépés
+			case "2":
+				break;
+			
+			//Norbi - Instabilra lépés
+			case "3":
+				break;
+			
+			//Norbi - Lyukba lépés
+			case "4":
+				break;
+				
+			//Dominik - hóvihar
+			case "5":
+				game.callBlizzard();
+				break;
+				
+			//Bence - Eszkimó képesség
+			case "6":
+				break;
+				
+			//Bence - Kutató képesség
+			case "7":
+				break;
+				
+			//Zalán - Tárgy kiszabaditás
+			case "8":
+				break;
+			
+			//Dominik - item felvétel
+			case "9":
+				Field f9 = new IceField();
+				Player p9 = new Eskimo();
+				f9.pickUpItem(p9);
+				break;
+			
+			//Dominik - tárgy eldobás
+			case "10":		
+				//Milyen tárgyat akarunk eldobni
+				Field f10 = new IceField();
+				boolean loop = true;
+				Scanner scanner = new Scanner(System.in);
+				
+				System.out.println("Milyen tárgyat dobjunk el? (T - Eldobhatót, P - Alkatrészt");
+				while(loop) {
+					if(scanner.nextLine() == "T") {
+						Item item = new Shovel();
+						item.throwTo(f10);
+						loop = false;
+					} else if (scanner.nextLine() == "P") {
+						Item item = new Barrel();
+						item.throwTo(f10);
+						loop = false;
+					}
+				}
+				scanner.close();
+				break;
+				
+			//Bence - Tárgyhasználat
+			case "11":
+				break;
+				
+			//Dominik - Ásó használat
+			case "12":
+				break;
+				
+			//Dani - Étel használat
+			case "13":
+				break;
+				
+			//Dani - Kötél használat
+			case "14":
+				break;	
+				
+			//Dani - Búvárruha felvétele
+			case "15":
+				break;
+				
+			//Dani - Pisztoly elsütés
+			case "16":
+				break;
+		
+			//Zalán - Kézzel ásás
+			case "17":
+				break;
+				
+			default:
+				break;
 			}
-	        
 		}
 //Zalï¿½n pï¿½rba push
 	}
