@@ -89,6 +89,7 @@ public class Main {
 			case "10":		
 				//Milyen tárgyat akarunk eldobni
 				Field f10 = new IceField();
+				Player p10 = new Eskimo();
 				boolean loop = true;
 				Scanner scanner = new Scanner(System.in);
 				
@@ -96,11 +97,13 @@ public class Main {
 				while(loop) {
 					if(scanner.nextLine() == "T") {
 						Item item = new Shovel();
-						item.throwTo(f10);
+						if(item.throwTo(f10))
+							p10.drainStamina();
 						loop = false;
 					} else if (scanner.nextLine() == "P") {
 						Item item = new Barrel();
-						item.throwTo(f10);
+						if(item.throwTo(f10))
+							p10.drainStamina();
 						loop = false;
 					}
 				}

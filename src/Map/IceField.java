@@ -18,9 +18,10 @@ public class IceField extends Field
 		p.setField(this);
 	}
 	
+	//Dominik
 	public void acceptItem(Item i) 
 	{
-		
+		System.out.println("IceField.acceptItem(Item i)");
 	}
 	
 	//Dominik
@@ -56,15 +57,10 @@ public class IceField extends Field
 	
 	public boolean digSnow(int amount) 
 	{
-		
+		return true;
 	}
 	
 	public void removeItemFromIce(Player p) 
-	{
-		
-	}
-	
-	public void acceptPlayer(Player p) 
 	{
 		
 	}

@@ -56,10 +56,8 @@ public abstract class Field
 	
 	public abstract void acceptPlayer(Player p);
 	
-	public void acceptItem(Item i) 
-	{
-		
-	}
+	//Dominik 
+	public void acceptItem(Item i) {	}
 	
 	//Dominik
 	//Alapimplementációja nem ad vissza tárgyat.

@@ -44,13 +44,11 @@ public abstract class Player
 	
 	public void setField(Field f) 
 	{
-		System.out.println("setField");
-		this.field = f;
+		System.out.println("Player.setField");
 	}
 	
 	public void setIsDrowning(boolean b)
 	{
 		System.out.println("Player.setIsDrowning");
-		this.isDrowning = b;
 	}
 }
