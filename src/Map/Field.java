@@ -3,7 +3,9 @@ import java.util.ArrayList;
 
 import java.util.Scanner;
 
+import Items.Barrel;
 import Items.Item;
+import Items.Shovel;
 import Player.Player;
 
 
@@ -24,7 +26,7 @@ public abstract class Field
 		boolean loop = true;
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.println("Legyen a mezõn iglu? (Y - IGEN, N - NEM");
+		System.out.println("Legyen a mezõn iglu? (Y - IGEN, N - NEM)");
 		while(loop) {
 			if(scanner.nextLine() == "Y") {
 				iglooOnField = true;
@@ -66,9 +68,24 @@ public abstract class Field
 		return null;
 	}
 	
+	//Dominik
 	public boolean digSnow(int amount) 
 	{
+		System.out.println("Field.digSnow(int amount)");
 		
+		//Lekérdezés: volt-e eltakaritandó hó
+		Scanner scanner = new Scanner(System.in);
+
+		while(true) {
+			System.out.println("Volt hó a mezõn? (Y - IGEN, N - NEM)");
+			if(scanner.nextLine() == "Y") {
+				scanner.close();
+				return true;
+			} else if (scanner.nextLine() == "N") {
+				scanner.close();
+				return false;
+			}
+		}
 	}
 	
 	public void removeItemFromIce(Player p) 
@@ -78,11 +95,11 @@ public abstract class Field
 	
 	public boolean savePerson(Direction dir) 
 	{
-		
+		return true;
 	}
 	
 	public boolean buildIgloo() 
 	{
-		
+		return true;
 	}
 }

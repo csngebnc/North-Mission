@@ -14,7 +14,8 @@ public class Map
 	//Dominik
 	public void callBlizzardOnFields()
 	{
-		for(Field f : fields)
-			f.generateBlizzard();
+		//Késõbb az egész 'field' tömbbön
+		Field f = new IceField();
+		f.generateBlizzard();
 	}
 }

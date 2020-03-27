@@ -116,6 +116,9 @@ public class Main {
 				
 			//Dominik - Ásó használat
 			case "12":
+				Player p12 = new Eskimo();
+				Item i12 = new Shovel();
+				i12.use(p12);			
 				break;
 				
 			//Dani - Étel használat
@@ -142,7 +145,5 @@ public class Main {
 				break;
 			}
 		}
-//Zalï¿½n pï¿½rba push
 	}
-
 }

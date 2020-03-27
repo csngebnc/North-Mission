@@ -22,7 +22,8 @@ public class Game {
 	public void callBlizzard() 
 	{
 		System.out.println("Game.callBlizzard()");
-		map.callBlizzardOnFields();
+		Map m = new Map();
+		m.callBlizzardOnFields();
 	}
 	
 	public static void winGame(Field f) 

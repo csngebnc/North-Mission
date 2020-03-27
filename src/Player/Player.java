@@ -2,6 +2,7 @@ package Player;
 import Items.DivingSuit;
 import Items.Item;
 import Map.Field;
+import Map.IceField;
 import Map.Map;
 
 public abstract class Player 
@@ -45,6 +46,14 @@ public abstract class Player
 	public void setField(Field f) 
 	{
 		System.out.println("Player.setField");
+	}
+	
+	//Dominik
+	public Field getField() 
+	{
+		System.out.println("Player.getField()");
+		//Késõbb a 'field' tagváltozót fogja visszaadni
+		return new IceField();
 	}
 	
 	public void setIsDrowning(boolean b)

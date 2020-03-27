@@ -1,4 +1,7 @@
 package Map;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import Items.Shovel;
@@ -30,34 +33,32 @@ public class IceField extends Field
 		System.out.println("IceField.pickUpItem");
 		
 		//Itt lesz egy felugró ablak arról hogy melyik tárgyat akarja a player felvenni
-		Scanner scanner = new Scanner(System.in);
-		
-		System.out.println("Milyen tárgy legyen a mezõn? (T - Eldobható, P - Alkatrész, N - Semmi");
-		
+		String bemenet = "";
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
+
 		//Input csekkolás
 		while(true) {
-			if(scanner.nextLine() == "T") {
-				Item item = new Shovel();
-				item.pickUp();
-				p.drainStamina();
-				scanner.close();
-				return item;
-			} else if (scanner.nextLine() == "P") {
-				Item item = new Barrel();
-				item.pickUp();
-				p.drainStamina();
-				scanner.close();
-				return item;
-			} else if (scanner.nextLine() == "N") {
-				scanner.close();
-				return null;
+			System.out.println("Milyen tárgy legyen a mezõn? (1 - Eldobható, 2 - Alkatrész, 3 - Semmi)" + bemenet + (bemenet == "1"));
+			try {
+				bemenet = reader.readLine();
+				if(bemenet == "1") {
+					Item item = new Shovel();
+					item.pickUp();
+					p.drainStamina();
+					return item;
+				} else if (bemenet == "2") {
+					Item item = new Barrel();
+					item.pickUp();
+					p.drainStamina();
+					return item;
+				} else if (bemenet == "3") {
+					return null;
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
-	}
-	
-	public boolean digSnow(int amount) 
-	{
-		return true;
 	}
 	
 	public void removeItemFromIce(Player p) 
