@@ -1,3 +1,4 @@
+package Core;
 import Map.Field;
 import Map.Map;
 import Player.Player;
@@ -13,12 +14,14 @@ public class Game {
 	
 	public void doRound() 
 	{
-	
+		//innen fog történni a blizzard kezelés, feltételek alapján, ez a hóvihar forgatókönyv végrehajtása szempontjából nem lényeges (Dominik)
+			
 	}
 	
+	//Dominik
 	public void callBlizzard() 
 	{
-	
+		map.callBlizzardOnFields();
 	}
 	
 	public static void winGame(Field f) 

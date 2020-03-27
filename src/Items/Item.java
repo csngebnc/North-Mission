@@ -11,8 +11,6 @@ public abstract class Item
 	
 	public abstract boolean throwTo(Field f);
 	
-	public void pickUp() 
-	{
-		
-	}
+	//Dominik, ez abasztakt lett
+	public abstract void pickUp();
 }

@@ -9,8 +9,9 @@ public abstract class Throwable extends Item
 		return true;
 	}
 	
+	//Dominik
 	public void pickUp() 
 	{
-		
+		System.out.println("Throwable.pickUp()");
 	}
 }
