@@ -30,12 +30,14 @@ public abstract class Player
 	
 	public void changeSuit(DivingSuit dsuit) 
 	{
+		System.out.println("Player.changeSuit()");
 		
 	}
 	
+	//Dani
 	public void alterHealth(int n) 
 	{
-		
+		System.out.println("Player.alterHealth");
 	}
 	
 	public void drainStamina() 
@@ -59,5 +61,25 @@ public abstract class Player
 	public void setIsDrowning(boolean b)
 	{
 		System.out.println("Player.setIsDrowning");
+	}
+	
+	//Dani
+	public String getName()
+	{
+		System.out.println("Player.getName()");
+		return name;
+	}
+	
+	public boolean getdSuitOn()
+	{
+		System.out.println("Player.getDSuitOn()");
+		return dSuitOn;
+	}
+	
+	
+	public void setdSuitOn(boolean b)
+	{
+		System.out.println("Player.setdSuitOn");
+		//Késõbb itt átállítja a dSuitOn-t b-re
 	}
 }

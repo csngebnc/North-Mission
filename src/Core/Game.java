@@ -1,4 +1,6 @@
 package Core;
+import java.util.ArrayList;
+
 import Map.Field;
 import Map.Map;
 import Player.Player;
@@ -28,7 +30,9 @@ public class Game {
 	
 	public static void winGame(Field f) 
 	{
-	
+		System.out.println("Game.winGame()");
+		ArrayList <Player> players = new ArrayList <Player>();
+		players = f.getPlayers();
 	}
 	
 	public static void loseGame() 
