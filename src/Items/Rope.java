@@ -10,12 +10,25 @@ public class Rope extends Throwable
 	{
 		System.out.println("Rope.use");
 	
+		//Itt lehet kiválasztani, hogy melyik irányba szeretnénk menteni
 		Scanner myObj = new Scanner(System.in);
 		System.out.println("Melyik irány?");
-		System.out.println("1: bal, 2: jobb, 3: fel, 4: le");
+		System.out.println("bal, jobb, fel, le");
 		String input = myObj.nextLine();
-		Direction dir = Direction.UP;
+		Direction dir=Direction.UP;
+		switch(input) {
+			case "bal": 
+				dir = Direction.LEFT;
+			case "jobb":
+				dir = Direction.RIGHT;
+			case "fel":
+				dir = Direction.UP;
+			case "le":
+				dir = Direction.DOWN;
+		}
+		
 		Field f2 = p.getField();
+		//Ha vannak azon a Field-en, ahonnan menteni szeretnénk
 		if(f2.savePerson(dir))
 			p.drainStamina();
 		

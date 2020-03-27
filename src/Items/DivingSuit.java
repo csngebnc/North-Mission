@@ -7,6 +7,7 @@ public class DivingSuit extends Throwable
 	public void use(Player p) 
 	{
 		System.out.println("DivingSuit.use");
+		//Ha nincs a p Playeren DivingSuit, akkor tud felhõzni egyet.
 		if(p.getdSuitOn()==false)
 		{
 			p.changeSuit(this);

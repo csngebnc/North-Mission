@@ -48,6 +48,7 @@ public abstract class Field
 	public void moveMeTo(Player p, Direction dir) 
 	{
 		System.out.println("Field.moveMeTo");
+		//Itt késõbb a neighbours attribútumot fogja használni.
 		Field neighbours = new IceField();
 		neighbours.acceptPlayer(p);
 		
@@ -98,7 +99,7 @@ public abstract class Field
 	//Dani
 	public boolean savePerson(Direction dir) 
 	{
-		//Itt késõbb az f2players helyett a players lesz használva.
+		//Itt késõbb az f2players helyett a players attribútum lesz használva.
 		ArrayList<Player>f2players = new ArrayList<Player>();
 		f2players.add(new Eskimo());
 		f2players.add(new Eskimo());
@@ -131,7 +132,7 @@ public abstract class Field
 		return true;
 	}
 	//Dani
-	public Field getNeighbours(Direction dir)
+	public Field getNeighbours()
 	{
 		System.out.println("Field.getNeighbours");
 		return neighbours;
