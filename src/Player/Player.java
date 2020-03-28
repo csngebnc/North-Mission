@@ -36,7 +36,7 @@ public abstract class Player
 			IceField iF = new IceField();
 			String bemenet = "";
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
-			System.out.print(Main.tabok+"Milyen tárgyat dobjunk el? (T - Eldobhatót, P - Alkatrészt)\n"+Main.tabok);
+			System.out.print(Main.tabok+"Milyen tï¿½rgyat dobjunk el? (T - Eldobhatï¿½t, P - Alkatrï¿½szt)\n"+Main.tabok);
 			boolean loop = true;
 			while(loop) {
 				try {
@@ -109,7 +109,7 @@ public abstract class Player
 		System.out.println(Main.tabok+"->[Player].changeSuit()");
 		
 		Scanner myObj = new Scanner(System.in);
-		System.out.print(Main.tabok+"Van rajta búvárruha? (Y - igen, N - nem)\n"+Main.tabok);
+		System.out.print(Main.tabok+"Van rajta bï¿½vï¿½rruha? (Y - igen, N - nem)\n"+Main.tabok);
 		String bemenet = myObj.nextLine();
 		switch(bemenet) {
 		case "Y":
@@ -128,12 +128,14 @@ public abstract class Player
 		System.out.println(Main.tabok+"<-[Player].alterHealth()");
 	}
 	
+	//Norbi + valaki javÃ­totta
 	public void drainStamina() 
 	{
 		System.out.println(Main.tabok+"->[Player].drainStamina()");
 		System.out.println(Main.tabok+"<-[Player].drainStamina()");
 	}
 	
+	//Norbi + valaki javÃ­totta
 	public void setField(Field f) 
 	{
 		System.out.println(Main.tabok+"->[Player].setField(Field f)");
@@ -146,13 +148,15 @@ public abstract class Player
 	{
 		System.out.println(Main.tabok+"->[Player].getField()");
 		System.out.println(Main.tabok+"<-[Player].getField()");
-		//Késõbb a 'field' tagváltozót fogja visszaadni
+		//Kï¿½sï¿½bb a 'field' tagvï¿½ltozï¿½t fogja visszaadni
 		return new IceField();
 	}
 	
+	//Norbi
 	public void setIsDrowning(boolean b)
 	{
-		System.out.println("Player.setIsDrowning");
+		System.out.println(Main.tabok+"->[Player].setIsDrowning(boolean b)");
+		System.out.println(Main.tabok+"<-[Player].setIsDrowning(boolean b)");
 	}
 	
 	//Dani
@@ -172,6 +176,6 @@ public abstract class Player
 	public void setdSuitOn(boolean b)
 	{
 		System.out.println("Player.setdSuitOn");
-		//Késõbb itt átállítja a dSuitOn-t b-re
+		//Kï¿½sï¿½bb itt ï¿½tï¿½llï¿½tja a dSuitOn-t b-re
 	}
 }

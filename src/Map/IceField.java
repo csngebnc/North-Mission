@@ -16,6 +16,7 @@ public class IceField extends Field
 	private Item frozenItem;
 	private Item itemOnGround;
 	
+	//Norbi + valaki kiegÃ©szÃ­tette
 	public void acceptPlayer(Player p)
 	{
 		System.out.println(Main.tabok+"->[IceField].acceptPlayer(Player p)");
@@ -37,11 +38,11 @@ public class IceField extends Field
 	{
 		System.out.println(Main.tabok+"->[IceField].pickUpItem()");
 		Main.tabok+="\t";
-		//Itt lesz egy felugró ablak arról hogy melyik tárgyat akarja a player felvenni
+		//Itt lesz egy felugrï¿½ ablak arrï¿½l hogy melyik tï¿½rgyat akarja a player felvenni
 		String bemenet = "";
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
-		//Input csekkolás
-		System.out.print(Main.tabok+"Milyen tárgy legyen a mezõn? (1 - Eldobható, 2 - Alkatrész, bármi más - Semmi)\n"+Main.tabok);
+		//Input csekkolï¿½s
+		System.out.print(Main.tabok+"Milyen tï¿½rgy legyen a mezï¿½n? (1 - Eldobhatï¿½, 2 - Alkatrï¿½sz, bï¿½rmi mï¿½s - Semmi)\n"+Main.tabok);
 		try {
 			bemenet = reader.readLine();
 		} catch (IOException e) {

@@ -28,12 +28,12 @@ public abstract class Field
 		System.out.println(Main.tabok+"->[Field].generateBlizzard()");
 		Main.tabok+="\t";
 		
-		//Iglu eldöntése input alapján
+		//Iglu eldï¿½ntï¿½se input alapjï¿½n
 		boolean loop = true;
 		String bemenet = "";
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
 		
-		System.out.print(Main.tabok+"Legyen a mezõn iglu? (Y - IGEN, N - NEM)\n"+Main.tabok);
+		System.out.print(Main.tabok+"Legyen a mezï¿½n iglu? (Y - IGEN, N - NEM)\n"+Main.tabok);
 		
 		while(loop) {
 			try {
@@ -51,7 +51,7 @@ public abstract class Field
 			}
 		}
 		
-		//Nincs iglu a mezõn -> Rajta levõ játékosok HP-ja 1-el csökken
+		//Nincs iglu a mezï¿½n -> Rajta levï¿½ jï¿½tï¿½kosok HP-ja 1-el csï¿½kken
 		if(iglooOnField == false) {
 			Player p = new Eskimo();
 			p.alterHealth(-1);
@@ -61,11 +61,12 @@ public abstract class Field
 		System.out.println(Main.tabok+"<-[Field].generateBlizzard()");
 	}
 	
+	//Norbi + valaki kiegÃ©szÃ­tette 
 	public void moveMeTo(Player p, Direction dir) 
 	{
 		System.out.println(Main.tabok+"->[Field].moveMeTo(Player p, Direction dir)");
 		Main.tabok+="\t";
-		//Itt késõbb a neighbours attribútumot fogja használni.
+		//Itt kï¿½sï¿½bb a neighbours attribï¿½tumot fogja hasznï¿½lni.
 		Field neighbours = new IceField();
 		neighbours.acceptPlayer(p);
 		
@@ -86,7 +87,7 @@ public abstract class Field
 	public void acceptItem(Item i) {	}
 	
 	//Dominik
-	//Alapimplementációja nem ad vissza tárgyat.
+	//Alapimplementï¿½ciï¿½ja nem ad vissza tï¿½rgyat.
 	public Item pickUpItem(Player p) 
 	{
 		return null;
@@ -98,7 +99,7 @@ public abstract class Field
 		System.out.println(Main.tabok+"->[Field].digSnow(int amount)");
 		System.out.println(Main.tabok+"<-[Field].digSnow(int amount)");
 		
-		//Lekérdezés: volt-e eltakaritandó hó
+		//Lekï¿½rdezï¿½s: volt-e eltakaritandï¿½ hï¿½
 		return true;
 	}
 	
@@ -110,7 +111,7 @@ public abstract class Field
 	//Dani
 	public boolean savePerson(Direction dir) 
 	{
-		//Itt késõbb az f2players helyett a players attribútum lesz használva.
+		//Itt kï¿½sï¿½bb az f2players helyett a players attribï¿½tum lesz hasznï¿½lva.
 		ArrayList<Player>f2players = new ArrayList<Player>();
 		f2players.add(new Eskimo());
 		f2players.add(new Eskimo());
@@ -122,13 +123,13 @@ public abstract class Field
 			System.out.println(Main.tabok+"Kit?");
 			for(int i=0; i<f2players.size();i++)
 			{
-				System.out.println(Main.tabok+i+": Játékos"+i);
+				System.out.println(Main.tabok+i+": Jï¿½tï¿½kos"+i);
 			}
 			
 			Scanner myObj = new Scanner(System.in);
 			String name = myObj.nextLine();
 			
-			//Itt késõbb a kiválaszott játékos lesz p2 értéke
+			//Itt kï¿½sï¿½bb a kivï¿½laszott jï¿½tï¿½kos lesz p2 ï¿½rtï¿½ke
 			Player p2 = new Eskimo();
 			moveMeTo(p2,dir);
 			Field f1 = neighbours;
