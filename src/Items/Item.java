@@ -1,4 +1,5 @@
 package Items;
+import Core.Main;
 import Map.Field;
 import Player.Player;
 
@@ -7,8 +8,8 @@ public abstract class Item
 	// Bence
 	public void use(Player p) 
 	{
-		System.out.println("->[Item].use()");
-		System.out.println("<-[Item].use()");
+		System.out.println(Main.tabok+"->[Item].use()");
+		System.out.println(Main.tabok+"<-[Item].use()");
 		
 	}
 	

@@ -30,7 +30,8 @@ public class Game {
 			sc.doTurn();
 			break;
 		case 11:
-			
+			Eskimo ee = new Eskimo();
+			ee.doTurn();
 			
 		}
 		

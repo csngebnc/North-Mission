@@ -121,6 +121,7 @@ public class Main {
 			//Bence - Tárgyhasználat
 			case "11":
 				FORGATOKONYV_SZAMA = 11;
+				game.doRound();
 				break;
 				
 			//Dominik - Ásó használat

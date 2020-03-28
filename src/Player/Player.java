@@ -31,15 +31,18 @@ public abstract class Player
 	{
 		System.out.println(Main.tabok+"->[Player].doTurn()");
 		Main.tabok+="\t";
+		
 		switch(Main.FORGATOKONYV_SZAMA) {
 		case 6:
 		case 7:
 			this.doSkill();
 			break;
+			
 		case 11:
 			this.openInventory();
 			break;
 		}
+		
 		Main.tabok = Main.tabok.replaceFirst("\t", "");
 		System.out.println(Main.tabok+"<-[Player].doTurn()");
 	}

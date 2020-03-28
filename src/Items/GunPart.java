@@ -7,7 +7,7 @@ public abstract class GunPart extends Item
 {
 	public void use(Player p) 
 	{
-		
+		super.use(p);;
 	}
 	
 	public boolean throwTo(Field f) 
