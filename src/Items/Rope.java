@@ -19,16 +19,8 @@ public class Rope extends Throwable
 		System.out.print(Main.tabok+"bal, jobb, fel, le\n"+Main.tabok);
 		String input = myObj.nextLine();
 		Direction dir=Direction.UP;
-		switch(input) {
-			case "bal": 
-				dir = Direction.LEFT;
-			case "jobb":
-				dir = Direction.RIGHT;
-			case "fel":
-				dir = Direction.UP;
-			case "le":
-				dir = Direction.DOWN;
-		}
+		
+		//Itt késõbb a dir felveszi a kiválaszott irányt
 		
 		Field f2 = p.getField();
 		//Ha vannak azon a Field-en, ahonnan menteni szeretnénk
