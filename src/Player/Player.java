@@ -58,6 +58,10 @@ public abstract class Player
 			}
 			break;
 			
+		case 11:
+			Barrel b = new Barrel();
+			b.use(this);
+			break;
 		case 12:
 			Item i1 = new Shovel();
 			i1.use(this);
