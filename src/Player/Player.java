@@ -176,7 +176,8 @@ public abstract class Player
 		String bemenet = myObj.nextLine();
 		
 		Main.tabok = Main.tabok.replaceFirst("\t", "");
-		System.out.println(Main.tabok+"->[Player].changeSuit()");
+		System.out.println(Main.tabok+"<-[Player].changeSuit()");
+		
 		switch(bemenet) {
 		case "Y":
 			return false;
