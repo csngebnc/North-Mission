@@ -13,10 +13,12 @@ public class Eskimo extends Player
 	{
 		System.out.println(Main.tabok+"->[Eskimo].doSkill()");
 		Main.tabok+="\t";
+		
 		Field f = new IceField();
 		f.buildIgloo();
 		this.drainStamina();
 		this.setbuiltIgloo(true);
+		
 		Main.tabok = Main.tabok.replaceFirst("\t", "");
 		System.out.println(Main.tabok+"<-[Eskimo].doSkill()");
 	}
