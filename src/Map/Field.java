@@ -102,10 +102,13 @@ public abstract class Field
 		//Lekï¿½rdezï¿½s: volt-e eltakaritandï¿½ hï¿½
 		return true;
 	}
+
 	
+	//Zalán
 	public void removeItemFromIce(Player p) 
 	{
-		
+		System.out.println(Main.tabok+"->[Field].removeItemFromIce(Player p) ");
+		System.out.println(Main.tabok+"<-[Field].removeItemFromIce(Player p) ");
 	}
 	
 	//Dani

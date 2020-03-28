@@ -8,6 +8,7 @@ import Core.Main;
 import Items.Shovel;
 import Items.Barrel;
 import Items.Item;
+import Items.Rope;
 import Player.Player;
 
 public class IceField extends Field 
@@ -71,8 +72,29 @@ public class IceField extends Field
 		}		
 	}
 	
+	//Zalán
 	public void removeItemFromIce(Player p) 
 	{
+		System.out.println(Main.tabok+"->[Field].removeItemFromIce(Player p) ");
+		Main.tabok+="\t";
+
+		String bemenet = "";
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
+		System.out.print(Main.tabok+"Legyen targy a mezon? (1- igen ; 2- nem)");
+		try {
+			bemenet = reader.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		if(bemenet.equals("1"))
+				frozenItem = new Rope();
+		
+		if (snowLayers == 0 && frozenItem != null)
+			p.drainStamina();
+		
+		Main.tabok = Main.tabok.replaceFirst("\t", "");
+		System.out.println(Main.tabok+"<-[Field].removeItemFromIce(Player p) ");
 	}
 }

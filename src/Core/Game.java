@@ -37,6 +37,10 @@ public class Game {
 			Scientist sc = new Scientist();
 			sc.doTurn();
 			break;
+		case 8:
+			Eskimo e8 = new Eskimo();
+			e8.doTurn();
+			break;
 		case 9:
 			Eskimo e1 = new Eskimo();
 			e1.doTurn();
@@ -52,6 +56,10 @@ public class Game {
 		case 12:
 			Eskimo e4 = new Eskimo();
 			e4.doTurn();
+			break;
+		case 17:
+			Eskimo e17 = new Eskimo();
+			e17.doTurn();
 			break;
 		}
 		

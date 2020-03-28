@@ -84,6 +84,10 @@ public abstract class Player
 		case 7:
 			this.doSkill();
 			break;
+		case 8:
+			Field f8 = new IceField();
+			f8.removeItemFromIce(this);
+			break;
 		case 9:
 			IceField f = new IceField();
 			f.pickUpItem(this);
@@ -96,6 +100,22 @@ public abstract class Player
 			break;
 		case 12:
 			this.openInventory();
+			break;
+		case 17:
+			Field f17 = new IceField();
+			f17.digSnow(1);
+			String bemenet = "";
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
+			System.out.print(Main.tabok+"Tudtunk asni? (1- igen ; 2- nem)");
+			try {
+				bemenet = reader.readLine();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			if(bemenet.equals("1"))
+				this.drainStamina();
 			break;
 		}
 		

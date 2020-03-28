@@ -85,6 +85,8 @@ public class Main {
 				
 			//Zalán - Tárgy kiszabaditás
 			case "8":
+				FORGATOKONYV_SZAMA = 8;
+				game.doRound();
 				break;
 			
 			//Dominik - item felvétel
@@ -143,6 +145,8 @@ public class Main {
 		
 			//Zalán - Kézzel ásás
 			case "17":
+				FORGATOKONYV_SZAMA = 17;
+				game.doRound();
 				break;
 				
 			default:
