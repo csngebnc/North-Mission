@@ -22,7 +22,7 @@ public class Main {
 				lista.add("Valaszthato forgatokonyvek:"); // AMI KÉSZ, AHHOZ // KÉSZ
 				lista.add("1 \t Játék kör kezelése");			// KÉSZ
 				lista.add("2 \t Játékos stabil jégmezõre lép");
-				lista.add("3 \t Játékos instabil jégmezõre lép");
+				lista.add("3 \t Játékos instabil jégmezõre lép és a mezõ átfordul");
 				lista.add("4 \t Játékos lyukba lép");
 				lista.add("5 \t Hóvihar következik be"); 		// KÉSZ
 				lista.add("6 \t Eszkimó használja a képességét"); // KÉSZ
@@ -57,14 +57,20 @@ public class Main {
 			
 			//Norbi - Stabilra lépés
 			case "2":
+				FORGATOKONYV_SZAMA = 2;
+				game.doRound();
 				break;
 			
 			//Norbi - Instabilra lépés
 			case "3":
+				FORGATOKONYV_SZAMA = 3;
+				game.doRound();
 				break;
 			
 			//Norbi - Lyukba lépés
 			case "4":
+				FORGATOKONYV_SZAMA = 4;
+				game.doRound();
 				break;
 				
 			//Dominik - hóvihar

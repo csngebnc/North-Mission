@@ -8,14 +8,11 @@ public class UnstableField extends IceField
 	public void acceptPlayer(Player p) 
 	{
 		System.out.println(Main.tabok+"->[UnstableField].acceptPlayer(Player p)");
-		System.out.println(Main.tabok+"<-[UnstableField].acceptPlayer(Player p)");
 		
-		if(maxplayers < players.size()) 
-		{
-			p.alterHealth(-150);
-		}
+		p.alterHealth(-150);
 		
 		p.setField(this);
-		
+
+		System.out.println(Main.tabok+"<-[UnstableField].acceptPlayer(Player p)");
 	}
 }

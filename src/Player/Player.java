@@ -9,6 +9,7 @@ import Items.Barrel;
 import Items.DivingSuit;
 import Items.Item;
 import Items.Shovel;
+import Map.Direction;
 import Map.Field;
 import Map.IceField;
 import Map.Map;
@@ -81,6 +82,18 @@ public abstract class Player
 		
 		switch(Main.FORGATOKONYV_SZAMA) {
 		case 1:
+			break;
+		case 2:
+			IceField iF1 = new IceField();
+			iF1.moveMeTo(this, Direction.UP);
+			break;
+		case 3:
+			IceField iF2 = new IceField();
+			iF2.moveMeTo(this, Direction.UP);
+			break;
+		case 4:
+			IceField iF3 = new IceField();
+			iF3.moveMeTo(this, Direction.UP);
 			break;
 		case 6:
 		case 7:

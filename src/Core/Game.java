@@ -30,6 +30,18 @@ public class Game {
 			Scientist s1 = new Scientist();
 			s1.doTurn();
 			break;
+		case 2:
+			Scientist s2 = new Scientist();
+			s2.doTurn();
+			break;
+		case 3:
+			Scientist s3 = new Scientist();
+			s3.doTurn();
+			break;
+		case 4:
+			Scientist s4 = new Scientist();
+			s4.doTurn();
+			break;
 		case 5:
 			this.callBlizzard();
 			break;

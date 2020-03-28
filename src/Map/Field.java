@@ -67,7 +67,11 @@ public abstract class Field
 		System.out.println(Main.tabok+"->[Field].moveMeTo(Player p, Direction dir)");
 		Main.tabok+="\t";
 		//Itt k�s�bb a neighbours attrib�tumot fogja haszn�lni.
-		Field neighbours = new IceField();
+		Field neighbours;
+		if(Main.FORGATOKONYV_SZAMA==2) neighbours = new IceField();
+		else if(Main.FORGATOKONYV_SZAMA==3) neighbours = new UnstableField();
+		else neighbours = new Hole();
+		
 		neighbours.acceptPlayer(p);
 		
 		Main.tabok = Main.tabok.replaceFirst("\t", "");
