@@ -125,30 +125,26 @@ public class Main {
 				
 			//Dani - Étel használat
 			case "13":
-				Player p13 = new Eskimo();
-				Item i13 = new Food();
-				i13.use(p13);
+				FORGATOKONYV_SZAMA = 13;
+				game.doRound();
 				break;
 				
 			//Dani - Kötél használat
 			case "14":
-				Player p14 = new Eskimo();
-				Item i14 = new Rope();
-				i14.use(p14);
+				FORGATOKONYV_SZAMA = 14;
+				game.doRound();
 				break;	
 				
 			//Dani - Búvárruha felvétele
 			case "15":
-				Player p15 = new Eskimo();
-				Item i15 = new DivingSuit();
-				i15.use(p15);
+				FORGATOKONYV_SZAMA = 15;
+				game.doRound();
 				break;
 				
 			//Dani - Pisztoly elsütés
 			case "16":
-				Player p16 = new Eskimo();
-				Field f16 = new IceField();
-				Game.winGame(f16);
+				FORGATOKONYV_SZAMA = 16;
+				game.doRound();
 				break;
 		
 			//Zalán - Kézzel ásás

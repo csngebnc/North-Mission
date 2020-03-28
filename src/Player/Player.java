@@ -4,10 +4,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+import Core.Game;
 import Core.Main;
 import Items.Barrel;
 import Items.DivingSuit;
+import Items.Food;
 import Items.Item;
+import Items.Rope;
 import Items.Shovel;
 import Map.Direction;
 import Map.Field;
@@ -68,6 +71,18 @@ public abstract class Player
 			Item i1 = new Shovel();
 			i1.use(this);
 			break;
+		case 13:
+			Item f = new Food();
+			f.use(this);
+			break;
+		case 14: 
+			Item r = new Rope();
+			r.use(this);
+			break;
+		case 15: 
+			Item ds = new DivingSuit();
+			ds.use(this);
+			break;
 			
 		}
 		Main.tabok = Main.tabok.replaceFirst("\t", "");
@@ -116,6 +131,18 @@ public abstract class Player
 		case 12:
 			this.openInventory();
 			break;
+		case 13:
+			this.openInventory();
+			break;
+		case 14:
+			this.openInventory();
+			break;
+		case 15:
+			this.openInventory();
+			break;
+		case 16:
+			Game.winGame(this.field);
+			break;
 		case 17:
 			Field f17 = new IceField();
 			f17.digSnow(1);
@@ -142,10 +169,14 @@ public abstract class Player
 	public boolean changeSuit(DivingSuit dsuit) 
 	{
 		System.out.println(Main.tabok+"->[Player].changeSuit()");
+		Main.tabok+="\t";
 		
 		Scanner myObj = new Scanner(System.in);
-		System.out.print(Main.tabok+"Van rajta b�v�rruha? (Y - igen, N - nem)\n"+Main.tabok);
+		System.out.print(Main.tabok+"Van rajta buvar ruha? (Y - igen, N - nem)\n"+Main.tabok);
 		String bemenet = myObj.nextLine();
+		
+		Main.tabok = Main.tabok.replaceFirst("\t", "");
+		System.out.println(Main.tabok+"->[Player].changeSuit()");
 		switch(bemenet) {
 		case "Y":
 			return false;

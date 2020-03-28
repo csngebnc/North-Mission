@@ -15,7 +15,7 @@ public class Rope extends Throwable
 		
 		//Itt lehet kiválasztani, hogy melyik irányba szeretnénk menteni
 		Scanner myObj = new Scanner(System.in);
-		System.out.println(Main.tabok+"Melyik irány?");
+		System.out.println(Main.tabok+"Melyik irany?");
 		System.out.print(Main.tabok+"bal, jobb, fel, le\n"+Main.tabok);
 		String input = myObj.nextLine();
 		Direction dir=Direction.UP;

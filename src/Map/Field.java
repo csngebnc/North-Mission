@@ -130,13 +130,13 @@ public abstract class Field
 			System.out.println(Main.tabok+"Kit?");
 			for(int i=0; i<f2players.size();i++)
 			{
-				System.out.println(Main.tabok+i+": J�t�kos"+i);
+				System.out.println(Main.tabok+i+": Jatekos"+i);
 			}
 			
 			Scanner myObj = new Scanner(System.in);
 			String name = myObj.nextLine();
 			
-			//Itt k�s�bb a kiv�laszott j�t�kos lesz p2 �rt�ke
+			//Itt kesobb a kivalasztott jatekos lesz p2 erteke
 			Player p2 = new Eskimo();
 			moveMeTo(p2,dir);
 			Field f1 = neighbours;

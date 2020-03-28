@@ -7,6 +7,7 @@ import Items.Barrel;
 import Items.Item;
 import Items.Shovel;
 import Map.Field;
+import Map.IceField;
 import Map.Map;
 import Player.Eskimo;
 import Player.Player;
@@ -73,10 +74,27 @@ public class Game {
 			Eskimo e4 = new Eskimo();
 			e4.doTurn();
 			break;
+		case 13:
+			Eskimo e13 = new Eskimo();
+			e13.doTurn();
+			break;
+		case 14:
+			Eskimo e14 = new Eskimo();
+			e14.doTurn();
+			break; 
+		case 15:
+			Eskimo e15 = new Eskimo();
+			e15.doTurn();
+			break;
+		case 16:
+			Eskimo e16 = new Eskimo();
+			e16.doTurn();
+			break;
 		case 17:
 			Eskimo e17 = new Eskimo();
 			e17.doTurn();
 			break;
+			
 		}
 		
 		
@@ -104,11 +122,16 @@ public class Game {
 	
 	public static void winGame(Field f) 
 	{
-		System.out.println("->[Game].winGame()");
+		System.out.println(Main.tabok+"->[Game].winGame()");
 		Main.tabok+="\t";
-		f.getPlayers();
+		
+		//Itt késõbb a field.getPlayers helyett az f Field getPlayerse lesz használva, illetve azt felhasználva 
+		//megnézi, hogy mindne játékos egy helyyen áll-e
+		Field field = new IceField();
+		field.getPlayers();
+
 		Main.tabok = Main.tabok.replaceFirst("\t", "");
-		System.out.println("<-[Game].winGame()");
+		System.out.println(Main.tabok+"<-[Game].winGame()");
 	}
 	
 	public static void loseGame() 
