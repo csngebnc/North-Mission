@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import java.util.Scanner;
 
+import Core.Main;
 import Items.Barrel;
 import Items.Item;
 import Items.Shovel;
@@ -56,7 +57,8 @@ public abstract class Field
 	
 	public void revealLimit() 
 	{
-		
+		System.out.println(Main.tabok+"->[Field].revealLimit()");
+		System.out.println(Main.tabok+"<-[Field].revealLimit()");
 	}
 	
 	public abstract void acceptPlayer(Player p);

@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import Items.*;
@@ -10,6 +11,9 @@ import Map.*;
 import Player.*;
 
 public class Main {
+	
+	public static int FORGATOKONYV_SZAMA;
+	public static String tabok = "";
 
 	public static void main(String[] args) throws IOException {
 		Game game = new Game();
@@ -32,7 +36,7 @@ public class Main {
 				lista.add("14 \t Játékos használja a kötelet");
 				lista.add("15 \t Játékos felveszi a búvárruhát");
 				lista.add("16 \t Játék megnyerésének kezdeményezése (Jelzõpisztollyal)");
-				lista.add("17 \t Játékos kézzel ássa havat");				
+				lista.add("17 \t Játékos kézzel ássa havat\n");	
 		
 		String bemenet = "";
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
@@ -68,10 +72,14 @@ public class Main {
 				
 			//Bence - Eszkimó képesség
 			case "6":
+				FORGATOKONYV_SZAMA = 6;
+				game.doRound();
 				break;
 				
 			//Bence - Kutató képesség
 			case "7":
+				FORGATOKONYV_SZAMA = 7;
+				game.doRound();
 				break;
 				
 			//Zalán - Tárgy kiszabaditás
@@ -112,6 +120,7 @@ public class Main {
 				
 			//Bence - Tárgyhasználat
 			case "11":
+				FORGATOKONYV_SZAMA = 11;
 				break;
 				
 			//Dominik - Ásó használat

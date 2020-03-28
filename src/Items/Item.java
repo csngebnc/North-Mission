@@ -4,8 +4,11 @@ import Player.Player;
 
 public abstract class Item 
 {
+	// Bence
 	public void use(Player p) 
 	{
+		System.out.println("->[Item].use()");
+		System.out.println("<-[Item].use()");
 		
 	}
 	

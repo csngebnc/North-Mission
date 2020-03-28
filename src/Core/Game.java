@@ -3,7 +3,9 @@ import java.util.ArrayList;
 
 import Map.Field;
 import Map.Map;
+import Player.Eskimo;
 import Player.Player;
+import Player.Scientist;
 
 public class Game {
 	
@@ -16,6 +18,27 @@ public class Game {
 	
 	public void doRound() 
 	{
+		System.out.println("->[Game].doRound()");
+		Main.tabok+="\t";
+		switch(Main.FORGATOKONYV_SZAMA) {
+		case 6:
+			Eskimo e = new Eskimo();
+			e.doTurn();
+			break;
+		case 7:
+			Scientist sc = new Scientist();
+			sc.doTurn();
+			break;
+		case 11:
+			
+		}
+		
+		
+		Main.tabok = Main.tabok.replaceFirst("\t", "");
+		System.out.println("<-[Game].doRound()");
+		
+		
+		
 		//innen fog történni a blizzard kezelés, feltételek alapján, ez a hóvihar forgatókönyv végrehajtása szempontjából nem lényeges (Dominik)
 			
 	}

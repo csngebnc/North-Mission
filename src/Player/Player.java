@@ -1,4 +1,5 @@
 package Player;
+import Core.Main;
 import Items.DivingSuit;
 import Items.Item;
 import Map.Field;
@@ -7,25 +8,40 @@ import Map.Map;
 
 public abstract class Player 
 {
-	private String name;
-	private int health;
-	private int stamina;
-	private boolean isDrowning;
-	private boolean dSuitOn;
-	private Map players;
-	private Field field;
-	private Item inventory;
+	protected String name;
+	protected int health;
+	protected int stamina;
+	protected boolean isDrowning;
+	protected boolean dSuitOn;
+	protected Map players;
+	protected Field field;
+	protected Item inventory;
 	
 	public abstract void doSkill();
 	
-	private void openInventory() 
+	// Bence
+	protected void openInventory() 
 	{
-		
+		System.out.println(Main.tabok+"->[Player].openInventory()");
+		System.out.println(Main.tabok+"<-[Player].openInventory()");
 	}
 	
+	// Bence
 	public void doTurn() 
 	{
-		
+		System.out.println(Main.tabok+"->[Player].doTurn()");
+		Main.tabok+="\t";
+		switch(Main.FORGATOKONYV_SZAMA) {
+		case 6:
+		case 7:
+			this.doSkill();
+			break;
+		case 11:
+			this.openInventory();
+			break;
+		}
+		Main.tabok = Main.tabok.replaceFirst("\t", "");
+		System.out.println(Main.tabok+"<-[Player].doTurn()");
 	}
 	
 	public void changeSuit(DivingSuit dsuit) 
