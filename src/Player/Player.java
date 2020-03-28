@@ -80,6 +80,8 @@ public abstract class Player
 		Main.tabok+="\t";
 		
 		switch(Main.FORGATOKONYV_SZAMA) {
+		case 1:
+			break;
 		case 6:
 		case 7:
 			this.doSkill();

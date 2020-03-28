@@ -26,6 +26,10 @@ public class Game {
 		System.out.println("->[Game].doRound()");
 		Main.tabok+="\t";
 		switch(Main.FORGATOKONYV_SZAMA) {
+		case 1:
+			Scientist s1 = new Scientist();
+			s1.doTurn();
+			break;
 		case 5:
 			this.callBlizzard();
 			break;
