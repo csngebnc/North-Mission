@@ -31,7 +31,7 @@ public class Main {
 				lista.add("9 \t Játékos felvesz egy tárgyat"); // KÉSZ
 				lista.add("10 \t Játékos eldob egy tárgyat"); // KÉSZ
 				lista.add("11 \t Játékos használ egy tárgyat"); // KÉSZ
-				lista.add("12 \t Játékos használ egy ásót");
+				lista.add("12 \t Játékos használ egy ásót"); // KÉSZ
 				lista.add("13 \t Játékos eszik");
 				lista.add("14 \t Játékos használja a kötelet");
 				lista.add("15 \t Játékos felveszi a búvárruhát");
@@ -107,9 +107,8 @@ public class Main {
 				
 			//Dominik - Ásó használat
 			case "12":
-				Player p12 = new Eskimo();
-				Item i12 = new Shovel();
-				i12.use(p12);			
+				FORGATOKONYV_SZAMA = 12;
+				game.doRound();			
 				break;
 				
 			//Dani - Étel használat

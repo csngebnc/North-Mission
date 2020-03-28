@@ -30,7 +30,8 @@ public abstract class Player
 	{
 		System.out.println(Main.tabok+"->[Player].openInventory()");
 		Main.tabok+="\t";
-		if(Main.FORGATOKONYV_SZAMA==10) {
+		switch(Main.FORGATOKONYV_SZAMA) {
+		case 10:
 			IceField iF = new IceField();
 			String bemenet = "";
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
@@ -55,6 +56,13 @@ public abstract class Player
 					loop = false;
 				}
 			}
+			break;
+			
+		case 12:
+			Item i1 = new Shovel();
+			i1.use(this);
+			break;
+			
 		}
 		Main.tabok = Main.tabok.replaceFirst("\t", "");
 		System.out.println(Main.tabok+"<-[Player].openInventory()");
@@ -79,6 +87,9 @@ public abstract class Player
 			this.openInventory();
 			break;
 		case 11:
+			this.openInventory();
+			break;
+		case 12:
 			this.openInventory();
 			break;
 		}
@@ -125,7 +136,8 @@ public abstract class Player
 	//Dominik
 	public Field getField() 
 	{
-		System.out.println("Player.getField()");
+		System.out.println(Main.tabok+"->[Player].getField()");
+		System.out.println(Main.tabok+"<-[Player].getField()");
 		//Késõbb a 'field' tagváltozót fogja visszaadni
 		return new IceField();
 	}

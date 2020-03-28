@@ -46,10 +46,13 @@ public class Game {
 			e2.doTurn();
 			break;
 		case 11:
-			Eskimo ee = new Eskimo();
-			ee.doTurn();
+			Eskimo e3 = new Eskimo();
+			e3.doTurn();
 			break;
-			
+		case 12:
+			Eskimo e4 = new Eskimo();
+			e4.doTurn();
+			break;
 		}
 		
 		

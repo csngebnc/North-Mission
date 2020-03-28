@@ -91,21 +91,11 @@ public abstract class Field
 	//Dominik
 	public boolean digSnow(int amount) 
 	{
-		System.out.println("Field.digSnow(int amount)");
+		System.out.println(Main.tabok+"->[Field].digSnow(int amount)");
+		System.out.println(Main.tabok+"<-[Field].digSnow(int amount)");
 		
 		//Lekérdezés: volt-e eltakaritandó hó
-		Scanner scanner = new Scanner(System.in);
-
-		while(true) {
-			System.out.println("Volt hó a mezõn? (Y - IGEN, N - NEM)");
-			if(scanner.nextLine() == "Y") {
-				scanner.close();
-				return true;
-			} else if (scanner.nextLine() == "N") {
-				scanner.close();
-				return false;
-			}
-		}
+		return true;
 	}
 	
 	public void removeItemFromIce(Player p) 
