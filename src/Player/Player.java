@@ -2,6 +2,7 @@ package Player;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 import Core.Main;
 import Items.Barrel;
@@ -105,18 +106,19 @@ public abstract class Player
 	//Dominik
 	public boolean changeSuit(DivingSuit dsuit) 
 	{
-		System.out.println("Player.changeSuit()");
+		System.out.println(Main.tabok+"->[Player].changeSuit()");
 		
-		//dSuitOn lekérdezés
-		
-		if(dSuitOn && dsuit == null) {
-			//Búvárruha levétele és elhelyezése a leltárbban
+		Scanner myObj = new Scanner(System.in);
+		System.out.print(Main.tabok+"Van rajta búvárruha? (Y - igen, N - nem)\n"+Main.tabok);
+		String bemenet = myObj.nextLine();
+		switch(bemenet) {
+		case "Y":
+			return false;
+		case "N":
 			return true;
-		} else if (!dSuitOn && dsuit != null) {
-			//Búvárruha felvétele és leltárból eltávolitás
-			return true;
-		} else
-			return false;	
+		default:
+			return false;
+		}
 	}
 	
 	//Dani
@@ -134,7 +136,9 @@ public abstract class Player
 	
 	public void setField(Field f) 
 	{
-		System.out.println("Player.setField");
+		System.out.println(Main.tabok+"->[Player].setField(Field f)");
+		System.out.println(Main.tabok+"<-[Player].setField(Field f)");
+		
 	}
 	
 	//Dominik

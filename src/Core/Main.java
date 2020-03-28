@@ -19,12 +19,12 @@ public class Main {
 		Game game = new Game();
 		
 		ArrayList<String> lista = new ArrayList<String>();
-				lista.add("Valaszthato forgatokonyvek:");
+				lista.add("Valaszthato forgatokonyvek:"); // AMI KÉSZ, AHHOZ // KÉSZ
 				lista.add("1 \t Játék kör kezelése");
 				lista.add("2 \t Játékos stabil jégmezõre lép");
 				lista.add("3 \t Játékos instabil jégmezõre lép");
 				lista.add("4 \t Játékos lyukba lép");
-				lista.add("5 \t Hóvihar következik be"); // KÉSZ
+				lista.add("5 \t Hóvihar következik be"); 		// KÉSZ
 				lista.add("6 \t Eszkimó használja a képességét"); // KÉSZ
 				lista.add("7 \t Kutató használja a képességét"); // KÉSZ
 				lista.add("8 \t Játékos kiszabadit egy tárgyat a jégbõl");
@@ -32,10 +32,10 @@ public class Main {
 				lista.add("10 \t Játékos eldob egy tárgyat"); // KÉSZ
 				lista.add("11 \t Játékos használ egy tárgyat"); // KÉSZ
 				lista.add("12 \t Játékos használ egy ásót"); // KÉSZ
-				lista.add("13 \t Játékos eszik");
-				lista.add("14 \t Játékos használja a kötelet");
-				lista.add("15 \t Játékos felveszi a búvárruhát");
-				lista.add("16 \t Játék megnyerésének kezdeményezése (Jelzõpisztollyal)");
+				lista.add("13 \t Játékos eszik"); 				// KÉSZ
+				lista.add("14 \t Játékos használja a kötelet"); // KÉSZ
+				lista.add("15 \t Játékos felveszi a búvárruhát"); // KÉSZ
+				lista.add("16 \t Játék megnyerésének kezdeményezése (Jelzõpisztollyal)"); // KÉSZ
 				lista.add("17 \t Játékos kézzel ássa havat\n");	
 		
 		String bemenet = "";
@@ -108,7 +108,9 @@ public class Main {
 			//Dominik - Ásó használat
 			case "12":
 				FORGATOKONYV_SZAMA = 12;
-				game.doRound();			
+				Player p12 = new Eskimo();
+				Item i12 = new Shovel();
+				i12.use(p12);
 				break;
 				
 			//Dani - Étel használat
@@ -135,9 +137,8 @@ public class Main {
 			//Dani - Pisztoly elsütés
 			case "16":
 				Player p16 = new Eskimo();
-				Field f16 = p16.getField();
-				Game g16 = new Game();
-				g16.winGame(f16);
+				Field f16 = new IceField();
+				Game.winGame(f16);
 				break;
 		
 			//Zalán - Kézzel ásás

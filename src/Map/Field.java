@@ -63,10 +63,14 @@ public abstract class Field
 	
 	public void moveMeTo(Player p, Direction dir) 
 	{
-		System.out.println("Field.moveMeTo");
+		System.out.println(Main.tabok+"->[Field].moveMeTo(Player p, Direction dir)");
+		Main.tabok+="\t";
 		//Itt késõbb a neighbours attribútumot fogja használni.
 		Field neighbours = new IceField();
 		neighbours.acceptPlayer(p);
+		
+		Main.tabok = Main.tabok.replaceFirst("\t", "");
+		System.out.println(Main.tabok+"<-[Field].moveMeTo(Player p, Direction dir)");
 		
 	}
 	
@@ -114,11 +118,11 @@ public abstract class Field
 		
 		if(f2players.size()>0)
 		{
-			System.out.println("Field.savePerson");
-			System.out.println("Kit?");
+			System.out.println(Main.tabok+"->[Field].savePerson()");
+			System.out.println(Main.tabok+"Kit?");
 			for(int i=0; i<f2players.size();i++)
 			{
-				System.out.println(i+": Játékos"+i);
+				System.out.println(Main.tabok+i+": Játékos"+i);
 			}
 			
 			Scanner myObj = new Scanner(System.in);
@@ -148,7 +152,8 @@ public abstract class Field
 	//Dani
 	public ArrayList<Player> getPlayers()
 	{
-		System.out.println("Field.getPlayer()");
+		System.out.println(Main.tabok+"->[Field].getPlayer()");
+		System.out.println(Main.tabok+"<-[Field].getPlayer()");
 		return players;
 	}
 }

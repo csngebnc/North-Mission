@@ -1,5 +1,7 @@
 package Items;
 import java.util.Scanner;
+
+import Core.Main;
 import Map.Direction;
 import Player.Player;
 import Map.Field;
@@ -8,12 +10,13 @@ public class Rope extends Throwable
 	//Dani
 	public void use(Player p) 
 	{
-		System.out.println("Rope.use");
-	
+		System.out.println(Main.tabok+"->[Rope].use()");
+		Main.tabok+="\t";
+		
 		//Itt lehet kiválasztani, hogy melyik irányba szeretnénk menteni
 		Scanner myObj = new Scanner(System.in);
-		System.out.println("Melyik irány?");
-		System.out.println("bal, jobb, fel, le");
+		System.out.println(Main.tabok+"Melyik irány?");
+		System.out.print(Main.tabok+"bal, jobb, fel, le\n"+Main.tabok);
 		String input = myObj.nextLine();
 		Direction dir=Direction.UP;
 		switch(input) {
@@ -32,6 +35,8 @@ public class Rope extends Throwable
 		if(f2.savePerson(dir))
 			p.drainStamina();
 		
+		Main.tabok = Main.tabok.replaceFirst("\t", "");
+		System.out.println(Main.tabok+"<-[Rope].use()");
 	
 	}
 }

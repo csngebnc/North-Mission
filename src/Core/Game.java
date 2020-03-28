@@ -80,9 +80,11 @@ public class Game {
 	
 	public static void winGame(Field f) 
 	{
-		System.out.println("Game.winGame()");
-		ArrayList <Player> players = new ArrayList <Player>();
-		players = f.getPlayers();
+		System.out.println("->[Game].winGame()");
+		Main.tabok+="\t";
+		f.getPlayers();
+		Main.tabok = Main.tabok.replaceFirst("\t", "");
+		System.out.println("<-[Game].winGame()");
 	}
 	
 	public static void loseGame() 

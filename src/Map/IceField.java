@@ -18,8 +18,11 @@ public class IceField extends Field
 	
 	public void acceptPlayer(Player p)
 	{
-		System.out.println("IceField.acceptPlayer");
+		System.out.println(Main.tabok+"->[IceField].acceptPlayer(Player p)");
+		Main.tabok+="\t";
 		p.setField(this);
+		Main.tabok = Main.tabok.replaceFirst("\t", "");
+		System.out.println(Main.tabok+"<-[IceField].acceptPlayer(Player p)");
 	}
 	
 	//Dominik
