@@ -25,8 +25,8 @@ public class IceField extends Field
 	//Dominik
 	public void acceptItem(Item i) 
 	{
-		System.out.println("->[IceField].acceptItem(Item i)");
-		System.out.println("<-[IceField].acceptItem(Item i)");
+		System.out.println(Main.tabok+"->[IceField].acceptItem(Item i)");
+		System.out.println(Main.tabok+"<-[IceField].acceptItem(Item i)");
 	}
 	
 	//Dominik

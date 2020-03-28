@@ -24,13 +24,13 @@ public class Main {
 				lista.add("2 \t Játékos stabil jégmezõre lép");
 				lista.add("3 \t Játékos instabil jégmezõre lép");
 				lista.add("4 \t Játékos lyukba lép");
-				lista.add("5 \t Hóvihar következik be");
-				lista.add("6 \t Eszkimó használja a képességét");
-				lista.add("7 \t Kutató használja a képességét");
+				lista.add("5 \t Hóvihar következik be"); // KÉSZ
+				lista.add("6 \t Eszkimó használja a képességét"); // KÉSZ
+				lista.add("7 \t Kutató használja a képességét"); // KÉSZ
 				lista.add("8 \t Játékos kiszabadit egy tárgyat a jégbõl");
-				lista.add("9 \t Játékos felvesz egy tárgyat");
-				lista.add("10 \t Játékos eldob egy tárgyat");
-				lista.add("11 \t Játékos használ egy tárgyat");
+				lista.add("9 \t Játékos felvesz egy tárgyat"); // KÉSZ
+				lista.add("10 \t Játékos eldob egy tárgyat"); // KÉSZ
+				lista.add("11 \t Játékos használ egy tárgyat"); // KÉSZ
 				lista.add("12 \t Játékos használ egy ásót");
 				lista.add("13 \t Játékos eszik");
 				lista.add("14 \t Játékos használja a kötelet");
@@ -94,28 +94,9 @@ public class Main {
 				break;
 			
 			//Dominik - tárgy eldobás
-			case "10":		
-				//Milyen tárgyat akarunk eldobni
-				Field f10 = new IceField();
-				Player p10 = new Eskimo();
-				boolean loop = true;
-				Scanner scanner = new Scanner(System.in);
-				
-				System.out.println("Milyen tárgyat dobjunk el? (T - Eldobhatót, P - Alkatrészt");
-				while(loop) {
-					if(scanner.nextLine() == "T") {
-						Item item = new Shovel();
-						if(item.throwTo(f10))
-							p10.drainStamina();
-						loop = false;
-					} else if (scanner.nextLine() == "P") {
-						Item item = new Barrel();
-						if(item.throwTo(f10))
-							p10.drainStamina();
-						loop = false;
-					}
-				}
-				scanner.close();
+			case "10":	
+				FORGATOKONYV_SZAMA = 10;
+				game.doRound();
 				break;
 				
 			//Bence - Tárgyhasználat

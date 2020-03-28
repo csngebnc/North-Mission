@@ -1,7 +1,13 @@
 package Player;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 import Core.Main;
+import Items.Barrel;
 import Items.DivingSuit;
 import Items.Item;
+import Items.Shovel;
 import Map.Field;
 import Map.IceField;
 import Map.Map;
@@ -23,6 +29,34 @@ public abstract class Player
 	protected void openInventory() 
 	{
 		System.out.println(Main.tabok+"->[Player].openInventory()");
+		Main.tabok+="\t";
+		if(Main.FORGATOKONYV_SZAMA==10) {
+			IceField iF = new IceField();
+			String bemenet = "";
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
+			System.out.print(Main.tabok+"Milyen tárgyat dobjunk el? (T - Eldobhatót, P - Alkatrészt)\n"+Main.tabok);
+			boolean loop = true;
+			while(loop) {
+				try {
+					bemenet = reader.readLine();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if(bemenet.equals("T")) {
+					Item item = new Shovel();
+					if(item.throwTo(iF))
+						this.drainStamina();
+					loop = false;
+				} else if (bemenet.equals("P")) {
+					Item item = new Barrel();
+					if(item.throwTo(iF))
+						this.drainStamina();
+					loop = false;
+				}
+			}
+		}
+		Main.tabok = Main.tabok.replaceFirst("\t", "");
 		System.out.println(Main.tabok+"<-[Player].openInventory()");
 	}
 	
@@ -40,6 +74,9 @@ public abstract class Player
 		case 9:
 			IceField f = new IceField();
 			f.pickUpItem(this);
+			break;
+		case 10:
+			this.openInventory();
 			break;
 		case 11:
 			this.openInventory();

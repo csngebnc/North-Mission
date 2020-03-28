@@ -1,6 +1,11 @@
 package Core;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import Items.Barrel;
+import Items.Item;
+import Items.Shovel;
 import Map.Field;
 import Map.Map;
 import Player.Eskimo;
@@ -35,6 +40,10 @@ public class Game {
 		case 9:
 			Eskimo e1 = new Eskimo();
 			e1.doTurn();
+			break;
+		case 10:
+			Eskimo e2 = new Eskimo();
+			e2.doTurn();
 			break;
 		case 11:
 			Eskimo ee = new Eskimo();
