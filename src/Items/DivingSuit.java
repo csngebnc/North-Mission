@@ -10,7 +10,7 @@ public class DivingSuit extends Throwable
 		//Ha nincs a p Playeren DivingSuit, akkor tud felhúzni egyet.
 		
 		if(p.changeSuit(this) == false)
-		{6
+		{
 			p.drainStamina();
 		}
 	}
