@@ -1,5 +1,6 @@
 package Items;
 import Core.Game;
+import Core.Main;
 import Map.Field;
 import Player.Player;
 
@@ -17,7 +18,10 @@ public abstract class GunPart extends Item
 	
 	public void pickUp() 
 	{
-		System.out.println("GunPart.pickUp()");
+		System.out.println(Main.tabok+"->[GunPart].pickUp()");
+		Main.tabok+="\t";
 		Game.incGunParts();
+		Main.tabok = Main.tabok.replaceFirst("\t", "");
+		System.out.println(Main.tabok+"<-[GunPart].pickUp()");
 	}
 }

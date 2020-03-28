@@ -37,7 +37,10 @@ public abstract class Player
 		case 7:
 			this.doSkill();
 			break;
-			
+		case 9:
+			IceField f = new IceField();
+			f.pickUpItem(this);
+			break;
 		case 11:
 			this.openInventory();
 			break;
@@ -67,12 +70,14 @@ public abstract class Player
 	//Dani
 	public void alterHealth(int n) 
 	{
-		System.out.println("Player.alterHealth");
+		System.out.println(Main.tabok+"->[Player].alterHealth()");
+		System.out.println(Main.tabok+"<-[Player].alterHealth()");
 	}
 	
 	public void drainStamina() 
 	{
-		System.out.println("Player.drainStamina");
+		System.out.println(Main.tabok+"->[Player].drainStamina()");
+		System.out.println(Main.tabok+"<-[Player].drainStamina()");
 	}
 	
 	public void setField(Field f) 

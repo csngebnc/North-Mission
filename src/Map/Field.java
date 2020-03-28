@@ -1,4 +1,7 @@
 package Map;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import java.util.Scanner;
@@ -22,28 +25,40 @@ public abstract class Field
 	//Dominik
 	public void generateBlizzard() 
 	{
-		System.out.println("Field.generateBlizzard()");
-
+		System.out.println(Main.tabok+"->[Field].generateBlizzard()");
+		Main.tabok+="\t";
+		
 		//Iglu eldöntése input alapján
 		boolean loop = true;
-		Scanner scanner = new Scanner(System.in);
+		String bemenet = "";
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
 		
-		System.out.println("Legyen a mezõn iglu? (Y - IGEN, N - NEM)");
+		System.out.print(Main.tabok+"Legyen a mezõn iglu? (Y - IGEN, N - NEM)\n"+Main.tabok);
+		
 		while(loop) {
-			if(scanner.nextLine() == "Y") {
+			try {
+				bemenet = reader.readLine();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if(bemenet.equals("Y")) {
 				iglooOnField = true;
 				loop = false;
-			} else if (scanner.nextLine() == "N") {
+			} else if (bemenet.equals("N")) {
 				iglooOnField = false;
 				loop = false;
 			}
 		}
-		scanner.close();
 		
 		//Nincs iglu a mezõn -> Rajta levõ játékosok HP-ja 1-el csökken
-		if(iglooOnField == false)
-			for(Player p : players)
-				p.alterHealth(-1);
+		if(iglooOnField == false) {
+			Player p = new Eskimo();
+			p.alterHealth(-1);
+		}
+		
+		Main.tabok = Main.tabok.replaceFirst("\t", "");
+		System.out.println(Main.tabok+"<-[Field].generateBlizzard()");
 	}
 	
 	public void moveMeTo(Player p, Direction dir) 

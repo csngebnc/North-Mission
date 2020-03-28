@@ -21,6 +21,9 @@ public class Game {
 		System.out.println("->[Game].doRound()");
 		Main.tabok+="\t";
 		switch(Main.FORGATOKONYV_SZAMA) {
+		case 5:
+			this.callBlizzard();
+			break;
 		case 6:
 			Eskimo e = new Eskimo();
 			e.doTurn();
@@ -29,9 +32,14 @@ public class Game {
 			Scientist sc = new Scientist();
 			sc.doTurn();
 			break;
+		case 9:
+			Eskimo e1 = new Eskimo();
+			e1.doTurn();
+			break;
 		case 11:
 			Eskimo ee = new Eskimo();
 			ee.doTurn();
+			break;
 			
 		}
 		
@@ -48,9 +56,14 @@ public class Game {
 	//Dominik
 	public void callBlizzard() 
 	{
-		System.out.println("Game.callBlizzard()");
+		System.out.println(Main.tabok+"->[Game].callBlizzard()");
+		Main.tabok+="\t";
+		
 		Map m = new Map();
 		m.callBlizzardOnFields();
+		
+		Main.tabok = Main.tabok.replaceFirst("\t", "");
+		System.out.println(Main.tabok+"<-[Game].callBlizzard()");
 	}
 	
 	public static void winGame(Field f) 
@@ -65,8 +78,10 @@ public class Game {
 	
 	}
 	
-	public static void incGunParts() 
+	public static void incGunParts()
 	{
+		System.out.println(Main.tabok+"->[Game].incGunParts()");
+		System.out.println(Main.tabok+"<-[Game].incGunParts()");
 		
 	}
 }

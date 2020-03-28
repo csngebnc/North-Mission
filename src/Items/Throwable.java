@@ -1,5 +1,6 @@
 package Items;
 
+import Core.Main;
 import Map.Field;
 
 public abstract class Throwable extends Item 
@@ -14,6 +15,7 @@ public abstract class Throwable extends Item
 	//Dominik
 	public void pickUp() 
 	{
-		System.out.println("Throwable.pickUp()");
+		System.out.println(Main.tabok+"->[Throwable].pickUp()");
+		System.out.println(Main.tabok+"<-[Throwable].pickUp()");
 	}
 }

@@ -67,7 +67,8 @@ public class Main {
 				
 			//Dominik - hóvihar
 			case "5":
-				game.callBlizzard();
+				FORGATOKONYV_SZAMA = 5;
+				game.doRound();
 				break;
 				
 			//Bence - Eszkimó képesség
@@ -88,9 +89,8 @@ public class Main {
 			
 			//Dominik - item felvétel
 			case "9":
-				Field f9 = new IceField();
-				Player p9 = new Eskimo();
-				f9.pickUpItem(p9);
+				FORGATOKONYV_SZAMA = 9;
+				game.doRound();
 				break;
 			
 			//Dominik - tárgy eldobás
