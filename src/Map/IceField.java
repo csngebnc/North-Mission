@@ -41,17 +41,17 @@ public class IceField extends Field
 			System.out.println("Milyen tárgy legyen a mezõn? (1 - Eldobható, 2 - Alkatrész, 3 - Semmi)" + bemenet + (bemenet == "1"));
 			try {
 				bemenet = reader.readLine();
-				if(bemenet == "1") {
+				if(bemenet.equals("1")) {
 					Item item = new Shovel();
 					item.pickUp();
 					p.drainStamina();
 					return item;
-				} else if (bemenet == "2") {
+				} else if (bemenet.equals("2")) {
 					Item item = new Barrel();
 					item.pickUp();
 					p.drainStamina();
 					return item;
-				} else if (bemenet == "3") {
+				} else if (bemenet.equals("3")) {
 					return null;
 				}
 			} catch (IOException e) {
