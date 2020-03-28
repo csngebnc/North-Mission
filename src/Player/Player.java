@@ -44,10 +44,21 @@ public abstract class Player
 		System.out.println(Main.tabok+"<-[Player].doTurn()");
 	}
 	
-	public void changeSuit(DivingSuit dsuit) 
+	//Dominik
+	public boolean changeSuit(DivingSuit dsuit) 
 	{
 		System.out.println("Player.changeSuit()");
 		
+		//dSuitOn lekérdezés
+		
+		if(dSuitOn && dsuit == null) {
+			//Búvárruha levétele és elhelyezése a leltárbban
+			return true;
+		} else if (!dSuitOn && dsuit != null) {
+			//Búvárruha felvétele és leltárból eltávolitás
+			return true;
+		} else
+			return false;	
 	}
 	
 	//Dani

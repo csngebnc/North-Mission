@@ -3,15 +3,14 @@ import Player.Player;
 
 public class DivingSuit extends Throwable
 {
-	//Dani
+	//Dani (Dominik)
 	public void use(Player p) 
 	{
-		System.out.println("DivingSuit.use");
-		//Ha nincs a p Playeren DivingSuit, akkor tud felhõzni egyet.
-		if(p.getdSuitOn()==false)
+		System.out.println("DivingSuit.use(Player p)");
+		//Ha nincs a p Playeren DivingSuit, akkor tud felhúzni egyet.
+		
+		if(p.changeSuit(this) == false)
 		{
-			p.changeSuit(this);
-			p.setdSuitOn(true);
 			p.drainStamina();
 		}
 	}
