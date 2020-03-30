@@ -12,34 +12,41 @@ import Player.*;
 
 public class Main {
 	
-	public static int FORGATOKONYV_SZAMA;
-	public static String tabok = "";
+	/*
+	 * Kezdetleges Main osztály, a forgatókönyvek megjelenítéséhez, valamint azok végrehajtásához van rá szükség.
+	 * A késõbbiekben átalakításra kerül, úgy, hogy a játék vezérlését végezze.
+	 */
+	
+	public static int FORGATOKONYV_SZAMA; // Tárolja, hogy melyik forgatókönyv kerül végrehajtásra.
+	public static String tabok = ""; // Tabulátorokat tartalmaz a megfelelõ indentálás érdekében.
 
 	public static void main(String[] args) throws IOException {
-		Game game = new Game();
+		Game game = new Game(); // A játék, amin végrehajtjuk a forgatókönyveket.
 		
+		// Forgatókönyvek listája.
 		ArrayList<String> lista = new ArrayList<String>();
-				lista.add("Valaszthato forgatokonyvek:"); // AMI KÉSZ, AHHOZ // KÉSZ
-				lista.add("1 \t Játék kör kezelése");			// KÉSZ
+				lista.add("Valaszthato forgatokonyvek:"); 
+				lista.add("1 \t Játék kör kezelése");			
 				lista.add("2 \t Játékos stabil jégmezõre lép");
 				lista.add("3 \t Játékos instabil jégmezõre lép és a mezõ átfordul");
 				lista.add("4 \t Játékos lyukba lép");
-				lista.add("5 \t Hóvihar következik be"); 		// KÉSZ
-				lista.add("6 \t Eszkimó használja a képességét"); // KÉSZ
-				lista.add("7 \t Kutató használja a képességét"); // KÉSZ
-				lista.add("8 \t Játékos kiszabadit egy tárgyat a jégbõl");// KÉSZ
-				lista.add("9 \t Játékos felvesz egy tárgyat"); // KÉSZ
-				lista.add("10 \t Játékos eldob egy tárgyat"); // KÉSZ
-				lista.add("11 \t Játékos használ egy tárgyat"); // KÉSZ
-				lista.add("12 \t Játékos használ egy ásót"); // KÉSZ
-				lista.add("13 \t Játékos eszik"); 				// KÉSZ
-				lista.add("14 \t Játékos használja a kötelet"); // KÉSZ
-				lista.add("15 \t Játékos felveszi a búvárruhát"); // KÉSZ
-				lista.add("16 \t Játék megnyerésének kezdeményezése (Jelzõpisztollyal)"); // KÉSZ
-				lista.add("17 \t Játékos kézzel ássa havat\n");	// KÉSZ
+				lista.add("5 \t Hóvihar következik be"); 		
+				lista.add("6 \t Eszkimó használja a képességét"); 
+				lista.add("7 \t Kutató használja a képességét"); 
+				lista.add("8 \t Játékos kiszabadit egy tárgyat a jégbõl");
+				lista.add("9 \t Játékos felvesz egy tárgyat"); 
+				lista.add("10 \t Játékos eldob egy tárgyat"); 
+				lista.add("11 \t Játékos használ egy tárgyat"); 
+				lista.add("12 \t Játékos használ egy ásót"); 
+				lista.add("13 \t Játékos eszik"); 				
+				lista.add("14 \t Játékos használja a kötelet"); 
+				lista.add("15 \t Játékos felveszi a búvárruhát"); 
+				lista.add("16 \t Játék megnyerésének kezdeményezése (Jelzõpisztollyal)"); 
+				lista.add("17 \t Játékos kézzel ássa havat\n");	
 		
 		String bemenet = "";
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
+		// Ameddig a bemenet nem egyezik a "kilep" szöveggel, addig lehetõségünk van forgatókönyvek végrehajtására.
 		while(!bemenet.equals("kilep")) {
 			
 			for(String s : lista)
@@ -152,7 +159,6 @@ public class Main {
 				FORGATOKONYV_SZAMA = 17;
 				game.doRound();
 				break;
-				
 			default:
 				break;
 			}

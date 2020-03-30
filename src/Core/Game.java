@@ -24,6 +24,8 @@ public class Game {
 	
 	public void doRound() 
 	{
+		// Jelenleg a forgatókönyveknek megfelelõ értékek beállítása szerepel itt, 
+		//	késõbbiekben a játék által, korábban beadott dokumentumokban leírt események fognak szerepelni.
 		System.out.println("->[Game].doRound()");
 		Main.tabok+="\t";
 		switch(Main.FORGATOKONYV_SZAMA) {
@@ -96,14 +98,9 @@ public class Game {
 			break;
 			
 		}
-		
-		
+			
 		Main.tabok = Main.tabok.replaceFirst("\t", "");
 		System.out.println("<-[Game].doRound()");
-		
-		
-		
-		//innen fog történni a blizzard kezelés, feltételek alapján, ez a hóvihar forgatókönyv végrehajtása szempontjából nem lényeges (Dominik)
 			
 	}
 	
