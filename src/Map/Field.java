@@ -140,8 +140,6 @@ public abstract class Field
 			//Itt kesobb a kivalasztott jatekos lesz p2 erteke
 			Player p2 = new Eskimo();
 			moveMeTo(p2,dir);
-			Field f1 = neighbours;
-			p2.setField(f1);
 			return true;
 		}
 		return false;
