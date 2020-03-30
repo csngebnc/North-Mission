@@ -8,17 +8,18 @@ public class Map
 {
 	private ArrayList<Field> fields;
 	
+	// Mezõk létrehozása, szomszédosságok beállítása lesz itt.
 	private void initFields() 
 	{
 		
 	}
 	
-	//Dominik
+	//Hóvihar hívása a mezõkön.
 	public void callBlizzardOnFields()
 	{
 		System.out.println(Main.tabok+"->[Map].callBlizzardOnFields()");
 		Main.tabok+="\t";
-		//Késõbb az egész 'field' tömbbön
+		//Késõbb az egész 'field' tömbbön, jelenleg a forgatókönyv egy mezõre érvényes.
 		Field f = new IceField();
 		f.generateBlizzard();
 		

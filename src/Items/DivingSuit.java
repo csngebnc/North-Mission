@@ -6,7 +6,6 @@ import Player.Player;
 
 public class DivingSuit extends Throwable
 {
-	//Dani (Dominik)
 	public void use(Player p) 
 	{
 		System.out.println(Main.tabok+"->[DivingSuit].use(Player p)");

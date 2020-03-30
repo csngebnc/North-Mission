@@ -6,7 +6,7 @@ import Map.IceField;
 
 public class Scientist extends Player 
 {
-	// Bence
+	// Sarkkutató karakter speciális képességének használata.
 	public void doSkill() 
 	{
 		System.out.println(Main.tabok+"->[Scientist].doSkill()");

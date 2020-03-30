@@ -17,7 +17,7 @@ public class IceField extends Field
 	private Item frozenItem;
 	private Item itemOnGround;
 	
-	//Norbi + valaki kiegÃ©szÃ­tette
+	//Stabil jégmezõre lépés.
 	public void acceptPlayer(Player p)
 	{
 		System.out.println(Main.tabok+"->[IceField].acceptPlayer(Player p)");
@@ -27,27 +27,26 @@ public class IceField extends Field
 		System.out.println(Main.tabok+"<-[IceField].acceptPlayer(Player p)");
 	}
 	
-	//Dominik
+	//Tárgy átvétele játékos eldobása által, mezõn található tárgyakhoz adása itt fog történni.
 	public void acceptItem(Item i) 
 	{
 		System.out.println(Main.tabok+"->[IceField].acceptItem(Item i)");
 		System.out.println(Main.tabok+"<-[IceField].acceptItem(Item i)");
 	}
 	
-	//Dominik
+	// Tárgy felvétele
 	public Item pickUpItem(Player p) 
 	{
 		System.out.println(Main.tabok+"->[IceField].pickUpItem()");
 		Main.tabok+="\t";
-		//Itt lesz egy felugrï¿½ ablak arrï¿½l hogy melyik tï¿½rgyat akarja a player felvenni
+		//Itt lesz egy felugró ablak lesz arróll hogy melyik tárgyat akarja a player felvenni.
 		String bemenet = "";
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
-		//Input csekkolï¿½s
-		System.out.print(Main.tabok+"Milyen tï¿½rgy legyen a mezï¿½n? (1 - Eldobhatï¿½, 2 - Alkatrï¿½sz, bï¿½rmi mï¿½s - Semmi)\n"+Main.tabok);
+		//Input ellenõrzés
+		System.out.print(Main.tabok+"Milyen tárgy legyen a mezõn? (1 - Eldobható½, 2 - Alkatrész, bármi más - Semmi)\n"+Main.tabok);
 		try {
 			bemenet = reader.readLine();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -72,7 +71,7 @@ public class IceField extends Field
 		}		
 	}
 	
-	//Zalán
+	// Tárgy kiszabadítása mezõbõl.
 	public void removeItemFromIce(Player p) 
 	{
 		System.out.println(Main.tabok+"->[Field].removeItemFromIce(Player p) ");

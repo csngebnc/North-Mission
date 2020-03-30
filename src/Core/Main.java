@@ -53,108 +53,72 @@ public class Main {
 				System.out.println(s);
 			
 			bemenet = reader.readLine();
-			
+			// A dokumentációban leírtaknak megfelelõen a megadott sorszámú forgatókönyvet, a megadott személy csinálta.
 			switch(bemenet) {
-			
-			//Zalán - Kör kezelés
 			case "1":
 				FORGATOKONYV_SZAMA = 1;
 				game.doRound();
 				break;
-			
-			//Norbi - Stabilra lépés
 			case "2":
 				FORGATOKONYV_SZAMA = 2;
 				game.doRound();
 				break;
-			
-			//Norbi - Instabilra lépés
 			case "3":
 				FORGATOKONYV_SZAMA = 3;
 				game.doRound();
 				break;
-			
-			//Norbi - Lyukba lépés
 			case "4":
 				FORGATOKONYV_SZAMA = 4;
 				game.doRound();
 				break;
-				
-			//Dominik - hóvihar
 			case "5":
 				FORGATOKONYV_SZAMA = 5;
 				game.doRound();
 				break;
-				
-			//Bence - Eszkimó képesség
 			case "6":
 				FORGATOKONYV_SZAMA = 6;
 				game.doRound();
 				break;
-				
-			//Bence - Kutató képesség
 			case "7":
 				FORGATOKONYV_SZAMA = 7;
 				game.doRound();
 				break;
-				
-			//Zalán - Tárgy kiszabaditás
 			case "8":
 				FORGATOKONYV_SZAMA = 8;
 				game.doRound();
 				break;
-			
-			//Dominik - item felvétel
 			case "9":
 				FORGATOKONYV_SZAMA = 9;
 				game.doRound();
 				break;
-			
-			//Dominik - tárgy eldobás
 			case "10":	
 				FORGATOKONYV_SZAMA = 10;
 				game.doRound();
 				break;
-				
-			//Bence - Tárgyhasználat
 			case "11":
 				FORGATOKONYV_SZAMA = 11;
 				game.doRound();
 				break;
-				
-			//Dominik - Ásó használat
 			case "12":
 				FORGATOKONYV_SZAMA = 12;
-				Player p12 = new Eskimo();
-				Item i12 = new Shovel();
-				i12.use(p12);
+				game.doRound();
 				break;
-				
-			//Dani - Étel használat
 			case "13":
 				FORGATOKONYV_SZAMA = 13;
 				game.doRound();
 				break;
-				
-			//Dani - Kötél használat
 			case "14":
 				FORGATOKONYV_SZAMA = 14;
 				game.doRound();
 				break;	
-				
-			//Dani - Búvárruha felvétele
 			case "15":
 				FORGATOKONYV_SZAMA = 15;
 				game.doRound();
 				break;
-				
-			//Dani - Pisztoly elsütés
 			case "16":
 				FORGATOKONYV_SZAMA = 16;
 				game.doRound();
 				break;
-		
-			//Zalán - Kézzel ásás
 			case "17":
 				FORGATOKONYV_SZAMA = 17;
 				game.doRound();

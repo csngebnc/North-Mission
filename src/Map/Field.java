@@ -22,7 +22,7 @@ public abstract class Field
 	protected Field neighbours;
 	private boolean iglooOnField;
 	
-	//Dominik
+	// Hóvihar generálása a mezõn.
 	public void generateBlizzard() 
 	{
 		System.out.println(Main.tabok+"->[Field].generateBlizzard()");
@@ -61,7 +61,7 @@ public abstract class Field
 		System.out.println(Main.tabok+"<-[Field].generateBlizzard()");
 	}
 	
-	//Norbi + valaki kiegÃ©szÃ­tette 
+	//Játékos elmozdítása egy mezõre az adott mezõrõl egy kapott irányba.
 	public void moveMeTo(Player p, Direction dir) 
 	{
 		System.out.println(Main.tabok+"->[Field].moveMeTo(Player p, Direction dir)");
@@ -80,46 +80,50 @@ public abstract class Field
 		
 	}
 	
+	// Sarkkutató játékos hívhatja a mezõt, ezzel felvedve mekkora a teherbírása.
 	public void revealLimit() 
 	{
 		System.out.println(Main.tabok+"->[Field].revealLimit()");
 		System.out.println(Main.tabok+"<-[Field].revealLimit()");
 	}
 	
+	// A leszármazottak maguk valósítják meg.
 	public abstract void acceptPlayer(Player p);
 	
-	//Dominik 
+	// A leszármazottak maguk valósítják meg.
 	public void acceptItem(Item i) {	}
 	
-	//Dominik
-	//Alapimplementï¿½ciï¿½ja nem ad vissza tï¿½rgyat.
+	
+	//Alapimplementációja nem ad vissza tárgyat..
 	public Item pickUpItem(Player p) 
 	{
 		return null;
 	}
 	
-	//Dominik
+	// Mezõn történõ ásás, paraméterként kapott értékkel csökkenti a hóréteget, ha van hó.
+	// Jelen esetben feltételezzük, hogy van eltávolítható hó.
 	public boolean digSnow(int amount) 
 	{
 		System.out.println(Main.tabok+"->[Field].digSnow(int amount)");
 		System.out.println(Main.tabok+"<-[Field].digSnow(int amount)");
 		
-		//Lekï¿½rdezï¿½s: volt-e eltakaritandï¿½ hï¿½
+		//Lekérdezés: volt-e eltakarítható.
+		
 		return true;
 	}
 
 	
-	//Zalán
+	// Tárgy kiszabadítása jégbõl. Késõbb a mezõn található tárgyak közé kerül a kiszabadított tárgy.
 	public void removeItemFromIce(Player p) 
 	{
 		System.out.println(Main.tabok+"->[Field].removeItemFromIce(Player p) ");
 		System.out.println(Main.tabok+"<-[Field].removeItemFromIce(Player p) ");
 	}
 	
-	//Dani
+	// Játékos mentése adott irányba.
 	public boolean savePerson(Direction dir) 
 	{
-		//Itt kï¿½sï¿½bb az f2players helyett a players attribï¿½tum lesz hasznï¿½lva.
+		//Itt késõbb az f2players helyett a players attribútum lesz használva.
 		ArrayList<Player>f2players = new ArrayList<Player>();
 		f2players.add(new Eskimo());
 		f2players.add(new Eskimo());
@@ -145,18 +149,21 @@ public abstract class Field
 		return false;
 	}
 	
+	
+	// Iglu elhelyezése a mezõn.
 	public boolean buildIgloo() 
 	{
 		return true;
 	}
-	//Dani
+
+	// Visszaadja a szomszédot adott irányból. Változik még, jelenleg csak a forgatókönyvhöz lett beállítva..
 	public Field getNeighbours()
 	{
 		System.out.println("Field.getNeighbours");
 		return neighbours;
 	}
 	
-	//Dani
+	//Visszaadja a mezõn található játékosokat.
 	public ArrayList<Player> getPlayers()
 	{
 		System.out.println(Main.tabok+"->[Field].getPlayer()");

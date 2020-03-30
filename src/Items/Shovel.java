@@ -6,7 +6,8 @@ import Player.Player;
 
 public class Shovel extends Throwable
 {
-	//Dominik
+	// Ásó használatával eltávolítható két egységnyi hóréteg a mezõrõl, amelyen a játékos áll,
+	// ha a mezõn van hó.
 	public void use(Player p) 
 	{
 		System.out.println(Main.tabok+"->[Shovel].use()");

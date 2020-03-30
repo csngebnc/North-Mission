@@ -5,6 +5,7 @@ import Map.Field;
 
 public abstract class Throwable extends Item 
 {
+	// Tárgy eldobása egy mezõre. Eldobható tárgy esete.
 	public boolean throwTo(Field f) 
 	{
 		System.out.println(Main.tabok+"->[Throwable].throwTo(Field f)");
@@ -15,7 +16,7 @@ public abstract class Throwable extends Item
 		return true;
 	}
 	
-	//Dominik
+	// Eldobható, nem alkatrész tárgy felvétele.
 	public void pickUp() 
 	{
 		System.out.println(Main.tabok+"->[Throwable].pickUp()");

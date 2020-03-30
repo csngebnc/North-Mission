@@ -7,7 +7,7 @@ import Player.Player;
 import Map.Field;
 public class Rope extends Throwable
 {
-	//Dani
+	// Egy lyukba esett játékos kimentése.
 	public void use(Player p) 
 	{
 		System.out.println(Main.tabok+"->[Rope].use()");

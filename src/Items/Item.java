@@ -5,7 +5,7 @@ import Player.Player;
 
 public abstract class Item 
 {
-	// Bence
+	// Tárgy felvétele
 	public void use(Player p) 
 	{
 		System.out.println(Main.tabok+"->[Item].use()");
@@ -13,8 +13,9 @@ public abstract class Item
 		
 	}
 	
+	// Leszármazottak saját maguk valósítják meg.
 	public abstract boolean throwTo(Field f);
 	
-	//Dominik, ez abasztakt lett
+	// Leszármazottak saját maguk valósítják meg.
 	public abstract void pickUp();
 }

@@ -8,7 +8,7 @@ public class Eskimo extends Player
 {
 	private boolean builtIgloo;
 
-	//Bence
+	// Eszkimó játékos iglut épít a mezõn, ha még korábban nem épített volna.
 	public void doSkill() 
 	{
 		System.out.println(Main.tabok+"->[Eskimo].doSkill()");
@@ -23,7 +23,7 @@ public class Eskimo extends Player
 		System.out.println(Main.tabok+"<-[Eskimo].doSkill()");
 	}
 	
-	//Bence
+	// Igluépítés beállítása.
 	private void setbuiltIgloo(boolean expression) {
 		System.out.println(Main.tabok+"->[Eskimo].setbuiltIgloo(true)");
 		System.out.println(Main.tabok+"<-[Eskimo].setbuiltIgloo(true)");

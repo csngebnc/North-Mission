@@ -4,7 +4,7 @@ import Player.Player;
 
 public class Food extends Throwable 
 {
-	//Dani
+	/* Egy élelem elfogyasztásával eggyel nõ a játékos élete.*/
 	public void use(Player p) 
 	{
 		System.out.println(Main.tabok+"->[Food].use()");

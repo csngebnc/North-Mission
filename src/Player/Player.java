@@ -30,9 +30,13 @@ public abstract class Player
 	
 	public abstract void doSkill();
 	
-	// Bence
+	// Játékos inventory-jának megjelenítése.
 	protected void openInventory() 
 	{
+		// Késõbb itt egy felugró ablakban megjelennek a játékosnál lévõ tárgyak, és
+		// ezekbõl választhat majd. A kiválasztott tárgyon fog use() hívódni.
+		// Jelenleg csak forgatókönyveknek megfelelõ események történnek.
+		
 		System.out.println(Main.tabok+"->[Player].openInventory()");
 		Main.tabok+="\t";
 		switch(Main.FORGATOKONYV_SZAMA) {
@@ -89,9 +93,12 @@ public abstract class Player
 		System.out.println(Main.tabok+"<-[Player].openInventory()");
 	}
 	
-	// Bence
+	// Játékos köre
 	public void doTurn() 
 	{
+		// Jelenleg csak forgatókönyvnek megfelelõ események történnek,
+		// de itt kerül majd megfigyelésre a felhasználó (játékos) által
+		// adott input, valamint itt lesz lekezelve.
 		System.out.println(Main.tabok+"->[Player].doTurn()");
 		Main.tabok+="\t";
 		
@@ -165,7 +172,7 @@ public abstract class Player
 		System.out.println(Main.tabok+"<-[Player].doTurn()");
 	}
 	
-	//Dominik
+	//Búvárruha használat
 	public boolean changeSuit(DivingSuit dsuit) 
 	{
 		System.out.println(Main.tabok+"->[Player].changeSuit()");
@@ -188,21 +195,21 @@ public abstract class Player
 		}
 	}
 	
-	//Dani
+	// Játékos életének változtatása fog itt történni.
 	public void alterHealth(int n) 
 	{
 		System.out.println(Main.tabok+"->[Player].alterHealth()");
 		System.out.println(Main.tabok+"<-[Player].alterHealth()");
 	}
 	
-	//Norbi + valaki javÃ­totta
+	// Játékos staminájának csökkentése fog itt történni.
 	public void drainStamina() 
 	{
 		System.out.println(Main.tabok+"->[Player].drainStamina()");
 		System.out.println(Main.tabok+"<-[Player].drainStamina()");
 	}
 	
-	//Norbi + valaki javÃ­totta
+	// Játékos mezõjének beállítása fog itt történni.
 	public void setField(Field f) 
 	{
 		System.out.println(Main.tabok+"->[Player].setField(Field f)");
@@ -210,39 +217,43 @@ public abstract class Player
 		
 	}
 	
-	//Dominik
+	// Játékos mezõjének lekérése
 	public Field getField() 
 	{
 		System.out.println(Main.tabok+"->[Player].getField()");
 		System.out.println(Main.tabok+"<-[Player].getField()");
-		//Kï¿½sï¿½bb a 'field' tagvï¿½ltozï¿½t fogja visszaadni
+		//Késõbb a 'field' tagváltozót fogja visszaadni
 		return new IceField();
 	}
 	
-	//Norbi
+	// Játékos fuldoklásának beállítás fog itt történni.
 	public void setIsDrowning(boolean b)
 	{
 		System.out.println(Main.tabok+"->[Player].setIsDrowning(boolean b)");
 		System.out.println(Main.tabok+"<-[Player].setIsDrowning(boolean b)");
 	}
 	
-	//Dani
+	//Játékos nevének visszaadása.
 	public String getName()
 	{
-		System.out.println("Player.getName()");
+		System.out.println(Main.tabok+"->[Player].getName()");
+		System.out.println(Main.tabok+"<-[Player].getName()");
 		return name;
 	}
 	
+	// Visszaadja, hogy van-e a játékoson búvárruha.
 	public boolean getdSuitOn()
 	{
-		System.out.println("Player.getDSuitOn()");
+		System.out.println(Main.tabok+"->[Player].getDSuitOn()");
+		System.out.println(Main.tabok+"<-[Player].getDSuitOn()");
 		return dSuitOn;
 	}
 	
 	
 	public void setdSuitOn(boolean b)
 	{
-		System.out.println("Player.setdSuitOn");
-		//Kï¿½sï¿½bb itt ï¿½tï¿½llï¿½tja a dSuitOn-t b-re
+		System.out.println(Main.tabok+"->[Player].setdSuitOn(boolean b)");
+		System.out.println(Main.tabok+"<-[Player].setdSuitOn(boolean b)");
+		//Késõbb itt kerül beállításra, hogy van-e a játékoson búvárruha.
 	}
 }
