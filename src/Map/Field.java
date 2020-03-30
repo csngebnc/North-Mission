@@ -68,8 +68,9 @@ public abstract class Field
 		Main.tabok+="\t";
 		//Itt k�s�bb a neighbours attrib�tumot fogja haszn�lni.
 		Field neighbours;
-		if(Main.FORGATOKONYV_SZAMA==2) neighbours = new IceField();
+		if(Main.FORGATOKONYV_SZAMA==2 || Main.FORGATOKONYV_SZAMA==14) neighbours = new IceField();
 		else if(Main.FORGATOKONYV_SZAMA==3) neighbours = new UnstableField();
+		
 		else neighbours = new Hole();
 		
 		neighbours.acceptPlayer(p);
