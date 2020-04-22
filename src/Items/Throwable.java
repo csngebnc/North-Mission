@@ -1,6 +1,5 @@
 package Items;
 
-import Core.Main;
 import Map.Field;
 
 public abstract class Throwable implements Item 
@@ -14,7 +13,5 @@ public abstract class Throwable implements Item
 	// Eldobható, nem alkatrész tárgy felvétele.
 	public void pickUp() 
 	{
-		System.out.println(Main.tabok+"->[Throwable].pickUp()");
-		System.out.println(Main.tabok+"<-[Throwable].pickUp()");
 	}
 }

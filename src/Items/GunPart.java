@@ -20,10 +20,5 @@ public abstract class GunPart implements Item
 	// Amennyiben felveszik, akkor a szól a játéknak, hogy megtaláltak egy alkatrészt.
 	public void pickUp() 
 	{
-		System.out.println(Main.tabok+"->[GunPart].pickUp()");
-		Main.tabok+="\t";
-		Game.incGunParts();
-		Main.tabok = Main.tabok.replaceFirst("\t", "");
-		System.out.println(Main.tabok+"<-[GunPart].pickUp()");
 	}
 }

@@ -1,8 +1,6 @@
 package Map;
 import Core.Game;
-import Core.Main;
 import Player.Character;
-import Player.Player;
 
 public class UnstableField extends IceField
 {
@@ -11,6 +9,7 @@ public class UnstableField extends IceField
 	{
 		if(characters.size()>=maxplayers) {
 			Game.loseGame();
+			return;
 		}else {
 			if(building!=null){
 				if(building.attack()) {
