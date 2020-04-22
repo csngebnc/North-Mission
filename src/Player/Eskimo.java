@@ -30,4 +30,10 @@ public class Eskimo extends Player
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public void attack() {
+		// TODO Auto-generated method stub
+		
+	}
 }

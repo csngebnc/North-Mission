@@ -123,13 +123,12 @@ public class Game {
 	
 	public static void loseGame() 
 	{
-	
+		state = GameState.LOST;
 	}
 	
 	public static void incGunParts()
 	{
-		System.out.println(Main.tabok+"->[Game].incGunParts()");
-		System.out.println(Main.tabok+"<-[Game].incGunParts()");
-		
+		foundGunParts++;
+		System.out.println("Found gunparts incremented, num: "+foundGunParts);		
 	}
 }

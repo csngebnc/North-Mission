@@ -34,4 +34,10 @@ public class PolarBear extends Character{
 		return false;
 	}
 
+	@Override
+	public void attack() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

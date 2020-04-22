@@ -11,23 +11,20 @@ public class Map
 	// Mezõk létrehozása, szomszédosságok beállítása lesz itt.
 	private void initFields() 
 	{
-		
+		fields = new ArrayList<Field>();
 	}
 	
 	//Hóvihar hívása a mezõkön.
 	public void callBlizzardOnFields()
 	{
-		System.out.println(Main.tabok+"->[Map].callBlizzardOnFields()");
-		Main.tabok+="\t";
-		//Késõbb az egész 'field' tömbbön, jelenleg a forgatókönyv egy mezõre érvényes.
-		Field f = new IceField();
-		f.generateBlizzard();
-		
-		Main.tabok = Main.tabok.replaceFirst("\t", "");
-		System.out.println(Main.tabok+"<-[Map].callBlizzardOnFields()");
+		for(Field f: fields) {
+			f.generateBlizzard();
+		}
 	}
 	
 	public void tickBuildings() {
-		
+		for(Field f: fields) {
+			f.tickBuilding();
+		}
 	}
 }

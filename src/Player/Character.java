@@ -11,4 +11,5 @@ public abstract class Character {
 	public abstract void drainStamina();
 	public abstract void drown();
 	public abstract boolean save(Field f);
+	public abstract void attack();
 }

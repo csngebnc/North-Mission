@@ -88,7 +88,7 @@ public abstract class Field
 	public void tickBuilding() {}
 	
 	
-	public void attackBuilding() {}
+	public void attack() {}
 
 	// Visszaadja a szomszédot adott irányból. Változik még, jelenleg csak a forgatókönyvhöz lett beállítva..
 	public Field getNeighbour(int dir)
