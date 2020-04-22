@@ -47,7 +47,6 @@ public abstract class Field
 	// A leszármazottak maguk valósítják meg.
 	public void acceptItem(Item i) {	}
 	
-	
 	//Alapimplementációja nem ad vissza tárgyat..
 	public Item pickUpItem(Player p) 
 	{
@@ -66,7 +65,6 @@ public abstract class Field
 		return true;
 	}
 
-	
 	// Tárgy kiszabadítása jégbõl. Késõbb a mezõn található tárgyak közé kerül a kiszabadított tárgy.
 	public void removeItemFromIce(Player p) 
 	{
