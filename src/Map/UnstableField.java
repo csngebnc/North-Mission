@@ -1,9 +1,18 @@
 package Map;
+import java.util.ArrayList;
+
 import Core.Game;
+import Items.Item;
 import Player.Character;
 
 public class UnstableField extends IceField
 {
+	public UnstableField() {
+		super();
+		frozenItem = null;
+		itemOnGround = new ArrayList<Item>();
+	}
+	
 	// Jelenleg forgatókönyv alapján átforduló instabil mezõ.
 	public void acceptCharacter(Character c)
 	{

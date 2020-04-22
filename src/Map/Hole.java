@@ -8,6 +8,17 @@ public class Hole extends Field
 		super();
 		maxplayers = (int)Math.random()*Game.characters.size()+1;
 	}
+	
+	@Override
+	public boolean savePerson(int dir) {
+		if(characters.isEmpty()){
+			return false;
+		}
+		
+		characters.get(0).save(neighbours.get(dir));
+		return true;
+	}
+	
 	//Lyukba került játékos fuldoklását beállítja.
 	public void acceptCharacter(Character c)
 	{

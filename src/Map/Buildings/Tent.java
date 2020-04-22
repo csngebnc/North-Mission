@@ -5,6 +5,8 @@ import Map.Field;
 import Player.Player;
 
 public class Tent implements Item, Building{
+	
+	public Tent() {}
 
 	@Override
 	public void use(Player p) {

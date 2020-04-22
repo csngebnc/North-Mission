@@ -16,8 +16,14 @@ import Player.Character;
 
 public class IceField extends Field 
 {
-	private Item frozenItem;
-	private ArrayList<Item> itemOnGround;
+	protected Item frozenItem;
+	protected ArrayList<Item> itemOnGround;
+	
+	public IceField() {
+		super();
+		frozenItem = null;
+		itemOnGround = new ArrayList<Item>();
+	}
 	
 	//Stabil jégmezõre lépés.
 	public void acceptCharacter(Character c)
@@ -66,8 +72,6 @@ public class IceField extends Field
 		
 		itemOnGround.set(0, frozenItem);
 		p.drainStamina();
-		
-		
 	}
 	
 	public boolean digSnow(int amount) {
