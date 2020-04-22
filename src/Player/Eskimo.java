@@ -11,21 +11,23 @@ public class Eskimo extends Player
 	// Eszkimó játékos iglut épít a mezõn, ha még korábban nem épített volna.
 	public void doSkill() 
 	{
-		System.out.println(Main.tabok+"->[Eskimo].doSkill()");
-		Main.tabok+="\t";
-		
-		Field f = new IceField();
-		f.buildIgloo();
-		this.drainStamina();
-		this.setbuiltIgloo(true);
-		
-		Main.tabok = Main.tabok.replaceFirst("\t", "");
-		System.out.println(Main.tabok+"<-[Eskimo].doSkill()");
 	}
 	
 	// Igluépítés beállítása.
 	private void setbuiltIgloo(boolean expression) {
 		System.out.println(Main.tabok+"->[Eskimo].setbuiltIgloo(true)");
 		System.out.println(Main.tabok+"<-[Eskimo].setbuiltIgloo(true)");
+	}
+
+	@Override
+	public void drown() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean save(Field f) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

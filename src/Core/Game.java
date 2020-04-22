@@ -119,16 +119,6 @@ public class Game {
 	
 	public static void winGame(Field f) 
 	{
-		System.out.println(Main.tabok+"->[Game].winGame()");
-		Main.tabok+="\t";
-		
-		//Itt késõbb a field.getPlayers helyett az f Field getPlayerse lesz használva, illetve azt felhasználva 
-		//megnézi, hogy mindne játékos egy helyyen áll-e
-		Field field = new IceField();
-		field.getPlayers();
-
-		Main.tabok = Main.tabok.replaceFirst("\t", "");
-		System.out.println(Main.tabok+"<-[Game].winGame()");
 	}
 	
 	public static void loseGame() 

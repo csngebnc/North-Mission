@@ -4,12 +4,11 @@ import Core.Main;
 import Map.Field;
 import Player.Player;
 
-public abstract class GunPart extends Item 
+public abstract class GunPart implements Item 
 {
 	// Az õsének használ metódusát hívja.
 	public void use(Player p) 
 	{
-		super.use(p);;
 	}
 	
 	//Alapértelmezetten false értékkel tér vissza, mivel egy alkatrész nem eldobható.

@@ -3,16 +3,11 @@ package Items;
 import Core.Main;
 import Map.Field;
 
-public abstract class Throwable extends Item 
+public abstract class Throwable implements Item 
 {
 	// Tárgy eldobása egy mezõre. Eldobható tárgy esete.
 	public boolean throwTo(Field f) 
 	{
-		System.out.println(Main.tabok+"->[Throwable].throwTo(Field f)");
-		Main.tabok+="\t";
-		f.acceptItem(this);
-		Main.tabok = Main.tabok.replaceFirst("\t", "");
-		System.out.println(Main.tabok+"<-[Throwable].throwTo(Field f)");
 		return true;
 	}
 	

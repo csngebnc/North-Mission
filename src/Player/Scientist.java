@@ -9,15 +9,18 @@ public class Scientist extends Player
 	// Sarkkutató karakter speciális képességének használata.
 	public void doSkill() 
 	{
-		System.out.println(Main.tabok+"->[Scientist].doSkill()");
-		Main.tabok+="\t";
+
+	}
+
+	@Override
+	public void drown() {
+		// TODO Auto-generated method stub
 		
-		Field f = new IceField();
-		f.getNeighbours();
-		f.revealLimit();
-		this.drainStamina();
-		
-		Main.tabok = Main.tabok.replaceFirst("\t", "");
-		System.out.println(Main.tabok+"<-[Scientist].doSkill()");
+	}
+
+	@Override
+	public boolean save(Field f) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

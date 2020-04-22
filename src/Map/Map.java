@@ -26,4 +26,8 @@ public class Map
 		Main.tabok = Main.tabok.replaceFirst("\t", "");
 		System.out.println(Main.tabok+"<-[Map].callBlizzardOnFields()");
 	}
+	
+	public void tickBuildings() {
+		
+	}
 }

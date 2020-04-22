@@ -6,6 +6,5 @@ public class Barrel extends GunPart
 {
 	/*Jelenleg az õsének használ metódusát hívja meg.*/
 	public void use(Player p) {
-		super.use(p);;
 	}
 }
