@@ -11,7 +11,7 @@ import Items.Barrel;
 import Items.Item;
 import Items.Shovel;
 import Map.Buildings.Building;
-import Player.Eskimo;
+import Player.Character;
 import Player.Player;
 
 
@@ -32,21 +32,20 @@ public abstract class Field
 	//Játékos elmozdítása egy mezõre az adott mezõrõl egy kapott irányba.
 	public void moveMeTo(Character c, int dir) 
 	{
-		
+		neighbours.get(dir).acceptCharacter(c);		
 	}
 	
 	// Sarkkutató játékos hívhatja a mezõt, ezzel felvedve mekkora a teherbírása.
 	public void revealLimit() 
 	{
-		System.out.println(Main.tabok+"->[Field].revealLimit()");
-		System.out.println(Main.tabok+"<-[Field].revealLimit()");
+		System.out.println("The field's can hold "+maxplayers+" characters at the time.");
 	}
 	
 	// A leszármazottak maguk valósítják meg.
 	public abstract void acceptCharacter(Character c);
 	
 	// A leszármazottak maguk valósítják meg.
-	public void acceptItem(Item i) {	}
+	public void acceptItem(Item i) {}
 	
 	//Alapimplementációja nem ad vissza tárgyat..
 	public Item pickUpItem(Player p) 
@@ -58,20 +57,11 @@ public abstract class Field
 	// Jelen esetben feltételezzük, hogy van eltávolítható hó.
 	public boolean digSnow(int amount) 
 	{
-		System.out.println(Main.tabok+"->[Field].digSnow(int amount)");
-		System.out.println(Main.tabok+"<-[Field].digSnow(int amount)");
-		
-		//Lekérdezés: volt-e eltakarítható.
-		
-		return true;
+		return false;
 	}
 
 	// Tárgy kiszabadítása jégbõl. Késõbb a mezõn található tárgyak közé kerül a kiszabadított tárgy.
-	public void removeItemFromIce(Player p) 
-	{
-		System.out.println(Main.tabok+"->[Field].removeItemFromIce(Player p) ");
-		System.out.println(Main.tabok+"<-[Field].removeItemFromIce(Player p) ");
-	}
+	public void removeItemFromIce(Player p) {}
 	
 	// Játékos mentése adott irányba.
 	public boolean savePerson(int dir) 
@@ -83,14 +73,12 @@ public abstract class Field
 	// Iglu elhelyezése a mezõn.
 	public boolean buildBuilding(Building b) 
 	{
-		return true;
+		return false;
 	}
 	
 	public void tickBuilding() {}
 	
 	
-	public void attack() {}
-
 	// Visszaadja a szomszédot adott irányból. Változik még, jelenleg csak a forgatókönyvhöz lett beállítva..
 	public Field getNeighbour(int dir)
 	{

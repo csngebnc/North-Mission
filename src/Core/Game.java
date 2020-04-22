@@ -124,6 +124,7 @@ public class Game {
 	public static void loseGame() 
 	{
 		state = GameState.LOST;
+		System.out.println("The players lost the game.");
 	}
 	
 	public static void incGunParts()

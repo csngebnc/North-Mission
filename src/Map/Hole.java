@@ -1,6 +1,5 @@
 package Map;
-import Core.Main;
-import Player.Player;
+import Player.Character;
 
 public class Hole extends Field 
 {

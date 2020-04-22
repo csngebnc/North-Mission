@@ -8,7 +8,10 @@ public class Tent implements Item, Building{
 
 	@Override
 	public void use(Player p) {
-		// TODO Auto-generated method stub
+		if(p.getField().buildBuilding(this)) {
+			p.removeItem(this);
+			p.drainStamina();
+		}
 	}
 
 	@Override
