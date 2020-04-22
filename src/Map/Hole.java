@@ -23,7 +23,6 @@ public class Hole extends Field
 	public void acceptCharacter(Character c)
 	{
 		c.setField(this);
-		c.drainStamina();
 		c.drown();
 		characters.add(c);
 		for(Character ch : characters) {

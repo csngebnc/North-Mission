@@ -42,6 +42,7 @@ public abstract class Field
 	public void moveMeTo(Character c, int dir) 
 	{
 		neighbours.get(dir).acceptCharacter(c);		
+		c.drainStamina();
 	}
 	
 	// Sarkkutató játékos hívhatja a mezõt, ezzel felvedve mekkora a teherbírása.

@@ -28,7 +28,6 @@ public class IceField extends Field
 	//Stabil jégmezõre lépés.
 	public void acceptCharacter(Character c)
 	{
-		c.drainStamina();
 		c.setField(this);
 		characters.add(c);
 		if(building!=null){
