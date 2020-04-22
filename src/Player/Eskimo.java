@@ -32,8 +32,15 @@ public class Eskimo extends Player
 	}
 
 	@Override
-	public void attack() {
+	public void collideWith(Character c) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void hitBy(PolarBear pb) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

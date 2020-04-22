@@ -26,6 +26,7 @@ public abstract class Field
 	// Hóvihar generálása a mezõn.
 	public void generateBlizzard() 
 	{
+		snowLayers += Math.random()*5;
 	}
 	
 	//Játékos elmozdítása egy mezõre az adott mezõrõl egy kapott irányba.

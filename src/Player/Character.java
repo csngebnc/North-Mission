@@ -11,5 +11,7 @@ public abstract class Character {
 	public abstract void drainStamina();
 	public abstract void drown();
 	public abstract boolean save(Field f);
-	public abstract void attack();
+	public abstract void collideWith(Character c);
+	public void hitBy(PolarBear pb) {}
+	public void hitBy(Player pl) {}
 }
