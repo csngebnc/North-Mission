@@ -14,4 +14,8 @@ public abstract class Character {
 	public abstract void collideWith(Character c);
 	public void hitBy(PolarBear pb) {}
 	public void hitBy(Player pl) {}
+	
+	public void setField(Field f) {
+		field = f;
+	}
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import java.util.Scanner;
 
+import Core.Game;
 import Core.Main;
 import Items.Barrel;
 import Items.Item;
@@ -22,6 +23,14 @@ public abstract class Field
 	protected ArrayList<Character> characters;
 	protected ArrayList<Field> neighbours;
 	protected Building building;
+	
+	public Field() {
+		snowLayers = (int)Math.random()*6;
+		characters = new ArrayList<Character>();
+		neighbours = new ArrayList<Field>();
+		maxplayers = Game.characters.size();
+		building = null;
+	}
 	
 	// Hóvihar generálása a mezõn.
 	public void generateBlizzard() 

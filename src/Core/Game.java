@@ -11,7 +11,7 @@ public class Game {
 	private static int foundGunParts;
 	private Map map;
 	// statikussá tettem õket, mert csak úgy lehet hozzájuk férni a winGame-ben
-	private static ArrayList<Character> characters;
+	public static ArrayList<Character> characters;
 	private static GameState state;
 	
 	public Game() {

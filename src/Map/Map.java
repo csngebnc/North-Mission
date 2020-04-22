@@ -8,6 +8,10 @@ public class Map
 {
 	private ArrayList<Field> fields;
 	
+	public Map() {
+		initFields();
+	}
+	
 	// Mezõk létrehozása, szomszédosságok beállítása lesz itt.
 	private void initFields() 
 	{

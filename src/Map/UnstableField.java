@@ -7,6 +7,9 @@ public class UnstableField extends IceField
 	// Jelenleg forgatókönyv alapján átforduló instabil mezõ.
 	public void acceptCharacter(Character c)
 	{
+		c.drainStamina();
+		c.setField(this);
+		characters.add(c);
 		if(characters.size()>=maxplayers) {
 			Game.loseGame();
 			return;
