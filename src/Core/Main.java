@@ -1,7 +1,10 @@
 package Core;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -42,7 +45,20 @@ public class Main {
 				lista.add("14 \t Játékos használja a kötelet"); 
 				lista.add("15 \t Játékos felveszi a búvárruhát"); 
 				lista.add("16 \t Játék megnyerésének kezdeményezése (Jelzõpisztollyal)"); 
-				lista.add("17 \t Játékos kézzel ássa havat\n");	
+				lista.add("17 \t Játékos kézzel ássa havat");	
+				lista.add("18 \t Játékos kézzel ássa havat");	
+				lista.add("19 \t Játékos kézzel ássa havat");	
+				lista.add("20 \t Játékos kézzel ássa havat");	
+				lista.add("21 \t Játékos kézzel ássa havat");	
+				lista.add("22 \t Játékos kézzel ássa havat");	
+				lista.add("23 \t Játékos kézzel ássa havat");	
+				lista.add("24 \t Játékos kézzel ássa havat");	
+				lista.add("25 \t Játékos kézzel ássa havat");	
+				lista.add("26 \t Játékos kézzel ássa havat");	
+				lista.add("27 \t Játékos kézzel ássa havat");	
+				lista.add("28 \t Játékos kézzel ássa havat");	
+				lista.add("29 \t Játékos kézzel ássa havat");	
+				lista.add("30 \t Játékos kézzel ássa havat\n");	
 		
 		String bemenet = "";
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
@@ -51,81 +67,102 @@ public class Main {
 			
 			for(String s : lista)
 				System.out.println(s);
-			
 			bemenet = reader.readLine();
-			// A dokumentációban leírtaknak megfelelõen a megadott sorszámú forgatókönyvet, a megadott személy csinálta.
-			switch(bemenet) {
-			case "1":
-				FORGATOKONYV_SZAMA = 1;
-				game.doRound();
-				break;
-			case "2":
-				FORGATOKONYV_SZAMA = 2;
-				game.doRound();
-				break;
-			case "3":
-				FORGATOKONYV_SZAMA = 3;
-				game.doRound();
-				break;
-			case "4":
-				FORGATOKONYV_SZAMA = 4;
-				game.doRound();
-				break;
-			case "5":
-				FORGATOKONYV_SZAMA = 5;
-				game.doRound();
-				break;
-			case "6":
-				FORGATOKONYV_SZAMA = 6;
-				game.doRound();
-				break;
-			case "7":
-				FORGATOKONYV_SZAMA = 7;
-				game.doRound();
-				break;
-			case "8":
-				FORGATOKONYV_SZAMA = 8;
-				game.doRound();
-				break;
-			case "9":
-				FORGATOKONYV_SZAMA = 9;
-				game.doRound();
-				break;
-			case "10":	
-				FORGATOKONYV_SZAMA = 10;
-				game.doRound();
-				break;
-			case "11":
-				FORGATOKONYV_SZAMA = 11;
-				game.doRound();
-				break;
-			case "12":
-				FORGATOKONYV_SZAMA = 12;
-				game.doRound();
-				break;
-			case "13":
-				FORGATOKONYV_SZAMA = 13;
-				game.doRound();
-				break;
-			case "14":
-				FORGATOKONYV_SZAMA = 14;
-				game.doRound();
-				break;	
-			case "15":
-				FORGATOKONYV_SZAMA = 15;
-				game.doRound();
-				break;
-			case "16":
-				FORGATOKONYV_SZAMA = 16;
-				game.doRound();
-				break;
-			case "17":
-				FORGATOKONYV_SZAMA = 17;
-				game.doRound();
-				break;
-			default:
-				break;
+			
+			//Beolvassa a kiválaszott forgatókönyv parancsait
+			Scanner scanner;
+			ArrayList<String> commands=new ArrayList<String>();
+			FORGATOKONYV_SZAMA=Integer.parseInt(bemenet);
+			for(int i=1;i<31;i++)
+			{
+				if(i==FORGATOKONYV_SZAMA)
+				{
+					scanner = new Scanner(new File(".\\\\Forgatokonyvek\\\\"+FORGATOKONYV_SZAMA+".txt"));
+					   while (scanner.hasNextLine()) {
+					        commands.add(scanner.nextLine());
+					    }
+					scanner.close();
+					break;
+				}
 			}
+			
+			//Lefutnak a parancsok
+			for(String s:commands)
+			{
+				switch(s.split(" ")[0]) {
+					case "polarbear":
+						int jegtablasorszam1=Integer.parseInt(s.split(" ")[1]);
+						//Some Kód
+						//Some Kód
+						//Some Kód
+						break;
+					case "eskimo":
+						String nev1= s.split(" ")[1];
+						int jegtablasorszam2=Integer.parseInt(s.split(" ")[2]);
+						//Some Kód
+						//Some Kód
+						//Some Kód		
+						break;
+					case "scientist":
+						String nev2= s.split(" ")[1];
+						int jegtablasorszam3=Integer.parseInt(s.split(" ")[2]);
+						//Some Kód
+						//Some Kód
+						//Some Kód				
+						break;
+					case "step":
+						int jegtablasorszam4=Integer.parseInt(s.split(" ")[1]);
+						//Some Kód
+						//Some Kód
+						//Some Kód
+						break;
+					case "setneighbours":
+						
+						
+						break;
+					case "createmap":
+						
+						
+						
+						break;
+					case "setitem":
+						String item=s.split(" ")[1];
+						//Some Kód
+						//Some Kód
+						//Some Kód
+						break;
+					case "setmaxplayers":
+						int jegtablasorszam5=Integer.parseInt(s.split(" ")[1]);
+						int teherbiras=Integer.parseInt(s.split(" ")[2]);
+						//Some Kód
+						//Some Kód
+						//Some Kód
+						break;
+					case "setsnow":
+						int jegtablasorszam6=Integer.parseInt(s.split(" ")[1]);
+						int homennyiseg=Integer.parseInt(s.split(" ")[2]);
+						//Some Kód
+						//Some Kód
+						//Some Kód
+						break;
+					case "doblizzard":
+						
+						break;
+					case "statplayer":
+						int sorszam=Integer.parseInt(s.split(" ")[1]);
+						//Some Kód
+						//Some Kód
+						//Some Kód
+						break;
+					case "statfield":
+						int sorszam2=Integer.parseInt(s.split(" ")[1]);
+						//Some Kód
+						//Some Kód
+						//Some Kód
+						break;
+				}
+			}
+			
 		}
 	}
 }
