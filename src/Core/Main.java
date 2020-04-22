@@ -73,18 +73,12 @@ public class Main {
 			Scanner scanner;
 			ArrayList<String> commands=new ArrayList<String>();
 			FORGATOKONYV_SZAMA=Integer.parseInt(bemenet);
-			for(int i=1;i<31;i++)
-			{
-				if(i==FORGATOKONYV_SZAMA)
-				{
-					scanner = new Scanner(new File(".\\\\Forgatokonyvek\\\\"+FORGATOKONYV_SZAMA+".txt"));
-					   while (scanner.hasNextLine()) {
-					        commands.add(scanner.nextLine());
-					    }
-					scanner.close();
-					break;
-				}
+
+			scanner = new Scanner(new File(".\\\\Forgatokonyvek\\\\"+FORGATOKONYV_SZAMA+".txt"));
+			while (scanner.hasNextLine()) {
+				commands.add(scanner.nextLine());
 			}
+			scanner.close();
 			
 			//Lefutnak a parancsok
 			for(String s:commands)
