@@ -19,8 +19,9 @@ public class Game {
 	private int roundsUntilBlizzard;
 	private static int foundGunParts;
 	private Map map;
-	private Player players;
-	private GameState state;
+	// statikussá tettem õket, mert csak úgy lehet hozzájuk férni a winGame-ben
+	private static ArrayList<Player> players;
+	private static GameState state;
 	
 	public void doRound() 
 	{
@@ -107,18 +108,17 @@ public class Game {
 	//Dominik
 	public void callBlizzard() 
 	{
-		System.out.println(Main.tabok+"->[Game].callBlizzard()");
-		Main.tabok+="\t";
-		
-		Map m = new Map();
-		m.callBlizzardOnFields();
-		
-		Main.tabok = Main.tabok.replaceFirst("\t", "");
-		System.out.println(Main.tabok+"<-[Game].callBlizzard()");
+		map.callBlizzardOnFields();
 	}
 	
 	public static void winGame(Field f) 
 	{
+		
+		if(foundGunParts==3 && (f.getCharacters().size()>=players.size())) {
+			state = GameState.WON;
+			System.out.println("The players won the game.");
+		}
+			
 	}
 	
 	public static void loseGame() 
