@@ -90,14 +90,26 @@ public abstract class Field
 	
 	
 	// Visszaadja a szomszédot adott irányból. Változik még, jelenleg csak a forgatókönyvhöz lett beállítva..
-	public Field getNeighbour(int dir)
+	public Field getNeighbour(int num)
 	{
-		return neighbours.get(dir);
+		return neighbours.get(num);
+	}
+	
+	public void addNeighbour(Field f) {
+		neighbours.add(f);
+	}
+	
+	public void setFrozenItem(Item i) {
+		
 	}
 	
 	//Visszaadja a mezõn található játékosokat.
 	public ArrayList<Character> getCharacters()
 	{
 		return characters;
+	}
+	
+	public void setLimit(int limit) {
+		
 	}
 }
