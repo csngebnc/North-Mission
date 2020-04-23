@@ -11,6 +11,7 @@ public class UnstableField extends IceField
 		super();
 		frozenItem = null;
 		itemOnGround = new ArrayList<Item>();
+		maxplayers = (int)Math.random()*(Game.characters.size()-1);
 	}
 	
 	// Jelenleg forgatókönyv alapján átforduló instabil mezõ.
@@ -34,5 +35,10 @@ public class UnstableField extends IceField
 				}
 			}
 		}
+	}
+	
+	@Override
+	public void setLimit(int limit) {
+		maxplayers = limit;
 	}
 }

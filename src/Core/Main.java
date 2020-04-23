@@ -24,8 +24,9 @@ public class Main {
 	public static String tabok = ""; // Tabulátorokat tartalmaz a megfelelõ indentálás érdekében.
 
 	public static void main(String[] args) throws IOException {
-		Game game = new Game(); // A játék, amin végrehajtjuk a forgatókönyveket.
-		
+		 // A játék, amin végrehajtjuk a forgatókönyveket.
+		Game game = new Game();
+		game.Reset();
 		// Forgatókönyvek listája.
 		ArrayList<String> lista = new ArrayList<String>();
 				lista.add("Valaszthato forgatokonyvek:"); 
@@ -83,76 +84,57 @@ public class Main {
 			//Lefutnak a parancsok
 			for(String s:commands)
 			{
-				switch(s.split(" ")[0]) {
-					case "polarbear":
-						int jegtablasorszam1=Integer.parseInt(s.split(" ")[1]);
-						//Some Kód
-						//Some Kód
-						//Some Kód
+				String[] splitUp = s.split(" ");
+				ArrayList<String> argt = new ArrayList<String>();
+				for(String st : splitUp) 
+				{
+					argt.add(st);
+				}
+				String command = argt.get(0);
+				argt.remove(0);
+				
+				ArrayList<Integer> arg = new ArrayList<Integer>();
+				
+				for(String st : argt) {
+					arg.add(Integer.parseInt(st));
+				}
+				
+				switch(command) {
+					case "initgame":
+						game.Reset();
 						break;
 					case "eskimo":
-						String nev1= s.split(" ")[1];
-						int jegtablasorszam2=Integer.parseInt(s.split(" ")[2]);
-						//Some Kód
-						//Some Kód
-						//Some Kód		
+						game.getMap().getField(arg.get(1)).acceptCharacter(c);
 						break;
-					case "scientist":
-						String nev2= s.split(" ")[1];
-						int jegtablasorszam3=Integer.parseInt(s.split(" ")[2]);
-						//Some Kód
-						//Some Kód
-						//Some Kód				
+					case "initgame":
+						game.Reset();
 						break;
-					case "step":
-						int jegtablasorszam4=Integer.parseInt(s.split(" ")[1]);
-						//Some Kód
-						//Some Kód
-						//Some Kód
+					case "initgame":
+						game.Reset();
 						break;
-					case "setneighbours":
+					case "initgame":
+						game.Reset();
+						break;
+					case "initgame":
+						game.Reset();
+						break;
+					case "initgame":
+						game.Reset();
+						break;
+					case "initgame":
+						game.Reset();
+						break;
+					case "initgame":
+						game.Reset();
+						break;
+					case "initgame":
+						game.Reset();
+						break;
 						
-						
+					case "initgame":
+						game.Reset();
 						break;
-					case "createmap":
-						
-						
-						
-						break;
-					case "setitem":
-						String item=s.split(" ")[1];
-						//Some Kód
-						//Some Kód
-						//Some Kód
-						break;
-					case "setmaxplayers":
-						int jegtablasorszam5=Integer.parseInt(s.split(" ")[1]);
-						int teherbiras=Integer.parseInt(s.split(" ")[2]);
-						//Some Kód
-						//Some Kód
-						//Some Kód
-						break;
-					case "setsnow":
-						int jegtablasorszam6=Integer.parseInt(s.split(" ")[1]);
-						int homennyiseg=Integer.parseInt(s.split(" ")[2]);
-						//Some Kód
-						//Some Kód
-						//Some Kód
-						break;
-					case "doblizzard":
-						
-						break;
-					case "statplayer":
-						int sorszam=Integer.parseInt(s.split(" ")[1]);
-						//Some Kód
-						//Some Kód
-						//Some Kód
-						break;
-					case "statfield":
-						int sorszam2=Integer.parseInt(s.split(" ")[1]);
-						//Some Kód
-						//Some Kód
-						//Some Kód
+					default:
 						break;
 				}
 			}

@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import Map.Field;
 import Map.Map;
 import Player.Character;
+import Player.Eskimo;
+import Player.PolarBear;
+import Player.Scientist;
 
 public class Game {
 	
@@ -76,5 +79,28 @@ public class Game {
 	{
 		foundGunParts++;
 		System.out.println("Found gunparts incremented, num: "+foundGunParts);		
+	}
+	
+	public Map getMap() {
+		return map;
+	}
+	
+	public void Reset() {
+		characters = new ArrayList<Character>();
+		Eskimo e1 = new Eskimo();
+		Scientist s1 = new Scientist();
+		Scientist s2 = new Scientist();
+		PolarBear pb = new PolarBear();
+		
+		map.Reset();
+		map.getField(6).acceptCharacter(e1);
+		map.getField(11).acceptCharacter(s1);
+		map.getField(13).acceptCharacter(s2);
+		map.getField(2).acceptCharacter(pb);
+		
+		characters.add(e1);
+		characters.add(s1);
+		characters.add(s2);
+		characters.add(pb);
 	}
 }

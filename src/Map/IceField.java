@@ -98,4 +98,9 @@ public class IceField extends Field
 			}
 		}
 	}
+	
+	@Override
+	public void setFrozenItem(Item i) {
+		frozenItem = i;
+	}
 }
