@@ -145,6 +145,8 @@ public class Main {
 						Game.winGame(game.characters.get(0).getField());
 					//Enyémek---------------------------------------
 					case "getcurrentplayer":
+						Player currentplayer = (Player) game.getCharacters().get(game.getRoundNum() % game.getCharacters().size());
+						System.out.println(currentplayer.getName());
 						break;
 					case "setfrozenitem":
 						Item item;
@@ -236,18 +238,18 @@ public class Main {
 						player4.getInventory().add(item2);
 						break;
 					case "statfield":
-						
-						
+						Field field4=game.getMap().getField(arg.get(0));
+						field4.Properties();
 						break;
 					case "statpolarbear":
 						PolarBear polarbear=(PolarBear)game.characters.get(arg.get(0));
-						polarbear.getField();
+						System.out.println(game.getMap().getFieldNumber(polarbear.getField()));
 						break;
 					case "statplayer":
 						Player player5=(Player)game.characters.get(arg.get(0));
 						for(Item i:player5.getInventory())
 						{
-							System.out.println(i+"\n");
+							System.out.println(i.getClass()+"\n");
 						}
 						System.out.println(player5.getStamina());
 						break;

@@ -38,6 +38,12 @@ public class Map
 	
 	public Field getField(int i) {
 		return fields.get(i-1);
+		
+	}
+	
+	public int getFieldNumber(Field f)
+	{
+		return fields.indexOf(f);
 	}
 	
 	public void Reset() {

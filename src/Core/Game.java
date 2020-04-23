@@ -107,4 +107,15 @@ public class Game {
 		characters.add(s2);
 		characters.add(pb);
 	}
+	
+	public int getRoundNum()
+	{
+		return roundNum;
+	}
+	
+	public ArrayList<Character> getCharacters()
+	{
+		return characters;
+		
+	}
 }

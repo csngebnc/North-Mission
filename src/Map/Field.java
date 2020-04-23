@@ -123,5 +123,10 @@ public abstract class Field
 		maxplayers=n;
 	}
 	
+	public void Properties()
+	{
+		
+	}
+	
 
 }

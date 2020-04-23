@@ -30,4 +30,13 @@ public class Hole extends Field
 				c.collideWith(ch);
 		}
 	}
+	
+	@Override
+	public void Properties()
+	{
+		for(Character c:characters)
+		{
+			//System.out.println(c.Properties());
+		}
+	}
 }

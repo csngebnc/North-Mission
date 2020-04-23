@@ -137,4 +137,9 @@ public abstract class Player extends Character
 		return stamina;
 	}
 	
+	@Override
+	public void Properties()
+	{
+		System.out.println(name);
+	}
 }

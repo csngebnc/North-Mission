@@ -21,4 +21,9 @@ public abstract class Character {
 	public Field getField() {
 		return field;
 	}
+	
+	public void Properties()
+	{
+		
+	}
 }

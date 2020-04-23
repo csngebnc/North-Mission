@@ -104,8 +104,17 @@ public class IceField extends Field
 		frozenItem = i;
 	}
 	
-	public Item getFrozenItem()
+	@Override
+	public void Properties()
 	{
-		return frozenItem;
+		System.out.println(frozenItem.getClass());
+		for(Item i: itemOnGround)
+		{
+			System.out.println(i.getClass());
+		}
+		for(Character c:characters)
+		{
+			//System.out.println(c.Properties());
+		}
 	}
 }

@@ -45,5 +45,11 @@ public class PolarBear extends Character{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public void Properties()
+	{
+		System.out.println("Jegesmedve");
+	}
 
 }
