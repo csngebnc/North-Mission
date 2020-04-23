@@ -103,4 +103,9 @@ public class IceField extends Field
 	public void setFrozenItem(Item i) {
 		frozenItem = i;
 	}
+	
+	public Item getFrozenItem()
+	{
+		return frozenItem;
+	}
 }

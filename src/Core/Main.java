@@ -143,6 +143,114 @@ public class Main {
 						break;
 					case "wingame":
 						Game.winGame(game.characters.get(0).getField());
+					//Enyémek---------------------------------------
+					case "getcurrentplayer":
+						break;
+					case "setfrozenitem":
+						Item item;
+						switch(argt.get(1)) {
+							case "rope":
+								item = new Rope();
+								break;
+							case "food":
+								item = new Food();
+								break;
+							case "divingsuit":
+								item = new DivingSuit();
+								break;
+							case "shovel":
+								item = new Shovel();
+								break;
+							case "limitedshovel":
+								item = new LimitedShovel();
+								break;
+							case "roket":
+								item = new Rocket();
+								break;
+							case "barrel":
+								item = new Barrel();
+								break;
+							case "grip":
+								item=new Grip();
+								break;
+							default:
+								item=new Grip();
+								break;
+						}
+						IceField field=(IceField)game.getMap().getField(arg.get(0));
+						field.setFrozenItem(item);
+						break;
+					case "setsnowlayers":
+						Field field2=game.getMap().getField(arg.get(0));
+						field2.setSnowLayers(arg.get(1));
+						break;
+					case "setmaxplayers":
+						Field field3=game.getMap().getField(arg.get(0));
+						field3.setMaxPlayers(arg.get(1));
+						break;
+					case "setstamina":
+						Player player=(Player)game.characters.get(arg.get(0));
+						player.setStamina(arg.get(1));
+						break;
+					case "sethealth":
+						Player player2=(Player)game.characters.get(arg.get(0));
+						player2.setHealth(arg.get(1));
+						break;
+					case "setdsuiton":
+						Player player3=(Player)game.characters.get(arg.get(0));
+						player3.setdSuitOn(arg.get(1)==1 ? true : false);
+						break;
+					case "giveitem":
+						Item item2;
+						switch(argt.get(1)) {
+							case "rope":
+								item2 = new Rope();
+								break;
+							case "food":
+								item2 = new Food();
+								break;
+							case "divingsuit":
+								item2 = new DivingSuit();
+								break;
+							case "shovel":
+								item2 = new Shovel();
+								break;
+							case "limitedshovel":
+								item2 = new LimitedShovel();
+								break;
+							case "roket":
+								item2 = new Rocket();
+								break;
+							case "barrel":
+								item2 = new Barrel();
+								break;
+							case "grip":
+								item2 = new Grip();
+								break;
+							default:
+								item2 = new Grip();
+								break;
+						}
+						Player player4=(Player)game.characters.get(arg.get(0));
+						player4.resetInventory();
+						player4.getInventory().add(item2);
+						break;
+					case "statfield":
+						
+						
+						break;
+					case "statpolarbear":
+						PolarBear polarbear=(PolarBear)game.characters.get(arg.get(0));
+						polarbear.getField();
+						break;
+					case "statplayer":
+						Player player5=(Player)game.characters.get(arg.get(0));
+						for(Item i:player5.getInventory())
+						{
+							System.out.println(i+"\n");
+						}
+						System.out.println(player5.getStamina());
+						break;
 					default:
 						break;
 				}

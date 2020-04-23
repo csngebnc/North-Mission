@@ -105,12 +105,36 @@ public abstract class Player extends Character
 	
 	public void setdSuitOn(boolean b)
 	{
-		System.out.println(Main.tabok+"->[Player].setdSuitOn(boolean b)");
-		System.out.println(Main.tabok+"<-[Player].setdSuitOn(boolean b)");
-		//Késõbb itt kerül beállításra, hogy van-e a játékoson búvárruha.
+		dSuitOn=b;
 	}
 	
 	public Item getItem(int i) {
 		return inventory.get(i);
 	}
+	
+	public void setStamina(int s)
+	{
+		stamina=s;
+	}
+	
+	public void setHealth(int h)
+	{
+		health=h;
+	}
+	
+	public void resetInventory()
+	{
+		inventory=new ArrayList<Item>();
+	}
+	
+	public ArrayList<Item> getInventory()
+	{
+		return inventory;
+	}
+	
+	public int getStamina()
+	{
+		return stamina;
+	}
+	
 }

@@ -112,4 +112,16 @@ public abstract class Field
 	public void setLimit(int limit) {
 		
 	}
+	
+	public void setSnowLayers(int n)
+	{
+		snowLayers=n;
+	}
+	
+	public void setMaxPlayers(int n)
+	{
+		maxplayers=n;
+	}
+	
+
 }
