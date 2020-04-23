@@ -39,9 +39,9 @@ public abstract class Field
 	}
 	
 	//Játékos elmozdítása egy mezõre az adott mezõrõl egy kapott irányba.
-	public void moveMeTo(Character c, int dir) 
+	public void moveMeTo(Character c, int next) 
 	{
-		neighbours.get(dir).acceptCharacter(c);		
+		neighbours.get(next).acceptCharacter(c);		
 		c.drainStamina();
 	}
 	

@@ -1,3 +1,2 @@
-Helló 2 3
-Helló
-ASD
+initgame
+dig 2

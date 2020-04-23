@@ -11,7 +11,10 @@ import java.util.Scanner;
 
 import Items.*;
 import Map.*;
+import Map.Buildings.Igloo;
+import Map.Buildings.Tent;
 import Player.*;
+import Player.Character;
 
 public class Main {
 	
@@ -75,7 +78,7 @@ public class Main {
 			ArrayList<String> commands=new ArrayList<String>();
 			FORGATOKONYV_SZAMA=Integer.parseInt(bemenet);
 
-			scanner = new Scanner(new File(".\\\\Forgatokonyvek\\\\"+FORGATOKONYV_SZAMA+".txt"));
+			scanner = new Scanner(new File(".\\\\\\\\src\\\\Forgatokonyvek\\\\"+FORGATOKONYV_SZAMA+".txt"));
 			while (scanner.hasNextLine()) {
 				commands.add(scanner.nextLine());
 			}
@@ -103,37 +106,43 @@ public class Main {
 					case "initgame":
 						game.Reset();
 						break;
-					case "eskimo":
-						game.getMap().getField(arg.get(1)).acceptCharacter(c);
+					case "igloo":
+						game.getMap().getField(arg.get(0)).buildBuilding(new Igloo());
 						break;
-					case "initgame":
-						game.Reset();
+					case "tent":
+						game.getMap().getField(arg.get(0)).buildBuilding(new Tent());
+						break;	
+					case "startblizzard":
+						game.callBlizzard();
 						break;
-					case "initgame":
-						game.Reset();
+					case "setfoundgunparts":
+						game.setFoundGunParts(arg.get(0));
 						break;
-					case "initgame":
-						game.Reset();
+					case "doturn":
+						game.characters.get(arg.get(0)).doTurn();
 						break;
-					case "initgame":
-						game.Reset();
+					case "step":
+						Character c = game.characters.get(arg.get(0));
+						c.getField().moveMeTo(c, arg.get(1));;
 						break;
-					case "initgame":
-						game.Reset();
+					case "save":
+						Player saver = (Player)game.characters.get(arg.get(0));
+						saver.getItem(0).use(saver);
 						break;
-					case "initgame":
-						game.Reset();
+					case "skill":
+						((Player)game.characters.get(arg.get(0))).doSkill();
 						break;
-					case "initgame":
-						game.Reset();
+					case "dig":
+						Player digger = (Player)game.characters.get(arg.get(0));
+						if(digger.getField().digSnow(1) == true)
+							digger.drainStamina();
 						break;
-					case "initgame":
-						game.Reset();
+					case "freeitem":
+						Player freer = (Player)game.characters.get(arg.get(0));
+						freer.getField().removeItemFromIce(freer);
 						break;
-						
-					case "initgame":
-						game.Reset();
-						break;
+					case "wingame":
+						Game.winGame(game.characters.get(0).getField());
 					default:
 						break;
 				}

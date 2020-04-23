@@ -37,7 +37,7 @@ public class Map
 	}
 	
 	public Field getField(int i) {
-		return fields.get(i);
+		return fields.get(i-1);
 	}
 	
 	public void Reset() {
@@ -127,6 +127,10 @@ public class Map
 		f5.setFrozenItem(new Grip());
 		f8.setFrozenItem(new Rocket());
 		f9.setFrozenItem(new Shovel());
+		
+		f1.setLimit(4);
+		f6.setLimit(4);
+		f13.setLimit(4);
 		
 		fields.add(f1);
 		fields.add(f2);

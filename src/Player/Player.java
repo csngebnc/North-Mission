@@ -109,4 +109,8 @@ public abstract class Player extends Character
 		System.out.println(Main.tabok+"<-[Player].setdSuitOn(boolean b)");
 		//Késõbb itt kerül beállításra, hogy van-e a játékoson búvárruha.
 	}
+	
+	public Item getItem(int i) {
+		return inventory.get(i);
+	}
 }

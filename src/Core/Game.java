@@ -85,6 +85,10 @@ public class Game {
 		return map;
 	}
 	
+	public void setFoundGunParts(int i) {
+		foundGunParts = i;
+	}
+	
 	public void Reset() {
 		characters = new ArrayList<Character>();
 		Eskimo e1 = new Eskimo();

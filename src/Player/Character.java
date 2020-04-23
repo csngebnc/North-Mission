@@ -18,4 +18,7 @@ public abstract class Character {
 	public void setField(Field f) {
 		field = f;
 	}
+	public Field getField() {
+		return field;
+	}
 }
