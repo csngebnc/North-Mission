@@ -89,6 +89,10 @@ public class Game {
 		foundGunParts = i;
 	}
 	
+	public int getFoundGunparts() {
+		return foundGunParts;
+	}
+	
 	public void Reset() {
 		characters = new ArrayList<Character>();
 		Eskimo e1 = new Eskimo();

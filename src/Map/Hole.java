@@ -15,8 +15,10 @@ public class Hole extends Field
 			return false;
 		}
 		
-		characters.get(0).save(neighbours.get(dir));
-		return true;
+		if(characters.get(0).save(neighbours.get(dir)))
+			return true;
+		else
+			return false;
 	}
 	
 	//Lyukba került játékos fuldoklását beállítja.

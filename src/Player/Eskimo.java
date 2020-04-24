@@ -1,6 +1,7 @@
 package Player;
 
 import Core.Main;
+import Items.Item;
 import Map.Field;
 import Map.IceField;
 
@@ -41,6 +42,21 @@ public class Eskimo extends Player
 	public void hitBy(PolarBear pb) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void Properties()
+	{
+		System.out.println(this.getClass());
+		System.out.println("Helth: " + health);
+		System.out.println("Stamina: " + stamina);
+		System.out.println("Is drowning: " + isDrowning);
+		System.out.println("Diving suit: " + dSuitOn);
+		System.out.println("Built igloo: " + builtIgloo);
+		System.out.println("Inventory:");
+		for(Item i : inventory) {
+			i.Properties();
+		}
 	}
 
 }

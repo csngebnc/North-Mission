@@ -100,6 +100,8 @@ public abstract class Player extends Character
 	}
 	
 	public Item getItem(int i) {
+		if(inventory.size() == 0)
+			return null;
 		return inventory.get(i);
 	}
 	
@@ -135,7 +137,7 @@ public abstract class Player extends Character
 		System.out.println("Helth: " + health);
 		System.out.println("Stamina: " + stamina);
 		System.out.println("Is drowning: " + isDrowning);
-		System.out.println("Diving suit " + dSuitOn);
+		System.out.println("Diving suit: " + dSuitOn);
 		System.out.println("Inventory:");
 		for(Item i : inventory) {
 			i.Properties();
