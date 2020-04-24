@@ -6,18 +6,31 @@ import Player.Player;
 
 public abstract class GunPart implements Item 
 {
-	// Az õsének használ metódusát hívja.
+	/*
+	 * Tárgy használat
+	 * Az õsének használ metódusát hívja.
+	 * 
+	 * @param p játékos a ki hívta a metódust.
+	 */
 	public void use(Player p) 
 	{
 	}
 	
-	//Alapértelmezetten false értékkel tér vissza, mivel egy alkatrész nem eldobható.
+	/*
+	 * Tárgy eldobás
+	 * Alapértelmezetten false értékkel tér vissza, mivel egy alkatrész nem eldobható.
+	 * 
+	 * @param f az a mezõ akire dobjuk a tárgyat.
+	 */
 	public boolean throwTo(Field f) 
 	{
 		return false;
 	}
 	
-	// Amennyiben felveszik, akkor a szól a játéknak, hogy megtaláltak egy alkatrészt.
+	/*
+	 * Tárgy felvétel.
+	 * Amennyiben felveszik, akkor a szól a játéknak, hogy megtaláltak egy alkatrészt.
+	 */
 	public void pickUp() 
 	{
 	}

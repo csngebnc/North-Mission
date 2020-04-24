@@ -5,12 +5,31 @@ import Player.Player;
 
 public interface Item 
 {
-	// Tárgy felvétele
+	/*
+	 * Tárgy felvétele.
+	 * Leszármazottak saját maguk valósítják meg.
+	 * 
+	 * @author Norbi?
+	 * @param p játékos a ki hívta a metódust.
+	 */
 	public void use(Player p);
 	
-	// Leszármazottak saját maguk valósítják meg.
+	
+	/*
+	 * Tárgy eldobása.
+	 * Leszármazottak saját maguk valósítják meg.
+	 * 
+	 * @author Norbi?
+	 * @param f az a mezõ akire dobjuk a tárgyat.
+	 */
 	public abstract boolean throwTo(Field f);
 	
-	// Leszármazottak saját maguk valósítják meg.
+	
+	/*
+	 * Tárgy felvétele.
+	 * Leszármazottak saját maguk valósítják meg.
+	 * 
+	 * @author Norbi?
+	 */
 	public abstract void pickUp();
 }

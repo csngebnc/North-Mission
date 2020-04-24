@@ -4,7 +4,9 @@ import Player.Player;
 
 public class Barrel extends GunPart
 {
-	/*Jelenleg az õsének használ metódusát hívja meg.*/
+	/*
+	 * Jelenleg az õsének használ metódusát hívja meg.
+	 */
 	public void use(Player p) {
 	}
 }
