@@ -28,6 +28,9 @@ public class PolarBear extends Character{
 		
 	}
 
+	
+	//Miért van a polar bearnek save metódusa?
+	
 	@Override
 	public boolean save(Field f) {
 		// TODO Auto-generated method stub

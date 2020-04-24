@@ -6,18 +6,22 @@ import Map.IceField;
 
 public class Scientist extends Player 
 {
+	
+	//Nincs a fieldnek getneighbour-ja?
+
 	// Sarkkutató karakter speciális képességének használata.
 	public void doSkill() 
 	{
 
 	}
 
-	@Override
+/*
+ * 	@Override
 	public void drown() {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public boolean save(Field f) {
 		// TODO Auto-generated method stub
@@ -35,5 +39,5 @@ public class Scientist extends Player
 		// TODO Auto-generated method stub
 		
 	}
-
+*/
 }

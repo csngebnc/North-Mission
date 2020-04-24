@@ -26,6 +26,11 @@ public abstract class Player extends Character
 	protected boolean dSuitOn;
 	protected ArrayList<Item> inventory;
 	
+	public Player() {
+		inventory = new ArrayList<Item>();
+		isDrowning = false;
+		dSuitOn = false;
+	}
 	public abstract void doSkill();
 	
 	// Játékos inventory-jának megjelenítése.
@@ -41,94 +46,129 @@ public abstract class Player extends Character
 	//Búvárruha használat
 	public boolean changeSuit(DivingSuit dsuit) 
 	{
-		return false;
+		if (dsuit == null) {
+			if(dSuitOn) {
+				dSuitOn = false;
+				inventory.add(new DivingSuit());
+				return false;
+			}
+		}
+		else if (!dSuitOn) {
+			dSuitOn = true;
+			inventory.remove(dsuit);
+		}
+		
+		return true;
 	}
 	
-	// Játékos életének változtatása fog itt történni.
+	// Játékos életének változtatása 'n' egységgel
 	public void alterHealth(int n) 
 	{
-		System.out.println(Main.tabok+"->[Player].alterHealth()");
-		System.out.println(Main.tabok+"<-[Player].alterHealth()");
+		health += n;
 	}
 	
-	// Játékos staminájának csökkentése fog itt történni.
+	// Játékos staminájának csökkentése 1-gyel
 	public void drainStamina() 
 	{
-		System.out.println(Main.tabok+"->[Player].drainStamina()");
-		System.out.println(Main.tabok+"<-[Player].drainStamina()");
+		stamina -= 1;
 	}
 	
-	public void drown() {}
-	public boolean save(Field f) { return false;}
-	public void removeItem(Item i) {}
+	public void drown() {
+		isDrowning = true;
+	}
 	
-	// Játékos mezõjének beállítása fog itt történni.
+	
+	public boolean save(Field f) { return false;}
+	
+	
+	public void removeItem(Item i) {
+		field.removeItemFromIce(this);
+	}
+	
+	// Játékos mezõjének beállítása
 	public void setField(Field f) 
 	{
-		
+		field = f;
 	}
 	
 	// Játékos mezõjének lekérése
 	public Field getField() 
 	{
-		//Késõbb a 'field' tagváltozót fogja visszaadni
-		return new IceField();
+		return field;
 	}
 	
-	// Játékos fuldoklásának beállítás fog itt történni.
+	// Játékos fuldoklásának beállítása
 	public void setIsDrowning(boolean b)
 	{
-		
+		isDrowning = b;
 	}
 	
-	//Játékos nevének visszaadása.
+	//Játékos nevének visszaadása
 	public String getName()
 	{
 		return name;
 	}
 	
-	// Visszaadja, hogy van-e a játékoson búvárruha.
+	// Visszaadja, hogy van-e a játékoson búvárruha
 	public boolean getdSuitOn()
 	{
 		return dSuitOn;
 	}
 	
-	
+	//Beállítja, hogy van-e a játékoson búvárruha
 	public void setdSuitOn(boolean b)
 	{
 		dSuitOn=b;
 	}
 	
+	//Az inventory i-edik elemét adja vissza
 	public Item getItem(int i) {
-		if(inventory.size() == 0)
+		if(inventory.size() == 0 || i >= inventory.size())
 			return null;
 		return inventory.get(i);
 	}
 	
+	//A játékos stamináját állítjuk be
 	public void setStamina(int s)
 	{
 		stamina = s;
 	}
 	
+	//A játékos életét állítjuk be
 	public void setHealth(int h)
 	{
 		health = h;
 	}
 	
+	//Új, üres inventory-t hozunk létre a játékosnak
 	public void resetInventory()
 	{
 		inventory=new ArrayList<Item>();
 	}
 	
+	//Visszatér a játékos inventoryjával
 	public ArrayList<Item> getInventory()
 	{
 		return inventory;
 	}
 	
+	//Visszatér a játékos staminájával
 	public int getStamina()
 	{
 		return stamina;
 	}
+	
+	public void collideWith(Character c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void hitBy(PolarBear pb) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 	@Override
 	public void Properties()

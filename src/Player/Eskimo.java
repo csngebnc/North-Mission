@@ -4,28 +4,41 @@ import Core.Main;
 import Items.Item;
 import Map.Field;
 import Map.IceField;
+import Map.Buildings.Igloo;
 
 public class Eskimo extends Player 
 {
 	private boolean builtIgloo;
 
-	// Eszkimó játékos iglut épít a mezõn, ha még korábban nem épített volna.
+	// Eszkimó játékos iglut épít a mezõn, ha még korábban nem épített volna, és a mezõre lehet iglut építeni
 	public void doSkill() 
 	{
+		if (!builtIgloo) {
+			boolean ok = field.buildBuilding(new Igloo());
+			if (ok) {
+				builtIgloo = true;
+				drainStamina();
+			}
+		}
 	}
 	
-	// Igluépítés beállítása.
+/*	nincs osztálydiagramban és nem is kell amúgy 
+ * * // Igluépítés beállítása.
 	private void setbuiltIgloo(boolean expression) {
 		System.out.println(Main.tabok+"->[Eskimo].setbuiltIgloo(true)");
 		System.out.println(Main.tabok+"<-[Eskimo].setbuiltIgloo(true)");
 	}
+*/
 
-	@Override
+	
+	//Player osztályon belül a helyük
+/*
+ * 	@Override
 	public void drown() {
 		// TODO Auto-generated method stub
 		
 	}
-
+ * 
 	@Override
 	public boolean save(Field f) {
 		// TODO Auto-generated method stub
@@ -43,7 +56,7 @@ public class Eskimo extends Player
 		// TODO Auto-generated method stub
 		
 	}
-	
+	*/
 	@Override
 	public void Properties()
 	{
