@@ -13,5 +13,11 @@ public abstract class Throwable implements Item
 	// Eldobható, nem alkatrész tárgy felvétele.
 	public void pickUp() 
 	{
+		
+	}
+	
+	public void Properties() 
+	{
+		System.out.println(this.getClass());
 	}
 }

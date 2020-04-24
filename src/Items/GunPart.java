@@ -20,5 +20,10 @@ public abstract class GunPart implements Item
 	// Amennyiben felveszik, akkor a szól a játéknak, hogy megtaláltak egy alkatrészt.
 	public void pickUp() 
 	{
+		
+	}
+	public void Properties() 
+	{
+		System.out.println(this.getClass());
 	}
 }

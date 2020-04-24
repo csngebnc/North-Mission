@@ -8,7 +8,13 @@ public class LimitedShovel extends Shovel{
 	
 	public void use(Player p) 
 	{
+		
 	}
 	
+	public void Properties() 
+	{
+		System.out.println(this.getClass());
+		System.out.println(remainingUses);
+	}
 	
 }

@@ -13,4 +13,6 @@ public interface Item
 	
 	// Leszármazottak saját maguk valósítják meg.
 	public abstract void pickUp();
+	
+	public void Properties();
 }

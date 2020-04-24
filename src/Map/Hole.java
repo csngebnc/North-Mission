@@ -34,9 +34,13 @@ public class Hole extends Field
 	@Override
 	public void Properties()
 	{
+		System.out.println(this.getClass());
+		System.out.println("Limit: " + maxplayers);
+		System.out.println("Snow layers: " + snowLayers);
+		
 		for(Character c:characters)
 		{
-			//System.out.println(c.Properties());
+			System.out.println("Character on field: " + c.getName());
 		}
 	}
 }

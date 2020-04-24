@@ -108,6 +108,11 @@ public class Game {
 		characters.add(pb);
 	}
 	
+	public void addCharacter(Character c, int f) {
+		map.getField(f).acceptCharacter(c);
+		characters.add(c);
+	}
+	
 	public int getRoundNum()
 	{
 		return roundNum;
