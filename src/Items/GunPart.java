@@ -33,5 +33,10 @@ public abstract class GunPart implements Item
 	 */
 	public void pickUp() 
 	{
+		
+	}
+	public void Properties() 
+	{
+		System.out.println(this.getClass());
 	}
 }

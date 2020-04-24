@@ -51,5 +51,9 @@ public class PolarBear extends Character{
 	{
 		System.out.println("Jegesmedve");
 	}
+	
+	public String getName() {
+		return "Jegesmedve";
+	}
 
 }

@@ -65,16 +65,12 @@ public abstract class Player extends Character
 	// Játékos mezõjének beállítása fog itt történni.
 	public void setField(Field f) 
 	{
-		System.out.println(Main.tabok+"->[Player].setField(Field f)");
-		System.out.println(Main.tabok+"<-[Player].setField(Field f)");
 		
 	}
 	
 	// Játékos mezõjének lekérése
 	public Field getField() 
 	{
-		System.out.println(Main.tabok+"->[Player].getField()");
-		System.out.println(Main.tabok+"<-[Player].getField()");
 		//Késõbb a 'field' tagváltozót fogja visszaadni
 		return new IceField();
 	}
@@ -82,23 +78,18 @@ public abstract class Player extends Character
 	// Játékos fuldoklásának beállítás fog itt történni.
 	public void setIsDrowning(boolean b)
 	{
-		System.out.println(Main.tabok+"->[Player].setIsDrowning(boolean b)");
-		System.out.println(Main.tabok+"<-[Player].setIsDrowning(boolean b)");
+		
 	}
 	
 	//Játékos nevének visszaadása.
 	public String getName()
 	{
-		System.out.println(Main.tabok+"->[Player].getName()");
-		System.out.println(Main.tabok+"<-[Player].getName()");
 		return name;
 	}
 	
 	// Visszaadja, hogy van-e a játékoson búvárruha.
 	public boolean getdSuitOn()
 	{
-		System.out.println(Main.tabok+"->[Player].getDSuitOn()");
-		System.out.println(Main.tabok+"<-[Player].getDSuitOn()");
 		return dSuitOn;
 	}
 	
@@ -114,12 +105,12 @@ public abstract class Player extends Character
 	
 	public void setStamina(int s)
 	{
-		stamina=s;
+		stamina = s;
 	}
 	
 	public void setHealth(int h)
 	{
-		health=h;
+		health = h;
 	}
 	
 	public void resetInventory()
@@ -140,6 +131,14 @@ public abstract class Player extends Character
 	@Override
 	public void Properties()
 	{
-		System.out.println(name);
+		System.out.println(this.getClass());
+		System.out.println("Helth: " + health);
+		System.out.println("Stamina: " + stamina);
+		System.out.println("Is drowning: " + isDrowning);
+		System.out.println("Diving suit " + dSuitOn);
+		System.out.println("Inventory:");
+		for(Item i : inventory) {
+			i.Properties();
+		}
 	}
 }

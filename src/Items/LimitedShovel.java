@@ -16,12 +16,21 @@ public class LimitedShovel extends Shovel{
 	 */
 	public void use(Player p) 
 	{
+<<<<<<< HEAD
 		if(remainingUses > 0 && p.getField().digSnow(2))
 		{
 				p.drainStamina();
 				remainingUses--;
 		}
+=======
+		
+>>>>>>> branch 'master' of https://github.com/csngebnc/RedBoneT52.git
 	}
 	
+	public void Properties() 
+	{
+		System.out.println(this.getClass());
+		System.out.println(remainingUses);
+	}
 	
 }

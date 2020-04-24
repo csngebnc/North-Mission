@@ -32,4 +32,6 @@ public interface Item
 	 * @author Norbi?
 	 */
 	public abstract void pickUp();
+	
+	public void Properties();
 }

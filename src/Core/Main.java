@@ -30,47 +30,12 @@ public class Main {
 		 // A játék, amin végrehajtjuk a forgatókönyveket.
 		Game game = new Game();
 		game.Reset();
-		// Forgatókönyvek listája.
-		ArrayList<String> lista = new ArrayList<String>();
-				lista.add("Valaszthato forgatokonyvek:"); 
-				lista.add("1 \t Játék kör kezelése");			
-				lista.add("2 \t Játékos stabil jégmezõre lép");
-				lista.add("3 \t Játékos instabil jégmezõre lép és a mezõ átfordul");
-				lista.add("4 \t Játékos lyukba lép");
-				lista.add("5 \t Hóvihar következik be"); 		
-				lista.add("6 \t Eszkimó használja a képességét"); 
-				lista.add("7 \t Kutató használja a képességét"); 
-				lista.add("8 \t Játékos kiszabadit egy tárgyat a jégbõl");
-				lista.add("9 \t Játékos felvesz egy tárgyat"); 
-				lista.add("10 \t Játékos eldob egy tárgyat"); 
-				lista.add("11 \t Játékos használ egy tárgyat"); 
-				lista.add("12 \t Játékos használ egy ásót"); 
-				lista.add("13 \t Játékos eszik"); 				
-				lista.add("14 \t Játékos használja a kötelet"); 
-				lista.add("15 \t Játékos felveszi a búvárruhát"); 
-				lista.add("16 \t Játék megnyerésének kezdeményezése (Jelzõpisztollyal)"); 
-				lista.add("17 \t Játékos kézzel ássa havat");	
-				lista.add("18 \t Játékos kézzel ássa havat");	
-				lista.add("19 \t Játékos kézzel ássa havat");	
-				lista.add("20 \t Játékos kézzel ássa havat");	
-				lista.add("21 \t Játékos kézzel ássa havat");	
-				lista.add("22 \t Játékos kézzel ássa havat");	
-				lista.add("23 \t Játékos kézzel ássa havat");	
-				lista.add("24 \t Játékos kézzel ássa havat");	
-				lista.add("25 \t Játékos kézzel ássa havat");	
-				lista.add("26 \t Játékos kézzel ássa havat");	
-				lista.add("27 \t Játékos kézzel ássa havat");	
-				lista.add("28 \t Játékos kézzel ássa havat");	
-				lista.add("29 \t Játékos kézzel ássa havat");	
-				lista.add("30 \t Játékos kézzel ássa havat\n");	
 		
 		String bemenet = "";
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
 		// Ameddig a bemenet nem egyezik a "kilep" szöveggel, addig lehetõségünk van forgatókönyvek végrehajtására.
 		while(!bemenet.equals("kilep")) {
 			
-			for(String s : lista)
-				System.out.println(s);
 			bemenet = reader.readLine();
 			
 			//Beolvassa a kiválaszott forgatókönyv parancsait
@@ -107,38 +72,41 @@ public class Main {
 						game.Reset();
 						break;
 					case "igloo":
-						game.getMap().getField(arg.get(0)).buildBuilding(new Igloo());
+						game.getMap().getField(arg.get(0)-1).buildBuilding(new Igloo());
 						break;
 					case "tent":
-						game.getMap().getField(arg.get(0)).buildBuilding(new Tent());
+						game.getMap().getField(arg.get(0)-1).buildBuilding(new Tent());
 						break;	
+					case "polarbear":
+						game.addCharacter(new PolarBear(), arg.get(0)-1);
+						break;		
 					case "startblizzard":
 						game.callBlizzard();
 						break;
 					case "setfoundgunparts":
-						game.setFoundGunParts(arg.get(0));
+						game.setFoundGunParts(arg.get(0)-1);
 						break;
 					case "doturn":
-						game.characters.get(arg.get(0)).doTurn();
+						game.characters.get(arg.get(0)-1).doTurn();
 						break;
 					case "step":
-						Character c = game.characters.get(arg.get(0));
-						c.getField().moveMeTo(c, arg.get(1));;
+						Character c = game.characters.get(arg.get(0)-1);
+						c.getField().moveMeTo(c, arg.get(1)-1);
 						break;
 					case "save":
-						Player saver = (Player)game.characters.get(arg.get(0));
+						Player saver = (Player)game.characters.get(arg.get(0)-1);
 						saver.getItem(0).use(saver);
 						break;
 					case "skill":
-						((Player)game.characters.get(arg.get(0))).doSkill();
+						((Player)game.characters.get(arg.get(0)-1)).doSkill();
 						break;
 					case "dig":
-						Player digger = (Player)game.characters.get(arg.get(0));
+						Player digger = (Player)game.characters.get(arg.get(0)-1);
 						if(digger.getField().digSnow(1) == true)
 							digger.drainStamina();
 						break;
 					case "freeitem":
-						Player freer = (Player)game.characters.get(arg.get(0));
+						Player freer = (Player)game.characters.get(arg.get(0)-1);
 						freer.getField().removeItemFromIce(freer);
 						break;
 					case "wingame":
@@ -179,28 +147,28 @@ public class Main {
 								item=new Grip();
 								break;
 						}
-						IceField field=(IceField)game.getMap().getField(arg.get(0));
+						IceField field=(IceField)game.getMap().getField(arg.get(0)-1);
 						field.setFrozenItem(item);
 						break;
 					case "setsnowlayers":
-						Field field2=game.getMap().getField(arg.get(0));
+						Field field2=game.getMap().getField(arg.get(0)-1);
 						field2.setSnowLayers(arg.get(1));
 						break;
 					case "setmaxplayers":
-						Field field3=game.getMap().getField(arg.get(0));
+						Field field3=game.getMap().getField(arg.get(0)-1);
 						field3.setMaxPlayers(arg.get(1));
 						break;
 					case "setstamina":
-						Player player=(Player)game.characters.get(arg.get(0));
+						Player player=(Player)game.characters.get(arg.get(0)-1);
 						player.setStamina(arg.get(1));
 						break;
 					case "sethealth":
-						Player player2=(Player)game.characters.get(arg.get(0));
+						Player player2=(Player)game.characters.get(arg.get(0)-1);
 						player2.setHealth(arg.get(1));
 						break;
 					case "setdsuiton":
-						Player player3=(Player)game.characters.get(arg.get(0));
-						player3.setdSuitOn(arg.get(1)==1 ? true : false);
+						Player player3=(Player)game.characters.get(arg.get(0)-1);
+						player3.setdSuitOn(arg.get(1)==0 ? false : true);
 						break;
 					case "giveitem":
 						Item item2;
@@ -233,25 +201,25 @@ public class Main {
 								item2 = new Grip();
 								break;
 						}
-						Player player4=(Player)game.characters.get(arg.get(0));
+						Player player4=(Player)game.characters.get(arg.get(0)-1);
 						player4.resetInventory();
 						player4.getInventory().add(item2);
 						break;
 					case "statfield":
-						Field field4=game.getMap().getField(arg.get(0));
-						field4.Properties();
+						Field statfield=game.getMap().getField(arg.get(0)-1);
+						statfield.Properties();
 						break;
 					case "statpolarbear":
-						PolarBear polarbear=(PolarBear)game.characters.get(arg.get(0));
+						PolarBear polarbear=(PolarBear)game.characters.get(arg.get(0)-1);
 						System.out.println(game.getMap().getFieldNumber(polarbear.getField()));
 						break;
 					case "statplayer":
-						Player player5=(Player)game.characters.get(arg.get(0));
-						for(Item i:player5.getInventory())
-						{
-							System.out.println(i.getClass()+"\n");
-						}
-						System.out.println(player5.getStamina());
+						Player statplayer=(Player)game.characters.get(arg.get(0)-1);
+						statplayer.Properties();
+						break;
+					case "useitem":
+						Player user=(Player)game.characters.get(arg.get(0)-1);
+						user.getInventory().get(arg.get(1)-1).use(user);
 						break;
 					default:
 						break;

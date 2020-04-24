@@ -37,7 +37,7 @@ public class Map
 	}
 	
 	public Field getField(int i) {
-		return fields.get(i-1);
+		return fields.get(i);
 		
 	}
 	

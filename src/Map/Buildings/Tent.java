@@ -37,5 +37,10 @@ public class Tent implements Item, Building{
 		return;
 	}
 
+	@Override
+	public void Properties() {
+		System.out.println(this.getClass());
+	}
+
 
 }
