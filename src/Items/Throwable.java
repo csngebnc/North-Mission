@@ -17,6 +17,7 @@ public abstract class Throwable implements Item
 	/*
 	 * Eldobható, nem alkatrész tárgy felvétele.
 	 * 
+	 * 
 	 */
 	public void pickUp() 
 	{
