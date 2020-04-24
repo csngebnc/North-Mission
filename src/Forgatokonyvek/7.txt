@@ -1,3 +1,11 @@
-Helló
-Helló
-ASD
+initgame
+polarbear 7
+statfield 7
+statfield 6
+statfield 11
+igloo 6
+igloo 11
+doturn 5
+statfield 7
+statfield 6
+statfield 11

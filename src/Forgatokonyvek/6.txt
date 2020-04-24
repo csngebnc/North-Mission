@@ -1,3 +1,5 @@
-Helló
-Helló
-ASD
+initgame
+polarbear 7
+tent 6
+tent 11
+doturn 5

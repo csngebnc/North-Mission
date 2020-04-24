@@ -1,3 +1,10 @@
-Helló
-Helló
-ASD
+initgame
+polarbear 5
+igloo 5
+statplayer 1
+stafield 6
+statfield 5
+step 1 4
+statplayer 1
+stafield 6
+statfield 5

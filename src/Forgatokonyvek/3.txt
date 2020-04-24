@@ -1,3 +1,4 @@
-Helló
-Helló
-ASD
+initgame
+step 1 9
+setdsuiton 1 1
+doturn 1

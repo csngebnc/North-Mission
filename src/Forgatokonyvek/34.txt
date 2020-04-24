@@ -1,8 +1,9 @@
 initgame
-giveitem 1 barrel
 setstamina 1 3
 statplayer 1
-stafield 6
-drop 1 1
+statfield 5
+skill 1
+step 1 4
+skill 1
 statplayer 1
-stafield 6
+statfield 5

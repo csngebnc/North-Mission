@@ -1,3 +1,9 @@
-Helló
-Helló
-ASD
+initgame
+eskimo 7
+giveitem 1 rope
+setmaxplayers 6 1
+statfield 6
+statfield 7
+statplayer 1
+stateskimo 5
+save 1 1

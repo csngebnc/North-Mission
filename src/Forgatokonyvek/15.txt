@@ -1,3 +1,9 @@
-Helló
-Helló
-ASD
+initgame
+statplayer 1
+statplayer 2
+statfield 6
+igloo 6
+startblizzard
+staplayer 1
+statplayer 2
+statfield 6

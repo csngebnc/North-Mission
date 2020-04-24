@@ -1,2 +1,3 @@
-polarbear 1
-eskimo 3 3
+initgame
+polarbear 7
+doturn 5

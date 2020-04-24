@@ -1,0 +1,5 @@
+initgame
+setfoundgunparts 3
+step 3 2
+step 1 2
+wingame

@@ -1,2 +1,2 @@
 initgame
-dig 2
+round

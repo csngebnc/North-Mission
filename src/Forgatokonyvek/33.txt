@@ -1,9 +1,8 @@
 initgame
-setsnowlayers 6 3
-giveitem 1 shovel
 setstamina 1 3
+igloo 6
 statplayer 1
 statfield 6
-useitem 1 1
+skill 1
 statplayer 1
 statfield 6

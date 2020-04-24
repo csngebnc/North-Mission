@@ -1,3 +1,5 @@
-Helló
-Helló
-ASD
+initgame
+setmaxplayers 6 2
+stafield 6
+statfield 11
+step 2 4
