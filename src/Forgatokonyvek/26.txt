@@ -5,9 +5,9 @@ setstamina 1 3
 statfield 6
 statfield 7
 statplayer 1
-stateskimo 5
-save 1 1
+statplayer 5
+useitem 1 1
 statfield 6
 statfield 7
 statplayer 1
-stateskimo 5
+statplayer 5

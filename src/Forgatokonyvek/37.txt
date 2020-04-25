@@ -4,6 +4,6 @@ setfrozenitem 6 shovel
 setsnowlayers 6 0
 statplayer 1
 statfield 6
-freeitem 1 6
+freeitem 1
 statplayer 1
 statfield 6

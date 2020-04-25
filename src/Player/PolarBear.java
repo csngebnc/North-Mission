@@ -1,30 +1,30 @@
 package Player;
 
+import java.util.Random;
+
+import Core.Game;
 import Map.Field;
 
 public class PolarBear extends Character{
 
 	@Override
 	public void doTurn() {
-		// TODO Auto-generated method stub
-		
+		int max = field.getNeighbours().size()-1;
+		field.moveMeTo(this, (int)(Math.random()*max));
 	}
 
 	@Override
 	public void alterHealth(int n) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void drainStamina() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void drown() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -33,20 +33,17 @@ public class PolarBear extends Character{
 	
 	@Override
 	public boolean save(Field f) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void collideWith(Character c) {
-		// TODO Auto-generated method stub
-		
+		c.hitBy(this);
 	}
 
 	@Override
-	public void hitBy(Player pl) {
-		// TODO Auto-generated method stub
-		
+	public void hitBy(Player p) {
+		Game.loseGame();		
 	}
 	
 	@Override

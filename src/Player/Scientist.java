@@ -12,7 +12,8 @@ public class Scientist extends Player
 	// Sarkkutató karakter speciális képességének használata.
 	public void doSkill() 
 	{
-
+		field.revealLimit();
+		drainStamina();
 	}
 
 /*

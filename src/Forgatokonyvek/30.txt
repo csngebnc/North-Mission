@@ -4,7 +4,7 @@ addgunparttofield 6
 statplayer 1
 statfield 6
 statfoundgunparts
-pickupitem 1 6
+pickupitem 1
 statplayer 1
 statfield 6
 statfoundgunparts

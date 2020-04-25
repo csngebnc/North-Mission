@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Core.Game;
 import Core.Main;
 import Items.Shovel;
 import Map.Buildings.Building;
@@ -59,6 +60,7 @@ public class IceField extends Field
 		}
 		p.drainStamina();
 		Item i = itemOnGround.get(0);
+		i.pickUp();
 		itemOnGround.remove(0);
 		return i;
 	}
@@ -66,7 +68,7 @@ public class IceField extends Field
 	// Tárgy kiszabadítása mezõbõl. protohoz egyenlõre ennyi
 	public void removeItemFromIce(Player p) 
 	{
-		if(frozenItem != null)
+		if(snowLayers > 0 || frozenItem == null)
 			return;
 		
 		itemOnGround.add(frozenItem);
@@ -77,6 +79,8 @@ public class IceField extends Field
 	public boolean digSnow(int amount) {
 		if(snowLayers>0) {
 			snowLayers-=amount;
+			if(snowLayers < 0)
+				snowLayers = 0;
 			return true;
 		}
 		return false;
@@ -118,10 +122,11 @@ public class IceField extends Field
 		else
 			System.out.println("Building: -");
 		
-		for(Character c:characters)
-		{
-			System.out.println("Character on field: " + c.getName());
-		}
+		if(!characters.isEmpty())
+			for(Character c:characters)
+			{
+				System.out.println("Character on field: " + c.getName());
+			}
 		
 		if(frozenItem != null)
 			System.out.println("Frozen item: " + frozenItem.getClass());

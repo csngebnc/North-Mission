@@ -28,7 +28,6 @@ public abstract class Field
 		snowLayers = (int)Math.random()*6;
 		characters = new ArrayList<Character>();
 		neighbours = new ArrayList<Field>();
-		maxplayers = Game.characters.size();
 		building = null;
 	}
 	
@@ -36,19 +35,27 @@ public abstract class Field
 	public void generateBlizzard() 
 	{
 		snowLayers += Math.random()*5;
+		
+		if(building == null)
+			for(Character c : characters)
+				c.alterHealth(-1);
 	}
 	
 	//Játékos elmozdítása egy mezõre az adott mezõrõl egy kapott irányba.
 	public void moveMeTo(Character c, int next) 
 	{
-		neighbours.get(next).acceptCharacter(c);		
+		if(next >= neighbours.size())
+			return;
+		
+		neighbours.get(next).acceptCharacter(c);
+		characters.remove(c);
 		c.drainStamina();
 	}
 	
 	// Sarkkutató játékos hívhatja a mezõt, ezzel felvedve mekkora a teherbírása.
 	public void revealLimit() 
 	{
-		System.out.println("The field's can hold "+maxplayers+" characters at the time.");
+		System.out.println("Max players: " + Game.getPlayerCount());
 	}
 	
 	// A leszármazottak maguk valósítják meg.
@@ -74,7 +81,7 @@ public abstract class Field
 	public void removeItemFromIce(Player p) {}
 	
 	// Játékos mentése adott irányba.
-	public boolean savePerson(int dir) 
+	public boolean savePerson(Field safeField)
 	{
 		return false;
 	}
@@ -93,6 +100,10 @@ public abstract class Field
 	public Field getNeighbour(int num)
 	{
 		return neighbours.get(num);
+	}
+	
+	public ArrayList<Field> getNeighbours(){
+		return neighbours;
 	}
 	
 	public void addNeighbour(Field f) {

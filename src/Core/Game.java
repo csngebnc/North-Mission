@@ -9,6 +9,7 @@ import Player.Scientist;
 
 public class Game {
 	
+	private static int players = 0;
 	private int roundNum;
 	private int roundsUntilBlizzard;
 	private static int foundGunParts;
@@ -61,9 +62,8 @@ public class Game {
 		map.callBlizzardOnFields();
 	}
 	
-	public static void winGame(Field f) 
-	{
-		if(foundGunParts==3 && (f.getCharacters().size()>=characters.size())) {
+	public static void winGame(Field f) {
+		if(foundGunParts==3 && (f.getCharacters().size()==players)) {
 			state = GameState.WON;
 			System.out.println("The players won the game.");
 		}		
@@ -95,26 +95,38 @@ public class Game {
 	
 	public void Reset() {
 		characters = new ArrayList<Character>();
-		Eskimo e1 = new Eskimo();
-		Scientist s1 = new Scientist();
-		Scientist s2 = new Scientist();
-		PolarBear pb = new PolarBear();
+		players = 3;
 		
 		map.Reset();
-		map.getField(5).acceptCharacter(e1);
-		map.getField(10).acceptCharacter(s1);
-		map.getField(12).acceptCharacter(s2);
-		map.getField(1).acceptCharacter(pb);
 		
-		characters.add(e1);
-		characters.add(s1);
-		characters.add(s2);
-		characters.add(pb);
+		addEskimo(5, "Elton");
+		addScientist(10, "John");
+		addScientist(12, "Michael");
+		addPolarBear(1);
 	}
 	
-	public void addCharacter(Character c, int f) {
-		map.getField(f).acceptCharacter(c);
-		characters.add(c);
+	public void addScientist(int fieldIndex, String name) {
+		Scientist newScientist = new Scientist();
+		newScientist.setName(name);
+		map.getField(fieldIndex).acceptCharacter(newScientist);
+		characters.add(newScientist);
+	}
+	
+	public void addEskimo(int fieldIndex, String name) {
+		Eskimo newEskimo = new Eskimo();
+		newEskimo.setName(name);
+		map.getField(fieldIndex).acceptCharacter(newEskimo);
+		characters.add(newEskimo);
+	}
+	
+	public void addPolarBear(int fieldIndex) {
+		PolarBear newPolarBear = new PolarBear();
+		map.getField(fieldIndex).acceptCharacter(newPolarBear);
+		characters.add(newPolarBear);
+	}
+	
+	public static int getPlayerCount() {
+		return players;
 	}
 	
 	public int getRoundNum()

@@ -64,7 +64,9 @@ public class Main {
 				ArrayList<Integer> arg = new ArrayList<Integer>();
 				
 				for(String st : argt) {
-					arg.add(Integer.parseInt(st));
+					try{
+						arg.add(Integer.parseInt(st));
+					} catch (Exception e) {}
 				}
 				
 				switch(command) {
@@ -78,10 +80,10 @@ public class Main {
 						game.getMap().getField(arg.get(0)-1).buildBuilding(new Tent());
 						break;	
 					case "polarbear":
-						game.addCharacter(new PolarBear(), arg.get(0)-1);
+						game.addPolarBear(arg.get(0)-1);
 						break;	
 					case "eskimo":
-						game.addCharacter(new Eskimo(), arg.get(0)-1);
+						game.addEskimo(arg.get(0)-1, "defualt");
 						break;	
 					case "startblizzard":
 						game.callBlizzard();
@@ -96,12 +98,6 @@ public class Main {
 						Character c = game.characters.get(arg.get(0)-1);
 						c.getField().moveMeTo(c, arg.get(1)-1);
 						break;
-					case "save":
-						Player saver = (Player)game.characters.get(arg.get(0)-1);
-						Field safeField = saver.getField();
-						if(safeField.savePerson(arg.get(1)))
-							saver.drainStamina();
-						break;
 					case "skill":
 						((Player)game.characters.get(arg.get(0)-1)).doSkill();
 						break;
@@ -109,6 +105,14 @@ public class Main {
 						Player digger = (Player)game.characters.get(arg.get(0)-1);
 						if(digger.getField().digSnow(1) == true)
 							digger.drainStamina();
+						break;
+					case "dropitem":
+						Player dropper = (Player)game.characters.get(arg.get(0)-1);
+						Item dropItem = dropper.getItem(arg.get(1)-1);
+						if(dropItem.throwTo(dropper.getField())) {
+							dropper.getInventory().remove(dropItem);
+							dropper.drainStamina();
+						}
 						break;
 					case "freeitem":
 						Player freer = (Player)game.characters.get(arg.get(0)-1);
@@ -223,10 +227,13 @@ public class Main {
 						break;
 					case "statpolarbear":
 						PolarBear polarbear=(PolarBear)game.characters.get(arg.get(0)-1);
+						System.out.println("---------------------------");
 						System.out.println("Field: " + game.getMap().getFieldNumber(polarbear.getField()));
+						System.out.println("Name: " + polarbear.getName());
 						break;
 					case "statplayer":
 						Player statplayer=(Player)game.characters.get(arg.get(0)-1);
+						System.out.println("---------------------------");
 						System.out.println("Field: " + game.getMap().getFieldNumber(statplayer.getField()));
 						statplayer.Properties();
 						break;
@@ -236,14 +243,18 @@ public class Main {
 						break;
 					case "unequipsuit":
 						Player unequipper=(Player)game.characters.get(arg.get(0)-1);
-						unequipper.changeSuit(null);
+						if(unequipper.changeSuit(null))
+							unequipper.drainStamina();;
 						break;
 					case "addgunparttofield":
 						((IceField)game.getMap().getField(arg.get(0)-1)).acceptItem(new Barrel());
 						break;
 					case "pickupitem":
 						Player pickupper = (Player)game.characters.get(arg.get(0)-1);
-						((IceField)game.getMap().getField(arg.get(1)-1)).pickUpItem(pickupper);
+						Item pickedUpItem = pickupper.getField().pickUpItem(pickupper);
+						if(pickedUpItem != null) {
+							pickupper.getInventory().add(pickedUpItem);
+						}
 						break;
 					default:
 						break;

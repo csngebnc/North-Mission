@@ -4,5 +4,5 @@ stafield 6
 statfield 7
 step 1 1
 statplayer 1
-stafield 7
-stafield 6
+statfield 7
+statfield 6

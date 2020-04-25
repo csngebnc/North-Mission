@@ -6,7 +6,7 @@ statfield 6
 statfield 7
 statplayer 1
 statpolarbear 5
-save 1 1
+useitem 1 1
 statfield 6
 statfield 7
 statplayer 1

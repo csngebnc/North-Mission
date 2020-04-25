@@ -1,4 +1,6 @@
 package Items;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import Core.Main;
@@ -15,7 +17,24 @@ public class Rope extends Throwable
 	 */
 	public void use(Player p) 
 	{
+		Field safeField = p.getField();
+		int fields = safeField.getNeighbours().size()-1;
 		
-		//Átbeszélni
+		System.out.println("From where?");
+		
+		int answer = -1;
+		String bemenet = "";
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
+		
+		try {
+			bemenet = reader.readLine();
+			answer = Integer.parseInt(bemenet);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(answer >=0 && answer <= fields) 
+			if(safeField.getNeighbour(answer-1).savePerson(safeField))
+				p.drainStamina();
 	}
 }

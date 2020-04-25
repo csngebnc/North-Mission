@@ -6,6 +6,10 @@ public class LimitedShovel extends Shovel{
 
 	private int remainingUses;
 	
+	public LimitedShovel() {
+		remainingUses = 3;
+	}
+	
 	/*
 	 * Amennyiben a remainingUses értéke nagyobb mint nulla, akkor 2
 	 * egységnyi hóréteget eltávolít a játékos mezõjérõl, ha van rajta hó. Ezután a remainingUses

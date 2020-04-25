@@ -30,6 +30,7 @@ public abstract class Player extends Character
 		inventory = new ArrayList<Item>();
 		isDrowning = false;
 		dSuitOn = false;
+		health = 3;
 	}
 	public abstract void doSkill();
 	
@@ -57,6 +58,9 @@ public abstract class Player extends Character
 	public void doTurn() 
 	{
 		stamina = 3;
+		
+		if(isDrowning && !dSuitOn)
+			Game.loseGame();
 		
 		while(stamina > 0) {
 			String bemenet = "";
@@ -91,10 +95,10 @@ public abstract class Player extends Character
 				case "freeitem":
 					field.removeItemFromIce(this);
 					break;
-				case "pickup":
+				case "pickupitem":
 					field.pickUpItem(this);
 					break;
-				case "drop":
+				case "dropitem":
 					int dropItemIndex = Integer.parseInt(command[1])-1;
 					if(inventory.size() <= dropItemIndex)
 						break;
@@ -106,6 +110,9 @@ public abstract class Player extends Character
 					break;
 				case "assemble":
 					Game.winGame(field);
+					break;
+				case "pass":
+					stamina = 0;
 					break;
 				default:
 					break;
@@ -138,6 +145,9 @@ public abstract class Player extends Character
 	public void alterHealth(int n) 
 	{
 		health += n;
+		
+		if(health <= 0)
+			Game.loseGame();
 	}
 	
 	// Játékos staminájának csökkentése 1-gyel
@@ -151,7 +161,11 @@ public abstract class Player extends Character
 	}
 	
 	
-	public boolean save(Field f) { return false;}
+	public boolean save(Field safeField) {
+		isDrowning = false;
+		field.moveMeTo(this, field.getNeighbours().indexOf(safeField));
+		return true;
+	}
 	
 	
 	public void removeItem(Item i) {
@@ -180,6 +194,10 @@ public abstract class Player extends Character
 	public String getName()
 	{
 		return name;
+	}
+	
+	public void setName(String n) {
+		name = n;
 	}
 	
 	// Visszaadja, hogy van-e a játékoson búvárruha
@@ -245,7 +263,8 @@ public abstract class Player extends Character
 	public void Properties()
 	{
 		System.out.println(this.getClass());
-		System.out.println("Helth: " + health);
+		System.out.println("Name: " + getName());
+		System.out.println("Health: " + health);
 		System.out.println("Stamina: " + stamina);
 		System.out.println("Is drowning: " + isDrowning);
 		System.out.println("Diving suit: " + dSuitOn);

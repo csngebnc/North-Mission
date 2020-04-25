@@ -1,4 +1,7 @@
 package Map;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import Core.Game;
 import Player.Character;
 
@@ -10,15 +13,32 @@ public class Hole extends Field
 	}
 	
 	@Override
-	public boolean savePerson(int dir) {
+	public boolean savePerson(Field safeField) {
 		if(characters.isEmpty()){
 			return false;
 		}
 		
-		if(characters.get(0).save(neighbours.get(dir)))
-			return true;
-		else
-			return false;
+		System.out.println("Which character?");
+		
+		int answer = -1;
+		String bemenet = "";
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
+		
+		try {
+			bemenet = reader.readLine();
+			answer = Integer.parseInt(bemenet);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(answer >= 1 && answer <= characters.size()) {
+			if(characters.get(answer-1).save(safeField))
+				return true;
+			else
+				return false;
+		}
+
+		return false;
 	}
 	
 	//Lyukba került játékos fuldoklását beállítja.

@@ -1,9 +1,11 @@
 initgame
+igloo 6
 statplayer 1
 statplayer 2
 statfield 6
-igloo 6
+statfield 11
 startblizzard
-staplayer 1
+statplayer 1
 statplayer 2
 statfield 6
+statfield 11
