@@ -66,10 +66,11 @@ public class IceField extends Field
 	// Tárgy kiszabadítása mezõbõl. protohoz egyenlõre ennyi
 	public void removeItemFromIce(Player p) 
 	{
-		if(itemOnGround.isEmpty())
+		if(frozenItem != null)
 			return;
 		
-		itemOnGround.set(0, frozenItem);
+		itemOnGround.add(frozenItem);
+		frozenItem = null;
 		p.drainStamina();
 	}
 	

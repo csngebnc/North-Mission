@@ -11,6 +11,7 @@ public abstract class Throwable implements Item
 	 */
 	public boolean throwTo(Field f) 
 	{
+		f.acceptItem(this);
 		return true;
 	}
 	

@@ -67,6 +67,49 @@ public abstract class Player extends Character
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+			String[] command = bemenet.split(" ");
+			
+			switch(command[0]) {
+				case "useitem":
+					openInventory();
+					break;
+				case "step":
+					field.moveMeTo(this, Integer.parseInt(command[1]));
+					break;
+				case "skill":
+					doSkill();
+					break;
+				case "dig":
+					if(field.digSnow(1))
+						drainStamina();
+					break;
+				case "unequip":
+					if(changeSuit(null))
+						drainStamina();
+					break;
+				case "freeitem":
+					field.removeItemFromIce(this);
+					break;
+				case "pickup":
+					field.pickUpItem(this);
+					break;
+				case "drop":
+					int dropItemIndex = Integer.parseInt(command[1])-1;
+					if(inventory.size() <= dropItemIndex)
+						break;
+					Item dropItem = inventory.get(dropItemIndex);
+					if(dropItem.throwTo(field)) {
+						inventory.remove(dropItemIndex);
+						drainStamina();				
+					}
+					break;
+				case "assemble":
+					Game.winGame(field);
+					break;
+				default:
+					break;
+			}
 		}
 	}
 	
@@ -77,15 +120,18 @@ public abstract class Player extends Character
 			if(dSuitOn) {
 				dSuitOn = false;
 				inventory.add(new DivingSuit());
-				return false;
+				return true;
 			}
+			else
+				return false;
 		}
 		else if (!dSuitOn) {
 			dSuitOn = true;
 			inventory.remove(dsuit);
+			return true;
 		}
-		
-		return true;
+		else
+			return false;
 	}
 	
 	// Játékos életének változtatása 'n' egységgel
