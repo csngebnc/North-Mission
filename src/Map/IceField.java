@@ -107,23 +107,25 @@ public class IceField extends Field
 	@Override
 	public void Properties()
 	{
-		System.out.println(this.getClass());
+		System.out.println("---------------------------");
 		System.out.println(this.getClass());
 		System.out.println("Limit: " + maxplayers);
 		System.out.println("Snow layers: " + snowLayers);
 		
-		System.out.print("Building: ");
 		if(building != null)
-			System.out.println(building.getClass());
+			System.out.println("Building: " + building.getClass());
 		else
-			System.out.println("no building");
+			System.out.println("Building: -");
 		
 		for(Character c:characters)
 		{
 			System.out.println("Character on field: " + c.getName());
 		}
 		
-		System.out.println("Frozen item: " + frozenItem.getClass());
+		if(frozenItem != null)
+			System.out.println("Frozen item: " + frozenItem.getClass());
+		else
+			System.out.println("Frozen item: -");	
 		for(Item i: itemOnGround)
 		{
 			System.out.println("Item on ground: " + i.getClass());

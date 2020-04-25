@@ -36,11 +36,38 @@ public abstract class Player extends Character
 	// Játékos inventory-jának megjelenítése.
 	protected void openInventory() 
 	{
+		for(Item i : inventory) {
+			System.out.println(i.getClass());
+		}
+		String bemenet = "";
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
+		
+		try {
+			bemenet = reader.readLine();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(!inventory.isEmpty()) {
+			inventory.get(Integer.parseInt(bemenet)).use(this);
+		}
 	}
 	
 	// Játékos köre
 	public void doTurn() 
 	{
+		stamina = 3;
+		
+		while(stamina > 0) {
+			String bemenet = "";
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
+			
+			try {
+				bemenet = reader.readLine();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	//Búvárruha használat
@@ -159,14 +186,12 @@ public abstract class Player extends Character
 	}
 	
 	public void collideWith(Character c) {
-		// TODO Auto-generated method stub
-		
+		c.hitBy(this);
 	}
 
 	@Override
 	public void hitBy(PolarBear pb) {
-		// TODO Auto-generated method stub
-		
+		Game.loseGame();
 	}
 	
 	

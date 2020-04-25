@@ -101,10 +101,10 @@ public class Game {
 		PolarBear pb = new PolarBear();
 		
 		map.Reset();
-		map.getField(6).acceptCharacter(e1);
-		map.getField(11).acceptCharacter(s1);
-		map.getField(13).acceptCharacter(s2);
-		map.getField(2).acceptCharacter(pb);
+		map.getField(5).acceptCharacter(e1);
+		map.getField(10).acceptCharacter(s1);
+		map.getField(12).acceptCharacter(s2);
+		map.getField(1).acceptCharacter(pb);
 		
 		characters.add(e1);
 		characters.add(s1);

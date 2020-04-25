@@ -1,4 +1,4 @@
 initgame
-step 1 9
 setdsuiton 1 1
+step 1 1
 doturn 1
