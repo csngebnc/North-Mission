@@ -33,8 +33,9 @@ public abstract class GunPart implements Item
 	 */
 	public void pickUp() 
 	{
-		
+		Game.incGunParts();
 	}
+	
 	public void Properties() 
 	{
 		System.out.println(this.getClass());
