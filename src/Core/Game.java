@@ -8,25 +8,45 @@ import Player.PolarBear;
 import Player.Scientist;
 
 /**
- * A játékot összefogó osztály
- * @author Csönge Bence
+ * A jatekot osszefogo osztaly
+ * @author Csonge Bence
  */
 public class Game {
 	
 	/**
-	 * A játékosok száma
-	 * @author Csönge Bence
+	 * A jatekosok szama
+	 * @author Csonge Bence
 	 */
 	private static int players = 0;
 	/**
-	 * A játékosok száma
-	 * @author Csönge Bence
+	 * A korok szama
+	 * @author Csonge Bence
 	 */
 	private int roundNum;
+	/**
+	 * A korok hoviharig
+	 * @author Csonge Bence
+	 */
 	private int roundsUntilBlizzard;
+	/**
+	 * A jatekosok altal megtalalt alkatreszek szama
+	 * @author Csonge Bence
+	 */
 	private static int foundGunParts;
+	/**
+	 * A jatekhoz tartozo palya
+	 * @author Csonge Bence
+	 */
 	private Map map;
+	/**
+	 * A jatekban resztvevo karakterek
+	 * @author Csonge Bence
+	 */
 	public static ArrayList<Character> characters;
+	/**
+	 * A jatek allapota
+	 * @author Csonge Bence
+	 */
 	private static GameState state;
 	
 	/**
@@ -91,7 +111,7 @@ public class Game {
 	/**
 	 * A Game osztaly ertesitese arrol, hogy a jatekosok megnyertek a jatekot.
 	 * Megtortenik a feltetelek teljesulesenek vizsgalata, majd aszerint allitja be a jatek allapotat.
-	 * @param f : A mezõ, amelyen az összes játékos tartózkodni kell a gyõzelemhez.
+	 * @param f : A mezo, amelyen az osszes jatekos tartózkodni kell a gyozelemhez.
 	 * @author Csonge Bence
 	 */
 	public static void winGame(Field f) {
