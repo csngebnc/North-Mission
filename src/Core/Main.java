@@ -120,11 +120,6 @@ public class Main {
 						break;
 					case "wingame":
 						Game.winGame(game.characters.get(0).getField());
-					//Enyémek---------------------------------------
-					case "getcurrentplayer":
-						Player currentplayer = (Player) game.getCharacters().get(game.getRoundNum() % game.getCharacters().size());
-						System.out.println(currentplayer.getName());
-						break;
 					case "setfrozenitem":
 						Item item;
 						switch(argt.get(1)) {
