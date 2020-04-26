@@ -78,7 +78,6 @@ public class Hole extends Field
 	{
 		System.out.println("---------------------------");
 		System.out.println(this.getClass());
-		System.out.println("Limit: " + maxplayers);
 		System.out.println("Snow layers: " + snowLayers);
 		
 		for(Character c:characters)
