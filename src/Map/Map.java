@@ -8,11 +8,18 @@ import Items.Rocket;
 import Items.Shovel;
 import Core.Main;
 
+/**
+ * A pálya osztalya.
+ * @author Csonge Bence
+ */
 public class Map 
 {
+	/**
+	 * A pálya mezõi.
+	 */
 	private ArrayList<Field> fields;
 	
-	/*
+	/**
 	 * Palya konstruktora
 	 * @author Csonge Bence
 	 */
@@ -20,7 +27,7 @@ public class Map
 		initFields();
 	}
 	
-	/*
+	/**
 	 * Mezok tarolojanak inicializalasa, proto allapotban a mezoket es a mezok kozotti kapcsolatokat
 	 * parancsokkal kell beallitani.
 	 * @author Csonge Bence
@@ -30,7 +37,7 @@ public class Map
 		fields = new ArrayList<Field>();
 	}
 	
-	/*
+	/**
 	 * Hovihar hivasa a palya osszes mezojen.
 	 * @author Csonge Bence
 	 */
@@ -41,7 +48,7 @@ public class Map
 		}
 	}
 	
-	/*
+	/**
 	 * A palya mezoin talalhato epuletek tick-elese, ertesitese uj kor kezdeterol.
 	 * @author Csonge Bence
 	 */
@@ -51,7 +58,7 @@ public class Map
 		}
 	}
 	
-	/*
+	/**
 	 * A tovabbi metodusok getter/setter, valamint teszteleshez hasznalt metodusok.
 	 */
 	
