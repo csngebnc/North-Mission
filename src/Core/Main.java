@@ -18,7 +18,7 @@ import Player.Character;
 
 public class Main {
 	
-	/*
+	/**
 	 * Kezdetleges Main osztály, a forgatókönyvek megjelenítéséhez, valamint azok végrehajtásához van rá szükség.
 	 * A késõbbiekben átalakításra kerül, úgy, hogy a játék vezérlését végezze.
 	 */
