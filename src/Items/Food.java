@@ -2,9 +2,14 @@ package Items;
 import Core.Main;
 import Player.Player;
 
+/**
+ * 
+ * @author Norbi
+ * Ételt reprezentáló osztály.
+ */
 public class Food extends Throwable 
 {
-	/* 
+	/**
 	 * Egy élelem elfogyasztásával eggyel nõ a játékos élete.
 	 * Ennek a függvénynek a meghívása esetén a tárgy megnöveli a
 	 * paraméterként kapott játékos testhõjét eggyel.

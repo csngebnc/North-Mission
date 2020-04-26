@@ -3,9 +3,15 @@ import Core.Main;
 import Map.Field;
 import Player.Player;
 
+/**
+ * 
+ * @author Norbi
+ * Egy interfész, ami alapul szolgál a játékban található tárgyakhoz. 
+ * Kötelezõvé teszi olyan metódusok megvalósítását, melyek egy tárgy esetén létfontosságúak.
+ */
 public interface Item 
 {
-	/*
+	/**
 	 * Tárgy felvétele.
 	 * Leszármazottak saját maguk valósítják meg.
 	 * 
@@ -15,7 +21,7 @@ public interface Item
 	public void use(Player p);
 	
 	
-	/*
+	/**
 	 * Tárgy eldobása.
 	 * Leszármazottak saját maguk valósítják meg.
 	 * 
@@ -25,7 +31,7 @@ public interface Item
 	public abstract boolean throwTo(Field f);
 	
 	
-	/*
+	/**
 	 * Tárgy felvétele.
 	 * Leszármazottak saját maguk valósítják meg.
 	 * 

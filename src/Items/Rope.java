@@ -1,14 +1,19 @@
 package Items;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Scanner;
-
 import Core.Main;
 import Player.Player;
 import Map.Field;
+
+/**
+ * 
+ * @author Norbi
+ * Segítségével egy lyukba esett játékos kimenthetõ. 
+ * Ha a mentés sikeres, a játékos stamináját egy egységgel csökkenti
+ */
 public class Rope extends Throwable
 {
-	/*
+	/**
 	 *  Egy lyukba esett játékos kimentése.
 	 *  
 	 *  
