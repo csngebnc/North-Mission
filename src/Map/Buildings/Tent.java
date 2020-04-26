@@ -16,16 +16,29 @@ public class Tent implements Item, Building{
 		}
 	}
 
+	/*
+	 * A tick() metódus jelen esetben true értékkel tér vissza, mivel egy sátor élettartama egy körre szól.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public boolean tick() {
 		return true;
 	}
 
+	/*
+	 * Az attack() metódus jelen esetben true értékkel tér vissza, mivel egy olyan mezõn meg lehet játékosokat megtámadni,
+	 * ahol sátor van felépítve.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public boolean attack() {
 		return true;
 	}
 
+	/*
+	 * A sátor példány eldobása egy mezõre, mely átveszi a példányt.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public boolean throwTo(Field f) {
 		f.acceptItem(this);
@@ -37,6 +50,9 @@ public class Tent implements Item, Building{
 		return;
 	}
 
+	/*
+	 * Teszteléshez
+	 */
 	@Override
 	public void Properties() {
 		System.out.println(this.getClass());

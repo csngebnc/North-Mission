@@ -14,10 +14,14 @@ public class Game {
 	private int roundsUntilBlizzard;
 	private static int foundGunParts;
 	private Map map;
-	// statikussá tettem õket, mert csak úgy lehet hozzájuk férni a winGame-ben
 	public static ArrayList<Character> characters;
 	private static GameState state;
 	
+	
+	/*
+	 * Game osztaly konstruktora, alapertelmezett ertekek beallitasa
+	 * @author Csonge Bence
+	 */
 	public Game() {
 		roundNum = 0;
 		roundsUntilBlizzard = -1;
@@ -27,6 +31,12 @@ public class Game {
 		state = GameState.NOTSTARTED;
 	}
 
+	/*
+	 * A jatek elinditasara es korok vezenylesere szolgalo metodus
+	 * Veletlenszeruen bekovetkezhet egy hovihar, valamint minden karakter "leptetese" egy korben
+	 * egeszen addig, amig a jatekot nem veszitik, vagy nem nyerik meg.
+	 * @author Csonge Bence
+	 */
 	public void doRound() 
 	{
 		state = GameState.ONGOING;
@@ -57,11 +67,20 @@ public class Game {
 		}
 	}
 	
+	/*
+	 * Hovihar bekovetkezesenek tovabbitasa a palya fele.
+	 * @author Csonge Bence
+	 */
 	public void callBlizzard() 
 	{
 		map.callBlizzardOnFields();
 	}
 	
+	/*
+	 * A Game osztaly ertesitese arrol, hogy a jatekosok megnyertek a jatekot.
+	 * Megtortenik a feltetelek teljesulesenek vizsgalata, majd aszerint allitja be a jatek allapotat.
+	 * @author Csonge Bence
+	 */
 	public static void winGame(Field f) {
 		if(foundGunParts==3 && (f.getCharacters().size()==players)) {
 			state = GameState.WON;
@@ -69,17 +88,31 @@ public class Game {
 		}		
 	}
 	
+	/*
+	 * A Game osztaly ertesitese arrol, hogy a jatekot elvesztettek a jatekosok valamilyen okbol,
+	 * a jatek allapota beallitasra kerul.
+	 * @author Csonge Bence 
+	 */
 	public static void loseGame() 
 	{
 		state = GameState.LOST;
 		System.out.println("The players lost the game.");
 	}
 	
+	/*
+	 * A Game osztaly ertesitese arrol, hogy a jatekosok osszegyujtottek egy, 
+	 * a jatek megnyeresehez szukseges alkatreszt.
+	 * @author Csonge Bence
+	 */
 	public static void incGunParts()
 	{
 		foundGunParts++;
 		System.out.println("Found gunparts incremented, num: "+foundGunParts);		
 	}
+	
+	/*
+	 * A tovabbiakban getter/setter, valamint a teszteleshez szukseges metodusok talalhatok.
+	 */
 	
 	public Map getMap() {
 		return map;
