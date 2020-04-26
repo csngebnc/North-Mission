@@ -9,8 +9,13 @@ import Map.Buildings.Igloo;
 public class Eskimo extends Player 
 {
 	private boolean builtIgloo;
-
-	// Eszkimó játékos iglut épít a mezõn, ha még korábban nem épített volna, és a mezõre lehet iglut építeni
+	
+	/*
+ 	 * Eszkimó karakter speciális képességének használata.
+ 	 * Iglut épít a mezõn, ha még korábban nem épített volna, és hogyha  a mezõre lehet iglut építeni.
+ 	 * Ekkor az eszkimó staminája 1-gyel csökken.
+	 * @author Zalan
+	 */
 	public void doSkill() 
 	{
 		if (!builtIgloo) 
@@ -20,6 +25,9 @@ public class Eskimo extends Player
 			}
 	}
 	
+	/*
+	 * Teszteléshez
+	 */
 	@Override
 	public void Properties()
 	{

@@ -7,38 +7,14 @@ import Map.IceField;
 public class Scientist extends Player 
 {
 	
-	//Nincs a fieldnek getneighbour-ja?
-
-	// Sarkkutató karakter speciális képességének használata.
+	/* 
+	 * Sarkkutató karakter speciális képességének használata. 
+	 * Meghívja a mezõje revealLimit metódusát, és csökkenti a stamináját 1-gyel.
+	 * @author Zalan
+	 */
 	public void doSkill() 
 	{
 		field.revealLimit();
 		drainStamina();
 	}
-
-/*
- * 	@Override
-	public void drown() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public boolean save(Field f) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void collideWith(Character c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void hitBy(PolarBear pb) {
-		// TODO Auto-generated method stub
-		
-	}
-*/
 }
