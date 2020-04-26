@@ -24,7 +24,7 @@ import Player.Character;
 public class Main {
 	
 	/**
-	 * Tárolja, hogy melyik forgatókönyv kerül végrehajtásra.
+	 * Tárolja, hogy melyik forgatókönyv kerül végrehajtásra
 	 */
 	public static int FORGATOKONYV_SZAMA;
 
