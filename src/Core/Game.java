@@ -7,9 +7,21 @@ import Player.Eskimo;
 import Player.PolarBear;
 import Player.Scientist;
 
+/**
+ * A játékot összefogó osztály
+ * @author Csönge Bence
+ */
 public class Game {
 	
+	/**
+	 * A játékosok száma
+	 * @author Csönge Bence
+	 */
 	private static int players = 0;
+	/**
+	 * A játékosok száma
+	 * @author Csönge Bence
+	 */
 	private int roundNum;
 	private int roundsUntilBlizzard;
 	private static int foundGunParts;
@@ -17,8 +29,7 @@ public class Game {
 	public static ArrayList<Character> characters;
 	private static GameState state;
 	
-	
-	/*
+	/**
 	 * Game osztaly konstruktora, alapertelmezett ertekek beallitasa
 	 * @author Csonge Bence
 	 */
@@ -31,7 +42,7 @@ public class Game {
 		state = GameState.NOTSTARTED;
 	}
 
-	/*
+	/**
 	 * A jatek elinditasara es korok vezenylesere szolgalo metodus
 	 * Veletlenszeruen bekovetkezhet egy hovihar, valamint minden karakter "leptetese" egy korben
 	 * egeszen addig, amig a jatekot nem veszitik, vagy nem nyerik meg.
@@ -68,7 +79,7 @@ public class Game {
 		}
 	}
 	
-	/*
+	/**
 	 * Hovihar bekovetkezesenek tovabbitasa a palya fele.
 	 * @author Csonge Bence
 	 */
@@ -77,7 +88,7 @@ public class Game {
 		map.callBlizzardOnFields();
 	}
 	
-	/*
+	/**
 	 * A Game osztaly ertesitese arrol, hogy a jatekosok megnyertek a jatekot.
 	 * Megtortenik a feltetelek teljesulesenek vizsgalata, majd aszerint allitja be a jatek allapotat.
 	 * @param f : A mezõ, amelyen az összes játékos tartózkodni kell a gyõzelemhez.
@@ -90,7 +101,7 @@ public class Game {
 		}		
 	}
 	
-	/*
+	/**
 	 * A Game osztaly ertesitese arrol, hogy a jatekot elvesztettek a jatekosok valamilyen okbol,
 	 * a jatek allapota beallitasra kerul.
 	 * @author Csonge Bence 
@@ -101,7 +112,7 @@ public class Game {
 		System.out.println("The players lost the game.");
 	}
 	
-	/*
+	/**
 	 * A Game osztaly ertesitese arrol, hogy a jatekosok osszegyujtottek egy, 
 	 * a jatek megnyeresehez szukseges alkatreszt.
 	 * @author Csonge Bence
@@ -112,7 +123,7 @@ public class Game {
 		System.out.println("Found gunparts incremented, num: "+foundGunParts);		
 	}
 	
-	/*
+	/**
 	 * A tovabbiakban getter/setter, valamint a teszteleshez szukseges metodusok talalhatok.
 	 */
 	
@@ -171,7 +182,6 @@ public class Game {
 	
 	public ArrayList<Character> getCharacters()
 	{
-		return characters;
-		
+		return characters;	
 	}
 }

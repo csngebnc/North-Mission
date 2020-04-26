@@ -1,6 +1,6 @@
 package Core;
 
-/*
+/**
  * A jatek allapotait tartalmazo enumeracio.
  * @author Csonge Bence
  */

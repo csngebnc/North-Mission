@@ -13,7 +13,7 @@ public class Hole extends Field
 	 */
 	public Hole() {
 		super();
-		maxplayers = (int)Math.random()*Game.characters.size()+1;
+		maxplayers = (int)Math.random()*Game.getPlayerCount();
 	}
 	
 	
