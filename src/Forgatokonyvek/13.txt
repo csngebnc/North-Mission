@@ -1,5 +1,5 @@
 initgame
-setmaxplayers 6 2
-stafield 6
+setmaxplayers 6 1
+statfield 6
 statfield 11
 step 2 4

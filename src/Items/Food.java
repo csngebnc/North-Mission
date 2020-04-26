@@ -16,5 +16,6 @@ public class Food extends Throwable
 	{
 		p.alterHealth(1);
 		p.drainStamina();
+		p.removeItem(this);
 	}
 }
