@@ -1,32 +1,44 @@
 package Map;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-import Core.Game;
-import Core.Main;
-import Items.Shovel;
 import Map.Buildings.Building;
-import Items.Barrel;
 import Items.Item;
-import Items.Rope;
 import Player.Player;
 import Player.Character;
 
+/**
+ * A normalis jegmezo osztalya.
+ * @author Csonge Bence
+ */
 public class IceField extends Field 
 {
+	/**
+	 * A mezobe befagyott targy
+	 * @author Csonge Bence
+	 */
 	protected Item frozenItem;
+	/**
+	 * A mezon levo targyak
+	 * @author Csonge Bence
+	 */
 	protected ArrayList<Item> itemOnGround;
 	
+	/**
+	 * Normal jegtabla konstruktora, alapertelmezett ertekek beallitasa.
+	 * Jelenleg tesztek miatt alapertelmezetten nem tartalmaz targyat, paranccsal allithato be egy targy a mezore.
+	 * @author Csonge Bence
+	 */
 	public IceField() {
 		super();
 		frozenItem = null;
 		itemOnGround = new ArrayList<Item>();
 	}
 	
-	//Stabil jégmezõre lépés.
+	/**
+	 * Karakter atvetele egy masik mezotol.
+	 * @param c: atvett karakter
+	 * @author Csonge Bence
+	 */
 	public void acceptCharacter(Character c)
 	{
 		c.setField(this);
@@ -46,13 +58,22 @@ public class IceField extends Field
 		}
 	}
 	
-	//Tárgy átvétele játékos eldobása által, mezõn található tárgyakhoz adása itt fog történni.
+	/**
+ 	 *  Eldobott targy mezon torteno elhelyezese
+	 *  @param i: mezore helyezett targy
+	 *  @author Csonge Bence
+	 */
 	public void acceptItem(Item i) 
 	{
 		itemOnGround.add(i);
 	}
 	
-	// Tárgy felvétele, protohoz egyenlõre ennyi
+	/**
+	 *  Teszteles miatt nem teljes implementacio.
+	 *  Visszaadja a mezon talalhato targyat, melyet a jatekos eltarol az inventoryjaban.
+	 *  @param p: jatekos, aki felveszi a targyat
+	 *  @author Csonge Bence
+	 */
 	public Item pickUpItem(Player p) 
 	{
 		if(itemOnGround.isEmpty()) {
@@ -65,7 +86,11 @@ public class IceField extends Field
 		return i;
 	}
 	
-	// Tárgy kiszabadítása mezõbõl. protohoz egyenlõre ennyi
+	/**
+	 *  Befagyott targy kiszabaditasa jegbol, mezon torteno elhelyezese
+	 *  @param p: a jatekos, aki kiszabaditja a targyat a jegbol
+	 *  @author Csonge Bence
+	 */
 	public void removeItemFromIce(Player p) 
 	{
 		if(snowLayers > 0 || frozenItem == null)
@@ -76,6 +101,11 @@ public class IceField extends Field
 		p.drainStamina();
 	}
 	
+	/**
+	 *  Asas a mezon, horeteg csokkentese
+	 *  @param amount: asas mennyisege
+	 *  @author Csonge Bence
+	 */
 	public boolean digSnow(int amount) {
 		if(snowLayers>0) {
 			snowLayers-=amount;
@@ -86,6 +116,11 @@ public class IceField extends Field
 		return false;
 	}
 	
+	/**
+	 * Építés, parameterkent kapott epulet elhelyezese a mezon.
+	 * @param b: epulet, amit el kell helyezni a mezon
+	 * @author Csonge Bence
+	 */
 	@Override
 	public boolean buildBuilding(Building b) {
 		if(building == null) {
@@ -95,6 +130,10 @@ public class IceField extends Field
 		return false;
 	}
 	
+	/**
+	 * A mezo epuletenek tick-elese, szukseg eseten mezorol torteno eltavolitasa.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public void tickBuilding() {
 		if(building != null) {
@@ -103,6 +142,10 @@ public class IceField extends Field
 			}
 		}
 	}
+	
+	/**
+	 * A tovabbiakban getter/setter, valamint teszteleshez hasznalt metodusok talalhatok.
+	 */
 	
 	@Override
 	public void setFrozenItem(Item i) {

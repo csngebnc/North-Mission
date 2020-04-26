@@ -6,13 +6,23 @@ import Map.Field;
 import Map.IceField;
 import Map.Buildings.Igloo;
 
+/**
+ * Az eszkimó kasztú játékost reprezentáló osztály.
+ * A Player osztály leszármazottja.
+ * @author Zalan
+ */
 public class Eskimo extends Player 
 {
+	
+	/**
+	 * A builtIgloo attribútum igaz értéke jelzi, hogy az eszkimó épített-e már iglut.
+	 * @author Zalan
+	 */
 	private boolean builtIgloo;
 	
-	/*
+	/**
  	 * Eszkimó karakter speciális képességének használata.
- 	 * Iglut épít a mezõn, ha még korábban nem épített volna, és hogyha  a mezõre lehet iglut építeni.
+ 	 * Iglut épít a mezõn, ha még korábban nem épített volna, és hogyha a mezõre lehet iglut építeni.
  	 * Ekkor az eszkimó staminája 1-gyel csökken.
 	 * @author Zalan
 	 */
@@ -25,7 +35,7 @@ public class Eskimo extends Player
 			}
 	}
 	
-	/*
+	/**
 	 * Teszteléshez
 	 */
 	@Override
