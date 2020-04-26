@@ -4,10 +4,19 @@ import Items.Item;
 import Map.Field;
 import Player.Player;
 
+/**
+ * A sator epuletet es targyat megvalosito osztaly.
+ * @author Csonge Bence
+ *
+ */
 public class Tent implements Item, Building{
 	
 	public Tent() {}
 
+	/**
+	 * Sator hasznalata, azaz megepitese
+	 * @author Csonge Bence
+	 */
 	@Override
 	public void use(Player p) {
 		if(p.getField().buildBuilding(this)) {
@@ -16,7 +25,7 @@ public class Tent implements Item, Building{
 		}
 	}
 
-	/*
+	/**
 	 * A tick() metodus jelen esetben true ertekkel ter vissza, mivel egy sator elettartama egy korre szol.
 	 * @author Csonge Bence
 	 */
@@ -25,7 +34,7 @@ public class Tent implements Item, Building{
 		return true;
 	}
 
-	/*
+	/**
 	 * Az attack() metodus jelen esetben true ertekkel ter vissza, mivel egy olyan mezon meg lehet jatekosokat megtamadni,
 	 * ahol sator van felepítve.
 	 * @author Csonge Bence
@@ -35,7 +44,7 @@ public class Tent implements Item, Building{
 		return true;
 	}
 
-	/*
+	/**
 	 * A sator peldany eldobasa egy mezore, mely atveszi a peldanyt.
 	 * @author Csonge Bence
 	 */

@@ -1,10 +1,14 @@
 package Map.Buildings;
 
+/**
+ * Az iglu epuletet megvalosito osztaly.
+ * @author Csonge Bence
+ */
 public class Igloo implements Building{
 
 	public Igloo() {}
 	
-	/*
+	/**
 	 * A tick() metodus jelen esetben false ertekkel ter vissza, mivel egy iglu elettartama egy jatekra szol.
 	 * @author Csonge Bence
 	 */
@@ -13,7 +17,7 @@ public class Igloo implements Building{
 		return false;
 	}
 
-	/*
+	/**
 	 * Az attack() metodus jelen esetben false ertekkel ter vissza, mivel egy olyan mezon nem lehet jatekosokat megtamadni,
 	 * ahol iglu van felepitve.
 	 * @author Csonge Bence

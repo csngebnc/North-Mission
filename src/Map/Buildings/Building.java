@@ -1,6 +1,6 @@
 package Map.Buildings;
 
-/*
+/**
  * Az epuleteket meghatarozo Bulding interfesz.
  * @author Csonge Bence
  */
