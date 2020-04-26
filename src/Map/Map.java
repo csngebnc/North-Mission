@@ -12,17 +12,28 @@ public class Map
 {
 	private ArrayList<Field> fields;
 	
+	/*
+	 * Palya konstruktora
+	 * @author Csonge Bence
+	 */
 	public Map() {
 		initFields();
 	}
 	
-	// Mezõk létrehozása, szomszédosságok beállítása lesz itt.
+	/*
+	 * Mezok tarolojanak inicializalasa, proto allapotban a mezoket es a mezok kozotti kapcsolatokat
+	 * parancsokkal kell beallitani.
+	 * @author Csonge Bence
+	 */
 	private void initFields() 
 	{
 		fields = new ArrayList<Field>();
 	}
 	
-	//Hóvihar hívása a mezõkön.
+	/*
+	 * Hovihar hivasa a palya osszes mezojen.
+	 * @author Csonge Bence
+	 */
 	public void callBlizzardOnFields()
 	{
 		for(Field f: fields) {
@@ -30,11 +41,19 @@ public class Map
 		}
 	}
 	
+	/*
+	 * A palya mezoin talalhato epuletek tick-elese, ertesitese uj kor kezdeterol.
+	 * @author Csonge Bence
+	 */
 	public void tickBuildings() {
 		for(Field f: fields) {
 			f.tickBuilding();
 		}
 	}
+	
+	/*
+	 * A tovabbi metodusok getter/setter, valamint teszteleshez hasznalt metodusok.
+	 */
 	
 	public Field getField(int i) {
 		return fields.get(i);

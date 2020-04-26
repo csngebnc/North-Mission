@@ -5,7 +5,7 @@ public class Igloo implements Building{
 	public Igloo() {}
 	
 	/*
-	 * A tick() metódus jelen esetben false értékkel tér vissza, mivel egy iglu élettartama egy játékra szól.
+	 * A tick() metodus jelen esetben false ertekkel ter vissza, mivel egy iglu elettartama egy jatekra szol.
 	 * @author Csonge Bence
 	 */
 	@Override
@@ -14,8 +14,8 @@ public class Igloo implements Building{
 	}
 
 	/*
-	 * Az attack() metódus jelen esetben false értékkel tér vissza, mivel egy olyan mezõn nem lehet játékosokat megtámadni,
-	 * ahol iglu van felépítve.
+	 * Az attack() metodus jelen esetben false ertekkel ter vissza, mivel egy olyan mezon nem lehet jatekosokat megtamadni,
+	 * ahol iglu van felepitve.
 	 * @author Csonge Bence
 	 */
 	@Override

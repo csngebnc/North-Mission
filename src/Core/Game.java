@@ -41,6 +41,7 @@ public class Game {
 	{
 		state = GameState.ONGOING;
 		while(state == GameState.ONGOING) {
+			map.tickBuildings();
 			roundNum++;
 			if(roundsUntilBlizzard == -1) {
 				int hovihar_esely = (int) (Math.random()*4);
@@ -79,6 +80,7 @@ public class Game {
 	/*
 	 * A Game osztaly ertesitese arrol, hogy a jatekosok megnyertek a jatekot.
 	 * Megtortenik a feltetelek teljesulesenek vizsgalata, majd aszerint allitja be a jatek allapotat.
+	 * @param f : A mezõ, amelyen az összes játékos tartózkodni kell a gyõzelemhez.
 	 * @author Csonge Bence
 	 */
 	public static void winGame(Field f) {
