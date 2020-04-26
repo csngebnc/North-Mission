@@ -1,16 +1,7 @@
 package Map;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-
-import java.util.Scanner;
-
 import Core.Game;
-import Core.Main;
-import Items.Barrel;
 import Items.Item;
-import Items.Shovel;
 import Map.Buildings.Building;
 import Player.Character;
 import Player.Player;
@@ -18,12 +9,31 @@ import Player.Player;
 
 public abstract class Field
 {
+	/**
+	 * A mezõhöz tartozó hóréteg száma.
+	 */
 	protected int snowLayers;
+	/**
+	 * A mezõhöz tartozó teherbírás.
+	 */
 	protected int maxplayers;
+	/**
+	 * A mezõhöz tartozó karakterek.
+	 */
 	protected ArrayList<Character> characters;
+	/**
+	 * A mezõ szomszédai
+	 */
 	protected ArrayList<Field> neighbours;
+	/**
+	 * A mezõn található épület
+	 */
 	protected Building building;
 	
+	/**
+	 * Az osztály konstruktora. 
+	 * Beállítja a hóréteget egy véletlenszerû számra, létrehozza az üres listákat, a buildinget null-ra állítja. 
+	 */
 	public Field() {
 		snowLayers = (int)Math.random()*6;
 		characters = new ArrayList<Character>();
@@ -31,7 +41,7 @@ public abstract class Field
 		building = null;
 	}
 	
-	/*
+	/**
 	 * Hovihar generalasa a mezon, melynek hatasara a mezon levo horeteg megno egy veletlenszeru szammal, ami maximalizalva van.
 	 * @author Csonge Bence
 	 */
@@ -44,7 +54,7 @@ public abstract class Field
 				c.alterHealth(-1);
 	}
 	
-	/*
+	/**
 	 * Egy jatekos elmozditasa a mezojerol a mezoje egy szomszedjara.
 	 * @param c: mozditando karakter
 	 * @param next: karakter mezojenek megadott sorszamu szomszedja
@@ -60,7 +70,7 @@ public abstract class Field
 		c.drainStamina();
 	}
 	
-	/*
+	/**
 	 * A sarkkutato karakter specialis kepessegevel ezt a metodust hivja, melynek hatasara
 	 * kiirasra kerul a mezo teherbirasa.
 	 * @author Csonge Bence
@@ -70,7 +80,7 @@ public abstract class Field
 		System.out.println("Max players: " + Game.getPlayerCount());
 	}
 	
-	/*
+	/**
 	 *  A leszarmazottak maguk valositjak meg.
 	 *  Feladata: karakter atvetele
 	 *  @param c: atvett karakter
@@ -78,7 +88,7 @@ public abstract class Field
 	 */
 	public abstract void acceptCharacter(Character c);
 	
-	/*
+	/**
 	 *  A leszarmazottak maguk valositjak meg.
 	 *  Alapimplementacio pedig nem csinal semmit. lsd.: lyuk
 	 *  Feladata: targy atvetele mezore (radobas)
@@ -87,7 +97,7 @@ public abstract class Field
 	 */
 	public void acceptItem(Item i) {}
 	
-	/*
+	/**
 	 *  A leszarmazottak maguk valositjak meg.
 	 *  Alapimplementacio pedig null-t ad vissza. lsd.: lyuk
 	 *  Feladata: targy felvetele mezorol
@@ -99,7 +109,7 @@ public abstract class Field
 		return null;
 	}
 	
-	/*
+	/**
 	 *  A leszarmazottak maguk valositjak meg. A mezon torteno hoasasert felel.
 	 *  Alapimplementacio pedig false-t ad vissza. lsd.: lyuk
 	 *  @param amount: asas mennyisege
@@ -110,7 +120,7 @@ public abstract class Field
 		return false;
 	}
 
-	/*
+	/**
 	 *  A leszarmazottak maguk valositjak meg.
 	 *  Alapimplementacio pedig nem csinal semmit. lsd.: lyuk
 	 *  Feladata: befagyott targy kiszedese jegbol, mezon elhelyezese
@@ -119,7 +129,7 @@ public abstract class Field
 	 */
 	public void removeItemFromIce(Player p) {}
 	
-	/*
+	/**
 	 * A leszarmazottak valositjak meg.
 	 * Alapimplementacio nem csinal semmit, mivel nem minden mezorol lehet jatekost menteni. lsd.: stabil mezo
 	 * Feladata: jatekos mozditasa biztonsagos mezore.
@@ -132,7 +142,7 @@ public abstract class Field
 	}
 	
 	
-	/*
+	/**
 	 * A leszarmazottak valositjak meg.
 	 * Alapimplementacio nem csinal semmit, mivel nem minden mezore lehet epiteni. lsd.: lyuk
 	 * Feladata: parameterkent kapott epulet elhelyezese a mezon.
@@ -144,7 +154,7 @@ public abstract class Field
 		return false;
 	}
 	
-	/*
+	/**
 	 * A leszarmazottak valositjak meg.
 	 * Alapimplementacio nem csinal semmit, mivel nem minden mezore lehet epiteni, emiatt az ottani epulet nem tick-elheto. lsd.: lyuk
 	 * Feladata: mezo epuletenek tick-elese.
@@ -152,7 +162,7 @@ public abstract class Field
 	 */
 	public void tickBuilding() {}
 	
-	/*
+	/**
 	 * A tovabbiakban getter/setter, valamint teszteleshez hasznalt metodusok talalhatok.
 	 */
 	
@@ -173,7 +183,7 @@ public abstract class Field
 		
 	}
 	
-	//Visszaadja a mezõn található játékosokat.
+
 	public ArrayList<Character> getCharacters()
 	{
 		return characters;
