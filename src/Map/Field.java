@@ -31,7 +31,10 @@ public abstract class Field
 		building = null;
 	}
 	
-	// Hóvihar generálása a mezõn.
+	/*
+	 * Hovihar generalasa a mezon, melynek hatasara a mezon levo horeteg megno egy veletlenszeru szammal, ami maximalizalva van.
+	 * @author Csonge Bence
+	 */
 	public void generateBlizzard() 
 	{
 		snowLayers += Math.random()*5;
@@ -41,7 +44,12 @@ public abstract class Field
 				c.alterHealth(-1);
 	}
 	
-	//Játékos elmozdítása egy mezõre az adott mezõrõl egy kapott irányba.
+	/*
+	 * Egy jatekos elmozditasa a mezojerol a mezoje egy szomszedjara.
+	 * @param c: mozditando karakter
+	 * @param next: karakter mezojenek megadott sorszamu szomszedja
+	 * @author Csonge Bence
+	 */
 	public void moveMeTo(Character c, int next) 
 	{
 		if(next >= neighbours.size())
@@ -52,51 +60,102 @@ public abstract class Field
 		c.drainStamina();
 	}
 	
-	// Sarkkutató játékos hívhatja a mezõt, ezzel felvedve mekkora a teherbírása.
+	/*
+	 * A sarkkutato karakter specialis kepessegevel ezt a metodust hivja, melynek hatasara
+	 * kiirasra kerul a mezo teherbirasa.
+	 * @author Csonge Bence
+	 */
 	public void revealLimit() 
 	{
 		System.out.println("Max players: " + Game.getPlayerCount());
 	}
 	
-	// A leszármazottak maguk valósítják meg.
+	/*
+	 *  A leszarmazottak maguk valositjak meg.
+	 *  Feladata: karakter atvetele
+	 *  @param c: atvett karakter
+	 *  @author Csonge Bence
+	 */
 	public abstract void acceptCharacter(Character c);
 	
-	// A leszármazottak maguk valósítják meg.
+	/*
+	 *  A leszarmazottak maguk valositjak meg.
+	 *  Alapimplementacio pedig nem csinal semmit. lsd.: lyuk
+	 *  Feladata: targy atvetele mezore (radobas)
+	 *  @param i: mezore helyezett targy
+	 *  @author Csonge Bence
+	 */
 	public void acceptItem(Item i) {}
 	
-	//Alapimplementációja nem ad vissza tárgyat..
+	/*
+	 *  A leszarmazottak maguk valositjak meg.
+	 *  Alapimplementacio pedig null-t ad vissza. lsd.: lyuk
+	 *  Feladata: targy felvetele mezorol
+	 *  @param p: jatekos, aki felveszi a targyat
+	 *  @author Csonge Bence
+	 */
 	public Item pickUpItem(Player p) 
 	{
 		return null;
 	}
 	
-	// Mezõn történõ ásás, paraméterként kapott értékkel csökkenti a hóréteget, ha van hó.
-	// Jelen esetben feltételezzük, hogy van eltávolítható hó.
+	/*
+	 *  A leszarmazottak maguk valositjak meg. A mezon torteno hoasasert felel.
+	 *  Alapimplementacio pedig false-t ad vissza. lsd.: lyuk
+	 *  @param amount: asas mennyisege
+	 *  @author Csonge Bence
+	 */
 	public boolean digSnow(int amount) 
 	{
 		return false;
 	}
 
-	// Tárgy kiszabadítása jégbõl. Késõbb a mezõn található tárgyak közé kerül a kiszabadított tárgy.
+	/*
+	 *  A leszarmazottak maguk valositjak meg.
+	 *  Alapimplementacio pedig nem csinal semmit. lsd.: lyuk
+	 *  Feladata: befagyott targy kiszedese jegbol, mezon elhelyezese
+	 *  @param p: a jatekos, aki kiszabaditja a targyat a jegbol
+	 *  @author Csonge Bence
+	 */
 	public void removeItemFromIce(Player p) {}
 	
-	// Játékos mentése adott irányba.
+	/*
+	 * A leszarmazottak valositjak meg.
+	 * Alapimplementacio nem csinal semmit, mivel nem minden mezorol lehet jatekost menteni. lsd.: stabil mezo
+	 * Feladata: jatekos mozditasa biztonsagos mezore.
+	 * @param safeField: biztonsagos mezo, ahova mozditas tortenik
+	 * @author Csonge Bence
+	 */
 	public boolean savePerson(Field safeField)
 	{
 		return false;
 	}
 	
 	
-	// Iglu elhelyezése a mezõn.
+	/*
+	 * A leszarmazottak valositjak meg.
+	 * Alapimplementacio nem csinal semmit, mivel nem minden mezore lehet epiteni. lsd.: lyuk
+	 * Feladata: parameterkent kapott epulet elhelyezese a mezon.
+	 * @param b: epulet, amit el kell helyezni a mezon
+	 * @author Csonge Bence
+	 */
 	public boolean buildBuilding(Building b) 
 	{
 		return false;
 	}
 	
+	/*
+	 * A leszarmazottak valositjak meg.
+	 * Alapimplementacio nem csinal semmit, mivel nem minden mezore lehet epiteni, emiatt az ottani epulet nem tick-elheto. lsd.: lyuk
+	 * Feladata: mezo epuletenek tick-elese.
+	 * @author Csonge Bence
+	 */
 	public void tickBuilding() {}
 	
+	/*
+	 * A tovabbiakban getter/setter, valamint teszteleshez hasznalt metodusok talalhatok.
+	 */
 	
-	// Visszaadja a szomszédot adott irányból. Változik még, jelenleg csak a forgatókönyvhöz lett beállítva..
 	public Field getNeighbour(int num)
 	{
 		return neighbours.get(num);

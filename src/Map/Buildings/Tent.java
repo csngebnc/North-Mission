@@ -17,7 +17,7 @@ public class Tent implements Item, Building{
 	}
 
 	/*
-	 * A tick() metódus jelen esetben true értékkel tér vissza, mivel egy sátor élettartama egy körre szól.
+	 * A tick() metodus jelen esetben true ertekkel ter vissza, mivel egy sator elettartama egy korre szol.
 	 * @author Csonge Bence
 	 */
 	@Override
@@ -26,8 +26,8 @@ public class Tent implements Item, Building{
 	}
 
 	/*
-	 * Az attack() metódus jelen esetben true értékkel tér vissza, mivel egy olyan mezõn meg lehet játékosokat megtámadni,
-	 * ahol sátor van felépítve.
+	 * Az attack() metodus jelen esetben true ertekkel ter vissza, mivel egy olyan mezon meg lehet jatekosokat megtamadni,
+	 * ahol sator van felepítve.
 	 * @author Csonge Bence
 	 */
 	@Override
@@ -36,7 +36,7 @@ public class Tent implements Item, Building{
 	}
 
 	/*
-	 * A sátor példány eldobása egy mezõre, mely átveszi a példányt.
+	 * A sator peldany eldobasa egy mezore, mely atveszi a peldanyt.
 	 * @author Csonge Bence
 	 */
 	@Override
@@ -51,7 +51,7 @@ public class Tent implements Item, Building{
 	}
 
 	/*
-	 * Teszteléshez
+	 * Teszteleshez
 	 */
 	@Override
 	public void Properties() {
