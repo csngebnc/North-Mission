@@ -17,6 +17,11 @@ import Map.Field;
 import Map.IceField;
 import Map.Map;
 
+/**
+ * A játékosokat reprezentáló absztrakt osztály.
+ * Leszármazottai az Eskimo és a Scientist.
+ * @author Zalan
+ */
 public abstract class Player extends Character
 {
 	protected String name;
@@ -27,7 +32,7 @@ public abstract class Player extends Character
 	protected ArrayList<Item> inventory;
 	public abstract void doSkill();
 	
-	/*
+	/**
 	 * A Player konstruktora.
 	 * Inicializáljuk az inventory, isDrowning, dSuitOn, health tulajdonságokat.
 	 * @author Zalan
@@ -39,7 +44,7 @@ public abstract class Player extends Character
 		health = 3;
 	}
 
-	/*
+	/**
 	 * Játékos inventory-jának megjelenítése.
 	 * @author Zalan
 	 */
@@ -62,7 +67,7 @@ public abstract class Player extends Character
 		}
 	}
 	
-	/*
+	/**
 	 * A játékos köre.
 	 * A játékos 3 staminával kezdi a körét. Ha fuldoklik, és nincs rajta búvárruha akkor meghalt, és a játékosok elvesztették a játékot.
 	 * Ezután, ha van még staminája, akkor szándékainak megfelelõen cselekedhet.
@@ -133,7 +138,7 @@ public abstract class Player extends Character
 		}
 	}
 	
-	/*
+	/**
 	 * Búvárruha használat.
 	 * Ha a játékoson volt már búvárruha, akkor azt leveszi és az inventory-jába teszi, ha nem volt még rajta akkor felveszi.
 	 * @author Zalan
@@ -159,7 +164,7 @@ public abstract class Player extends Character
 			return false;
 	}
 	
-	/*
+	/**
 	 * Játékos életének változtatása 'n' egységgel
 	 * @author Zalan
 	 * @param n ennyivel változik a játékos élete
@@ -172,7 +177,7 @@ public abstract class Player extends Character
 			Game.loseGame();
 	}
 	
-	/*
+	/**
 	 * Játékos staminájának csökkentése 1-gyel.
 	 * @author Zalan
 	 */
@@ -182,7 +187,7 @@ public abstract class Player extends Character
 	}
 	
 	
-	/*
+	/**
 	 * A játékos fuldoklásának beállítása.
 	 * @author Zalan
 	 */
@@ -190,7 +195,7 @@ public abstract class Player extends Character
 		isDrowning = true;
 	}
 	
-	/*
+	/**
 	 * A játékos megmentésre kerül fuldokló helyzetbõl.
 	 * A játékos a paraméterként kapott field-re helyezõdik, és az isDrowning értéke false lesz.
 	 * @author Zalan
@@ -202,7 +207,7 @@ public abstract class Player extends Character
 		return true;
 	}
 	
-	/*
+	/**
 	 * Egy tárgy eltávolítása a játékos inventory-jából.
 	 * @author Zalan
 	 * @param i ezen a sorszámú Item-et távolítjuk el az inventory-ból
@@ -211,7 +216,7 @@ public abstract class Player extends Character
 		inventory.remove(i);
 	}
 		
-	/*
+	/**
 	 * Játékos mezõjének beállítása.
 	 * @author Zalan
 	 * @param f a field új értéke
@@ -221,7 +226,7 @@ public abstract class Player extends Character
 		field = f;
 	}
 	
-	/*
+	/**
 	 * Játékos mezõjének lekérdezése.
 	 * @author Zalan
 	 */
@@ -230,7 +235,7 @@ public abstract class Player extends Character
 		return field;
 	}
 	
-	/*
+	/**
 	 * Játékos fuldoklásának beállítása a kapott paraméterre.
 	 * @author Zalan
 	 * @param b az isDrowning értéke
@@ -240,7 +245,7 @@ public abstract class Player extends Character
 		isDrowning = b;
 	}
 	
-	/*
+	/**
 	 * Játékos nevének lekérdezése.
 	 * @author Zalan
 	 */
@@ -249,7 +254,7 @@ public abstract class Player extends Character
 		return name;
 	}
 	
-	/*
+	/**
 	 * Játékos nevének beállítása.
 	 * @author Zalan
 	 * @param n az új név
@@ -258,7 +263,7 @@ public abstract class Player extends Character
 		name = n;
 	}
 	
-	/*
+	/**
 	 * A metódus visszaadja, hogy van-e a játékoson búvárruha.
 	 * @author Zalan
 	 */
@@ -267,7 +272,7 @@ public abstract class Player extends Character
 		return dSuitOn;
 	}
 	
-	/*
+	/**
 	 * A metódus beállítja, hogy van-e a játékoson búvárruha.
 	 * @author Zalan
 	 * @param b a dSuitOn új értéke
@@ -277,7 +282,7 @@ public abstract class Player extends Character
 		dSuitOn=b;
 	}
 
-	/*
+	/**
 	 * A metódus visszaadja a játékos inventory-jának i-edik elemét.
 	 * @author Zalan
 	 * @param i ezen sorszámú elemet adjuk vissza
@@ -288,7 +293,7 @@ public abstract class Player extends Character
 		return inventory.get(i);
 	}
 	
-	/*
+	/**
 	 * A játékos staminájának beállítása.
 	 * @author Zalan
 	 * @param s stamina új értéke
@@ -298,7 +303,7 @@ public abstract class Player extends Character
 		stamina = s;
 	}
 	
-	/*
+	/**
 	 * A játékos életének beállítása beállítása.
 	 * @author Zalan
 	 * @param h health új értéke
@@ -308,7 +313,7 @@ public abstract class Player extends Character
 		health = h;
 	}
 	
-	/*
+	/**
 	 * A metódus új, üres inventory-t hoz létre a játékosnak.
 	 * @author Zalan
 	 */
@@ -317,7 +322,7 @@ public abstract class Player extends Character
 		inventory=new ArrayList<Item>();
 	}
 	
-	/*
+	/**
 	 * A metódus visszatér a játékos inventory-jával.
 	 * @author Zalan
 	 */
@@ -326,7 +331,7 @@ public abstract class Player extends Character
 		return inventory;
 	}
 	
-	/*
+	/**
 	 * A metódus visszatér a játékos staminájával.
 	 * @author Zalan
 	 */
@@ -335,7 +340,7 @@ public abstract class Player extends Character
 		return stamina;
 	}
 	
-	/*
+	/**
 	 * A játékos a paraméterként kapott karaktert összeütközteti saját magával.
 	 * @author Zalan
 	 * @param c a karakter akivel összeütköztetjük magunkat
@@ -344,7 +349,7 @@ public abstract class Player extends Character
 		c.hitBy(this);
 	}
 
-	/*
+	/**
 	 * Ha a játékos jegesmedvével ütközött, akkor a játékot elveszítették a játékosok.
 	 * @author Zalan
 	 * @param pb a jegesmedve amivel a játékos összeütközött
@@ -354,7 +359,7 @@ public abstract class Player extends Character
 		Game.loseGame();
 	}
 	
-	/*
+	/**
 	 * Teszteléshez
 	 */
 	@Override
