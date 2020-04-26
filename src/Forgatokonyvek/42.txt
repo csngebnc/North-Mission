@@ -1,4 +1,7 @@
 initgame
-setfoundgunparts 3
+setfoundgunparts 2
 step 3 2
+step 1 2
+statfield 11
+statfoundgunparts
 wingame

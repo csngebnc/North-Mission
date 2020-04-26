@@ -169,7 +169,7 @@ public abstract class Player extends Character
 	
 	
 	public void removeItem(Item i) {
-		field.removeItemFromIce(this);
+		inventory.remove(i);
 	}
 	
 	// Játékos mezõjének beállítása

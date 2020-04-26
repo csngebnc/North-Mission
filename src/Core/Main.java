@@ -89,7 +89,7 @@ public class Main {
 						game.callBlizzard();
 						break;
 					case "setfoundgunparts":
-						game.setFoundGunParts(arg.get(0)-1);
+						game.setFoundGunParts(arg.get(0));
 						break;
 					case "doturn":
 						game.characters.get(arg.get(0)-1).doTurn();
@@ -120,10 +120,6 @@ public class Main {
 						break;
 					case "wingame":
 						Game.winGame(game.characters.get(0).getField());
-					//Enyémek---------------------------------------
-					case "getcurrentplayer":
-						Player currentplayer = (Player) game.getCharacters().get(game.getRoundNum() % game.getCharacters().size());
-						System.out.println(currentplayer.getName());
 						break;
 					case "setfrozenitem":
 						Item item;
@@ -260,7 +256,6 @@ public class Main {
 						break;
 				}
 			}
-			
 		}
 	}
 }
