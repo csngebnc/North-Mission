@@ -46,16 +46,16 @@ public abstract class Character {
 	/**
 	 * A karakter megmentésre kerül fuldokló helyzetbõl.
 	 * Leszármazottak saját maguk valósítják meg.
-	 * @author Zalan
 	 * @param f erre a fieldre kerül a megmentett karakter.
+	 * @author Zalan
 	 */
 	public abstract boolean save(Field f);
 	
 	/**
 	 * A karakter a paraméterként kapott karaktert összeütközteti saját magával.
 	 * Leszármazottak saját maguk valósítják meg.
-	 * @author Zalan
 	 * @param c ezen karaktert ütközteti össze magával.
+	 * @author Zalan
 	 */
 	public abstract void collideWith(Character c);
 	
@@ -63,24 +63,24 @@ public abstract class Character {
 	/**
 	 * Karakter ütközése jegesmedvével.
 	 * Leszármazottak saját maguk valósítják meg.
-	 * @author Zalan
 	 * @param pb a jegesmedve, akivel ütközött.
+	 * @author Zalan
 	 */
 	public void hitBy(PolarBear pb) {}
 	
 	/**
 	 * Karakter ütközése játékossal.
 	 * Leszármazottak saját maguk valósítják meg.
-	 * @author Zalan
 	 * @param pl a játékos, akivel ütközött.
+	 * @author Zalan
 	 */
 	public void hitBy(Player pl) {}
 	
 	
 	/**
 	 * Karakter mezõjének beállítása.
-	 * @author Zalan
 	 * @param f a field új értéke.
+	 * @author Zalan
 	 */
 	public void setField(Field f) {
 		field = f;

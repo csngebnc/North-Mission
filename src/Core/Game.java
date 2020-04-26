@@ -143,7 +143,7 @@ public class Game {
 		System.out.println("Found gunparts incremented, num: "+foundGunParts);		
 	}
 	
-	/**
+	/*
 	 * A tovabbiakban getter/setter, valamint a teszteleshez szukseges metodusok talalhatok.
 	 */
 	

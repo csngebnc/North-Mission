@@ -6,19 +6,16 @@ import Player.Player;
 import Map.Field;
 
 /**
- * 
- * @author Norbi
  * Segítségével egy lyukba esett játékos kimenthetõ. 
  * Ha a mentés sikeres, a játékos stamináját egy egységgel csökkenti
+ * @author Norbi
  */
 public class Rope extends Throwable
 {
 	/**
 	 *  Egy lyukba esett játékos kimentése.
-	 *  
-	 *  
-	 *  @author Norbi
 	 *  @param p a játékos aki használja az ásót.
+	 *  @author Norbi
 	 */
 	public void use(Player p) 
 	{

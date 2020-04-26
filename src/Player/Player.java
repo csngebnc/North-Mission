@@ -209,8 +209,8 @@ public abstract class Player extends Character
 	
 	/**
 	 * Egy tárgy eltávolítása a játékos inventory-jából.
-	 * @author Zalan
 	 * @param i ezen a sorszámú Item-et távolítjuk el az inventory-ból
+	 * @author Zalan
 	 */
 	public void removeItem(Item i) {
 		inventory.remove(i);
@@ -218,8 +218,8 @@ public abstract class Player extends Character
 		
 	/**
 	 * Játékos mezõjének beállítása.
-	 * @author Zalan
 	 * @param f a field új értéke
+	 * @author Zalan
 	 */
 	public void setField(Field f) 
 	{
@@ -237,8 +237,8 @@ public abstract class Player extends Character
 	
 	/**
 	 * Játékos fuldoklásának beállítása a kapott paraméterre.
-	 * @author Zalan
 	 * @param b az isDrowning értéke
+	 * @author Zalan
 	 */
 	public void setIsDrowning(boolean b)
 	{
@@ -256,8 +256,8 @@ public abstract class Player extends Character
 	
 	/**
 	 * Játékos nevének beállítása.
-	 * @author Zalan
 	 * @param n az új név
+	 * @author Zalan
 	 */
 	public void setName(String n) {
 		name = n;
@@ -274,8 +274,8 @@ public abstract class Player extends Character
 	
 	/**
 	 * A metódus beállítja, hogy van-e a játékoson búvárruha.
-	 * @author Zalan
 	 * @param b a dSuitOn új értéke
+	 * @author Zalan
 	 */
 	public void setdSuitOn(boolean b)
 	{
@@ -284,8 +284,8 @@ public abstract class Player extends Character
 
 	/**
 	 * A metódus visszaadja a játékos inventory-jának i-edik elemét.
-	 * @author Zalan
 	 * @param i ezen sorszámú elemet adjuk vissza
+	 * @author Zalan
 	 */
 	public Item getItem(int i) {
 		if(inventory.size() == 0 || i >= inventory.size())
@@ -295,8 +295,8 @@ public abstract class Player extends Character
 	
 	/**
 	 * A játékos staminájának beállítása.
-	 * @author Zalan
 	 * @param s stamina új értéke
+	 * @author Zalan
 	 */
 	public void setStamina(int s)
 	{
@@ -305,8 +305,8 @@ public abstract class Player extends Character
 	
 	/**
 	 * A játékos életének beállítása beállítása.
-	 * @author Zalan
 	 * @param h health új értéke
+	 * @author Zalan
 	 */
 	public void setHealth(int h)
 	{
@@ -342,8 +342,8 @@ public abstract class Player extends Character
 	
 	/**
 	 * A játékos a paraméterként kapott karaktert összeütközteti saját magával.
-	 * @author Zalan
 	 * @param c a karakter akivel összeütköztetjük magunkat
+	 * @author Zalan
 	 */
 	public void collideWith(Character c) {
 		c.hitBy(this);
@@ -351,8 +351,8 @@ public abstract class Player extends Character
 
 	/**
 	 * Ha a játékos jegesmedvével ütközött, akkor a játékot elveszítették a játékosok.
-	 * @author Zalan
 	 * @param pb a jegesmedve amivel a játékos összeütközött
+	 * @author Zalan
 	 */
 	@Override
 	public void hitBy(PolarBear pb) {

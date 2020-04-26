@@ -55,8 +55,8 @@ public class PolarBear extends Character{
 
 	/**
 	 * A jegesmedve a paraméterként kapott karaktert összeütközteti saját magával.
-	 * @author Zalan
 	 * @param c a karakter akivel a jegesmedve összeütközteti magát.
+	 * @author Zalan
 	 */
 	@Override
 	public void collideWith(Character c) {
@@ -65,8 +65,8 @@ public class PolarBear extends Character{
 
 	/**
 	 * Ha a jegesmedve játékossal ütközött, akkor a játékot elveszítették a játékosok.
-	 * @author Zalan
 	 * @param p a játékos, akivel a jegesmedve összeütközött.
+	 * @author Zalan
 	 */
 	@Override
 	public void hitBy(Player p) {

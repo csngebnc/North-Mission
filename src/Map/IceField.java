@@ -6,18 +6,18 @@ import Items.Item;
 import Player.Player;
 import Player.Character;
 
-/**
+/*
  * A normalis jegmezo osztalya.
  * @author Csonge Bence
  */
 public class IceField extends Field 
 {
-	/**
+	/*
 	 * A mezobe befagyott targy
 	 * @author Csonge Bence
 	 */
 	protected Item frozenItem;
-	/**
+	/*
 	 * A mezon levo targyak
 	 * @author Csonge Bence
 	 */

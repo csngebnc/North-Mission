@@ -1,11 +1,10 @@
 package Items;
 
 /**
- * 
- * @author Norbi
  * Pisztoly rakétáját reprezentálja
+ * @author Norbi
  */
 public class Rocket extends GunPart
 {
-	// Nincs rá forgatókönyv, Barrel tökéletesen bemutatja.
+
 }

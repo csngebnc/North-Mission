@@ -13,9 +13,8 @@ public class Food extends Throwable
 	 * Egy élelem elfogyasztásával eggyel nõ a játékos élete.
 	 * Ennek a függvénynek a meghívása esetén a tárgy megnöveli a
 	 * paraméterként kapott játékos testhõjét eggyel.
-	 * 
-	 * @author Norbi
 	 * @param p a játékos aki használja az ételt.
+	 * @author Norbi
 	 */
 	public void use(Player p) 
 	{

@@ -3,9 +3,8 @@ package Items;
 import Player.Player;
 
 /**
- * 
- * @author Norbi
  * Pisztolycsövet reprezentáló osztály
+ * @author Norbi
  */
 public class Barrel extends GunPart
 {

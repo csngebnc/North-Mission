@@ -3,9 +3,8 @@ package Items;
 import Player.Player;
 
 /**
- * 
- * @author Norbi
  * Törékeny ásó Shovel osztály leszármazottja.
+ * @author Norbi
  */
 public class LimitedShovel extends Shovel{
 	
@@ -22,9 +21,8 @@ public class LimitedShovel extends Shovel{
 	 * Amennyiben a remainingUses értéke nagyobb mint nulla, akkor 2
 	 * egységnyi hóréteget eltávolít a játékos mezõjérõl, ha van rajta hó. Ezután a remainingUses
 	 * értéke eggyel csökken.
-	 *
-	 * @author Norbi
 	 * @param p a játékos aki használja a limitált ásót.
+	 * @author Norbi
 	 */
 	public void use(Player p) 
 	{
