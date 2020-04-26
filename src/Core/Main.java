@@ -16,18 +16,19 @@ import Map.Buildings.Tent;
 import Player.*;
 import Player.Character;
 
+/**
+ * Kezdetleges Main osztály, a forgatókönyvek megjelenítéséhez, valamint azok végrehajtásához van rá szükség.
+ * A késõbbiekben átalakításra kerül, úgy, hogy a játék vezérlését végezze.
+ */
+
 public class Main {
 	
 	/**
-	 * Kezdetleges Main osztály, a forgatókönyvek megjelenítéséhez, valamint azok végrehajtásához van rá szükség.
-	 * A késõbbiekben átalakításra kerül, úgy, hogy a játék vezérlését végezze.
+	 * Tárolja, hogy melyik forgatókönyv kerül végrehajtásra.
 	 */
-	
-	public static int FORGATOKONYV_SZAMA; // Tárolja, hogy melyik forgatókönyv kerül végrehajtásra.
-	public static String tabok = ""; // Tabulátorokat tartalmaz a megfelelõ indentálás érdekében.
+	public static int FORGATOKONYV_SZAMA;
 
 	public static void main(String[] args) throws IOException {
-		 // A játék, amin végrehajtjuk a forgatókönyveket.
 		Game game = new Game();
 		game.Reset();
 		
