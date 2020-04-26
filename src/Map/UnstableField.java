@@ -19,7 +19,7 @@ public class UnstableField extends IceField
 	{
 		c.setField(this);
 		characters.add(c);
-		if(characters.size()>=maxplayers) {
+		if(characters.size()>maxplayers) {
 			Game.loseGame();
 			return;
 		}else {
