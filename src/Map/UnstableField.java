@@ -5,9 +5,13 @@ import Core.Game;
 import Items.Item;
 import Player.Character;
 
+/**
+ * Az instabil mezo osztalya.
+ * @author Csonge Bence
+ */
 public class UnstableField extends IceField
 {
-	/*
+	/**
 	 * Instabil mezo konstruktora, alapertelmezett ertek beallitasa.
 	 * Jelenleg tesztek miatt alapertelmezetten nem tartalmaz targyat, paranccsal allithato be egy targy a mezore.
 	 * @author Csonge Bence
@@ -19,7 +23,7 @@ public class UnstableField extends IceField
 		maxplayers = (int)Math.random()*(Game.getPlayerCount()-1);
 	}
 	
-	/*
+	/**
 	 * Karakter atvetele egy masik mezotol. Amennyiben az atvetel utan a mezon tobb karakter tartozkodik,
 	 * mint a teherbirasa, akkor atfordul, a jatek pedig vegeter.
 	 * @param c: atvett karakter
@@ -47,7 +51,7 @@ public class UnstableField extends IceField
 		}
 	}
 	
-	/*
+	/**
 	 * A tovabbi metodusok getter/setter, valamint a teszteleshez hasznalt metodusok.
 	 */
 	

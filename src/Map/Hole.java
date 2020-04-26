@@ -5,9 +5,13 @@ import java.io.InputStreamReader;
 import Core.Game;
 import Player.Character;
 
+/**
+ * A lyuk mezo osztalya.
+ * @author Csonge Bence
+ */
 public class Hole extends Field 
 {
-	/*
+	/**
 	 * Lyuk konstruktora, alapertelmezett ertekek beallitasa.
 	 * @author Csonge Bence
 	 */
@@ -17,7 +21,7 @@ public class Hole extends Field
 	}
 	
 	
-	/*
+	/**
 	 * Amennyiben legalabb egy karakter van a mezon, akkor onnan valasztunk egyet, es megprobaljuk kimenteni a save() metodusaval.
 	 * Visszater a mentes sikeressegevel.
 	 * @param safeField: a mezo ahova kihuzzuk.
@@ -52,7 +56,7 @@ public class Hole extends Field
 		return false;
 	}
 	
-	/*
+	/**
 	 * Jatekos fogadasa a mezore, valamint a fulladas (drown()) metodus hivasa.
 	 * @param c: atvett karakter
 	 * @author Csonge Bence
@@ -69,7 +73,7 @@ public class Hole extends Field
 		}
 	}
 	
-	/*
+	/**
 	 * A tovabbi metodusok getter/setter, valamint a teszteleshez hasznalt metodusok.
 	 */
 	
