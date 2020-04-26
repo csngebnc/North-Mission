@@ -6,33 +6,42 @@ import Map.Buildings.Building;
 import Player.Character;
 import Player.Player;
 
-
+/**
+ * A Field, azaz az altalanos mezo osztalya.
+ * @author Csonge Bence
+ */
 public abstract class Field
 {
 	/**
-	 * A mezõhöz tartozó hóréteg száma.
+	 * A mezohoz tartozo horeteg szama.
+	 * @author Csonge Bence
 	 */
 	protected int snowLayers;
 	/**
-	 * A mezõhöz tartozó teherbírás.
+	 * A mezohoz tartozo teherbiras.
+	 * @author Csonge Bence
 	 */
 	protected int maxplayers;
 	/**
-	 * A mezõhöz tartozó karakterek.
+	 * A mezohoz tartozo karakterek.
+	 * @author Csonge Bence
 	 */
 	protected ArrayList<Character> characters;
 	/**
-	 * A mezõ szomszédai
+	 * A mezo szomszedai
+	 * @author Csonge Bence
 	 */
 	protected ArrayList<Field> neighbours;
 	/**
-	 * A mezõn található épület
+	 * A mezon talalhato epulet
+	 * @author Csonge Bence
 	 */
 	protected Building building;
 	
 	/**
-	 * Az osztály konstruktora. 
-	 * Beállítja a hóréteget egy véletlenszerû számra, létrehozza az üres listákat, a buildinget null-ra állítja. 
+	 * Az osztaly konstruktora. 
+	 * Beallitja a horeteget egy veletlenszeru szamra, letrehozza az ures listakat, a buildinget null-ra allitja. 
+	 * @author Csonge Bence
 	 */
 	public Field() {
 		snowLayers = (int)Math.random()*6;
