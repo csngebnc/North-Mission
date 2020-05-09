@@ -1,4 +1,0 @@
-initgame
-polarbear 5
-tent 5
-step 1 4

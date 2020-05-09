@@ -1,7 +1,0 @@
-initgame
-giveitem 1 divingsuit
-setstamina 1 3
-setdsuiton 1 0
-statplayer 1
-useitem 1 1
-statplayer 1

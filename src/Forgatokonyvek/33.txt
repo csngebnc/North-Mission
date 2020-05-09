@@ -1,8 +1,0 @@
-initgame
-setstamina 1 3
-igloo 6
-statplayer 1
-statfield 6
-skill 1
-statplayer 1
-statfield 6

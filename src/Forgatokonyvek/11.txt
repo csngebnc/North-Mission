@@ -1,8 +1,0 @@
-initgame
-statplayer 1
-stafield 6
-statfield 11
-step 1 2
-statplayer 1
-stafield 6
-statfield 11

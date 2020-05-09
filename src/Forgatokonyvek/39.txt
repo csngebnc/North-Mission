@@ -1,8 +1,0 @@
-initgame
-setstamina 1 3
-setsnowlayers 6 0
-statplayer 1
-statfield 6
-freeitem 1 6
-statplayer 1
-statfield 6

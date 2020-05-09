@@ -1,8 +1,0 @@
-initgame
-giveitem 1 barrel
-setstamina 1 3
-statplayer 1
-statfield 6
-drop 1 1
-statplayer 1
-statfield 6

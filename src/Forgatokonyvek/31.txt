@@ -1,5 +1,0 @@
-initgame
-setstamina 2 3
-statplayer 2
-skill 2
-statplayer 2

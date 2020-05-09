@@ -1,9 +1,0 @@
-initgame
-setmaxplayers 6 3
-statplayer 2
-statfield 6
-statfield 11
-step 2 4
-statplayer 2
-statfield 6
-statfield 11

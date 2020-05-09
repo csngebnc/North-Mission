@@ -1,3 +1,0 @@
-initgame
-polarbear 7
-doturn 5

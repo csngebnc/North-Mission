@@ -1,9 +1,0 @@
-initgame
-setsnowlayers 6 0
-giveitem 1 shovel
-setstamina 1 3
-statplayer 1
-statfield 6
-useitem 1 1
-statplayer 1
-statfield 6
