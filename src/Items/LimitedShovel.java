@@ -1,6 +1,11 @@
 package Items;
 
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 import Player.Player;
+import Visual.ImgType;
 
 /**
  * Törékeny ásó Shovel osztály leszármazottja.
@@ -30,6 +35,17 @@ public class LimitedShovel extends Shovel{
 		{
 				p.drainStamina();
 				remainingUses--;
+		}
+	}
+	
+	@Override
+	public Image getImg(ImgType form) {
+		if(form==ImgType.DROPPED) {
+			return new ImageIcon("./assets/items_buildings/limited_shovel.png").getImage();
+		}else if(form==ImgType.FROZEN) {
+			return new ImageIcon("./assets/items_buildings/limited_shovel_frozen.png").getImage();
+		}else{
+			return null;
 		}
 	}
 }

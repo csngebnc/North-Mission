@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Core.Game;
+import Core.GameState;
 import Core.Main;
 import Items.Barrel;
 import Items.DivingSuit;
@@ -27,7 +28,6 @@ public abstract class Player extends Character
 	protected String name;
 	protected int health;
 	protected int stamina;
-	protected boolean isDrowning;
 	protected boolean dSuitOn;
 	protected ArrayList<Item> inventory;
 	public abstract void doSkill();
@@ -73,68 +73,62 @@ public abstract class Player extends Character
 	 * Ezután, ha van még staminája, akkor szándékainak megfelelõen cselekedhet.
 	 * @author Zalan
 	 */
-	public void doTurn() 
+	public void doTurn(Game g) 
 	{
 		stamina = 3;
 		
 		if(isDrowning && !dSuitOn)
 			Game.loseGame();
 		
-		while(stamina > 0) {
+		while(stamina > 0 && g.getState()==GameState.ONGOING) {
 			String bemenet = "";
-			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
-			
+			//BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
+			Scanner sc = new Scanner(System.in);
 			try {
-				bemenet = reader.readLine();
+				bemenet = sc.next();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
-			String[] command = bemenet.split(" ");
-			
-			switch(command[0]) {
-				case "useitem":
-					openInventory();
-					break;
-				case "step":
-					field.moveMeTo(this, Integer.parseInt(command[1]));
-					break;
-				case "skill":
-					doSkill();
-					break;
-				case "dig":
-					if(field.digSnow(1))
-						drainStamina();
-					break;
-				case "unequip":
-					if(changeSuit(null))
-						drainStamina();
-					break;
-				case "freeitem":
-					field.removeItemFromIce(this);
-					break;
-				case "pickupitem":
-					field.pickUpItem(this);
-					break;
-				case "dropitem":
-					int dropItemIndex = Integer.parseInt(command[1])-1;
-					if(inventory.size() <= dropItemIndex)
-						break;
-					Item dropItem = inventory.get(dropItemIndex);
-					if(dropItem.throwTo(field)) {
-						inventory.remove(dropItemIndex);
-						drainStamina();				
-					}
-					break;
-				case "assemble":
-					Game.winGame(field);
-					break;
-				case "pass":
-					stamina = 0;
-					break;
-				default:
-					break;
+			switch(bemenet) {
+			case "8":
+				if(field.getNeighbour(5)!=null) {
+					field.moveMeTo(this, 5);
+				}
+				break;
+			case "9":
+				if(field.getNeighbour(0)!=null) {
+					field.moveMeTo(this, 0);
+				}
+				break;
+			case "5":
+				if(field.getNeighbour(4)!=null) {
+					field.moveMeTo(this, 4);
+				}
+				break;
+			case "6":
+				if(field.getNeighbour(1)!=null) {
+					field.moveMeTo(this, 1);
+				}
+				break;
+			case "2":
+				if(field.getNeighbour(3)!=null) {
+					field.moveMeTo(this, 3);
+				}
+				break;
+			case "3":
+				if(field.getNeighbour(2)!=null) {
+					field.moveMeTo(this, 2);
+				}
+				break;
+			case "p":
+				return;
 			}
+			
+			if(isDrowning)
+				return;
+
+			g.notifyView();
 		}
 	}
 	

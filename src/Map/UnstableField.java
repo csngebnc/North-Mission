@@ -16,8 +16,8 @@ public class UnstableField extends IceField
 	 * Jelenleg tesztek miatt alapertelmezetten nem tartalmaz targyat, paranccsal allithato be egy targy a mezore.
 	 * @author Csonge Bence
 	 */
-	public UnstableField() {
-		super();
+	public UnstableField(int x, int y) {
+		super(x,y);
 		frozenItem = null;
 		itemOnGround = new ArrayList<Item>();
 		maxplayers = (int)Math.random()*(Game.getPlayerCount()-1);
@@ -32,6 +32,7 @@ public class UnstableField extends IceField
 	public void acceptCharacter(Character c)
 	{
 		c.setField(this);
+		c.setDrowning(false);
 		characters.add(c);
 		if(characters.size()>maxplayers) {
 			Game.loseGame();

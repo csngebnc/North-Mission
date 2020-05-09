@@ -1,9 +1,13 @@
 package Map;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 import Map.Buildings.Building;
 import Items.Item;
 import Player.Player;
+import Visual.ImgType;
+import Visual.View;
 import Player.Character;
 
 /*
@@ -28,8 +32,8 @@ public class IceField extends Field
 	 * Jelenleg tesztek miatt alapertelmezetten nem tartalmaz targyat, paranccsal allithato be egy targy a mezore.
 	 * @author Csonge Bence
 	 */
-	public IceField() {
-		super();
+	public IceField(int x, int y) {
+		super(x,y);
 		frozenItem = null;
 		itemOnGround = new ArrayList<Item>();
 	}
@@ -42,6 +46,7 @@ public class IceField extends Field
 	public void acceptCharacter(Character c)
 	{
 		c.setField(this);
+		c.setDrowning(false);
 		characters.add(c);
 		if(building!=null){
 			if(building.attack()) {
@@ -180,4 +185,41 @@ public class IceField extends Field
 			System.out.println("Item on ground: " + i.getClass());
 		}
 	}
+
+	@Override
+	public void draw(View v) {
+		if(snowLayers==0) {
+			v.drawThing(x, y, new ImageIcon("./assets/fields/ice.png").getImage());
+		}else if(snowLayers>0 && snowLayers <5) {
+			v.drawThing(x, y, new ImageIcon("./assets/fields/snow1.png").getImage());
+		}else if(snowLayers>=5) {
+			v.drawThing(x, y, new ImageIcon("./assets/fields/snow2.png").getImage());
+		}
+		
+		if(snowLayers==0 && frozenItem!=null) {
+			v.drawThing(x+25, y+5, frozenItem.getImg(ImgType.FROZEN));
+		}
+
+		for(Item i : itemOnGround) {
+			v.drawThing(x+25, y+5, i.getImg(ImgType.DROPPED));
+		}
+		
+		if(hasBuilding())
+			v.drawThing(x, y-20, building.getImg(ImgType.BUILT));
+		
+		for(Character c : characters) {
+			c.draw(v);
+		}
+		
+	}
+	
+	public void setBuilding(Building b) {
+		this.building = b;
+	}
+	
+	public void addItem(Item i) {
+		itemOnGround.add(i);
+	}
+	
+	
 }

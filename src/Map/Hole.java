@@ -2,8 +2,11 @@ package Map;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import javax.swing.ImageIcon;
+
 import Core.Game;
 import Player.Character;
+import Visual.View;
 
 /**
  * A lyuk mezo osztalya.
@@ -15,8 +18,8 @@ public class Hole extends Field
 	 * Lyuk konstruktora, alapertelmezett ertekek beallitasa.
 	 * @author Csonge Bence
 	 */
-	public Hole() {
-		super();
+	public Hole(int x, int y) {
+		super(x,y);
 		maxplayers = (int)Math.random()*Game.getPlayerCount();
 	}
 	
@@ -88,5 +91,32 @@ public class Hole extends Field
 		{
 			System.out.println("Character on field: " + c.getName());
 		}
+	}
+
+	@Override
+	public void generateBlizzard() 
+	{
+		if(characters.isEmpty())
+			snowLayers += Math.random()*5;
+		
+		if(building == null)
+			for(Character c : characters)
+				c.alterHealth(-1);
+	}
+
+	@Override
+	public void draw(View v) {
+		if(snowLayers==0) {
+			v.drawThing(x, y, new ImageIcon("./assets/fields/lyuk.png").getImage());
+		}else if(snowLayers>0 && snowLayers <5) {
+			v.drawThing(x, y, new ImageIcon("./assets/fields/snow1.png").getImage());
+		}else if(snowLayers>=5) {
+			v.drawThing(x, y, new ImageIcon("./assets/fields/snow2.png").getImage());
+		}
+		
+		for(Character c : characters) {
+			c.draw(v);
+		}
+		
 	}
 }

@@ -1,8 +1,13 @@
 package Items;
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+
+import javax.swing.ImageIcon;
+
 import Core.Main;
 import Player.Player;
+import Visual.ImgType;
 import Map.Field;
 
 /**
@@ -38,5 +43,16 @@ public class Rope extends Throwable
 		if(answer >=0 && answer <= fields) 
 			if(safeField.getNeighbour(answer-1).savePerson(safeField))
 				p.drainStamina();
+	}
+	
+	@Override
+	public Image getImg(ImgType form) {
+		if(form==ImgType.DROPPED) {
+			return new ImageIcon("./assets/items_buildings/rope.png").getImage();
+		}else if(form==ImgType.FROZEN) {
+			return new ImageIcon("./assets/items_buildings/rope_frozen.png").getImage();
+		}else{
+			return null;
+		}
 	}
 }

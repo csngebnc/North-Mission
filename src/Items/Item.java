@@ -1,14 +1,17 @@
 package Items;
+import java.awt.Image;
+
 import Core.Main;
 import Map.Field;
 import Player.Player;
+import Visual.ImgType;
 
 /**
  * Egy interfész, ami alapul szolgál a játékban található tárgyakhoz. 
  * Kötelezõvé teszi olyan metódusok megvalósítását, melyek egy tárgy esetén létfontosságúak.
  * @author Norbi
  */
-public interface Item 
+public interface Item
 {
 	/**
 	 * Tárgy felvétele.
@@ -34,6 +37,8 @@ public interface Item
 	 * @author Norbi
 	 */
 	public abstract void pickUp();
+	
+	public Image getImg(ImgType form);
 	
 	public void Properties();
 }

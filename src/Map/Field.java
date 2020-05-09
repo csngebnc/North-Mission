@@ -5,12 +5,13 @@ import Items.Item;
 import Map.Buildings.Building;
 import Player.Character;
 import Player.Player;
+import Visual.FieldView;
 
 /**
  * A Field, azaz az altalanos mezo osztalya.
  * @author Csonge Bence
  */
-public abstract class Field
+public abstract class Field extends FieldView
 {
 	/**
 	 * A mezohoz tartozo horeteg szama.
@@ -43,10 +44,14 @@ public abstract class Field
 	 * Beallitja a horeteget egy veletlenszeru szamra, letrehozza az ures listakat, a buildinget null-ra allitja. 
 	 * @author Csonge Bence
 	 */
-	public Field() {
+	public Field(int x, int y) {
+		super(x,y);
 		snowLayers = (int)Math.random()*6;
 		characters = new ArrayList<Character>();
 		neighbours = new ArrayList<Field>();
+		for(int i=0;i<6;i++) {
+			neighbours.add(null);
+		}
 		building = null;
 	}
 	
@@ -184,14 +189,21 @@ public abstract class Field
 		return neighbours;
 	}
 	
-	public void addNeighbour(Field f) {
-		neighbours.add(f);
+	public void addNeighbour(int num, Field f) {
+		neighbours.set(num, f);
 	}
 	
 	public void setFrozenItem(Item i) {
 		
 	}
 	
+	public void addItem(Item i) {
+		
+	}
+	
+	public boolean hasBuilding() {
+		return building!=null;
+	}
 
 	public ArrayList<Character> getCharacters()
 	{
@@ -199,6 +211,10 @@ public abstract class Field
 	}
 	
 	public void setLimit(int limit) {
+		
+	}
+	
+	public void setBuilding(Building b) {
 		
 	}
 	

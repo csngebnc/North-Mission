@@ -6,6 +6,8 @@ import Items.Grip;
 import Items.Item;
 import Items.Rocket;
 import Items.Shovel;
+import Map.Buildings.Igloo;
+import Map.Buildings.Tent;
 import Core.Main;
 
 /**
@@ -58,6 +60,10 @@ public class Map
 		}
 	}
 	
+	public ArrayList<Field> getFields(){
+		return fields;
+	}
+	
 	/**
 	 * A tovabbi metodusok getter/setter, valamint teszteleshez hasznalt metodusok.
 	 */
@@ -75,94 +81,93 @@ public class Map
 	public void Reset() {
 
 		fields = new ArrayList<Field>();
-		Field f1 = new UnstableField();
-		Field f2 = new IceField();
-		Field f3 = new Hole();
-		Field f4 = new Hole();
-		Field f5 = new IceField();
-		Field f6 = new UnstableField();
-		Field f7 = new Hole();
-		Field f8 = new IceField();
-		Field f9 = new IceField();
-		Field f10 = new Hole();
-		Field f11 = new IceField();
-		Field f12 = new Hole();
-		Field f13 = new UnstableField();
+		Field f1 = new IceField(100,100);
+		Field f2 = new IceField(195,100);
+		Field f3 = new IceField(290,100);
+		Field f4 = new IceField(385,100);
 		
-		f1.addNeighbour(f2);
-		f1.addNeighbour(f3);
-		f1.addNeighbour(f8);
+		Field f5 = new IceField(147,130);
+		Field f6 = new IceField(242,130);
+		Field f7 = new IceField(337,130);
+		Field f8 = new Hole(432,130);
 		
-		f2.addNeighbour(f3);
-		f2.addNeighbour(f5);
-		f2.addNeighbour(f4);
-		f2.addNeighbour(f1);
+		Field f9 = new IceField(100,160);
+		Field f10 = new Hole(290,160);
+		Field f11 = new IceField(385,160);
 		
-		f3.addNeighbour(f6);
-		f3.addNeighbour(f5);
-		f3.addNeighbour(f2);
+		Field f12 = new UnstableField(147,190);
+		Field f13 = new IceField(242,190);
+
 		
-		f4.addNeighbour(f5);
-		f4.addNeighbour(f9);
-		f4.addNeighbour(f8);
-		f4.addNeighbour(f1);
+		f1.addNeighbour(1,f2);
+		f1.addNeighbour(2,f5);
 		
-		f5.addNeighbour(f3);
-		f5.addNeighbour(f6);
-		f5.addNeighbour(f10);
-		f5.addNeighbour(f9);
-		f5.addNeighbour(f4);
-		f5.addNeighbour(f2);
+		f2.addNeighbour(1,f3);
+		f2.addNeighbour(2,f6);
+		f2.addNeighbour(3,f5);
+		f2.addNeighbour(4,f1);
 		
-		f6.addNeighbour(f7);
-		f6.addNeighbour(f11);
-		f6.addNeighbour(f10);
-		f6.addNeighbour(f5);
-		f6.addNeighbour(f3);
+		f3.addNeighbour(1,f4);
+		f3.addNeighbour(2,f7);
+		f3.addNeighbour(3,f6);
+		f3.addNeighbour(4,f2);
 		
-		f7.addNeighbour(f11);
-		f7.addNeighbour(f6);
+		f4.addNeighbour(2,f8);
+		f4.addNeighbour(3,f7);
+		f4.addNeighbour(4,f3);
 		
-		f8.addNeighbour(f4);
-		f8.addNeighbour(f9);
-		f8.addNeighbour(f12);
-		f8.addNeighbour(f1);
+		f5.addNeighbour(0,f2);
+		f5.addNeighbour(1,f6);
+		f5.addNeighbour(3,f9);
+		f5.addNeighbour(5,f1);
 		
-		f9.addNeighbour(f5);
-		f9.addNeighbour(f10);
-		f9.addNeighbour(f13);
-		f9.addNeighbour(f12);
-		f9.addNeighbour(f8);
-		f9.addNeighbour(f4);
+		f6.addNeighbour(0,f3);
+		f6.addNeighbour(1,f7);
+		f6.addNeighbour(2,f10);
+		f6.addNeighbour(4,f5);
+		f6.addNeighbour(5,f2);
 		
-		f10.addNeighbour(f6);
-		f10.addNeighbour(f11);
-		f10.addNeighbour(f13);
-		f10.addNeighbour(f9);
-		f10.addNeighbour(f5);
+		f7.addNeighbour(0,f4);
+		f7.addNeighbour(1,f8);
+		f7.addNeighbour(2,f11);
+		f7.addNeighbour(3,f10);
+		f7.addNeighbour(4,f6);
+		f7.addNeighbour(5,f3);
 		
-		f11.addNeighbour(f7);
-		f11.addNeighbour(f13);
-		f11.addNeighbour(f10);
-		f11.addNeighbour(f6);
+		f8.addNeighbour(3,f11);
+		f8.addNeighbour(4,f7);
+		f8.addNeighbour(5,f4);
 		
-		f12.addNeighbour(f9);
-		f12.addNeighbour(f13);
-		f12.addNeighbour(f8);
+		f9.addNeighbour(0,f5);
+		f9.addNeighbour(2,f12);
 		
-		f13.addNeighbour(f10);
-		f13.addNeighbour(f11);
-		f13.addNeighbour(f12);
-		f13.addNeighbour(f9);
+		f10.addNeighbour(0,f7);
+		f10.addNeighbour(1,f11);
+		f10.addNeighbour(3,f13);
+		f10.addNeighbour(5,f6);
+		
+		f11.addNeighbour(0,f8);
+		f11.addNeighbour(4,f10);
+		f11.addNeighbour(5,f7);
+		
+		f12.addNeighbour(1,f13);
+		f12.addNeighbour(5,f9);
+		
+		f13.addNeighbour(0,f10);
+		f13.addNeighbour(4,f12);
+
 		
 		f1.setFrozenItem(new Barrel());
 		f5.setFrozenItem(new Grip());
 		f8.setFrozenItem(new Rocket());
 		f9.setFrozenItem(new Shovel());
+		f1.addItem(new Shovel());
+		f1.addItem(new Tent());
+
+		f12.setLimit(4);
+		f1.setSnowLayers(10);
 		
-		f1.setLimit(4);
-		f6.setLimit(4);
-		f13.setLimit(4);
+		f2.setBuilding(new Igloo());
 		
 		fields.add(f1);
 		fields.add(f2);

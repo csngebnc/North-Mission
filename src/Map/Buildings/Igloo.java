@@ -1,5 +1,11 @@
 package Map.Buildings;
 
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+import Visual.ImgType;
+
 /**
  * Az iglu epuletet megvalosito osztaly.
  * @author Csonge Bence
@@ -25,6 +31,12 @@ public class Igloo implements Building{
 	@Override
 	public boolean attack() {
 		return false;
+	}
+
+	@Override
+	public Image getImg(ImgType form) {
+		
+		return new ImageIcon("./assets/items_buildings/igloo.png").getImage();
 	}
 
 }

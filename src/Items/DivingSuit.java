@@ -1,8 +1,12 @@
 package Items;
+import java.awt.Image;
 import java.util.Scanner;
+
+import javax.swing.ImageIcon;
 
 import Core.Main;
 import Player.Player;
+import Visual.ImgType;
 
 /**
  * Búvárruhát reprezentáló osztály.
@@ -24,6 +28,17 @@ public class DivingSuit extends Throwable
 			p.changeSuit(this);
 			p.setdSuitOn(true);
 			p.drainStamina();
+		}
+	}
+	
+	@Override
+	public Image getImg(ImgType form) {
+		if(form==ImgType.DROPPED) {
+			return new ImageIcon("./assets/items_buildings/dsuit.png").getImage();
+		}else if(form==ImgType.FROZEN) {
+			return new ImageIcon("./assets/items_buildings/dsuit_frozen.png").getImage();
+		}else{
+			return null;
 		}
 	}
 }

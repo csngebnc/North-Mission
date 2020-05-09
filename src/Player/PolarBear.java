@@ -1,9 +1,13 @@
 package Player;
 
+import java.util.ArrayList;
 import java.util.Random;
+
+import javax.swing.ImageIcon;
 
 import Core.Game;
 import Map.Field;
+import Visual.View;
 
 /**
  * A jegesmedvét reprezentáló osztály, ami a Character leszármazottja.
@@ -15,9 +19,19 @@ public class PolarBear extends Character{
 	 * @author Zalan
 	 */
 	@Override
-	public void doTurn() {
-		int max = field.getNeighbours().size()-1;
-		field.moveMeTo(this, (int)(Math.random()*max));
+	public void doTurn(Game g) {
+		
+		ArrayList<Integer> nexts = new ArrayList<Integer>();
+		for(int i=0; i< field.getNeighbours().size();i++) {
+			if(field.getNeighbours().get(i)!=null) {
+				nexts.add(i);
+			}
+		}
+		int max = nexts.size()-1;
+		int where = nexts.get((int)(Math.random()*max));
+		System.out.println(where);
+		field.moveMeTo(this, where);
+		g.notifyView();
 	}
 
 	/**
@@ -42,6 +56,7 @@ public class PolarBear extends Character{
 	 */
 	@Override
 	public void drown() {	
+		isDrowning = true;
 	}
 	
 	/**
@@ -88,6 +103,18 @@ public class PolarBear extends Character{
 	 */
 	public String getName() {
 		return "Jegesmedve";
+	}
+
+	@Override
+	public void draw(View v) {
+		if(isDrowning) {
+			v.drawThing(field.GetX()+32, field.GetY()+14, new ImageIcon("./assets/characters/polar_drowning.png").getImage());
+		}else {
+			if(field.hasBuilding())
+				v.drawThing(field.GetX()+25, field.GetY()+10, new ImageIcon("./assets/characters/polar_standing.png").getImage());	
+			else
+				v.drawThing(field.GetX()+25, field.GetY(), new ImageIcon("./assets/characters/polar_standing.png").getImage());	
+		}	
 	}
 
 }

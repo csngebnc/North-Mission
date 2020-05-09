@@ -1,25 +1,30 @@
 package Player;
 
+import Core.Game;
 import Map.Field;
+import Visual.Viewable;
 /**
  * A karaktereket reprezentáló osztály.
  * Leszármazottai a Player és a PolarBear
  * @author Zalan
  */
-public abstract class Character {
+public abstract class Character implements Viewable{
 	
 	/**
 	 * A field amin a karakter aktuálisan tartózkodik.
 	 * @author Zalan
 	 */
 	protected Field field;
+	protected boolean isDrowning;
+	
+	public void setDrowning(boolean b) { isDrowning = b; }
 
 	/**
 	 * A karakter köre.
 	 * Leszármazottak saját maguk valósítják meg.
 	 * @author Zalan
 	 */
-	public abstract void doTurn();
+	public abstract void doTurn(Game g);
 	
 	/**
 	 * A karakter életének változtatása.

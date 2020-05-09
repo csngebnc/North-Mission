@@ -1,10 +1,13 @@
 package Player;
 
+import javax.swing.ImageIcon;
+
 import Core.Main;
 import Items.Item;
 import Map.Field;
 import Map.IceField;
 import Map.Buildings.Igloo;
+import Visual.View;
 
 /**
  * Az eszkimó kasztú játékost reprezentáló osztály.
@@ -51,6 +54,17 @@ public class Eskimo extends Player
 		System.out.println("Inventory:");
 		for(Item i : inventory) {
 			i.Properties();
+		}
+	}
+
+	@Override
+	public void draw(View v) {
+		if(!field.hasBuilding()) {
+			if(isDrowning) {
+				v.drawThing(field.GetX()+40, field.GetY()+8, new ImageIcon("./assets/characters/eskimo_drowning.png").getImage());
+			}else {
+				v.drawThing(field.GetX()+36, field.GetY(), new ImageIcon("./assets/characters/eskimo_standing.png").getImage());
+			}
 		}
 	}
 

@@ -1,5 +1,8 @@
 package Core;
 import java.util.ArrayList;
+
+import Visual.View;
+
 import Map.Field;
 import Map.Map;
 import Player.Character;
@@ -53,6 +56,9 @@ public class Game {
 	 * Game osztaly konstruktora, alapertelmezett ertekek beallitasa
 	 * @author Csonge Bence
 	 */
+	
+	private View view;
+	
 	public Game() {
 		roundNum = 0;
 		roundsUntilBlizzard = -1;
@@ -60,6 +66,11 @@ public class Game {
 		map = new Map();
 		characters = new ArrayList<Character>();
 		state = GameState.NOTSTARTED;
+		view = new View();
+	}
+	
+	public void notifyView() {
+		view.revalidate(map);
 	}
 
 	/**
@@ -75,7 +86,7 @@ public class Game {
 			map.tickBuildings();
 			roundNum++;
 			if(roundsUntilBlizzard == -1) {
-				int hovihar_esely = (int) (Math.random()*4);
+				int hovihar_esely = (int) (Math.random()*5);
 				if(hovihar_esely == 2) {
 					roundsUntilBlizzard = (int) (Math.random()*4+2);
 				}
@@ -85,13 +96,14 @@ public class Game {
 				roundsUntilBlizzard--;
 				System.out.println("Rounds until blizzard: "+roundsUntilBlizzard);
 				if(roundsUntilBlizzard == 0) {
+					roundsUntilBlizzard--;
 					callBlizzard();
 				}
 			}
 			
 			System.out.println("Round number: "+roundNum);
 			for(Character c: characters) {
-				c.doTurn();
+				c.doTurn(this);
 				if(state != GameState.ONGOING) {
 					break;
 				}
@@ -106,6 +118,7 @@ public class Game {
 	public void callBlizzard() 
 	{
 		map.callBlizzardOnFields();
+		view.revalidate(map);
 	}
 	
 	/**
@@ -128,8 +141,8 @@ public class Game {
 	 */
 	public static void loseGame() 
 	{
-		state = GameState.LOST;
-		System.out.println("The players lost the game.");
+		//state = GameState.LOST;
+		//System.out.println("The players lost the game.");
 	}
 	
 	/**
@@ -151,6 +164,10 @@ public class Game {
 		return map;
 	}
 	
+	public GameState getState() {
+		return state;
+	}
+	
 	public void setFoundGunParts(int i) {
 		foundGunParts = i;
 	}
@@ -164,11 +181,10 @@ public class Game {
 		players = 3;
 		
 		map.Reset();
-		
-		addEskimo(5, "Elton");
-		addScientist(10, "John");
-		addScientist(12, "Michael");
-		addPolarBear(1);
+
+		addScientist(0, "Elton");
+		addPolarBear(12);
+		view.revalidate(map);
 	}
 	
 	public void addScientist(int fieldIndex, String name) {

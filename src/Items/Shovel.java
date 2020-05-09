@@ -1,7 +1,12 @@
 package Items;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 import Core.Main;
 import Map.Field;
 import Player.Player;
+import Visual.ImgType;
 
 /**
  * Egy tárgy, aminek segítségével a használó játékos két egységnyi hóréteget képes eltávolítani egy mezõrõl.
@@ -21,6 +26,17 @@ public class Shovel extends Throwable
 		if(p.getField().digSnow(2))
 		{
 			p.drainStamina();
+		}
+	}
+	
+	@Override
+	public Image getImg(ImgType form) {
+		if(form==ImgType.DROPPED) {
+			return new ImageIcon("./assets/items_buildings/shovel.png").getImage();
+		}else if(form==ImgType.FROZEN) {
+			return new ImageIcon("./assets/items_buildings/shovel_frozen.png").getImage();
+		}else{
+			return null;
 		}
 	}
 	
