@@ -80,6 +80,8 @@ public class Map
 	
 	public void Reset() {
 
+		// EGY FIELD 95 hosszú, 30 mélység/sor, 47 eltolás (CSAK EGYSZER) felsõ és alsó sor között
+		
 		fields = new ArrayList<Field>();
 		Field f1 = new IceField(100,100);
 		Field f2 = new IceField(195,100);
