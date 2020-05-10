@@ -31,7 +31,7 @@ public class Food extends Throwable
 	@Override
 	public Image getImg(ImgType form) {
 		if(form==ImgType.DROPPED) {
-			return new ImageIcon("./assets/items_buildings/food_frozen.png").getImage();
+			return new ImageIcon("./assets/items_buildings/food.png").getImage();
 		}else if(form==ImgType.FROZEN) {
 			return new ImageIcon("./assets/items_buildings/food_frozen.png").getImage();
 		}else{
