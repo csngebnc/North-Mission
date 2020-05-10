@@ -1,5 +1,7 @@
 package Player;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 import Core.Main;
@@ -19,24 +21,17 @@ public class Scientist extends Player
 	 * Meghívja a mezõje revealLimit metódusát, és csökkenti a stamináját 1-gyel.
 	 * @author Zalan
 	 */
+	public Scientist() {
+		super();
+		img = new Image[2];
+		img[0]= new ImageIcon("./assets/characters/scientist_standing.png").getImage();
+		img[1] = new ImageIcon("./assets/characters/scientist_drowning.png").getImage();
+	}
+	
 	public void doSkill() 
 	{
 		field.revealLimit();
 		drainStamina();
-	}
-
-	@Override
-	public void draw(View v) {
-		int mennyit = (52/field.getCharacters().size()) * 
-				(int)Math.pow(-1, field.getCharacters().indexOf(this)) *
-				(int)(Math.ceil(((double)field.getCharacters().indexOf(this))/2));
-		if(!field.hasBuilding()) {
-			if(isDrowning) {
-				v.drawThing(field.GetX()+40+mennyit, field.GetY()+8, new ImageIcon("./assets/characters/eskimo_drowning.png").getImage());
-			}else {
-				v.drawThing(field.GetX()+36+mennyit, field.GetY(), new ImageIcon("./assets/characters/eskimo_standing.png").getImage());
-			}
-		}
 	}
 	
 }

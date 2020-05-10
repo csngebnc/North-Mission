@@ -1,5 +1,7 @@
 package Player;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 import Core.Main;
@@ -22,6 +24,13 @@ public class Eskimo extends Player
 	 * @author Zalan
 	 */
 	private boolean builtIgloo;
+	
+	public Eskimo() {
+		super();
+		img = new Image[2];
+		img[0]= new ImageIcon("./assets/characters/eskimo_standing.png").getImage();
+		img[1] = new ImageIcon("./assets/characters/eskimo_drowning.png").getImage();
+	}
 	
 	/**
  	 * Eszkimó karakter speciális képességének használata.
@@ -57,15 +66,5 @@ public class Eskimo extends Player
 		}
 	}
 
-	@Override
-	public void draw(View v) {
-		if(!field.hasBuilding()) {
-			if(isDrowning) {
-				v.drawThing(field.GetX()+40, field.GetY()+8, new ImageIcon("./assets/characters/eskimo_drowning.png").getImage());
-			}else {
-				v.drawThing(field.GetX()+36, field.GetY(), new ImageIcon("./assets/characters/eskimo_standing.png").getImage());
-			}
-		}
-	}
 
 }

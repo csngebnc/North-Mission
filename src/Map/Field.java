@@ -4,6 +4,7 @@ import Core.Game;
 import Items.Item;
 import Map.Buildings.Building;
 import Player.Character;
+import Player.Direction;
 import Player.Player;
 import Visual.FieldView;
 
@@ -74,12 +75,12 @@ public abstract class Field extends FieldView
 	 * @param next: karakter mezojenek megadott sorszamu szomszedja
 	 * @author Csonge Bence
 	 */
-	public void moveMeTo(Character c, int next) 
+	public void moveMeTo(Character c, Direction DIR) 
 	{
-		if(next >= neighbours.size())
+		if(DIR.VALUE >= neighbours.size())
 			return;
 		
-		neighbours.get(next).acceptCharacter(c);
+		neighbours.get(DIR.VALUE).acceptCharacter(c);
 		characters.remove(c);
 		c.drainStamina();
 	}
@@ -91,6 +92,7 @@ public abstract class Field extends FieldView
 	 */
 	public void revealLimit() 
 	{
+		// CONSOLOS, LECSERÉLNI
 		System.out.println("Max players: " + Game.getPlayerCount());
 	}
 	
@@ -180,9 +182,9 @@ public abstract class Field extends FieldView
 	 * A tovabbiakban getter/setter, valamint teszteleshez hasznalt metodusok talalhatok.
 	 */
 	
-	public Field getNeighbour(int num)
+	public Field getNeighbour(Direction DIR)
 	{
-		return neighbours.get(num);
+		return neighbours.get(DIR.VALUE);
 	}
 	
 	public ArrayList<Field> getNeighbours(){

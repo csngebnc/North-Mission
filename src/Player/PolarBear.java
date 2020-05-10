@@ -1,5 +1,8 @@
 package Player;
 
+import java.awt.Image;
+import java.awt.event.KeyEvent;
+import Player.Direction;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -18,9 +21,25 @@ public class PolarBear extends Character{
 	 * A jegesmedve karakter egy random szomszédos mezõre lép a körében.
 	 * @author Zalan
 	 */
+	public PolarBear() {
+		super();
+		img = new Image[2];
+		img[0]= new ImageIcon("./assets/characters/polar_standing.png").getImage();
+		img[1] = new ImageIcon("./assets/characters/polar_drowning.png").getImage();
+	}
 	@Override
-	public void doTurn(Game g) {
-		
+	public boolean doTurn(Game g, KeyEvent e) {
+		move(null);
+		g.notifyView();
+		g.nextCharacter();
+		return true;
+	}
+	
+	public void startTurn(Game g) {
+		doTurn(g, null);
+	}
+	
+	public void move(KeyEvent e) {
 		ArrayList<Integer> nexts = new ArrayList<Integer>();
 		for(int i=0; i< field.getNeighbours().size();i++) {
 			if(field.getNeighbours().get(i)!=null) {
@@ -30,8 +49,7 @@ public class PolarBear extends Character{
 		int max = nexts.size()-1;
 		int where = nexts.get((int)(Math.random()*max));
 		System.out.println(where);
-		field.moveMeTo(this, where);
-		g.notifyView();
+		field.moveMeTo(this, Direction.FromInt(where));
 	}
 
 	/**
@@ -108,12 +126,12 @@ public class PolarBear extends Character{
 	@Override
 	public void draw(View v) {
 		if(isDrowning) {
-			v.drawThing(field.GetX()+32, field.GetY()+14, new ImageIcon("./assets/characters/polar_drowning.png").getImage());
+			v.drawThing(field.GetX()+32, field.GetY()+14, img[1]);
 		}else {
 			if(field.hasBuilding())
-				v.drawThing(field.GetX()+25, field.GetY()+10, new ImageIcon("./assets/characters/polar_standing.png").getImage());	
+				v.drawThing(field.GetX()+25, field.GetY()+10, img[0]);	
 			else
-				v.drawThing(field.GetX()+25, field.GetY(), new ImageIcon("./assets/characters/polar_standing.png").getImage());	
+				v.drawThing(field.GetX()+25, field.GetY(), img[0]);	
 		}	
 	}
 

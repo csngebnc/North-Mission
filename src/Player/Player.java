@@ -1,4 +1,5 @@
 package Player;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,6 +18,7 @@ import Items.Shovel;
 import Map.Field;
 import Map.IceField;
 import Map.Map;
+import Visual.View;
 
 /**
  * A játékosokat reprezentáló absztrakt osztály.
@@ -27,7 +29,6 @@ public abstract class Player extends Character
 {
 	protected String name;
 	protected int health;
-	protected int stamina;
 	protected boolean dSuitOn;
 	protected ArrayList<Item> inventory;
 	public abstract void doSkill();
@@ -73,62 +74,60 @@ public abstract class Player extends Character
 	 * Ezután, ha van még staminája, akkor szándékainak megfelelõen cselekedhet.
 	 * @author Zalan
 	 */
-	public void doTurn(Game g) 
-	{
-		stamina = 3;
-		
-		if(isDrowning && !dSuitOn)
+	public boolean doTurn(Game g, KeyEvent e) 
+	{		
+		if(isDrowning && !dSuitOn) {
 			Game.loseGame();
+			return false;
+		}
 		
-		while(stamina > 0 && g.getState()==GameState.ONGOING) {
-			String bemenet = "";
-			//BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
-			Scanner sc = new Scanner(System.in);
-			try {
-				bemenet = sc.next();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			switch(bemenet) {
-			case "8":
-				if(field.getNeighbour(5)!=null) {
-					field.moveMeTo(this, 5);
-				}
-				break;
-			case "9":
-				if(field.getNeighbour(0)!=null) {
-					field.moveMeTo(this, 0);
-				}
-				break;
-			case "5":
-				if(field.getNeighbour(4)!=null) {
-					field.moveMeTo(this, 4);
-				}
-				break;
-			case "6":
-				if(field.getNeighbour(1)!=null) {
-					field.moveMeTo(this, 1);
-				}
-				break;
-			case "2":
-				if(field.getNeighbour(3)!=null) {
-					field.moveMeTo(this, 3);
-				}
-				break;
-			case "3":
-				if(field.getNeighbour(2)!=null) {
-					field.moveMeTo(this, 2);
-				}
-				break;
-			case "p":
-				return;
-			}
+			move(e);
+			g.notifyView();
 			
 			if(isDrowning)
+				return true;
+			
+		return stamina == 0;
+	}
+	
+	public void startTurn(Game g) {
+		stamina = 3;
+	}
+	
+	public void move(KeyEvent e) {
+		switch(e.getKeyCode()) {
+			case KeyEvent.VK_NUMPAD8:
+				if(field.getNeighbour(Direction.UPPER_LEFT)!=null) {
+					field.moveMeTo(this, Direction.UPPER_LEFT);
+				}
+				break;
+			case KeyEvent.VK_NUMPAD9:
+				if(field.getNeighbour(Direction.UPPER_RIGHT)!=null) {
+					field.moveMeTo(this, Direction.UPPER_RIGHT);
+				}
+				break;
+			case KeyEvent.VK_NUMPAD5:
+				if(field.getNeighbour(Direction.LEFT)!=null) {
+					field.moveMeTo(this, Direction.LEFT);
+				}
+				break;
+			case KeyEvent.VK_NUMPAD6:
+				if(field.getNeighbour(Direction.RIGHT)!=null) {
+					field.moveMeTo(this, Direction.RIGHT);
+				}
+				break;
+			case KeyEvent.VK_NUMPAD2:
+				if(field.getNeighbour(Direction.BOTTOM_LEFT)!=null) {
+					field.moveMeTo(this, Direction.BOTTOM_LEFT);
+				}
+				break;
+			case KeyEvent.VK_NUMPAD3:
+				if(field.getNeighbour(Direction.BOTTOM_RIGHT)!=null) {
+					field.moveMeTo(this, Direction.BOTTOM_RIGHT);
+				}
+				break;
+			case KeyEvent.VK_P:
 				return;
-
-			g.notifyView();
 		}
 	}
 	
@@ -197,7 +196,7 @@ public abstract class Player extends Character
 	 */
 	public boolean save(Field safeField) {
 		isDrowning = false;
-		field.moveMeTo(this, field.getNeighbours().indexOf(safeField));
+		field.moveMeTo(this, Direction.FromInt(field.getNeighbours().indexOf(safeField)));
 		return true;
 	}
 	
@@ -208,6 +207,20 @@ public abstract class Player extends Character
 	 */
 	public void removeItem(Item i) {
 		inventory.remove(i);
+	}
+	
+	@Override
+	public void draw(View v) {
+		int mennyit = (52/field.getCharacters().size()) * 
+				(int)Math.pow(-1, field.getCharacters().indexOf(this)) *
+				(int)(Math.ceil(((double)field.getCharacters().indexOf(this))/2));
+		if(!field.hasBuilding()) {
+			if(isDrowning) {
+				v.drawThing(field.GetX()+40+mennyit, field.GetY()+8, img[1]);
+			}else {
+				v.drawThing(field.GetX()+36+mennyit, field.GetY(), img[0]);
+			}
+		}
 	}
 		
 	/**

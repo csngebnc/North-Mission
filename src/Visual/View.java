@@ -4,10 +4,13 @@ import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyAdapter;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+import Core.Game;
 import Map.Map;
 import Map.Field;
 
@@ -15,9 +18,10 @@ public class View extends JFrame{
 	
 	private Graphics g;
 	private Canvas cv;
+	private Game game;
 	
-	
-	public View() {
+	public View(Game game) {
+		this.game = game;
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(new Dimension(1280,720));
 		this.setVisible(true);
@@ -26,6 +30,13 @@ public class View extends JFrame{
 		cv.setPreferredSize(cv.getSize());
 		this.add(cv);
 		cv.createBufferStrategy(2);
+		this.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				game.InputCame(e);
+				
+			}
+		});
 	}
 	
 	public void revalidate(Map map) {

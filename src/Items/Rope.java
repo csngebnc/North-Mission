@@ -19,11 +19,13 @@ public class Rope extends Throwable
 {
 	/**
 	 *  Egy lyukba esett játékos kimentése.
-	 *  @param p a játékos aki használja az ásót.
+	 *  @param p a játékos aki használja a kötelet.
 	 *  @author Norbi
 	 */
 	public void use(Player p) 
 	{
+		// CONSOLOS VÁLTOZAT, LE KELL CSERÉLNI VIZUÁLISRA
+		/*
 		Field safeField = p.getField();
 		int fields = safeField.getNeighbours().size()-1;
 		
@@ -43,6 +45,7 @@ public class Rope extends Throwable
 		if(answer >=0 && answer <= fields) 
 			if(safeField.getNeighbour(answer-1).savePerson(safeField))
 				p.drainStamina();
+		*/
 	}
 	
 	@Override

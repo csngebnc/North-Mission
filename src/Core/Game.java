@@ -1,4 +1,5 @@
 package Core;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import Visual.View;
@@ -58,6 +59,7 @@ public class Game {
 	 */
 	
 	private View view;
+	private Character activeCharacter;
 	
 	public Game() {
 		roundNum = 0;
@@ -65,8 +67,11 @@ public class Game {
 		foundGunParts = 0;
 		map = new Map();
 		characters = new ArrayList<Character>();
-		state = GameState.NOTSTARTED;
-		view = new View();
+		state = GameState.ONGOING;
+		view = new View(this);
+		Reset();
+		activeCharacter = characters.get(0);
+		activeCharacter.startTurn(this);
 	}
 	
 	public void notifyView() {
@@ -81,8 +86,7 @@ public class Game {
 	 */
 	public void doRound() 
 	{
-		state = GameState.ONGOING;
-		while(state == GameState.ONGOING) {
+		if(state == GameState.ONGOING) {
 			map.tickBuildings();
 			roundNum++;
 			if(roundsUntilBlizzard == -1) {
@@ -102,12 +106,28 @@ public class Game {
 			}
 			
 			System.out.println("Round number: "+roundNum);
-			for(Character c: characters) {
-				c.doTurn(this);
-				if(state != GameState.ONGOING) {
-					break;
-				}
-			}
+		}
+	}
+	
+	public void nextCharacter() {
+		if(characters.indexOf(activeCharacter) == characters.size()-1) {
+			doRound();
+			activeCharacter = characters.get(0);
+			activeCharacter.startTurn(this);
+		}else {
+			activeCharacter = characters.get(characters.indexOf(activeCharacter)+1);
+			activeCharacter.startTurn(this);
+		}
+	}
+	
+	
+	public void InputCame(KeyEvent e) {
+		if(state!=GameState.ONGOING) {
+			return;
+		}
+		boolean callNext = activeCharacter.doTurn(this, e);
+		if(callNext) {
+				nextCharacter();
 		}
 	}
 	
@@ -141,8 +161,8 @@ public class Game {
 	 */
 	public static void loseGame() 
 	{
-		//state = GameState.LOST;
-		//System.out.println("The players lost the game.");
+		state = GameState.LOST;
+		System.out.println("The players lost the game.");
 	}
 	
 	/**
@@ -183,7 +203,9 @@ public class Game {
 		map.Reset();
 
 		addScientist(0, "Elton");
-		addPolarBear(12);
+		addEskimo(0, "Elton");
+		addPolarBear(11);
+
 		view.revalidate(map);
 	}
 	

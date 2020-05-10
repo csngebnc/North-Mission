@@ -1,5 +1,8 @@
 package Player;
 
+import java.awt.Image;
+import java.awt.event.KeyEvent;
+
 import Core.Game;
 import Map.Field;
 import Visual.Viewable;
@@ -16,6 +19,8 @@ public abstract class Character implements Viewable{
 	 */
 	protected Field field;
 	protected boolean isDrowning;
+	protected int stamina;
+	protected Image[] img;
 	
 	public void setDrowning(boolean b) { isDrowning = b; }
 
@@ -24,8 +29,10 @@ public abstract class Character implements Viewable{
 	 * Leszármazottak saját maguk valósítják meg.
 	 * @author Zalan
 	 */
-	public abstract void doTurn(Game g);
+	public abstract boolean doTurn(Game g, KeyEvent e);
 	
+	public abstract void move(KeyEvent e);
+	public abstract void startTurn(Game g);
 	/**
 	 * A karakter életének változtatása.
 	 * Leszármazottak saját maguk valósítják meg.
