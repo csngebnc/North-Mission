@@ -46,7 +46,7 @@ public abstract class Player extends Character
 		inventory = new ArrayList<Item>();
 		isDrowning = false;
 		dSuitOn = false;
-		health = 3;
+		health = 7;
 		currentPlayerImage = new ImageIcon("./assets/characters/current_player.png").getImage();
 	}
 
@@ -82,7 +82,8 @@ public abstract class Player extends Character
 	public boolean doTurn(Game g, KeyEvent e) 
 	{		
 		if(isDrowning && !dSuitOn) {
-			Game.loseGame();
+			alterHealth(-150);
+			g.notifyView();
 			return false;
 		}
 		

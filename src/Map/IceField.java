@@ -190,6 +190,9 @@ public class IceField extends Field
 
 	@Override
 	public void draw(View v) {
+		if(characters.size() > maxplayers)
+			return;
+		
 		if(snowLayers==0) {
 			v.drawThing(x, y, new ImageIcon("./assets/fields/ice.png").getImage());
 		}else if(snowLayers>0 && snowLayers <5) {

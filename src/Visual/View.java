@@ -52,6 +52,18 @@ public class View extends JFrame{
 				
 			}
 		});
+		
+		//Arcade Normal betûtipus regisztrálása
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		try {
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("./assets/HUD/ARCADE_N.ttf")));
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void revalidate(Map map, ArrayList<Player> players) {
@@ -81,11 +93,11 @@ public class View extends JFrame{
 			
 			//HP
 			int hp = p.getHealth();
-			int hpOffset = 16;
+			int hpOffset = 14;
 			int hpCount;
 			int hpX = x + 42;
 			int hpY = y + 33;
-			for(hpCount = 0; hpCount < hp && hpCount <= 5; hpCount++) {
+			for(hpCount = 0; hpCount < hp && hpCount < 5; hpCount++) {
 				g.drawImage(heart, hpX, hpY, null);
 				hpX += hpOffset;
 			}
@@ -95,21 +107,14 @@ public class View extends JFrame{
 				g.drawImage(heartGold, hpX, hpY, null);
 			
 			//Name
-			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			try {
-				ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("./assets/HUD/ARCADE_N.ttf")));
-			} catch (FontFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			String name = p.getName();
+			if(name.length() > 10)
+				name = name.substring(0, 7) + "...";
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.setColor(Color.WHITE);
 			Font playerFont = new Font("Arcade Normal", Font.PLAIN, 8);
 			g2d.setFont(playerFont);
-			g2d.drawString(p.getName(), x + 42, y + 26);
+			g2d.drawString(name, x + 42, y + 26);
 			
 			x += frameOffset;
 			
@@ -129,8 +134,13 @@ public class View extends JFrame{
 	 * @author Norbi
 	 */
 	public void drawThing(int x, int y, String limit) {
-		g.setFont(new Font("default", Font.BOLD, 11));
-		g.drawString(limit, x, y);
+		Graphics2D g2d = (Graphics2D) g;
+		Color color = new Color(16, 121, 181);
+		g2d.setColor(color);
+		Font playerFont = new Font("Arcade Normal", Font.PLAIN, 8);
+		g2d.setFont(playerFont);
+		g2d.drawString(limit, x, y);
+
 	}
 
 }

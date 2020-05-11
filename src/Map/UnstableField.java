@@ -35,7 +35,8 @@ public class UnstableField extends IceField
 		c.setDrowning(false);
 		characters.add(c);
 		if(characters.size()>maxplayers) {
-			Game.loseGame();
+			for(Character ci : characters)
+				ci.alterHealth(-150);
 			return;
 		}else {
 			if(building!=null){
