@@ -2,6 +2,7 @@ package Visual;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -51,6 +52,19 @@ public class View extends JFrame{
 	
 	public void drawThing(int x, int y, Image img) {
 		g.drawImage(img, x, y, null);
+	}
+	
+	/**
+	 * Szöveg vastagítása majd kiírása egy jégtábla sarkára
+	 * 
+	 * @param x mezõ x koordinátája
+	 * @param y mezõ y koordinátája
+	 * @param limit mezõ maxplayers tulajdonsága
+	 * @author Norbi
+	 */
+	public void drawThing(int x, int y, String limit) {
+		g.setFont(new Font("default", Font.BOLD, 11));
+		g.drawString(limit, x, y);
 	}
 
 }

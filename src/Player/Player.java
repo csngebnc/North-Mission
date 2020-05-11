@@ -96,35 +96,46 @@ public abstract class Player extends Character
 	
 	public void move(KeyEvent e) {
 		switch(e.getKeyCode()) {
-			case KeyEvent.VK_NUMPAD8:
+			case KeyEvent.VK_Q:
 				if(field.getNeighbour(Direction.UPPER_LEFT)!=null) {
 					field.moveMeTo(this, Direction.UPPER_LEFT);
 				}
 				break;
-			case KeyEvent.VK_NUMPAD9:
+			case KeyEvent.VK_E:
 				if(field.getNeighbour(Direction.UPPER_RIGHT)!=null) {
 					field.moveMeTo(this, Direction.UPPER_RIGHT);
 				}
 				break;
-			case KeyEvent.VK_NUMPAD5:
+			case KeyEvent.VK_A:
 				if(field.getNeighbour(Direction.LEFT)!=null) {
 					field.moveMeTo(this, Direction.LEFT);
 				}
 				break;
-			case KeyEvent.VK_NUMPAD6:
+			case KeyEvent.VK_D:
 				if(field.getNeighbour(Direction.RIGHT)!=null) {
 					field.moveMeTo(this, Direction.RIGHT);
 				}
 				break;
-			case KeyEvent.VK_NUMPAD2:
+			case KeyEvent.VK_Y:
 				if(field.getNeighbour(Direction.BOTTOM_LEFT)!=null) {
 					field.moveMeTo(this, Direction.BOTTOM_LEFT);
 				}
 				break;
-			case KeyEvent.VK_NUMPAD3:
+			case KeyEvent.VK_X:
 				if(field.getNeighbour(Direction.BOTTOM_RIGHT)!=null) {
 					field.moveMeTo(this, Direction.BOTTOM_RIGHT);
 				}
+				break;
+			case KeyEvent.VK_S:
+				//skill használat
+				doSkill();
+				break;
+			case KeyEvent.VK_H:
+				//kézzel ásás
+				field.digSnow(1);
+				break;
+			case KeyEvent.VK_I:
+				//Itt jön felugró ablakkal az inventory
 				break;
 			case KeyEvent.VK_P:
 				return;

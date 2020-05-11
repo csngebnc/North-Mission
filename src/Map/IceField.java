@@ -16,12 +16,12 @@ import Player.Character;
  */
 public class IceField extends Field 
 {
-	/*
+	/**
 	 * A mezobe befagyott targy
 	 * @author Csonge Bence
 	 */
 	protected Item frozenItem;
-	/*
+	/**
 	 * A mezon levo targyak
 	 * @author Csonge Bence
 	 */
@@ -194,6 +194,10 @@ public class IceField extends Field
 			v.drawThing(x, y, new ImageIcon("./assets/fields/snow1.png").getImage());
 		}else if(snowLayers>=5) {
 			v.drawThing(x, y, new ImageIcon("./assets/fields/snow2.png").getImage());
+		}
+		
+		if(limitRevealed) {
+			v.drawThing(x + 85, y + 20, Integer.toString(maxplayers));
 		}
 		
 		if(snowLayers==0 && frozenItem!=null) {

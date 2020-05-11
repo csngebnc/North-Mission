@@ -41,6 +41,13 @@ public abstract class Field extends FieldView
 	protected Building building;
 	
 	/**
+	 * Jelzi ha a mezõn használták a revalLimetet
+	 * Alapértéke hamis
+	 * @author Norbi
+	 */
+	protected boolean limitRevealed = false;
+	
+	/**
 	 * Az osztaly konstruktora. 
 	 * Beallitja a horeteget egy veletlenszeru szamra, letrehozza az ures listakat, a buildinget null-ra allitja. 
 	 * @author Csonge Bence
@@ -88,12 +95,14 @@ public abstract class Field extends FieldView
 	/**
 	 * A sarkkutato karakter specialis kepessegevel ezt a metodust hivja, melynek hatasara
 	 * kiirasra kerul a mezo teherbirasa.
+	 * 
+	 * Új funkció a limitrevealed beállítása
+	 * 
 	 * @author Csonge Bence
 	 */
 	public void revealLimit() 
 	{
-		// CONSOLOS, LECSERÉLNI
-		System.out.println("Max players: " + Game.getPlayerCount());
+		limitRevealed = true;
 	}
 	
 	/**
