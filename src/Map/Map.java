@@ -107,10 +107,10 @@ public class Map
 				
 				if(fieldSeed < 75)
 					fields.add(new IceField(x, y));
-				else if(fieldSeed < 80) {
+				else if(fieldSeed < 85) {
 					fields.add(new UnstableField(x, y));
 				}
-				else if(fieldSeed < 90)
+				else if(fieldSeed < 101)
 					fields.add(new Hole(x, y));
 			}
 		}
@@ -119,6 +119,14 @@ public class Map
 		
 		for(Field f : fields)
 			f.discoverNeighbours(fields);
+		
+		int i = 0;
+		for(int row = 0; row < rows; row++) {
+			for(int column = 0; column < columns; column++) {
+				System.out.println("x: " + column + "\t-\t" + fields.get(i).GetX() + "\t y: " + row + "\t-\t" + fields.get(i).GetY());
+				i++;
+			}
+		}
 	}
 	
 	public void Reset() 

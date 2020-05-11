@@ -243,13 +243,13 @@ public abstract class Field extends FieldView
 		for(Field candidate : fields) {
 			int candX = candidate.GetX();
 			int candY = candidate.GetY();
-			if(x + 47 == candX) {
+			if(x + 48 == candX || x + 47 == candX) {
 				if(y - 30 == candY)
 					neighbours.set(Direction.UPPER_RIGHT.VALUE, candidate);
 				else if(y + 30 == candY)
 					neighbours.set(Direction.BOTTOM_RIGHT.VALUE, candidate);
 			}
-			else if(x - 47 == candX) {
+			else if(x - 48 == candX || x - 47 == candX) {
 				if(y - 30 == candY)
 					neighbours.set(Direction.UPPER_LEFT.VALUE, candidate);
 				else if(y + 30 == candY)
