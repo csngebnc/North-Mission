@@ -49,7 +49,6 @@ public class View extends JFrame{
 			@Override
 			public void keyPressed(KeyEvent e) {
 				game.InputCame(e);
-				
 			}
 		});
 		
@@ -77,8 +76,8 @@ public class View extends JFrame{
 	}
 	
 	public void drawHUD(Graphics g, ArrayList<Player> players) {
-		int x = 10;
-		int y = 10;
+		int x = 38;
+		int y = 15;
 		int frameOffset = 150;
 		for(Player p : players) {
 			

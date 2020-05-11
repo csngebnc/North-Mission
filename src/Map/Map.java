@@ -90,19 +90,19 @@ public class Map
 		int offsetY = 30;
 		int rows = 16;
 		int columns = 11;
+		int startX = 88;
+		int startY = 110;
 		
 		for(int row = 0; row < rows; row++) {
 			
-			int x = 0;
-			int y = 100 + row * offsetY;
+			int x = startX;
+			int y = startY + row * offsetY;
 			if(row%2 == 1)
 				x += offsetXRows;
 			
 			for(int column = 0; column < columns; column++) {
 				
 				double fieldSeed = Math.random()*100;
-			
-				x += offsetX;
 				
 				if(fieldSeed < 75)
 					fields.add(new IceField(x, y));
@@ -111,10 +111,12 @@ public class Map
 				}
 				else if(fieldSeed < 97)
 					fields.add(new Hole(x, y));
+				
+				x += offsetX;
 			}
 		}
 		
-		fields.set(0, new IceField(offsetX ,100));
+		fields.set(0, new IceField(startX, startY));
 		
 		for(Field f : fields)
 			f.discoverNeighbours(fields);

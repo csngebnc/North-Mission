@@ -210,7 +210,7 @@ public class Game {
 	
 	public void Reset() {
 		characters = new ArrayList<Character>();
-		playerCount = 4;
+		playerCount = 8;
 		
 		map.Reset();
 
@@ -218,6 +218,10 @@ public class Game {
 		addEskimo(0, "Joulupukkii");
 		addScientist(0, "Michael");
 		addEskimo(0, "Inu");
+		addScientist(0, "John");
+		addScientist(0, "Joe");
+		addScientist(0, "Morris");
+		addScientist(0, "Chuck");
 		addPolarBear((int)(Math.random()*30) + 60);
 
 		view.revalidate(map, players);
