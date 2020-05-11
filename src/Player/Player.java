@@ -222,9 +222,18 @@ public abstract class Player extends Character
 				(int)(Math.ceil(((double)field.getCharacters().indexOf(this))/2));
 		if(!field.hasBuilding()) {
 			if(isDrowning) {
-				v.drawThing(field.GetX()+40+charPos, field.GetY()+8, img[1]);
+				if(dSuitOn) {
+					v.drawThing(field.GetX()+40+charPos, field.GetY()+8, img[3]);
+				}else {
+					v.drawThing(field.GetX()+40+charPos, field.GetY()+8, img[1]);
+				}
 			}else {
-				v.drawThing(field.GetX()+36+charPos, field.GetY(), img[0]);
+				if(dSuitOn) {
+				v.drawThing(field.GetX()+36+charPos, field.GetY(), img[2]);
+				}
+				else {
+					v.drawThing(field.GetX()+36+charPos, field.GetY(), img[0]);
+				}
 			}
 		}
 		if(stamina > 0) {
