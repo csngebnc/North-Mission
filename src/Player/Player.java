@@ -216,6 +216,7 @@ public abstract class Player extends Character
 	}
 	
 	@Override
+<<<<<<< HEAD
 public void draw(View v) {
 	int charPos = (52/field.getCharacters().size()) * 
 			(int)Math.pow(-1, field.getCharacters().indexOf(this)) *
@@ -224,7 +225,21 @@ public void draw(View v) {
 		if(isDrowning) {
 			if(dSuitOn) {
 				v.drawThing(field.GetX()+40+charPos, field.GetY()+8, img[3]);
+=======
+	public void draw(View v) {
+		int charPos = (52/field.getCharacters().size()) * 
+				(int)Math.pow(-1, field.getCharacters().indexOf(this)) *
+				(int)(Math.ceil(((double)field.getCharacters().indexOf(this))/2));
+		if(!field.hasBuilding()) {
+			if(isDrowning) {
+				if(dSuitOn) {
+					v.drawThing(field.GetX()+40+charPos, field.GetY()+8, img[3]);
+				}else {
+					v.drawThing(field.GetX()+40+charPos, field.GetY()+8, img[1]);
+				}
+>>>>>>> refs/remotes/origin/master
 			}else {
+<<<<<<< HEAD
 				v.drawThing(field.GetX()+40+charPos, field.GetY()+8, img[1]);
 			}
 		}else {
@@ -233,6 +248,14 @@ public void draw(View v) {
 			}
 			else {
 				v.drawThing(field.GetX()+36+charPos, field.GetY(), img[0]);
+=======
+				if(dSuitOn) {
+				v.drawThing(field.GetX()+36+charPos, field.GetY(), img[2]);
+				}
+				else {
+					v.drawThing(field.GetX()+36+charPos, field.GetY(), img[0]);
+				}
+>>>>>>> refs/remotes/origin/master
 			}
 		}
 	}

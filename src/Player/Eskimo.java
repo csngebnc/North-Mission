@@ -27,9 +27,11 @@ public class Eskimo extends Player
 	
 	public Eskimo() {
 		super();
-		img = new Image[2];
+		img = new Image[4];
 		img[0]= new ImageIcon("./assets/characters/eskimo_standing.png").getImage();
 		img[1] = new ImageIcon("./assets/characters/eskimo_drowning.png").getImage();
+		img[2] = new ImageIcon("./assets/characters/eskimo_standing_dsuit.png").getImage();
+		img[3] = new ImageIcon("./assets/characters/eskimo_drowning_dsuit.png").getImage();
 	}
 	
 	/**
