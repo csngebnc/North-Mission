@@ -216,24 +216,33 @@ public abstract class Player extends Character
 	}
 	
 	@Override
-	public void draw(View v) {
-		int charPos = (52/field.getCharacters().size()) * 
-				(int)Math.pow(-1, field.getCharacters().indexOf(this)) *
-				(int)(Math.ceil(((double)field.getCharacters().indexOf(this))/2));
-		if(!field.hasBuilding()) {
-			if(isDrowning) {
-				v.drawThing(field.GetX()+40+charPos, field.GetY()+8, img[1]);
+public void draw(View v) {
+	int charPos = (52/field.getCharacters().size()) * 
+			(int)Math.pow(-1, field.getCharacters().indexOf(this)) *
+			(int)(Math.ceil(((double)field.getCharacters().indexOf(this))/2));
+	if(!field.hasBuilding()) {
+		if(isDrowning) {
+			if(dSuitOn) {
+				v.drawThing(field.GetX()+40+charPos, field.GetY()+8, img[3]);
 			}else {
+				v.drawThing(field.GetX()+40+charPos, field.GetY()+8, img[1]);
+			}
+		}else {
+			if(dSuitOn) {
+			v.drawThing(field.GetX()+36+charPos, field.GetY(), img[2]);
+			}
+			else {
 				v.drawThing(field.GetX()+36+charPos, field.GetY(), img[0]);
 			}
 		}
-		if(stamina > 0) {
-			if(field.hasBuilding())
-				v.drawThing(field.GetX()+45, field.GetY()-30, currentPlayerImage);
-			else
-				v.drawThing(field.GetX()+39+charPos, field.GetY()-15, currentPlayerImage);
-		}
 	}
+	if(stamina > 0) {
+		if(field.hasBuilding())
+			v.drawThing(field.GetX()+45, field.GetY()-30, currentPlayerImage);
+		else
+			v.drawThing(field.GetX()+39+charPos, field.GetY()-15, currentPlayerImage);
+	}
+}
 		
 	/**
 	 * Játékos mezõjének beállítása.
