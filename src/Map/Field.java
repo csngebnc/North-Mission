@@ -45,7 +45,7 @@ public abstract class Field extends FieldView
 	 * Alapértéke hamis
 	 * @author Norbi
 	 */
-	protected boolean limitRevealed = false;
+	protected boolean limitRevealed = true;
 	
 	/**
 	 * Az osztaly konstruktora. 
@@ -237,6 +237,29 @@ public abstract class Field extends FieldView
 	public void setMaxPlayers(int n)
 	{
 		maxplayers=n;
+	}
+	
+	public void discoverNeighbours(ArrayList<Field> fields) {
+		for(Field candidate : fields) {
+			int candX = candidate.GetX();
+			int candY = candidate.GetY();
+			if(x + 47 == candX) {
+				if(y - 30 == candY)
+					neighbours.set(Direction.UPPER_RIGHT.VALUE, candidate);
+				else if(y + 30 == candY)
+					neighbours.set(Direction.BOTTOM_RIGHT.VALUE, candidate);
+			}
+			else if(x - 47 == candX) {
+				if(y - 30 == candY)
+					neighbours.set(Direction.UPPER_LEFT.VALUE, candidate);
+				else if(y + 30 == candY)
+					neighbours.set(Direction.BOTTOM_LEFT.VALUE, candidate);
+			}
+			else if(x + 95 == candX && y == candY) 
+				neighbours.set(Direction.RIGHT.VALUE, candidate);
+			else if(x - 95 == candX && y == candY) 
+				neighbours.set(Direction.LEFT.VALUE, candidate);
+		}
 	}
 	
 	public abstract void Properties();

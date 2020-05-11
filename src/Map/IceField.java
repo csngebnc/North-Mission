@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
+import Core.Game;
 import Map.Buildings.Building;
 import Items.Item;
 import Player.Player;
@@ -36,6 +37,7 @@ public class IceField extends Field
 		super(x,y);
 		frozenItem = null;
 		itemOnGround = new ArrayList<Item>();
+		maxplayers = Game.getPlayerCount();
 	}
 	
 	/**

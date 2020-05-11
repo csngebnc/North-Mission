@@ -20,7 +20,7 @@ public class UnstableField extends IceField
 		super(x,y);
 		frozenItem = null;
 		itemOnGround = new ArrayList<Item>();
-		maxplayers = (int)Math.random()*(Game.getPlayerCount()-1);
+		maxplayers = (int)Math.random()*(Game.getPlayerCount()-2)+1;
 	}
 	
 	/**

@@ -8,6 +8,7 @@ import Items.Rocket;
 import Items.Shovel;
 import Map.Buildings.Igloo;
 import Map.Buildings.Tent;
+import Core.Game;
 import Core.Main;
 
 /**
@@ -78,11 +79,52 @@ public class Map
 		return fields.indexOf(f);
 	}
 	
-	public void Reset() {
+	public void ResetNew() {
 
+		fields = new ArrayList<Field>();
+		
 		// EGY FIELD 95 hosszú, 30 mélység/sor, 47 eltolás (CSAK EGYSZER) felsõ és alsó sor között
 		
+		int offsetX = 95;
+		int offsetXRows = 47;
+		int offsetY = 30;
+		int rows = 16;
+		int columns = 11;
+		
+		for(int row = 0; row < rows; row++) {
+			
+			int x = 0;
+			int y = 100 + row * offsetY;
+			if(row%2 == 1)
+				x += offsetXRows;
+			
+			for(int column = 0; column < columns; column++) {
+				
+				double fieldSeed = Math.random()*100;
+				System.out.println(fieldSeed);
+				
+				x += offsetX;
+				
+				if(fieldSeed < 75)
+					fields.add(new IceField(x, y));
+				else if(fieldSeed < 80) {
+					fields.add(new UnstableField(x, y));
+				}
+				else if(fieldSeed < 90)
+					fields.add(new Hole(x, y));
+			}
+		}
+		
+		fields.set(0, new IceField(offsetX ,100));
+		
+		for(Field f : fields)
+			f.discoverNeighbours(fields);
+	}
+	
+	public void Reset() 
+	{
 		fields = new ArrayList<Field>();
+		
 		Field f1 = new IceField(100,100);
 		Field f2 = new IceField(195,100);
 		Field f3 = new IceField(290,100);

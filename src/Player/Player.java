@@ -195,12 +195,17 @@ public abstract class Player extends Character
 		stamina -= 1;
 	}
 	
+	public void depleteStamina() 
+	{
+		stamina = 0;
+	}
 	
 	/**
 	 * A játékos fuldoklásának beállítása.
 	 * @author Zalan
 	 */
-	public void drown() {
+	public void drown() 
+	{
 		isDrowning = true;
 	}
 	
@@ -241,7 +246,7 @@ public abstract class Player extends Character
 			if(field.hasBuilding())
 				v.drawThing(field.GetX()+45, field.GetY()-30, currentPlayerImage);
 			else
-				v.drawThing(field.GetX()+39, field.GetY()-15, currentPlayerImage);
+				v.drawThing(field.GetX()+39+charPos, field.GetY()-15, currentPlayerImage);
 		}
 	}
 		

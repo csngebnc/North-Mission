@@ -203,7 +203,7 @@ public class Game {
 		characters = new ArrayList<Character>();
 		players = 3;
 		
-		map.Reset();
+		map.ResetNew();
 
 		addScientist(0, "Elton");
 		addEskimo(0, "Elton");
