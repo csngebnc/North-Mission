@@ -1,16 +1,23 @@
 package Visual;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.event.KeyAdapter;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import Core.Game;
 import Map.Map;
@@ -49,8 +56,8 @@ public class View extends JFrame{
 	
 	public void revalidate(Map map, ArrayList<Player> players) {
 		g = cv.getBufferStrategy().getDrawGraphics();
-		drawHUD(g, players);
 		g.drawImage(backgroundImage,0,0, null);
+		drawHUD(g, players);
 		for(Field f : map.getFields()) {
 			f.draw(this);
 		}
@@ -62,12 +69,50 @@ public class View extends JFrame{
 		int y = 10;
 		int frameOffset = 150;
 		for(Player p : players) {
+			
+			//Frame
 			if(p.getStamina() > 0)
 				g.drawImage(playerFrameSelected, x, y, null);
 			else
 				g.drawImage(playerFrame, x, y, null);
 			
+			//Avatar
+			g.drawImage(p.getAvatar(), x+10, y+10, null);
+			
+			//HP
+			int hp = p.getHealth();
+			int hpOffset = 16;
+			int hpCount;
+			int hpX = x + 42;
+			int hpY = y + 33;
+			for(hpCount = 0; hpCount < hp && hpCount <= 5; hpCount++) {
+				g.drawImage(heart, hpX, hpY, null);
+				hpX += hpOffset;
+			}
+			if(hp == 6)
+				g.drawImage(heart, hpX, hpY, null);
+			else if(hp > 6)
+				g.drawImage(heartGold, hpX, hpY, null);
+			
+			//Name
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			try {
+				ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("A.ttf")));
+			} catch (FontFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Graphics2D g2d = (Graphics2D) g;
+			g2d.setColor(Color.WHITE);
+			Font playerFont = new Font("Courier New", Font.PLAIN, 12);
+			g2d.setFont(playerFont);
+			g2d.drawString(p.getName(), x + 42, y + 26);
+			
 			x += frameOffset;
+			
 		}
 	}
 	

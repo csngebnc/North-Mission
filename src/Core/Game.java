@@ -215,7 +215,7 @@ public class Game {
 		map.ResetNew();
 
 		addScientist(0, "Elton");
-		addEskimo(0, "Elton");
+		addEskimo(0, "Jason");
 		addPolarBear(11);
 
 		view.revalidate(map, players);

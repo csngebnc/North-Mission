@@ -254,6 +254,10 @@ public abstract class Player extends Character
 		return field;
 	}
 	
+	public Image getAvatar() {
+		return img[0];
+	}
+	
 	/**
 	 * Játékos nevének lekérdezése.
 	 * @author Zalan
@@ -310,6 +314,10 @@ public abstract class Player extends Character
 	public void setStamina(int s)
 	{
 		stamina = s;
+	}
+	
+	public int getHealth() {
+		return health;
 	}
 	
 	/**
