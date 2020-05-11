@@ -8,6 +8,7 @@ import Map.Field;
 import Map.Map;
 import Player.Character;
 import Player.Eskimo;
+import Player.Player;
 import Player.PolarBear;
 import Player.Scientist;
 
@@ -21,7 +22,7 @@ public class Game {
 	 * A jatekosok szama
 	 * @author Csonge Bence
 	 */
-	private static int players = 0;
+	private static int playerCount = 0;
 	/**
 	 * A korok szama
 	 * @author Csonge Bence
@@ -42,16 +43,23 @@ public class Game {
 	 * @author Csonge Bence
 	 */
 	private Map map;
+	
 	/**
 	 * A jatekban resztvevo karakterek
 	 * @author Csonge Bence
 	 */
 	public static ArrayList<Character> characters;
+	
+	/**
+	 * A jatekban resztvevo játékosok
+	 * @author Csonge Bence
+	 */
+	public static ArrayList<Player> players;
+	
 	/**
 	 * A jatek allapota
 	 * @author Csonge Bence
 	 */
-	
 	private static GameState state;
 	
 	/**
@@ -68,16 +76,17 @@ public class Game {
 		foundGunParts = 0;
 		map = new Map();
 		characters = new ArrayList<Character>();
+		players = new ArrayList<Player>();
 		state = GameState.ONGOING;
 		view = new View(this);
 		Reset();
 		activeCharacter = characters.get(0);
 		activeCharacter.startTurn(this);
-		view.revalidate(map);
+		view.revalidate(map, players);
 	}
 	
 	public void notifyView() {
-		view.revalidate(map);
+		view.revalidate(map, players);
 	}
 
 	/**
@@ -130,7 +139,7 @@ public class Game {
 		boolean callNext = activeCharacter.doTurn(this, e);
 		if(callNext) {
 				nextCharacter();
-				view.revalidate(map);
+				view.revalidate(map, players);
 		}
 	}
 	
@@ -141,7 +150,7 @@ public class Game {
 	public void callBlizzard() 
 	{
 		map.callBlizzardOnFields();
-		view.revalidate(map);
+		view.revalidate(map, players);
 	}
 	
 	/**
@@ -151,7 +160,7 @@ public class Game {
 	 * @author Csonge Bence
 	 */
 	public static void winGame(Field f) {
-		if(foundGunParts==3 && (f.getCharacters().size()==players)) {
+		if(foundGunParts==3 && (f.getCharacters().size()==playerCount)) {
 			state = GameState.WON;
 			System.out.println("The players won the game.");
 		}		
@@ -201,7 +210,7 @@ public class Game {
 	
 	public void Reset() {
 		characters = new ArrayList<Character>();
-		players = 3;
+		playerCount = 2;
 		
 		map.ResetNew();
 
@@ -209,7 +218,7 @@ public class Game {
 		addEskimo(0, "Elton");
 		addPolarBear(11);
 
-		view.revalidate(map);
+		view.revalidate(map, players);
 	}
 	
 	public void addScientist(int fieldIndex, String name) {
@@ -217,6 +226,7 @@ public class Game {
 		newScientist.setName(name);
 		map.getField(fieldIndex).acceptCharacter(newScientist);
 		characters.add(newScientist);
+		players.add(newScientist);
 	}
 	
 	public void addEskimo(int fieldIndex, String name) {
@@ -224,6 +234,7 @@ public class Game {
 		newEskimo.setName(name);
 		map.getField(fieldIndex).acceptCharacter(newEskimo);
 		characters.add(newEskimo);
+		players.add(newEskimo);
 	}
 	
 	public void addPolarBear(int fieldIndex) {
@@ -233,7 +244,7 @@ public class Game {
 	}
 	
 	public static int getPlayerCount() {
-		return players;
+		return playerCount;
 	}
 	
 	public int getRoundNum()

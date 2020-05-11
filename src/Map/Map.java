@@ -101,8 +101,7 @@ public class Map
 			for(int column = 0; column < columns; column++) {
 				
 				double fieldSeed = Math.random()*100;
-				System.out.println(fieldSeed);
-				
+			
 				x += offsetX;
 				
 				if(fieldSeed < 75)
@@ -119,14 +118,6 @@ public class Map
 		
 		for(Field f : fields)
 			f.discoverNeighbours(fields);
-		
-		int i = 0;
-		for(int row = 0; row < rows; row++) {
-			for(int column = 0; column < columns; column++) {
-				System.out.println("x: " + column + "\t-\t" + fields.get(i).GetX() + "\t y: " + row + "\t-\t" + fields.get(i).GetY());
-				i++;
-			}
-		}
 	}
 	
 	public void Reset() 
