@@ -4,11 +4,6 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-import Core.Main;
-import Map.Field;
-import Map.IceField;
-import Visual.View;
-
 /**
  * A sarkkutató kasztú játékost reprezentáló osztály.
  * A Player osztály leszármazottja.
@@ -23,17 +18,14 @@ public class Scientist extends Player
 	 */
 	public Scientist() {
 		super();
-		img = new Image[4];
+		img = new Image[2];
 		img[0]= new ImageIcon("./assets/characters/scientist_standing.png").getImage();
 		img[1] = new ImageIcon("./assets/characters/scientist_drowning.png").getImage();
-		img[2] = new ImageIcon("./assets/characters/scientist_standing_dsuit.png").getImage();
-		img[3] = new ImageIcon("./assets/characters/scientist_drowning_dsuit.png").getImage();
 	}
 	
 	public void doSkill() 
 	{
-		field.revealLimit();
-		drainStamina();
+		field.revealLimit(this);
 	}
 	
 }

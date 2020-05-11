@@ -25,8 +25,11 @@ import Player.Player;
 
 public class View extends JFrame{
 	
+	private static final long serialVersionUID = 1L;
+	
 	private Graphics g;
 	private Canvas cv;
+	private Game game;
 	private Image playerFrame = new ImageIcon("./assets/HUD/player_frame.png").getImage();
 	private Image playerFrameSelected = new ImageIcon("./assets/HUD/player_frame_selected.png").getImage();
 	private Image heart = new ImageIcon("./assets/HUD/heart.png").getImage();
@@ -35,6 +38,7 @@ public class View extends JFrame{
 	private Image blizzardImage = new ImageIcon("./assets/HUD/cloud.png").getImage();
 	
 	public View(Game game) {
+		this.game = game;
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(new Dimension(1280,720));
 		this.setVisible(true);
@@ -102,7 +106,7 @@ public class View extends JFrame{
 			int hpOffset = 14;
 			int hpCount;
 			int hpX = x + 42;
-			int hpY = y + 33;
+			int hpY = y + 30;
 			for(hpCount = 0; hpCount < hp && hpCount < 5; hpCount++) {
 				g.drawImage(heart, hpX, hpY, null);
 				hpX += hpOffset;
@@ -116,7 +120,7 @@ public class View extends JFrame{
 			String name = p.getName();
 			if(name.length() > 10)
 				name = name.substring(0, 7) + "...";
-			g2d.drawString(name, x + 42, y + 26);
+			g2d.drawString(name, x + 42, y + 23);
 			
 			x += frameOffset;
 		}
@@ -128,7 +132,14 @@ public class View extends JFrame{
 		g2d.drawString(String.valueOf(Game.getRoundNum()+1), 90, 670);
 		
 		//Blizzard
-		g.drawImage(blizzardImage, 20, 600, null);
+		if(game.getRoundsUntilBlizzard() > 0) {
+			g2d.setFont(font.deriveFont(15f));
+			g2d.drawString("IN", 58, 613);
+			g2d.drawString(String.valueOf(game.getRoundsUntilBlizzard()), 58, 633);
+			g2d.drawString("turns", 76, 633);
+			g.drawImage(blizzardImage, 13, 600, null);
+		}
+		
 		
 	}
 	

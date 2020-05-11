@@ -10,11 +10,7 @@ import Items.LimitedShovel;
 import Items.Rocket;
 import Items.Rope;
 import Items.Shovel;
-import Map.Buildings.Igloo;
 import Map.Buildings.Tent;
-import Core.Game;
-import Core.Main;
-import Items.Throwable;
 
 /**
  * A pálya osztalya.

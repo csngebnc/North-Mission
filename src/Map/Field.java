@@ -1,6 +1,5 @@
 package Map;
 import java.util.ArrayList;
-import Core.Game;
 import Items.Item;
 import Map.Buildings.Building;
 import Player.Character;
@@ -100,9 +99,13 @@ public abstract class Field extends FieldView
 	 * 
 	 * @author Csonge Bence
 	 */
-	public void revealLimit() 
+	public void revealLimit(Player p) 
 	{
+		if(limitRevealed)
+			return;
+		
 		limitRevealed = true;
+		p.drainStamina();
 	}
 	
 	/**

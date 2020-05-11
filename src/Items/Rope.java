@@ -1,14 +1,8 @@
 package Items;
 import java.awt.Image;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import javax.swing.ImageIcon;
-
-import Core.Main;
 import Player.Player;
 import Visual.ImgType;
-import Map.Field;
 
 /**
  * Segítségével egy lyukba esett játékos kimenthetõ. 

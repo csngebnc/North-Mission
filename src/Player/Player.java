@@ -2,25 +2,13 @@ package Player;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import javax.swing.ImageIcon;
-
 import Core.Game;
-import Core.GameState;
-import Core.Main;
-import Items.Barrel;
 import Items.DivingSuit;
-import Items.Food;
 import Items.Item;
-import Items.Rope;
-import Items.Shovel;
 import Map.Field;
-import Map.IceField;
-import Map.Map;
 import Visual.View;
 
 /**
@@ -143,7 +131,13 @@ public abstract class Player extends Character
 			case KeyEvent.VK_I:
 				//Itt jön felugró ablakkal az inventory
 				break;
+			//Passzolás
 			case KeyEvent.VK_P:
+				stamina = 0;
+				return;
+			//Kiaszabitás
+			case KeyEvent.VK_M:
+				field.removeItemFromIce(this);
 				return;
 		}
 	}
@@ -394,6 +388,7 @@ public abstract class Player extends Character
 	 */
 	@Override
 	public void hitBy(PolarBear pb) {
+		health = 0;
 		Game.loseGame();
 	}
 }

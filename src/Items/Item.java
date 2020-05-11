@@ -1,7 +1,5 @@
 package Items;
 import java.awt.Image;
-
-import Core.Main;
 import Map.Field;
 import Player.Player;
 import Visual.ImgType;

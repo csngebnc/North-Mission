@@ -1,15 +1,8 @@
 package Player;
 
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
-
-import Core.Main;
-import Items.Item;
-import Map.Field;
-import Map.IceField;
 import Map.Buildings.Igloo;
-import Visual.View;
 
 /**
  * Az eszkimó kasztú játékost reprezentáló osztály.

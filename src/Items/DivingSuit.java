@@ -1,10 +1,6 @@
 package Items;
 import java.awt.Image;
-import java.util.Scanner;
-
 import javax.swing.ImageIcon;
-
-import Core.Main;
 import Player.Player;
 import Visual.ImgType;
 

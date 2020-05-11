@@ -17,9 +17,6 @@ import Visual.ImgType;
  */
 public class Tent extends Throwable implements Building{
 	
-
-	private static final long serialVersionUID = 1L;
-
 	public Tent() {}
 
 	/**

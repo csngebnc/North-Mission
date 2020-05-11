@@ -181,6 +181,10 @@ public class Game {
 		return roundNum;
 	}
 	
+	public int getRoundsUntilBlizzard() {
+		return roundsUntilBlizzard;
+	}
+	
 	/**
 	 * A Game osztaly ertesitese arrol, hogy a jatekosok osszegyujtottek egy, 
 	 * a jatek megnyeresehez szukseges alkatreszt.

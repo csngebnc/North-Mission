@@ -4,10 +4,7 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import Player.Direction;
 import java.util.ArrayList;
-import java.util.Random;
-
 import javax.swing.ImageIcon;
-
 import Core.Game;
 import Map.Field;
 import Visual.View;
@@ -94,16 +91,8 @@ public class PolarBear extends Character{
 	 */
 	@Override
 	public void hitBy(Player p) {
+		p.alterHealth(-p.getHealth());
 		Game.loseGame();		
-	}
-	
-	/**
-	 * Teszteléshez
-	 */
-	@Override
-	public void Properties()
-	{
-		System.out.println("Jegesmedve");
 	}
 	
 	/**
