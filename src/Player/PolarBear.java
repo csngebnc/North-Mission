@@ -67,15 +67,6 @@ public class PolarBear extends Character{
 	@Override
 	public void drainStamina() {		
 	}
-
-	/**
-	 * Ez a metódus nem csinál semmit, a PolarBear-nek beállítani, hogy fuldoklik-e.
-	 * @author Zalan
-	 */
-	@Override
-	public void drown() {	
-		isDrowning = true;
-	}
 	
 	/**
 	 * Ez a metódus false-szal tér vissza, hiszen egy Jegesmedvét nem kell kimentenünk ha lyukba esett.

@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 
 import Core.Game;
 import Player.Character;
+import Player.Direction;
 import Visual.View;
 
 /**
@@ -68,13 +69,20 @@ public class Hole extends Field
 	{
 		snowLayers = 0;
 		c.setField(this);
-		c.drown();
+		c.setDrowning(true);
 		characters.add(c);
 		for(Character ch : characters) {
 			if(!ch.equals(c))
 				c.collideWith(ch);
 		}
 	}
+	
+	@Override
+	public void moveMeTo(Character c, Direction DIR) 
+	{
+		super.moveMeTo(c, DIR);
+		c.setDrowning(false);
+	} 
 	
 	/**
 	 * A tovabbi metodusok getter/setter, valamint a teszteleshez hasznalt metodusok.

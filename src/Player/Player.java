@@ -195,20 +195,6 @@ public abstract class Player extends Character
 		stamina -= 1;
 	}
 	
-	public void depleteStamina() 
-	{
-		stamina = 0;
-	}
-	
-	/**
-	 * A játékos fuldoklásának beállítása.
-	 * @author Zalan
-	 */
-	public void drown() 
-	{
-		isDrowning = true;
-	}
-	
 	/**
 	 * A játékos megmentésre kerül fuldokló helyzetbõl.
 	 * A játékos a paraméterként kapott field-re helyezõdik, és az isDrowning értéke false lesz.
@@ -216,7 +202,6 @@ public abstract class Player extends Character
 	 * @param safeField a biztonságos mezõ, amire a játékos kerül.
 	 */
 	public boolean save(Field safeField) {
-		isDrowning = false;
 		field.moveMeTo(this, Direction.FromInt(field.getNeighbours().indexOf(safeField)));
 		return true;
 	}
@@ -267,16 +252,6 @@ public abstract class Player extends Character
 	public Field getField() 
 	{
 		return field;
-	}
-	
-	/**
-	 * Játékos fuldoklásának beállítása a kapott paraméterre.
-	 * @param b az isDrowning értéke
-	 * @author Zalan
-	 */
-	public void setIsDrowning(boolean b)
-	{
-		isDrowning = b;
 	}
 	
 	/**

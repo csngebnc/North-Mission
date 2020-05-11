@@ -22,7 +22,12 @@ public abstract class Character implements Viewable{
 	protected int stamina;
 	protected Image[] img;
 	
-	public void setDrowning(boolean b) { isDrowning = b; }
+	public void setDrowning(boolean b) 
+	{ 
+		isDrowning = b;
+		if(isDrowning)
+			stamina = 0;
+	}
 
 	/**
 	 * A karakter köre.
@@ -47,13 +52,6 @@ public abstract class Character implements Viewable{
 	 * @author Zalan
 	 */
 	public abstract void drainStamina();
-	
-	/**
-	 * A karakter fuldoklásának beállítása.
-	 * Leszármazottak saját maguk valósítják meg.
-	 * @author Zalan
-	 */
-	public abstract void drown();
 	
 	/**
 	 * A karakter megmentésre kerül fuldokló helyzetbõl.
