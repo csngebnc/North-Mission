@@ -97,7 +97,7 @@ public class View extends JFrame{
 			//Name
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			try {
-				ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("A.ttf")));
+				ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("./assets/HUD/ARCADE_N.ttf")));
 			} catch (FontFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -107,7 +107,7 @@ public class View extends JFrame{
 			}
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.setColor(Color.WHITE);
-			Font playerFont = new Font("Courier New", Font.PLAIN, 12);
+			Font playerFont = new Font("Arcade Normal", Font.PLAIN, 8);
 			g2d.setFont(playerFont);
 			g2d.drawString(p.getName(), x + 42, y + 26);
 			
