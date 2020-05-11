@@ -51,6 +51,7 @@ public class Game {
 	 * A jatek allapota
 	 * @author Csonge Bence
 	 */
+	
 	private static GameState state;
 	
 	/**
@@ -72,6 +73,7 @@ public class Game {
 		Reset();
 		activeCharacter = characters.get(0);
 		activeCharacter.startTurn(this);
+		view.revalidate(map);
 	}
 	
 	public void notifyView() {
@@ -128,6 +130,7 @@ public class Game {
 		boolean callNext = activeCharacter.doTurn(this, e);
 		if(callNext) {
 				nextCharacter();
+				view.revalidate(map);
 		}
 	}
 	

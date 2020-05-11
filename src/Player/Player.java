@@ -1,10 +1,13 @@
 package Player;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.swing.ImageIcon;
 
 import Core.Game;
 import Core.GameState;
@@ -32,6 +35,7 @@ public abstract class Player extends Character
 	protected boolean dSuitOn;
 	protected ArrayList<Item> inventory;
 	public abstract void doSkill();
+	protected Image currentPlayerImage;
 	
 	/**
 	 * A Player konstruktora.
@@ -43,6 +47,7 @@ public abstract class Player extends Character
 		isDrowning = false;
 		dSuitOn = false;
 		health = 3;
+		currentPlayerImage = new ImageIcon("./assets/characters/current_player.png").getImage();
 	}
 
 	/**
@@ -222,15 +227,21 @@ public abstract class Player extends Character
 	
 	@Override
 	public void draw(View v) {
-		int mennyit = (52/field.getCharacters().size()) * 
+		int charPos = (52/field.getCharacters().size()) * 
 				(int)Math.pow(-1, field.getCharacters().indexOf(this)) *
 				(int)(Math.ceil(((double)field.getCharacters().indexOf(this))/2));
 		if(!field.hasBuilding()) {
 			if(isDrowning) {
-				v.drawThing(field.GetX()+40+mennyit, field.GetY()+8, img[1]);
+				v.drawThing(field.GetX()+40+charPos, field.GetY()+8, img[1]);
 			}else {
-				v.drawThing(field.GetX()+36+mennyit, field.GetY(), img[0]);
+				v.drawThing(field.GetX()+36+charPos, field.GetY(), img[0]);
 			}
+		}
+		if(stamina > 0) {
+			if(field.hasBuilding())
+				v.drawThing(field.GetX()+45, field.GetY()-30, currentPlayerImage);
+			else
+				v.drawThing(field.GetX()+39, field.GetY()-15, currentPlayerImage);
 		}
 	}
 		
