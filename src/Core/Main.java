@@ -12,7 +12,6 @@ import java.util.Scanner;
 import Items.*;
 import Map.*;
 import Map.Buildings.Igloo;
-import Map.Buildings.Tent;
 import Player.*;
 import Player.Character;
 

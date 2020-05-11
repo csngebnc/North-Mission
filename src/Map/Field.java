@@ -45,7 +45,7 @@ public abstract class Field extends FieldView
 	 * Alapértéke hamis
 	 * @author Norbi
 	 */
-	protected boolean limitRevealed = true;
+	protected boolean limitRevealed = false;
 	
 	/**
 	 * Az osztaly konstruktora. 
@@ -204,8 +204,8 @@ public abstract class Field extends FieldView
 		neighbours.set(num, f);
 	}
 	
-	public void setFrozenItem(Item i) {
-		
+	public boolean addFrozenItem(Item i) {
+		return false;
 	}
 	
 	public void addItem(Item i) {
@@ -261,6 +261,4 @@ public abstract class Field extends FieldView
 				neighbours.set(Direction.LEFT.VALUE, candidate);
 		}
 	}
-	
-	public abstract void Properties();
 }

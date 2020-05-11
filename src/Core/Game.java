@@ -27,7 +27,7 @@ public class Game {
 	 * A korok szama
 	 * @author Csonge Bence
 	 */
-	private int roundNum;
+	private static int roundNum;
 	/**
 	 * A korok hoviharig
 	 * @author Csonge Bence
@@ -177,6 +177,10 @@ public class Game {
 		System.out.println("The players lost the game.");
 	}
 	
+	public static int getRoundNum() {
+		return roundNum;
+	}
+	
 	/**
 	 * A Game osztaly ertesitese arrol, hogy a jatekosok osszegyujtottek egy, 
 	 * a jatek megnyeresehez szukseges alkatreszt.
@@ -251,11 +255,6 @@ public class Game {
 	
 	public static int getPlayerCount() {
 		return playerCount;
-	}
-	
-	public int getRoundNum()
-	{
-		return roundNum;
 	}
 	
 	public ArrayList<Character> getCharacters()

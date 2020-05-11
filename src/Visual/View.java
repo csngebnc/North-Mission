@@ -17,7 +17,6 @@ import java.awt.event.KeyAdapter;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 import Core.Game;
 import Map.Map;
@@ -28,15 +27,14 @@ public class View extends JFrame{
 	
 	private Graphics g;
 	private Canvas cv;
-	private Game game;
 	private Image playerFrame = new ImageIcon("./assets/HUD/player_frame.png").getImage();
 	private Image playerFrameSelected = new ImageIcon("./assets/HUD/player_frame_selected.png").getImage();
 	private Image heart = new ImageIcon("./assets/HUD/heart.png").getImage();
 	private Image heartGold = new ImageIcon("./assets/HUD/heart_gold.png").getImage();
 	private Image backgroundImage = new ImageIcon("./assets/fields/backg.png").getImage();
+	private Image blizzardImage = new ImageIcon("./assets/HUD/cloud.png").getImage();
 	
 	public View(Game game) {
-		this.game = game;
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(new Dimension(1280,720));
 		this.setVisible(true);
@@ -76,9 +74,18 @@ public class View extends JFrame{
 	}
 	
 	public void drawHUD(Graphics g, ArrayList<Player> players) {
+		
+		//Font
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setColor(Color.WHITE);
+		Font font = new Font("Arcade Normal", Font.PLAIN, 8);
+		g2d.setFont(font);		
+		
 		int x = 38;
 		int y = 15;
 		int frameOffset = 150;
+		
+		//Playercards
 		for(Player p : players) {
 			
 			//Frame
@@ -109,15 +116,20 @@ public class View extends JFrame{
 			String name = p.getName();
 			if(name.length() > 10)
 				name = name.substring(0, 7) + "...";
-			Graphics2D g2d = (Graphics2D) g;
-			g2d.setColor(Color.WHITE);
-			Font playerFont = new Font("Arcade Normal", Font.PLAIN, 8);
-			g2d.setFont(playerFont);
 			g2d.drawString(name, x + 42, y + 26);
 			
 			x += frameOffset;
-			
 		}
+		
+		//Turn counter
+		g2d.setFont(font.deriveFont(15f));
+		g2d.drawString("Turn: ", 10, 665);
+		g2d.setFont(font.deriveFont(30f));
+		g2d.drawString(String.valueOf(Game.getRoundNum()+1), 90, 670);
+		
+		//Blizzard
+		g.drawImage(blizzardImage, 20, 600, null);
+		
 	}
 	
 	public void drawThing(int x, int y, Image img) {
@@ -139,7 +151,5 @@ public class View extends JFrame{
 		Font playerFont = new Font("Arcade Normal", Font.PLAIN, 8);
 		g2d.setFont(playerFont);
 		g2d.drawString(limit, x, y);
-
 	}
-
 }

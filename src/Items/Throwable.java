@@ -1,5 +1,7 @@
 package Items;
 
+import java.util.ArrayList;
+
 import Map.Field;
 
 /**
@@ -28,8 +30,11 @@ public abstract class Throwable implements Item
 		return;
 	}
 	
-	public void Properties() 
-	{
-		System.out.println(this.getClass());
-	}
+	public ArrayList<Item> generateInstances(int count) throws IllegalAccessException, InstantiationException {
+        ArrayList<Item> array = new ArrayList<Item>();
+        for (int i = 0; i < count; i++) {
+            array.add(this.getClass().newInstance());
+        }
+        return array;
+    }
 }

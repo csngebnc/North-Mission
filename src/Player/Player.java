@@ -265,7 +265,18 @@ public abstract class Player extends Character
 	}
 	
 	public Image getAvatar() {
-		return img[0];
+		if(isDrowning) {
+			if(dSuitOn)
+				return img[3];
+			else
+				return img[1];
+		}
+		else {
+			if(dSuitOn) 
+				return img[2];
+			else
+				return img[0];
+		}
 	}
 	
 	/**
@@ -384,23 +395,5 @@ public abstract class Player extends Character
 	@Override
 	public void hitBy(PolarBear pb) {
 		Game.loseGame();
-	}
-	
-	/**
-	 * Teszteléshez
-	 */
-	@Override
-	public void Properties()
-	{
-		System.out.println(this.getClass());
-		System.out.println("Name: " + getName());
-		System.out.println("Health: " + health);
-		System.out.println("Stamina: " + stamina);
-		System.out.println("Is drowning: " + isDrowning);
-		System.out.println("Diving suit: " + dSuitOn);
-		System.out.println("Inventory:");
-		for(Item i : inventory) {
-			i.Properties();
-		}
 	}
 }

@@ -2,14 +2,19 @@ package Map;
 
 import java.util.ArrayList;
 import Items.Barrel;
+import Items.DivingSuit;
+import Items.Food;
 import Items.Grip;
 import Items.Item;
+import Items.LimitedShovel;
 import Items.Rocket;
+import Items.Rope;
 import Items.Shovel;
 import Map.Buildings.Igloo;
 import Map.Buildings.Tent;
 import Core.Game;
 import Core.Main;
+import Items.Throwable;
 
 /**
  * A pálya osztalya.
@@ -79,6 +84,44 @@ public class Map
 		return fields.indexOf(f);
 	}
 	
+	public ArrayList<Item> generateInstances(int count, String klass){
+		ArrayList<Item> array = new ArrayList<Item>();
+		for(int i = 0; i < count; i++) {
+			try {
+					Class.forName(klass).newInstance();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
+		return array;
+	}
+	
+	private void generateItems() {
+		ArrayList<Item> items = new ArrayList<Item>();
+		
+		try {
+			items.addAll(new Food().generateInstances((int)(Math.random()*10)+15));
+			items.addAll(new Rope().generateInstances((int)(Math.random()*3)+3));
+			items.addAll(new DivingSuit().generateInstances((int)(Math.random()*3)+1));
+			items.addAll(new Tent().generateInstances((int)(Math.random()*2)+2));
+			items.addAll(new Shovel().generateInstances((int)(Math.random()*2)+1));
+			items.addAll(new LimitedShovel().generateInstances((int)(Math.random()*5)+2));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		items.add(new Barrel());
+		items.add(new Rocket());
+		items.add(new Grip());
+		
+		for(Item item : items) {
+			int fieldIndex = (int)(Math.random()*fields.size());
+			while(!fields.get(fieldIndex).addFrozenItem(item))
+				fieldIndex = (int)(Math.random()*fields.size());
+		}
+	}
+	
 	public void Reset() {
 
 		fields = new ArrayList<Field>();
@@ -120,5 +163,7 @@ public class Map
 		
 		for(Field f : fields)
 			f.discoverNeighbours(fields);
+		
+		generateItems();
 	}
 }

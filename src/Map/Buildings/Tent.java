@@ -1,11 +1,12 @@
 package Map.Buildings;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
 import Items.Item;
-import Map.Field;
+import Items.Throwable;
 import Player.Player;
 import Visual.ImgType;
 
@@ -14,15 +15,17 @@ import Visual.ImgType;
  * @author Csonge Bence
  *
  */
-public class Tent implements Item, Building{
+public class Tent extends Throwable implements Building{
 	
+
+	private static final long serialVersionUID = 1L;
+
 	public Tent() {}
 
 	/**
 	 * Sator hasznalata, azaz megepitese
 	 * @author Csonge Bence
 	 */
-	@Override
 	public void use(Player p) {
 		if(p.getField().buildBuilding(this)) {
 			p.removeItem(this);
@@ -48,21 +51,6 @@ public class Tent implements Item, Building{
 	public boolean attack() {
 		return true;
 	}
-
-	/**
-	 * A sator peldany eldobasa egy mezore, mely atveszi a peldanyt.
-	 * @author Csonge Bence
-	 */
-	@Override
-	public boolean throwTo(Field f) {
-		f.acceptItem(this);
-		return true;
-	}
-
-	@Override
-	public void pickUp() {
-		return;
-	}
 	
 	@Override
 	public Image getImg(ImgType form) {
@@ -74,14 +62,12 @@ public class Tent implements Item, Building{
 			return new ImageIcon("./assets/items_buildings/tent.png").getImage();
 		}
 	}
-
-	/*
-	 * Teszteleshez
-	 */
-	@Override
-	public void Properties() {
-		System.out.println(this.getClass());
-	}
-
-
+	
+	public ArrayList<Item> generateInstances(int count) throws IllegalAccessException, InstantiationException {
+        ArrayList<Item> array = new ArrayList<Item>();
+        for (int i = 0; i < count; i++) {
+            array.add(this.getClass().newInstance());
+        }
+        return array;
+    }
 }

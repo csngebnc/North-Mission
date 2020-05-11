@@ -83,23 +83,6 @@ public class Hole extends Field
 		super.moveMeTo(c, DIR);
 		c.setDrowning(false);
 	} 
-	
-	/**
-	 * A tovabbi metodusok getter/setter, valamint a teszteleshez hasznalt metodusok.
-	 */
-	
-	@Override
-	public void Properties()
-	{
-		System.out.println("---------------------------");
-		System.out.println(this.getClass());
-		System.out.println("Snow layers: " + snowLayers);
-		
-		for(Character c:characters)
-		{
-			System.out.println("Character on field: " + c.getName());
-		}
-	}
 
 	@Override
 	public void generateBlizzard() 

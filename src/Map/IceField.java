@@ -155,37 +155,12 @@ public class IceField extends Field
 	 */
 	
 	@Override
-	public void setFrozenItem(Item i) {
-		frozenItem = i;
-	}
-	
-	@Override
-	public void Properties()
-	{
-		System.out.println("---------------------------");
-		System.out.println(this.getClass());
-		System.out.println("Limit: " + maxplayers);
-		System.out.println("Snow layers: " + snowLayers);
-		
-		if(building != null)
-			System.out.println("Building: " + building.getClass());
-		else
-			System.out.println("Building: -");
-		
-		if(!characters.isEmpty())
-			for(Character c:characters)
-			{
-				System.out.println("Character on field: " + c.getName());
-			}
-		
+	public boolean addFrozenItem(Item i) {
 		if(frozenItem != null)
-			System.out.println("Frozen item: " + frozenItem.getClass());
-		else
-			System.out.println("Frozen item: -");	
-		for(Item i: itemOnGround)
-		{
-			System.out.println("Item on ground: " + i.getClass());
-		}
+			return false;
+		
+		frozenItem = i;
+		return true;
 	}
 
 	@Override
@@ -199,10 +174,6 @@ public class IceField extends Field
 			v.drawThing(x, y, new ImageIcon("./assets/fields/snow1.png").getImage());
 		}else if(snowLayers>=5) {
 			v.drawThing(x, y, new ImageIcon("./assets/fields/snow2.png").getImage());
-		}
-		
-		if(limitRevealed) {
-			v.drawThing(x + 85, y + 20, Integer.toString(maxplayers));
 		}
 		
 		if(snowLayers==0 && frozenItem!=null) {
@@ -220,6 +191,9 @@ public class IceField extends Field
 			c.draw(v);
 		}
 		
+		if(limitRevealed) {
+			v.drawThing(x + 85, y + 20, Integer.toString(maxplayers));
+		}
 	}
 	
 	public void setBuilding(Building b) {
@@ -229,6 +203,4 @@ public class IceField extends Field
 	public void addItem(Item i) {
 		itemOnGround.add(i);
 	}
-	
-	
 }
