@@ -68,7 +68,7 @@ public class Game {
 	 */
 	
 	private static View view;
-	private Character activeCharacter;
+	private static Character activeCharacter;
 	
 	public Game() {
 		roundNum = 0;
