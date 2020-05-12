@@ -57,7 +57,11 @@ public abstract class Player extends Character
 	 * @author Zalan
 	 */
 	public boolean doTurn(Game g, KeyEvent e) 
-	{		
+	{
+		if(this.stamina<=0) {
+			g.notifyView();
+			return true;
+		}
 		if(isDrowning && !dSuitOn) {
 			alterHealth(-150);
 			g.notifyView();
