@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.Box;
@@ -44,7 +42,7 @@ public class Inventory extends JFrame {
 		box.setBounds(90, 70, 120, 30);
 		for(int i = 0; i < items.size() ; i++)
 		{
-			box.addItem(items.get(i).getClass().getName());
+			box.addItem(items.get(i).getName());
 		}
 		
 		jp.add(box);
@@ -105,7 +103,7 @@ public class Inventory extends JFrame {
 				box.removeAllItems();
 				for(int i = 0; i < items.size() ; i++)
 				{
-					box.addItem(items.get(i).getClass().getName());
+					box.addItem(items.get(i).getName());
 				}				
 				box.revalidate();
 			}

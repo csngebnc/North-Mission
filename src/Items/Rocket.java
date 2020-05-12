@@ -12,6 +12,11 @@ import Visual.ImgType;
  */
 public class Rocket extends GunPart
 {
+	
+	@Override
+	public String getName() {
+		return "Rocket";
+	}
 	@Override
 	public Image getImg(ImgType form) {
 		if(form==ImgType.DROPPED) {

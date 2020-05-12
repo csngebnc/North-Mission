@@ -39,6 +39,11 @@ public class LimitedShovel extends Shovel{
 	}
 	
 	@Override
+	public String getName() {
+		return "Copper Shovel (" + remainingUses + " uses left)";
+	}
+	
+	@Override
 	public Image getImg(ImgType form) {
 		if(form==ImgType.DROPPED) {
 			return new ImageIcon("./assets/items_buildings/limited_shovel.png").getImage();

@@ -27,6 +27,11 @@ public class Food extends Throwable
 	}
 	
 	@Override
+	public String getName() {
+		return "Food";
+	}
+	
+	@Override
 	public Image getImg(ImgType form) {
 		if(form==ImgType.DROPPED) {
 			return new ImageIcon("./assets/items_buildings/food.png").getImage();

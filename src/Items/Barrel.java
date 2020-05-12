@@ -33,4 +33,9 @@ public class Barrel extends GunPart
 			return null;
 		}
 	}
+	
+	@Override
+	public String getName() {
+		return "Barrel";
+	}
 }

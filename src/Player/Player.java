@@ -1,8 +1,6 @@
 package Player;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import Core.Game;
@@ -127,6 +125,9 @@ public abstract class Player extends Character
 			case KeyEvent.VK_P:
 				stamina = 0;
 				return;
+			//Tárgyfelvétel
+			case KeyEvent.VK_F:
+				inventory.add(field.pickUpItem(this));
 			//Kiaszabitás
 			case KeyEvent.VK_M:
 				field.removeItemFromIce(this);

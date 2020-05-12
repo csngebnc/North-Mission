@@ -37,4 +37,6 @@ public interface Item
 	public abstract void pickUp();
 	
 	public Image getImg(ImgType form);
+	
+	public abstract String getName();
 }

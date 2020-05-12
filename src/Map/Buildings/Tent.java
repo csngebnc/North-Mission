@@ -50,6 +50,11 @@ public class Tent extends Throwable implements Building{
 	}
 	
 	@Override
+	public String getName() {
+		return "Tent";
+	}
+	
+	@Override
 	public Image getImg(ImgType form) {
 		if(form==ImgType.DROPPED) {
 			return new ImageIcon("./assets/items_buildings/tent_item.png").getImage();
