@@ -8,7 +8,6 @@ import Items.DivingSuit;
 import Items.Item;
 import Items.Rope;
 import Map.Field;
-import Visual.DirectionDialog;
 import Visual.Inventory;
 import Visual.View;
 
