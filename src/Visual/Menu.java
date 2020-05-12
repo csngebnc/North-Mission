@@ -45,7 +45,7 @@ public class Menu extends JFrame{
 		this.setSize(new Dimension(1200,740));
 
 		//Icon imgIcon = new ImageIcon("C:\\Users\\barab\\eclipse-workspace\\Menu\\src\\menu_bg2.gif");
-		Icon imgIcon = new ImageIcon("D:\\Eclipse\\Menu\\src\\menu_bg2.gif");
+		Icon imgIcon = new ImageIcon("./assets/menu_bg.gif");
 		label = new JLabel(imgIcon);
 		this.add(label);
 		this.setResizable(false);
@@ -54,7 +54,7 @@ public class Menu extends JFrame{
 		bStart = new JButton("START");
 		bStart.setBounds(100, 140, 250, 70);
 		bStart.setForeground(Color.white);
-		bStart.setFont(new Font("Cochin", Font.PLAIN, 50));
+		bStart.setFont(new Font("Arcade Normal", Font.PLAIN, 30));
 		bStart.setOpaque(false);
 		bStart.setContentAreaFilled(false);
 		bStart.setBorderPainted(false);
@@ -66,9 +66,9 @@ public class Menu extends JFrame{
 		
 		//Credits gomb
 		bCredits = new JButton("CREDITS");
-		bCredits.setBounds(450, 140, 300, 70);
+		bCredits.setBounds(450, 140, 330, 70);
 		bCredits.setForeground(Color.white);
-		bCredits.setFont(new Font("Cochin", Font.PLAIN, 50));
+		bCredits.setFont(new Font("Arcade Normal", Font.PLAIN, 30));
 		bCredits.setOpaque(false);
 		bCredits.setContentAreaFilled(false);
 		bCredits.setBorderPainted(false);
@@ -81,7 +81,7 @@ public class Menu extends JFrame{
 		bExit = new JButton("EXIT");
 		bExit.setBounds(850, 140, 250, 70);
 		bExit.setForeground(Color.white);
-		bExit.setFont(new Font("Cochin", Font.PLAIN, 50));
+		bExit.setFont(new Font("Arcade Normal", Font.PLAIN, 30));
 		bExit.setOpaque(false);
 		bExit.setContentAreaFilled(false);
 		bExit.setBorderPainted(false);
@@ -130,8 +130,8 @@ public class Menu extends JFrame{
 		    	   for(int i=0; i<hanyan; i++)
 		    	   {
 		    		   kaszt[i]=new JComboBox();
-		    		   kaszt[i].addItem("Sarkkutató");
-		    		   kaszt[i].addItem("Eszkimó");
+		    		   kaszt[i].addItem("Scientist");
+		    		   kaszt[i].addItem("Eskimo");
 		    		   if(i>9)
 		    		   {
 		    			   kaszt[i].setBounds(950,150+i*50-500,80,30);
@@ -146,7 +146,7 @@ public class Menu extends JFrame{
 		    	   JLabel nev = new JLabel("Név");
 		    	   nev.setBounds(300,100,40,40);
 		    	   nev.setForeground(Color.white);
-		    	   nev.setFont(new Font("Cochin", Font.PLAIN, 20));
+		    	   nev.setFont(new Font("Arcade Normal", Font.PLAIN, 20));
 		    	   label.add(nev);
 		    	   for(int i=0; i<hanyan;i++)
 		    	   {
@@ -166,12 +166,26 @@ public class Menu extends JFrame{
 		    		   label.add(nevek[i]);
 		    	   }
 		    	   
-		    	   JButton bCredits = new JButton("GO");
-		    	   bCredits.setBounds(620, 600, 60, 40);
-		    	   bCredits.addActionListener(new GoButtonPressed());
-		    	   label.add(bCredits);	  
+
+		    	   JButton bGo = new JButton("GO");
+			    	bGo.setBounds(620, 600, 60, 40);
+			    	bGo.addActionListener(new GoButtonPressed());
+
+			    	if(hanyan==0)
+			    	{			    
+			    		label.remove(bGo);
+			    	}
+			    	else {
+			    		label.add(bGo);
+			    	}
+	  
 		       }		
 		}
+	}
+	
+	public void setFrameInvisible()
+	{
+		this.setVisible(false);
 	}
 	
 	private class GoButtonPressed implements ActionListener{
@@ -189,8 +203,9 @@ public class Menu extends JFrame{
 					Game.getInstance().addScientist(0, nevek[i].getText());
 				}
 			}*/
-			//Game.notifyView();
-
+			Game.notifyView();
+			setFrameInvisible();
+			
 		}
 		
 	}
@@ -206,7 +221,7 @@ public class Menu extends JFrame{
 	    	JButton bBack = new JButton("BACK");
 	    	bBack.setBounds(900, 40, 300, 70);
 	    	bBack.setForeground(Color.white);
-	    	bBack.setFont(new Font("Cochin", Font.PLAIN, 50));
+	    	bBack.setFont(new Font("Arcade Normal", Font.PLAIN, 50));
 			bBack.setOpaque(false);
 			bBack.setContentAreaFilled(false);
 			bBack.setBorderPainted(false);
@@ -219,37 +234,37 @@ public class Menu extends JFrame{
 	    	
 
 			
-	    	   nev = new JLabel("Név");
-	    	   nev.setBounds(300,100,40,40);
+	    	   nev = new JLabel("Name");
+	    	   nev.setBounds(300,100, 60,50);
 	    	   nev.setForeground(Color.white);
-	    	   nev.setFont(new Font("Cochin", Font.PLAIN, 20));
+	    	   nev.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
 	    	   label.add(nev);
 	    	   
-	    	   nev2 = new JLabel("Név");
-	    	   nev2.setBounds(800,100,40,40);
+	    	   nev2 = new JLabel("Name");
+	    	   nev2.setBounds(800,100,60,50);
 	    	   nev2.setForeground(Color.white);
-	    	   nev2.setFont(new Font("Cochin", Font.PLAIN, 20));
+	    	   nev2.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
 	    	   nev2.setVisible(false);
 	    	   label.add(nev2);
 	    	   
-	    	   kaszt1 = new JLabel("Kaszt");
-	    	   kaszt1.setBounds(450,100,50,40);
+	    	   kaszt1 = new JLabel("Type");
+	    	   kaszt1.setBounds(450,100,70,50);
 	    	   kaszt1.setForeground(Color.white);
-	    	   kaszt1.setFont(new Font("Cochin", Font.PLAIN, 20));
+	    	   kaszt1.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
 	    	   label.add(kaszt1);
 	    	   
-	    	   kaszt2 = new JLabel("Kaszt");
-	    	   kaszt2.setBounds(900,100,50,40);
+	    	   kaszt2 = new JLabel("Type");
+	    	   kaszt2.setBounds(900,100,70,50);
 	    	   kaszt2.setForeground(Color.white);
-	    	   kaszt2.setFont(new Font("Cochin", Font.PLAIN, 20));
+	    	   kaszt2.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
 	    	   kaszt2.setVisible(false);
 	    	   label.add(kaszt2);
 	    	   
     		   
-			JLabel label2 = new JLabel("Hány játékos? ");
+			JLabel label2 = new JLabel("Hany jatekos? ");
 			label2.setForeground(Color.white);
 			label2.setBounds(300,50,300,30);
-			label2.setFont(new Font("Cochin", Font.PLAIN, 30));
+			label2.setFont(new Font("Arcade Normal", Font.PLAIN, 20));
 			label.add(label2);
 			
 			
@@ -316,7 +331,7 @@ public class Menu extends JFrame{
 	    	JButton bBack = new JButton("BACK");
 	    	bBack.setBounds(900, 40, 300, 70);
 	    	bBack.setForeground(Color.white);
-	    	bBack.setFont(new Font("Cochin", Font.PLAIN, 50));
+	    	bBack.setFont(new Font("Arcade Normal", Font.PLAIN, 50));
 			bBack.setOpaque(false);
 			bBack.setContentAreaFilled(false);
 			bBack.setBorderPainted(false);
@@ -329,12 +344,12 @@ public class Menu extends JFrame{
 	private class MouseHover extends MouseAdapter{
 		@Override
         public void mouseEntered(MouseEvent me) {
-       	((JButton) me.getSource()).setFont(new Font("Cochin", Font.PLAIN, 60));
+       	((JButton) me.getSource()).setFont(new Font("Arcade Normal", Font.PLAIN, 40));
        	((JButton) me.getSource()).setForeground(new Color(66,180,230));
         }
 		@Override
         public void mouseExited(MouseEvent me) {
-		((JButton) me.getSource()).setFont(new Font("Cochin", Font.PLAIN, 50));
+		((JButton) me.getSource()).setFont(new Font("Arcade Normal", Font.PLAIN, 30));
 		((JButton) me.getSource()).setForeground(Color.white);
 		}
 	}

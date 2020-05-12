@@ -11,9 +11,9 @@ import Visual.Menu;
 public class Main {
 	
 	public static void main(String[] args) throws IOException {
-		//Menu menu = new Menu();
+		Menu menu = new Menu();
 		
 		
-		Game.getInstance();
+		//Game.getInstance();
 	}
 }
