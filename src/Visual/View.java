@@ -9,14 +9,15 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.event.KeyAdapter;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import Core.Game;
 import Map.Map;
@@ -58,13 +59,7 @@ public class View extends JFrame{
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		try {
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("./assets/HUD/ARCADE_N.ttf")));
-		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (Exception e) {e.printStackTrace();}
 	}
 	
 	public void revalidate(Map map, ArrayList<Player> players) {
@@ -139,8 +134,6 @@ public class View extends JFrame{
 			g2d.drawString("turns", 76, 633);
 			g.drawImage(blizzardImage, 13, 600, null);
 		}
-		
-		
 	}
 	
 	public void drawThing(int x, int y, Image img) {

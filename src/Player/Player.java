@@ -23,7 +23,7 @@ public abstract class Player extends Character
 	protected boolean dSuitOn;
 	protected ArrayList<Item> inventory;
 	public abstract void doSkill();
-	protected Image currentPlayerImage;
+	protected Image staminaSprites[];
 	
 	/**
 	 * A Player konstruktora.
@@ -35,7 +35,11 @@ public abstract class Player extends Character
 		isDrowning = false;
 		dSuitOn = false;
 		health = 7;
-		currentPlayerImage = new ImageIcon("./assets/characters/current_player.png").getImage();
+		
+		staminaSprites = new Image[3];
+		staminaSprites[0] = new ImageIcon("./assets/HUD/stamina_1.png").getImage();
+		staminaSprites[1] = new ImageIcon("./assets/HUD/stamina_2.png").getImage();
+		staminaSprites[2] = new ImageIcon("./assets/HUD/stamina_3.png").getImage();
 	}
 
 	/**
@@ -126,7 +130,8 @@ public abstract class Player extends Character
 				break;
 			case KeyEvent.VK_H:
 				//kézzel ásás
-				field.digSnow(1);
+				if(field.digSnow(1))
+					drainStamina();
 				break;
 			case KeyEvent.VK_I:
 				//Itt jön felugró ablakkal az inventory
@@ -233,9 +238,9 @@ public abstract class Player extends Character
 		}
 		if(stamina > 0) {
 			if(field.hasBuilding())
-				v.drawThing(field.GetX()+45, field.GetY()-30, currentPlayerImage);
+				v.drawThing(field.GetX()+35, field.GetY()-30, staminaSprites[stamina-1]);
 			else
-				v.drawThing(field.GetX()+39+charPos, field.GetY()-15, currentPlayerImage);
+				v.drawThing(field.GetX()+29+charPos, field.GetY()-15, staminaSprites[stamina-1]);
 		}
 	}
 		
