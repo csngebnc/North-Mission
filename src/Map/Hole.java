@@ -39,7 +39,8 @@ public class Hole extends Field
 		JComboBox<String> cb = new JComboBox<String>();
 		for(Character c : characters)
 			cb.addItem(c.getName());
-		JOptionPane.showMessageDialog(null, cb);
+		JOptionPane pane = new JOptionPane();
+		pane.showMessageDialog(null, cb);
 		return characters.get(cb.getSelectedIndex()).save(safeField);
 	}
 	

@@ -8,86 +8,90 @@ import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 import Core.Game;
 import Items.Item;
 import Player.Player;
 
-public class Inventory extends JFrame {
+public class Inventory extends JDialog{
 
 	private Player player;
 	private ArrayList<Item> items;
-	private JComboBox box;
-	private JFrame frame;
+	private JDialog dialog;
 	private JScrollPane pane;
+	private JList<String> list;
+	DefaultListModel<String> listModel;
 	
 	public Inventory(Player p)
 	{
-		frame = this;
+		dialog = this;
 		player = p;
 		items = player.getInventory();
-		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(300, 300);
 		this.setTitle("Inventory");
-		JPanel jp = new JPanel();
-		jp.setLayout(null);
-		jp.setBackground(new Color(5, 60, 200, 200));
-		
-		jp.setPreferredSize(new Dimension(350, 100));
-		this.add(jp);
+		this.setModal(true);
+		this.setResizable(false);
 
-		box = new JComboBox();
-		box.setBounds(90, 70, 120, 30);
-		for(Item i : items) {
-			box.addItem(i.getName());
-		}
+		listModel = new DefaultListModel<String>();
+		for(Item item : items)
+			listModel.addElement(item.getName());
 		
-		jp.add(box);
+		list = new JList<String>(listModel);
+		
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		pane = new JScrollPane(list) {
+			@Override
+			public Dimension getPreferredSize() {
+				return new Dimension(300,200);
+			}
+		};
+		pane.setPreferredSize(new Dimension(300, 200));
+		pane.setSize(new Dimension(300, 200));
+		
 		JButton b1 = new JButton("Drop");
 		b1.setBounds(46, 200, 80, 30);
 		b1.addActionListener(new DropButtonListener());
-		jp.add(b1);
+		this.add(b1);
+
 		
 		JButton b2 = new JButton("Use");
 		b2.setBounds(176, 200, 80, 30);
 		b2.addActionListener(new UseButtonListener());
-		jp.add(b2);
-		this.setVisible(true);
-		this.setResizable(false);
-		/*
-	//	pane.setBounds(90, 70, 120, 30);
-		for(int i = 0; i < items.size() ; i++)
-		{
-			JLabel l = new JLabel(items.get(i).getClass().getName());
-			jp.add(l);
-		}
-		pane = new JScrollPane(jp);
+		this.add(b2);
+		
+		this.add(pane);
 		pane.setVisible(true);
-		this.add(pane, BorderLayout.CENTER);
-		*/
+		this.setVisible(true);
+		this.pack();
 	}
 	
 	private class DropButtonListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			int chosen = box.getSelectedIndex();
+			int chosen = list.getSelectedIndex();
 			if (chosen >= 0) {
 				Item item = player.getItem(chosen);
 				
 				if (item.throwTo(player.getField())) {
 					player.removeItem(item);
 					player.drainStamina();
-					box.removeItemAt(chosen);
-					box.revalidate();
+					listModel.remove(chosen);
+					pane.revalidate();
 					if(player.getStamina() == 0) {
-						frame.dispose();
+						dialog.dispose();
 					}
 					Game.notifyView();
 				}
@@ -99,25 +103,14 @@ public class Inventory extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			int chosen = box.getSelectedIndex();
+			int chosen = list.getSelectedIndex();
 			if (chosen >= 0) {
 				Item item = player.getItem(chosen);
+				dialog.dispose();
 				item.use(player);
-				box.removeAllItems();
-				items = player.getInventory();
-				for(Item i : items) {
-					box.addItem(i.getName());
-				}
-				
-				box.revalidate();
-				
-				if(player.getStamina() == 0) {
-					frame.dispose();
-				}
 			}
-			Game.notifyView();
+			Game.notifyView();		
 		}
-		
 	}
 	/*
 	private class ItemSelectedListener implements MouseListener{

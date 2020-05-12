@@ -11,6 +11,7 @@ public class SaveDialog extends DirectionDialog {
 
 	@Override
 	protected void doActivity(Field target) {
+		dispose();
 		if(target.savePerson(centerField))
 			player.drainStamina();
 		Game.notifyView();

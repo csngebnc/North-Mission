@@ -33,6 +33,22 @@ public abstract class Player extends Character
 	public Player() {
 		inventory = new ArrayList<Item>();
 		inventory.add(new Rope());
+		inventory.add(new Rope());
+		inventory.add(new Rope());
+		inventory.add(new Rope());
+		inventory.add(new Rope());
+		inventory.add(new Rope());
+		inventory.add(new Rope());
+		inventory.add(new Rope());
+		inventory.add(new Rope());
+		inventory.add(new Rope());
+		inventory.add(new Rope());
+		inventory.add(new Rope());
+		inventory.add(new Rope());
+		inventory.add(new Rope());
+		inventory.add(new Rope());
+		inventory.add(new Rope());
+		
 		isDrowning = false;
 		dSuitOn = false;
 		
