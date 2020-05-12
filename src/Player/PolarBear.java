@@ -20,9 +20,9 @@ public class PolarBear extends Character{
 	 */
 	public PolarBear() {
 		super();
-		img = new Image[2];
-		img[0]= new ImageIcon("./assets/characters/polar_standing.png").getImage();
-		img[1] = new ImageIcon("./assets/characters/polar_drowning.png").getImage();
+		sprites = new Image[2];
+		sprites[0]= new ImageIcon("./assets/characters/polar_standing.png").getImage();
+		sprites[1] = new ImageIcon("./assets/characters/polar_drowning.png").getImage();
 	}
 	@Override
 	public void doTurn(KeyEvent e) {
@@ -100,16 +100,23 @@ public class PolarBear extends Character{
 	public String getName() {
 		return "Jegesmedve";
 	}
+	
+	@Override
+	public Image getAvatar() {
+		if(isDrowning)
+			return sprites[1];
+		else return sprites[0];
+	}
 
 	@Override
 	public void draw(View v) {
 		if(isDrowning) {
-			v.drawThing(field.GetX()+32, field.GetY()+14, img[1]);
+			v.drawThing(field.GetX()+32, field.GetY()+14, getAvatar());
 		}else {
 			if(field.hasBuilding())
-				v.drawThing(field.GetX()+25, field.GetY()+10, img[0]);	
+				v.drawThing(field.GetX()+25, field.GetY()+10, getAvatar());	
 			else
-				v.drawThing(field.GetX()+25, field.GetY(), img[0]);	
+				v.drawThing(field.GetX()+25, field.GetY(), getAvatar());	
 		}	
 	}
 

@@ -123,6 +123,10 @@ public class Game {
 		}
 	}
 	
+	public static View getView() {
+		return view;
+	}
+	
 	public void nextCharacter() {
 		if(characters.indexOf(activeCharacter) == characters.size()-1) {
 			doRound();

@@ -1,4 +1,5 @@
 package Map;
+import java.awt.Image;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -152,6 +153,15 @@ public abstract class Field extends FieldView
 	{
 		return false;
 	}
+	
+	public Image getSprite() {
+		if(snowLayers==0) 
+			return sprites[0];
+		else if(snowLayers>0 && snowLayers <5)
+			return sprites[1];
+		else
+			return sprites[2];
+	}
 
 	/**
 	 *  A leszarmazottak maguk valositjak meg.
@@ -173,7 +183,6 @@ public abstract class Field extends FieldView
 	{
 		return false;
 	}
-	
 	
 	/**
 	 * A leszarmazottak valositjak meg.
@@ -248,13 +257,7 @@ public abstract class Field extends FieldView
 	}
 	
 	public void draw(View v) {
-		if(snowLayers==0) {
-			v.drawThing(x, y, sprites[0]);
-		}else if(snowLayers>0 && snowLayers <5) {
-			v.drawThing(x, y, sprites[1]);
-		}else if(snowLayers>=5) {
-			v.drawThing(x, y, sprites[2]);
-		}
+		v.drawThing(x, y, getSprite());
 	}
 	
 	public void discoverNeighbours(ArrayList<Field> fields) {

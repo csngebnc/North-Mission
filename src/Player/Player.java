@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import Core.Game;
 import Items.DivingSuit;
 import Items.Item;
+import Items.Rope;
 import Map.Field;
 import Visual.DirectionDialog;
 import Visual.Inventory;
@@ -32,6 +33,7 @@ public abstract class Player extends Character
 	 */
 	public Player() {
 		inventory = new ArrayList<Item>();
+		inventory.add(new Rope());
 		isDrowning = false;
 		dSuitOn = false;
 		
@@ -108,7 +110,7 @@ public abstract class Player extends Character
 				break;
 			case KeyEvent.VK_S:
 				//skill használat
-				new DirectionDialog(this).show();
+				doSkill();
 				break;
 			case KeyEvent.VK_H:
 				//kézzel ásás
@@ -260,15 +262,15 @@ public abstract class Player extends Character
 	public Image getAvatar() {
 		if(isDrowning) {
 			if(dSuitOn)
-				return img[3];
+				return sprites[3];
 			else
-				return img[1];
+				return sprites[1];
 		}
 		else {
 			if(dSuitOn) 
-				return img[2];
+				return sprites[2];
 			else
-				return img[0];
+				return sprites[0];
 		}
 	}
 	

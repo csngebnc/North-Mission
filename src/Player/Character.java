@@ -20,13 +20,17 @@ public abstract class Character implements Viewable{
 	protected Field field;
 	protected boolean isDrowning;
 	protected int stamina;
-	protected Image[] img;
+	protected Image[] sprites;
 	
 	public void setDrowning(boolean b) 
 	{ 
 		isDrowning = b;
 		if(isDrowning)
 			stamina = 0;
+	}
+	
+	public boolean getDrowning() {
+		return isDrowning;
 	}
 
 	/**
@@ -103,6 +107,8 @@ public abstract class Character implements Viewable{
 	public Field getField() {
 		return field;
 	}
+	
+	public abstract Image getAvatar();
 	
 	/**
 	 * Karakter nevének lekérdezése.

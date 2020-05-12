@@ -4,6 +4,8 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import Visual.RevealDialog;
+
 /**
  * A sarkkutató kasztú játékost reprezentáló osztály.
  * A Player osztály leszármazottja.
@@ -19,16 +21,16 @@ public class Scientist extends Player
 	public Scientist() {
 		super();
 		health = 4;
-		img = new Image[4];
-		img[0]= new ImageIcon("./assets/characters/scientist_standing.png").getImage();
-		img[1] = new ImageIcon("./assets/characters/scientist_drowning.png").getImage();
-		img[2]= new ImageIcon("./assets/characters/scientist_standing_dsuit.png").getImage();
-		img[3] = new ImageIcon("./assets/characters/scientist_drowning_dsuit.png").getImage();
+		sprites = new Image[4];
+		sprites[0]= new ImageIcon("./assets/characters/scientist_standing.png").getImage();
+		sprites[1] = new ImageIcon("./assets/characters/scientist_drowning.png").getImage();
+		sprites[2]= new ImageIcon("./assets/characters/scientist_standing_dsuit.png").getImage();
+		sprites[3] = new ImageIcon("./assets/characters/scientist_drowning_dsuit.png").getImage();
 	}
 	
 	public void doSkill() 
 	{
-		field.revealLimit(this);
+		new RevealDialog(this);
 	}
 	
 }
