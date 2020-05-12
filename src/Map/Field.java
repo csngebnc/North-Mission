@@ -1,11 +1,15 @@
 package Map;
 import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+
 import Items.Item;
 import Map.Buildings.Building;
 import Player.Character;
 import Player.Direction;
 import Player.Player;
 import Visual.FieldView;
+import Visual.View;
 
 /**
  * A Field, azaz az altalanos mezo osztalya.
@@ -51,6 +55,7 @@ public abstract class Field extends FieldView
 	 * Beallitja a horeteget egy veletlenszeru szamra, letrehozza az ures listakat, a buildinget null-ra allitja. 
 	 * @author Csonge Bence
 	 */
+	
 	public Field(int x, int y) {
 		super(x,y);
 		snowLayers = (int)Math.random()*6;
@@ -240,6 +245,16 @@ public abstract class Field extends FieldView
 	public void setMaxPlayers(int n)
 	{
 		maxplayers=n;
+	}
+	
+	public void draw(View v) {
+		if(snowLayers==0) {
+			v.drawThing(x, y, sprites[0]);
+		}else if(snowLayers>0 && snowLayers <5) {
+			v.drawThing(x, y, sprites[1]);
+		}else if(snowLayers>=5) {
+			v.drawThing(x, y, sprites[2]);
+		}
 	}
 	
 	public void discoverNeighbours(ArrayList<Field> fields) {

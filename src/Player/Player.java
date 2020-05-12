@@ -7,6 +7,7 @@ import Core.Game;
 import Items.DivingSuit;
 import Items.Item;
 import Map.Field;
+import Visual.DirectionDialog;
 import Visual.Inventory;
 import Visual.View;
 
@@ -107,7 +108,7 @@ public abstract class Player extends Character
 				break;
 			case KeyEvent.VK_S:
 				//skill használat
-				doSkill();
+				new DirectionDialog(this).show();
 				break;
 			case KeyEvent.VK_H:
 				//kézzel ásás

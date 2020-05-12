@@ -21,6 +21,7 @@ public class Hole extends Field
 	 */
 	public Hole(int x, int y) {
 		super(x,y);
+		sprites[0] = new ImageIcon("./assets/fields/hole.png").getImage();
 		maxplayers = (int)Math.random()*Game.getPlayerCount();
 	}
 	
@@ -97,17 +98,9 @@ public class Hole extends Field
 
 	@Override
 	public void draw(View v) {
-		if(snowLayers==0) {
-			v.drawThing(x, y, new ImageIcon("./assets/fields/lyuk.png").getImage());
-		}else if(snowLayers>0 && snowLayers <5) {
-			v.drawThing(x, y, new ImageIcon("./assets/fields/snow1.png").getImage());
-		}else if(snowLayers>=5) {
-			v.drawThing(x, y, new ImageIcon("./assets/fields/snow2.png").getImage());
-		}
-		
+		super.draw(v);
 		for(Character c : characters) {
 			c.draw(v);
 		}
-		
 	}
 }
