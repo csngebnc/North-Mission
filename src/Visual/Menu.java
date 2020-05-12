@@ -32,9 +32,11 @@ public class Menu extends JFrame{
 	JButton bStart, bCredits, bExit;
 	JTextField[] nevek;
 	JComboBox[] kaszt;
+	JFrame frame;
 	
 	public Menu()
 	{
+		frame = this;
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		try {
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("./assets/HUD/ARCADE_N.ttf")));
@@ -166,46 +168,33 @@ public class Menu extends JFrame{
 		    		   label.add(nevek[i]);
 		    	   }
 		    	   
-
-		    	   JButton bGo = new JButton("GO");
-			    	bGo.setBounds(620, 600, 60, 40);
-			    	bGo.addActionListener(new GoButtonPressed());
-
-			    	if(hanyan==0)
-			    	{			    
-			    		label.remove(bGo);
-			    	}
-			    	else {
-			    		label.add(bGo);
-			    	}
+		   
 	  
 		       }		
 		}
 	}
 	
-	public void setFrameInvisible()
-	{
-		this.setVisible(false);
-	}
 	
 	private class GoButtonPressed implements ActionListener{
 		public void actionPerformed(ActionEvent e)
 		{
-			Game.getInstance();
-			/*
-			for (int i = 0; i < kaszt.length; i++) {
-				if (kaszt[i].getSelectedItem() == "Eszkimó") {
-					System.out.println("ESKIMO LÉTREHOZVA");
-					Game.getInstance().addEskimo(0, nevek[i].getText());
-				}
-				else {
-					System.out.println("SCI LÉTREHOZVA");
-					Game.getInstance().addScientist(0, nevek[i].getText());
-				}
-			}*/
-			Game.notifyView();
-			setFrameInvisible();
-			
+			if(nevek!=null)
+			{
+				Game.getInstance();
+				/*
+				for (int i = 0; i < kaszt.length; i++) {
+					if (kaszt[i].getSelectedItem() == "Eszkimó") {
+						System.out.println("ESKIMO LÉTREHOZVA");
+						Game.getInstance().addEskimo(0, nevek[i].getText());
+					}
+					else {
+						System.out.println("SCI LÉTREHOZVA");
+						Game.getInstance().addScientist(0, nevek[i].getText());
+					}
+				}*/
+				Game.notifyView();
+				frame.dispose();
+			}
 		}
 		
 	}
@@ -221,7 +210,7 @@ public class Menu extends JFrame{
 	    	JButton bBack = new JButton("BACK");
 	    	bBack.setBounds(900, 40, 300, 70);
 	    	bBack.setForeground(Color.white);
-	    	bBack.setFont(new Font("Arcade Normal", Font.PLAIN, 50));
+	    	bBack.setFont(new Font("Arcade Normal", Font.PLAIN, 30));
 			bBack.setOpaque(false);
 			bBack.setContentAreaFilled(false);
 			bBack.setBorderPainted(false);
@@ -231,7 +220,17 @@ public class Menu extends JFrame{
 			label.add(bBack);
 	    	
 	    	
-	    	
+	    	JButton bGo = new JButton("GO");
+	    	bGo.setBounds(5, 40, 300, 70);
+	    	bGo.setForeground(Color.white);
+	    	bGo.setFont(new Font("Arcade Normal", Font.PLAIN, 30));
+			bGo.setOpaque(false);
+			bGo.setContentAreaFilled(false);
+			bGo.setBorderPainted(false);
+			bGo.addMouseListener(new MouseHover());
+			bGo.setFocusable(false);
+			bGo.addActionListener(new GoButtonPressed());
+			label.add(bGo);
 
 			
 	    	   nev = new JLabel("Name");
