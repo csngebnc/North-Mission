@@ -35,6 +35,7 @@ public class IceField extends Field
 	 */
 	public IceField(int x, int y) {
 		super(x,y);
+		sprites[0] = new ImageIcon("./assets/fields/ice.png").getImage();
 		frozenItem = null;
 		itemOnGround = new ArrayList<Item>();
 		maxplayers = Game.getPlayerCount();
@@ -168,13 +169,7 @@ public class IceField extends Field
 		if(characters.size() > maxplayers)
 			return;
 		
-		if(snowLayers==0) {
-			v.drawThing(x, y, new ImageIcon("./assets/fields/ice.png").getImage());
-		}else if(snowLayers>0 && snowLayers <5) {
-			v.drawThing(x, y, new ImageIcon("./assets/fields/snow1.png").getImage());
-		}else if(snowLayers>=5) {
-			v.drawThing(x, y, new ImageIcon("./assets/fields/snow2.png").getImage());
-		}
+		super.draw(v);
 		
 		if(snowLayers==0 && frozenItem!=null) {
 			v.drawThing(x+25, y+5, frozenItem.getImg(ImgType.FROZEN));

@@ -1,42 +1,38 @@
 package Visual;
-
-import java.awt.Canvas;
-import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
-import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import Core.Game;
+import Map.Field;
 import Player.Direction;
 import Player.Player;
 
-public class Skill extends JFrame{
+public class DirectionDialog extends JFrame{
 	
 	Player p;
 	JDialog dia;
+	Field centerField;
+	int cetnerX = 640;
+	int centerY = 360;
+	int dialogSize = 340;
 	
-	public Skill(Player pp) {
+	public DirectionDialog(Player p) {
 		dia = new JDialog(this, "doSkill", true);
-		p = pp;
 		
-		this.setLocationRelativeTo(null);
+		this.p = p;
+		centerField = p.getField();
 		
-		this.setSize(340,340);
+		//this.setLocationRelativeTo(null);
+		
+		this.setSize(dialogSize, dialogSize);
 		JLabel label = new JLabel();
-		label.setBounds(0, 0, 340, 340);
-		label.setIcon(new ImageIcon("./assets/characters/skill.png"));
-		
-		
-		
+
 		this.add(label);
-		
 	}
 	
-	public void showItselt() {
+	public void show() {
 		dia.addKeyListener(new KeyAdapter() {
 
 			@Override
@@ -51,6 +47,8 @@ public class Skill extends JFrame{
 		dia.pack();
 		dia.setVisible(true);
 	}
+	
+	
 	
 	private void notifyField(int charCode) {
 		switch(charCode) {
