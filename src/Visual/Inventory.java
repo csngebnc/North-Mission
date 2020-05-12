@@ -80,12 +80,12 @@ public class Inventory extends JFrame {
 				
 				if (item.throwTo(player.getField())) {
 					player.removeItem(item);
+					player.drainStamina();
 					box.removeItemAt(chosen);
 					box.revalidate();
 				}
 			}
 		}
-		
 	}
 		
 	private class UseButtonListener implements ActionListener{
@@ -96,7 +96,6 @@ public class Inventory extends JFrame {
 			if (chosen >= 0) {
 				Item item = player.getItem(chosen);
 				item.use(player);
-				
 				box.removeAllItems();
 				items = player.getInventory();
 				for(Item i : items) {
