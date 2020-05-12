@@ -127,7 +127,9 @@ public abstract class Player extends Character
 				return;
 			//Tárgyfelvétel
 			case KeyEvent.VK_F:
-				inventory.add(field.pickUpItem(this));
+				Item pickUpItem = field.pickUpItem(this);
+				if(pickUpItem != null)
+					inventory.add(pickUpItem);
 			//Kiaszabitás
 			case KeyEvent.VK_M:
 				field.removeItemFromIce(this);
