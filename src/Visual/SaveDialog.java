@@ -15,5 +15,6 @@ public class SaveDialog extends DirectionDialog {
 		if(target.savePerson(centerField))
 			player.drainStamina();
 		Game.notifyView();
+		Game.getView().requestFocus();
 	}
 }

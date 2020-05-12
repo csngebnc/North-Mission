@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import Core.Game;
+import Core.GameState;
 import Items.DivingSuit;
 import Items.Item;
 import Items.Rope;
@@ -32,23 +33,6 @@ public abstract class Player extends Character
 	 */
 	public Player() {
 		inventory = new ArrayList<Item>();
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		inventory.add(new Rope());
-		
 		isDrowning = false;
 		dSuitOn = false;
 		
@@ -75,8 +59,9 @@ public abstract class Player extends Character
 	 */
 	public void doTurn(KeyEvent e) 
 	{
-		if(isDrowning && !dSuitOn) {
+		if(Game.getInstance().getState() != GameState.ONGOING) {
 			alterHealth(-150);
+			return;
 		}
 		move(e);
 		Game.notifyView();
@@ -89,6 +74,10 @@ public abstract class Player extends Character
 	
 	public void startTurn() {
 		stamina = 3;
+		if(isDrowning && !dSuitOn) {
+			alterHealth(-150);
+			return;
+		}
 	}
 	
 	public void move(KeyEvent e) {
