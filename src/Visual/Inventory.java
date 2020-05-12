@@ -31,6 +31,7 @@ public class Inventory extends JFrame {
 		items = player.getInventory();
 		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(300, 300);
+		this.setTitle("Inventory");
 		JPanel jp = new JPanel();
 		jp.setLayout(null);
 		jp.setBackground(new Color(5, 60, 200, 200));
@@ -40,9 +41,8 @@ public class Inventory extends JFrame {
 
 		box = new JComboBox();
 		box.setBounds(90, 70, 120, 30);
-		for(int i = 0; i < items.size() ; i++)
-		{
-			box.addItem(items.get(i).getName());
+		for(Item i : items) {
+			box.addItem(i.getName());
 		}
 		
 		jp.add(box);
@@ -97,14 +97,12 @@ public class Inventory extends JFrame {
 				Item item = player.getItem(chosen);
 				item.use(player);
 				
-				
-				items = player.getInventory();
-				
 				box.removeAllItems();
-				for(int i = 0; i < items.size() ; i++)
-				{
-					box.addItem(items.get(i).getName());
-				}				
+				items = player.getInventory();
+				for(Item i : items) {
+					box.addItem(i.getName());
+				}
+				
 				box.revalidate();
 			}
 		}
