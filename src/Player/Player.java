@@ -9,6 +9,7 @@ import Core.Game;
 import Items.DivingSuit;
 import Items.Item;
 import Map.Field;
+import Visual.Inventory;
 import Visual.View;
 
 /**
@@ -48,21 +49,7 @@ public abstract class Player extends Character
 	 */
 	protected void openInventory() 
 	{
-		for(Item i : inventory) {
-			System.out.println(i.getClass());
-		}
-		String bemenet = "";
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
-		
-		try {
-			bemenet = reader.readLine();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		if(!inventory.isEmpty()) {
-			inventory.get(Integer.parseInt(bemenet)).use(this);
-		}
+		Inventory inv = new Inventory(this);
 	}
 	
 	/**
@@ -134,7 +121,7 @@ public abstract class Player extends Character
 					drainStamina();
 				break;
 			case KeyEvent.VK_I:
-				//Itt jön felugró ablakkal az inventory
+				openInventory();
 				break;
 			//Passzolás
 			case KeyEvent.VK_P:
