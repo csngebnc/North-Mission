@@ -186,6 +186,7 @@ public abstract class Player extends Character
 	 */
 	public void drainStamina() 
 	{
+		System.out.println("Drained, " + stamina);
 		stamina -= 1;
 	}
 	
