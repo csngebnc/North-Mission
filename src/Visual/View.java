@@ -51,11 +51,11 @@ public class View extends JFrame{
 			}
 		});
 		
-		//Arcade Normal betûtipus regisztrálása
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		try {
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("./assets/HUD/ARCADE_N.ttf")));
 		} catch (Exception e) {e.printStackTrace();}
+
 	}
 	
 	public void revalidate(Map map, ArrayList<Player> players) {

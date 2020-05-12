@@ -1,8 +1,14 @@
 package Items;
 import java.awt.Image;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import javax.swing.ImageIcon;
+
+import Core.Main;
 import Player.Player;
 import Visual.ImgType;
+import Map.Field;
 
 /**
  * Segítségével egy lyukba esett játékos kimenthetõ. 
@@ -43,11 +49,6 @@ public class Rope extends Throwable
 	}
 	
 	@Override
-	public String getName() {
-		return "Rescue Rope";
-	}
-	
-	@Override
 	public Image getImg(ImgType form) {
 		if(form==ImgType.DROPPED) {
 			return new ImageIcon("./assets/items_buildings/rope.png").getImage();
@@ -56,5 +57,9 @@ public class Rope extends Throwable
 		}else{
 			return null;
 		}
+	}
+	
+	public String getName() {
+		return "Rope";
 	}
 }
