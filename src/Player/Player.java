@@ -33,7 +33,6 @@ public abstract class Player extends Character
 		inventory = new ArrayList<Item>();
 		isDrowning = false;
 		dSuitOn = false;
-		health = 7;
 		
 		staminaSprites = new Image[3];
 		staminaSprites[0] = new ImageIcon("./assets/HUD/stamina_1.png").getImage();
@@ -56,28 +55,21 @@ public abstract class Player extends Character
 	 * Ezután, ha van még staminája, akkor szándékainak megfelelõen cselekedhet.
 	 * @author Zalan
 	 */
-	public boolean doTurn(Game g, KeyEvent e) 
+	public void doTurn(KeyEvent e) 
 	{
-		if(this.stamina<=0) {
-			g.notifyView();
-			return true;
-		}
 		if(isDrowning && !dSuitOn) {
 			alterHealth(-150);
-			g.notifyView();
-			return false;
 		}
-		
-			move(e);
-			g.notifyView();
+		move(e);
+		Game.notifyView();
 			
-			if(isDrowning)
-				return true;
-			
-		return stamina == 0;
+		if(isDrowning) {
+			Game.getInstance().nextCharacter();
+			Game.notifyView();
+		}
 	}
 	
-	public void startTurn(Game g) {
+	public void startTurn() {
 		stamina = 3;
 	}
 	
@@ -120,7 +112,7 @@ public abstract class Player extends Character
 			case KeyEvent.VK_H:
 				//kézzel ásás
 				if(field.digSnow(1))
-					drainStamina();
+				drainStamina();
 				break;
 			case KeyEvent.VK_I:
 				openInventory();
@@ -128,7 +120,8 @@ public abstract class Player extends Character
 				break;
 			//Passzolás
 			case KeyEvent.VK_P:
-				stamina = 0;
+				stamina = 1;
+				drainStamina();
 				return;
 			//Tárgyfelvétel
 			case KeyEvent.VK_F:
@@ -192,6 +185,9 @@ public abstract class Player extends Character
 	{
 		System.out.println("Drained, " + stamina);
 		stamina -= 1;
+		if(stamina == 0) {
+			Game.getInstance().nextCharacter();
+		}
 	}
 	
 	/**
@@ -216,25 +212,23 @@ public abstract class Player extends Character
 	
 	@Override
 	public void draw(View v) {
+		
+		Image sprite = getAvatar();
+		
+		//Pozició meghatározása
 		int charPos = (52/field.getCharacters().size()) * 
 				(int)Math.pow(-1, field.getCharacters().indexOf(this)) *
 				(int)(Math.ceil(((double)field.getCharacters().indexOf(this))/2));
+		
+		//Player modell rajzolás
 		if(!field.hasBuilding()) {
-			if(isDrowning) {
-				if(dSuitOn) {
-					v.drawThing(field.GetX()+40+charPos, field.GetY()+8, img[3]);
-				}else {
-					v.drawThing(field.GetX()+40+charPos, field.GetY()+8, img[1]);
-				}
-			}else {
-				if(dSuitOn) {
-				v.drawThing(field.GetX()+36+charPos, field.GetY(), img[2]);
-				}
-				else {
-					v.drawThing(field.GetX()+36+charPos, field.GetY(), img[0]);
-				}
-			}
+			if(isDrowning) 
+				v.drawThing(field.GetX()+40+charPos, field.GetY()+8, sprite);
+			else 
+				v.drawThing(field.GetX()+36+charPos, field.GetY(), sprite);
 		}
+		
+		//Stamina rajzolás
 		if(stamina > 0) {
 			if(field.hasBuilding())
 				v.drawThing(field.GetX()+35, field.GetY()-30, staminaSprites[stamina-1]);

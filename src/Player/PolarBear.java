@@ -25,15 +25,13 @@ public class PolarBear extends Character{
 		img[1] = new ImageIcon("./assets/characters/polar_drowning.png").getImage();
 	}
 	@Override
-	public boolean doTurn(Game g, KeyEvent e) {
+	public void doTurn(KeyEvent e) {
 		move(null);
-		g.notifyView();
-		g.nextCharacter();
-		return true;
+		Game.getInstance().nextCharacter();
 	}
 	
-	public void startTurn(Game g) {
-		doTurn(g, null);
+	public void startTurn() {
+		doTurn(null);
 	}
 	
 	public void move(KeyEvent e) {

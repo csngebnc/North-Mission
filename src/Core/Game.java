@@ -48,7 +48,7 @@ public class Game {
 	 * A jatekban resztvevo karakterek
 	 * @author Csonge Bence
 	 */
-	public static ArrayList<Character> characters;
+	public ArrayList<Character> characters;
 	
 	/**
 	 * A jatekban resztvevo játékosok
@@ -68,9 +68,11 @@ public class Game {
 	 */
 	
 	private static View view;
-	private static Character activeCharacter;
+	private Character activeCharacter;
 	
-	public Game() {
+	private static Game instance = new Game();
+	
+	private Game() {
 		roundNum = 0;
 		roundsUntilBlizzard = -1;
 		foundGunParts = 0;
@@ -81,12 +83,16 @@ public class Game {
 		view = new View(this);
 		Reset();
 		activeCharacter = characters.get(0);
-		activeCharacter.startTurn(this);
+		activeCharacter.startTurn();
 		view.revalidate(map, players);
 	}
 	
 	public static void notifyView() {
 		view.revalidate(map, players);
+	}
+	
+	public static Game getInstance() {
+		return instance;
 	}
 
 	/**
@@ -121,11 +127,12 @@ public class Game {
 		if(characters.indexOf(activeCharacter) == characters.size()-1) {
 			doRound();
 			activeCharacter = characters.get(0);
-			activeCharacter.startTurn(this);
+			activeCharacter.startTurn();
 		}else {
 			activeCharacter = characters.get(characters.indexOf(activeCharacter)+1);
-			activeCharacter.startTurn(this);
+			activeCharacter.startTurn();
 		}
+		notifyView();
 	}
 	
 	
@@ -133,11 +140,7 @@ public class Game {
 		if(state!=GameState.ONGOING) {
 			return;
 		}
-		boolean callNext = activeCharacter.doTurn(this, e);
-		if(callNext) {
-				nextCharacter();
-				view.revalidate(map, players);
-		}
+		activeCharacter.doTurn(e);
 	}
 	
 	/**
@@ -172,6 +175,7 @@ public class Game {
 	{
 		state = GameState.LOST;
 		System.out.println("The players lost the game.");
+		notifyView();
 	}
 	
 	public static int getRoundNum() {

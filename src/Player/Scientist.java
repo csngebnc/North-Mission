@@ -18,9 +18,12 @@ public class Scientist extends Player
 	 */
 	public Scientist() {
 		super();
-		img = new Image[2];
+		health = 4;
+		img = new Image[4];
 		img[0]= new ImageIcon("./assets/characters/scientist_standing.png").getImage();
 		img[1] = new ImageIcon("./assets/characters/scientist_drowning.png").getImage();
+		img[2]= new ImageIcon("./assets/characters/scientist_standing_dsuit.png").getImage();
+		img[3] = new ImageIcon("./assets/characters/scientist_drowning_dsuit.png").getImage();
 	}
 	
 	public void doSkill() 

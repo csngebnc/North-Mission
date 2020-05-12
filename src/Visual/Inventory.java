@@ -110,6 +110,10 @@ public class Inventory extends JFrame {
 				}
 				
 				box.revalidate();
+				
+				if(player.getStamina() == 0) {
+					frame.dispose();
+				}
 			}
 			Game.notifyView();
 		}

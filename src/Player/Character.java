@@ -34,10 +34,10 @@ public abstract class Character implements Viewable{
 	 * Leszármazottak saját maguk valósítják meg.
 	 * @author Zalan
 	 */
-	public abstract boolean doTurn(Game g, KeyEvent e);
+	public abstract void doTurn(KeyEvent e);
 	
 	public abstract void move(KeyEvent e);
-	public abstract void startTurn(Game g);
+	public abstract void startTurn();
 	/**
 	 * A karakter életének változtatása.
 	 * Leszármazottak saját maguk valósítják meg.
