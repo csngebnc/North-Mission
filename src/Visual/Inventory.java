@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Core.Game;
 import Items.Item;
 import Player.Player;
 
@@ -23,10 +24,12 @@ public class Inventory extends JFrame {
 	private Player player;
 	private ArrayList<Item> items;
 	private JComboBox box;
+	private JFrame frame;
 	private JScrollPane pane;
 	
 	public Inventory(Player p)
 	{
+		frame = this;
 		player = p;
 		items = player.getInventory();
 		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,6 +86,9 @@ public class Inventory extends JFrame {
 					player.drainStamina();
 					box.removeItemAt(chosen);
 					box.revalidate();
+					if(player.getStamina() == 0)
+						frame.dispose();
+					Game.notifyView();
 				}
 			}
 		}
@@ -104,6 +110,7 @@ public class Inventory extends JFrame {
 				
 				box.revalidate();
 			}
+			Game.notifyView();
 		}
 		
 	}

@@ -29,7 +29,7 @@ public class DivingSuit extends Throwable
 	
 	@Override
 	public String getName() {
-		return "Diving Suit";
+		return "Snorkel Sett";
 	}
 	
 	@Override

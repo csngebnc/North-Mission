@@ -120,6 +120,7 @@ public abstract class Player extends Character
 				break;
 			case KeyEvent.VK_I:
 				openInventory();
+				System.out.println("Stamina:" + stamina);
 				break;
 			//Passzolás
 			case KeyEvent.VK_P:
@@ -130,10 +131,13 @@ public abstract class Player extends Character
 				Item pickUpItem = field.pickUpItem(this);
 				if(pickUpItem != null)
 					inventory.add(pickUpItem);
+				break;
 			//Kiaszabitás
 			case KeyEvent.VK_M:
 				field.removeItemFromIce(this);
 				return;
+			default:
+				break;
 		}
 	}
 	

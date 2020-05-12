@@ -42,7 +42,7 @@ public class Game {
 	 * A jatekhoz tartozo palya
 	 * @author Csonge Bence
 	 */
-	private Map map;
+	private static Map map;
 	
 	/**
 	 * A jatekban resztvevo karakterek
@@ -67,7 +67,7 @@ public class Game {
 	 * @author Csonge Bence
 	 */
 	
-	private View view;
+	private static View view;
 	private Character activeCharacter;
 	
 	public Game() {
@@ -85,7 +85,7 @@ public class Game {
 		view.revalidate(map, players);
 	}
 	
-	public void notifyView() {
+	public static void notifyView() {
 		view.revalidate(map, players);
 	}
 
@@ -109,14 +109,11 @@ public class Game {
 			
 			if(roundsUntilBlizzard>0) {
 				roundsUntilBlizzard--;
-				System.out.println("Rounds until blizzard: "+roundsUntilBlizzard);
 				if(roundsUntilBlizzard == 0) {
 					roundsUntilBlizzard--;
 					callBlizzard();
 				}
 			}
-			
-			System.out.println("Round number: "+roundNum);
 		}
 	}
 	

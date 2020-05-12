@@ -28,7 +28,7 @@ public class Food extends Throwable
 	
 	@Override
 	public String getName() {
-		return "Food";
+		return "Food Ration";
 	}
 	
 	@Override

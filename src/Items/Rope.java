@@ -44,7 +44,7 @@ public class Rope extends Throwable
 	
 	@Override
 	public String getName() {
-		return "Rope";
+		return "Rescue Rope";
 	}
 	
 	@Override

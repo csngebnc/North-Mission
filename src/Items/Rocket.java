@@ -15,7 +15,7 @@ public class Rocket extends GunPart
 	
 	@Override
 	public String getName() {
-		return "Rocket";
+		return "Flare";
 	}
 	@Override
 	public Image getImg(ImgType form) {
