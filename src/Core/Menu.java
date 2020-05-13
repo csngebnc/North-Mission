@@ -277,10 +277,15 @@ public class Menu extends JPanel{
 			mainLabel.add(label2);
 			
 			JComboBox cb = new JComboBox();
-			for(int i=0;i<21;i++)
+			
+			for(int i = 1; i < 21; i++)
 				cb.addItem(new Integer(i));
+			
+			HowManyPlayerListener hmpl = new HowManyPlayerListener();
+			
 			cb.setBounds(470,50,50,30);
-			cb.addItemListener(new HowManyPlayerListener());
+			cb.addItemListener(hmpl);
+			hmpl.itemStateChanged(new ItemEvent(cb, 0, cb.getItemAt(0), ItemEvent.SELECTED));
 			mainLabel.add(cb);
 	    }
 	}
