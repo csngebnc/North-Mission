@@ -28,6 +28,10 @@ public class Scientist extends Player
 		sprites[3] = new ImageIcon("./assets/characters/scientist_drowning_dsuit.png").getImage();
 	}
 	
+	/**
+	 * Sarkkutató speciális képessége. Megjelenít egy irányválasztó ablakot, melyben a kiválasztott irányú szomszédra felfedi a teherbírást.
+	 * @author Csonge Bence
+	 */
 	public void doSkill() 
 	{
 		new RevealDialog(this);

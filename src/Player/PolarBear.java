@@ -24,16 +24,29 @@ public class PolarBear extends Character{
 		sprites[0]= new ImageIcon("./assets/characters/polar_standing.png").getImage();
 		sprites[1] = new ImageIcon("./assets/characters/polar_drowning.png").getImage();
 	}
+	
+	/**
+	 * Jegesmedve körének végrehajtása. Lép, majd értesíti a játékot, hogy jöhet a következõ játékos.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public void doTurn(KeyEvent e) {
 		move(null);
 		Game.getInstance().nextCharacter();
 	}
 	
+	/**
+	 * A jegesmedve elkezdi a körét.
+	 * @author Csonge Bence
+	 */
 	public void startTurn() {
 		doTurn(null);
 	}
 	
+	/**
+	 * Véletlenszerûen lép a mezõjének valamely szomszédos mezõjére.
+	 * @author Csonge Bence
+	 */
 	public void move(KeyEvent e) {
 		ArrayList<Integer> nexts = new ArrayList<Integer>();
 		for(int i=0; i< field.getNeighbours().size();i++) {
@@ -101,6 +114,10 @@ public class PolarBear extends Character{
 		return "Jegesmedve";
 	}
 	
+	/**
+	 * A jegesmedve aktuális állapotának megfelelõen visszaadja hozzá tartozó képet.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public Image getAvatar() {
 		if(isDrowning)
@@ -108,6 +125,10 @@ public class PolarBear extends Character{
 		else return sprites[0];
 	}
 
+	/**
+	 * Értesíti a paraméterként kapott megjelenítõt, hogy a megadott koordinátákra rajzolja ki a karakter avatárját.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public void draw(View v) {
 		if(isDrowning) {

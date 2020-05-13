@@ -68,7 +68,8 @@ public abstract class Character implements Viewable{
 	 */
 	public abstract void move(KeyEvent e);
 	/**
-	 * A karakter 
+	 * A karakter értesítése, hogy kezdõdik a kör.
+	 * A szükséges értékeket beállítja a körkezdéshez.
 	 * @author Csonge Bence
 	 */
 	public abstract void startTurn();
@@ -138,6 +139,10 @@ public abstract class Character implements Viewable{
 		return field;
 	}
 	
+	/**
+	 * Visszaadja a karakter állapotának megfelelõ képet, ami kirajzolásra kerül.
+	 * @author Csonge Bence
+	 */
 	public abstract Image getAvatar();
 	
 	/**
