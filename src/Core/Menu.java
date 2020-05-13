@@ -1,4 +1,4 @@
-package Visual;
+package Core;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -23,34 +23,27 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
-import Core.Game;
-
-public class Menu extends JFrame{
+public class Menu extends JPanel{
 
 	JLabel label;
 	JLabel nev, nev2, kaszt1, kaszt2;
 	JButton bStart, bCredits, bExit;
 	JTextField[] nevek;
 	JComboBox[] kaszt;
-	JFrame frame;
 	
 	public Menu()
 	{
-		frame = this;
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		try {
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("./assets/HUD/ARCADE_N.ttf")));
 		} catch (Exception e) {e.printStackTrace();}
 		
-		
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(new Dimension(1200,740));
 
 		//Icon imgIcon = new ImageIcon("C:\\Users\\barab\\eclipse-workspace\\Menu\\src\\menu_bg2.gif");
 		Icon imgIcon = new ImageIcon("./assets/menu_bg.gif");
 		label = new JLabel(imgIcon);
 		this.add(label);
-		this.setResizable(false);
 		
 		//Start gomb
 		bStart = new JButton("START");
@@ -180,20 +173,8 @@ public class Menu extends JFrame{
 		{
 			if(nevek!=null)
 			{
-				Game.getInstance();
-				/*
-				for (int i = 0; i < kaszt.length; i++) {
-					if (kaszt[i].getSelectedItem() == "Eszkimó") {
-						System.out.println("ESKIMO LÉTREHOZVA");
-						Game.getInstance().addEskimo(0, nevek[i].getText());
-					}
-					else {
-						System.out.println("SCI LÉTREHOZVA");
-						Game.getInstance().addScientist(0, nevek[i].getText());
-					}
-				}*/
-				Game.notifyView();
-				frame.dispose();
+				WindowFrame.switchToGame();
+				
 			}
 		}
 		

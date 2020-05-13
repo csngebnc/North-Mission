@@ -80,10 +80,13 @@ public class Game {
 		characters = new ArrayList<Character>();
 		players = new ArrayList<Player>();
 		state = GameState.ONGOING;
-		view = new View(this);
 		Reset();
 		activeCharacter = characters.get(0);
 		activeCharacter.startTurn();
+	}
+	
+	public static void attachView(View v) {
+		view = v;
 		view.revalidate(map, players);
 	}
 	
@@ -236,8 +239,6 @@ public class Game {
 		addScientist(0, "Morris");
 		addScientist(0, "Chuck");
 		addPolarBear((int)(Math.random()*30) + 60);
-
-		view.revalidate(map, players);
 	}
 	
 	public void addScientist(int fieldIndex, String name) {

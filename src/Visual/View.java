@@ -20,13 +20,10 @@ import Map.Map;
 import Map.Field;
 import Player.Player;
 
-public class View extends JFrame{
+public class View extends Canvas{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private Graphics g;
-	private Canvas cv;
-	private Game game;
 	private Image playerFrame = new ImageIcon("./assets/HUD/player_frame.png").getImage();
 	private Image playerFrameSelected = new ImageIcon("./assets/HUD/player_frame_selected.png").getImage();
 	private Image heart = new ImageIcon("./assets/HUD/heart.png").getImage();
@@ -34,20 +31,13 @@ public class View extends JFrame{
 	private Image backgroundImage = new ImageIcon("./assets/fields/backg.png").getImage();
 	private Image blizzardImage = new ImageIcon("./assets/HUD/cloud.png").getImage();
 	
-	public View(Game game) {
-		this.game = game;
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(new Dimension(1280,720));
-		this.setVisible(true);
-		cv = new Canvas();
-		cv.setSize(1280,720);
-		cv.setPreferredSize(cv.getSize());
-		this.add(cv);
-		cv.createBufferStrategy(2);
+	public View() {
+		this.setSize(1280,720);
+		this.setPreferredSize(this.getSize());
 		this.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				game.InputCame(e);
+				Game.getInstance().InputCame(e);
 			}
 		});
 		
@@ -55,17 +45,17 @@ public class View extends JFrame{
 		try {
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("./assets/HUD/ARCADE_N.ttf")));
 		} catch (Exception e) {e.printStackTrace();}
-
+		
 	}
 	
 	public void revalidate(Map map, ArrayList<Player> players) {
-		g = cv.getBufferStrategy().getDrawGraphics();
+		Graphics g = this.getBufferStrategy().getDrawGraphics();
 		g.drawImage(backgroundImage,0,0, null);
 		drawHUD(g, players);
 		for(Field f : map.getFields()) {
 			f.draw(this);
 		}
-		cv.getBufferStrategy().show();
+		this.getBufferStrategy().show();
 	}
 	
 	public void drawHUD(Graphics g, ArrayList<Player> players) {
@@ -123,17 +113,17 @@ public class View extends JFrame{
 		g2d.drawString(String.valueOf(Game.getRoundNum()+1), 90, 670);
 		
 		//Blizzard
-		if(game.getRoundsUntilBlizzard() > 0) {
+		if(Game.getInstance().getRoundsUntilBlizzard() > 0) {
 			g2d.setFont(font.deriveFont(15f));
 			g2d.drawString("IN", 58, 613);
-			g2d.drawString(String.valueOf(game.getRoundsUntilBlizzard()), 58, 633);
+			g2d.drawString(String.valueOf(Game.getInstance().getRoundsUntilBlizzard()), 58, 633);
 			g2d.drawString("turns", 76, 633);
 			g.drawImage(blizzardImage, 13, 600, null);
 		}
 	}
 	
 	public void drawThing(int x, int y, Image img) {
-		g.drawImage(img, x, y, null);
+		this.getBufferStrategy().getDrawGraphics().drawImage(img, x, y, null);
 	}
 	
 	/**
@@ -145,7 +135,7 @@ public class View extends JFrame{
 	 * @author Norbi
 	 */
 	public void drawThing(int x, int y, String limit) {
-		Graphics2D g2d = (Graphics2D) g;
+		Graphics2D g2d = (Graphics2D) this.getBufferStrategy().getDrawGraphics();
 		Color color = new Color(16, 121, 181);
 		g2d.setColor(color);
 		Font playerFont = new Font("Arcade Normal", Font.PLAIN, 8);
