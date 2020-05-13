@@ -138,7 +138,6 @@ public class Menu extends JPanel{
 	}
 	
 	private class HowManyPlayerListener implements ItemListener{
-
 		@Override
 		public void itemStateChanged(ItemEvent event) {
 			if (event.getStateChange() == ItemEvent.SELECTED) {
@@ -201,10 +200,9 @@ public class Menu extends JPanel{
 	
 	
 	private class GoButtonPressed implements ActionListener{
-		public void actionPerformed(ActionEvent e)
-		{
-			if(names!=null)
-			{
+		@Override
+		public void actionPerformed(ActionEvent e){
+			if(names!=null){
 				ArrayList<String> eskimos = new ArrayList<String>();
 				ArrayList<String> scientists = new ArrayList<String>();
 				
@@ -217,11 +215,10 @@ public class Menu extends JPanel{
 				WindowFrame.switchToGame(eskimos, scientists);
 			}
 		}
-		
 	}
 	
 	private class StartPressedListener implements ActionListener {
-		
+		@Override
 	    public void actionPerformed(ActionEvent e) {
 			mainLabel.removeAll();
 	    	
@@ -237,7 +234,6 @@ public class Menu extends JPanel{
 			bBack.addActionListener(new BackPressedListener());
 			mainLabel.add(bBack);
 	    	
-	    	
 	    	JButton bGo = new JButton("GO");
 	    	bGo.setBounds(530, 42, 120, 50);
 	    	bGo.setForeground(Color.white);
@@ -249,72 +245,66 @@ public class Menu extends JPanel{
 			bGo.setFocusable(false);
 			bGo.addActionListener(new GoButtonPressed());
 			mainLabel.add(bGo);
-
-			
-	    	   name1 = new JLabel("Name");
-	    	   name1.setBounds(300,100, 60,50);
-	    	   name1.setForeground(Color.white);
-	    	   name1.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
-	    	   mainLabel.add(name1);
+	
+			name1 = new JLabel("Name");
+			name1.setBounds(300,100, 60,50);
+			name1.setForeground(Color.white);
+			name1.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
+			mainLabel.add(name1);
+	   
+			name2 = new JLabel("Name");
+			name2.setBounds(800,100,60,50);
+			name2.setForeground(Color.white);
+			name2.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
+			name2.setVisible(false);
+			mainLabel.add(name2);
+	   
+			playerType1 = new JLabel("Type");
+			playerType1.setBounds(450,100,70,50);
+			playerType1.setForeground(Color.white);
+			playerType1.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
+			mainLabel.add(playerType1);
+	   
+			playerType2 = new JLabel("Type");
+			playerType2.setBounds(900,100,70,50);
+			playerType2.setForeground(Color.white);
+			playerType2.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
+			playerType2.setVisible(false);
+			mainLabel.add(playerType2);
 	    	   
-	    	   name2 = new JLabel("Name");
-	    	   name2.setBounds(800,100,60,50);
-	    	   name2.setForeground(Color.white);
-	    	   name2.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
-	    	   name2.setVisible(false);
-	    	   mainLabel.add(name2);
-	    	   
-	    	   playerType1 = new JLabel("Type");
-	    	   playerType1.setBounds(450,100,70,50);
-	    	   playerType1.setForeground(Color.white);
-	    	   playerType1.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
-	    	   mainLabel.add(playerType1);
-	    	   
-	    	   playerType2 = new JLabel("Type");
-	    	   playerType2.setBounds(900,100,70,50);
-	    	   playerType2.setForeground(Color.white);
-	    	   playerType2.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
-	    	   playerType2.setVisible(false);
-	    	   mainLabel.add(playerType2);
-	    	   
-    		   
 			JLabel label2 = new JLabel("PLAYERS: ");
 			label2.setForeground(Color.white);
 			label2.setBounds(300,50,300,30);
 			label2.setFont(new Font("Arcade Normal", Font.PLAIN, 20));
 			mainLabel.add(label2);
 			
-			
 			JComboBox cb = new JComboBox();
 			for(int i=0;i<21;i++)
-			{
 				cb.addItem(new Integer(i));
-			}
 			cb.setBounds(470,50,50,30);
 			cb.addItemListener(new HowManyPlayerListener());
 			mainLabel.add(cb);
-			
 	    }
 	}
 	
 	private class ExitPressedListener implements ActionListener{
-		public void actionPerformed(ActionEvent e)
-		{
+		@Override
+		public void actionPerformed(ActionEvent e){
 			System.exit(0);
 		}
 	}
 	
 	private class BackPressedListener implements ActionListener{
-		public void actionPerformed(ActionEvent e)
-		{
+		@Override
+		public void actionPerformed(ActionEvent e){
 			mainLabel.removeAll();
 			InitMenu();
 		}
 	}
 	
 	private class CreditsPressedListener implements ActionListener{
-		public void actionPerformed(ActionEvent e)
-		{
+		@Override
+		public void actionPerformed(ActionEvent e){
 			mainLabel.removeAll();
 			
 			JLabel l1, l2, l3, l4, l5;
@@ -358,6 +348,7 @@ public class Menu extends JPanel{
 			mainLabel.add(bBack);
 		}
 	}
+	
 	private class MouseHover extends MouseAdapter{
 		@Override
         public void mouseEntered(MouseEvent me) {

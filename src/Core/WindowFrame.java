@@ -11,15 +11,41 @@ import javax.swing.JPanel;
 
 import Visual.View;
 
+/**
+ * Az alkalmazást megjelenitõ ablak
+ * @author Balczer Dominik
+ */
 public class WindowFrame extends JFrame {
 
+	/**
+	 * Fõpanel, ezen van rajta a menü és maga a játék
+	 * @author Balczer Dominik
+	 */
 	private static JPanel contPanel;
+	
+	/**
+	 * Az elrendezésért felelõs LayoutManager
+	 * @author Balczer Dominik
+	 */
 	private static CardLayout cl;
+	
+	/**
+	 * Fõmenü panelje
+	 * @author Balczer Dominik
+	 */
 	private static Menu menuPanel;
+	
+	/**
+	 * Játék panelje
+	 * @author Balczer Dominik
+	 */
 	private static View gamePanel;
 	
+	/**
+	 * Konstruktor, inicializálja az ablakot és megjeleniti a fõmenüt
+	 * @author Balczer Dominik
+	 */
 	public WindowFrame() {
-		
 		cl = new CardLayout();
 		contPanel = new JPanel();
 		menuPanel = new Menu();
@@ -33,7 +59,7 @@ public class WindowFrame extends JFrame {
 		
 		this.setVisible(true);
 		
-		//gamePanel.createBufferStrategy(2);
+		//View hozzáadása a Controllerhez
 		Game.attachView(gamePanel);
 		
 		this.setTitle("North Mission");
@@ -47,12 +73,20 @@ public class WindowFrame extends JFrame {
 		this.setVisible(true);
 	}
 	
+	/**
+	 * Elinditja a játékot és a fõpanelen átvált az játék paneljére
+	 * @author Balczer Dominik
+	 */
 	public static void switchToGame(ArrayList<String> eskimos, ArrayList<String> scientists) {
 		cl.show(contPanel, "game");
 		Game.getInstance().Reset(eskimos, scientists);
 		gamePanel.requestFocus();
 	}
 	
+	/**
+	 * A fõpanelen átvált az menü paneljére
+	 * @author Balczer Dominik
+	 */
 	public static void switchToMenu() {
 		cl.show(contPanel, "menu");
 		menuPanel.requestFocus();

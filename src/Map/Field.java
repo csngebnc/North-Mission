@@ -56,7 +56,6 @@ public abstract class Field extends FieldView
 	 * Beallitja a horeteget egy veletlenszeru szamra, letrehozza az ures listakat, a buildinget null-ra allitja. 
 	 * @author Csonge Bence
 	 */
-	
 	public Field(int x, int y) {
 		super(x,y);
 		snowLayers = (int)Math.random()*6;
