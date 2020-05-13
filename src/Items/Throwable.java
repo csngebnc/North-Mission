@@ -17,7 +17,7 @@ public abstract class Throwable implements Item {
 	 * A tárgyhoz tartozó képek
 	 * @author Balczer Dominik
 	 */
-	Image[] sprites;
+	protected Image[] sprites;
 	
 	/**
 	 * Tárgy eldobása egy mezõre. Eldobható tárgy esete.

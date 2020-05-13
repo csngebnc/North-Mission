@@ -13,89 +13,34 @@ import Items.Shovel;
 import Map.Buildings.Tent;
 
 /**
- * A pálya osztalya.
+ * A játék modelljét összefogó Pálya osztály
  * @author Csonge Bence
  */
-public class Map 
-{
+public class Map {
+	
 	/**
-	 * A pálya mezõi.
+	 * Pálya mezõi
+	 * @author Csonge Bence
 	 */
 	private ArrayList<Field> fields;
 	
 	/**
-	 * Palya konstruktora
+	 * Konstruktor, inicializálja a mezõketet tároló listát
 	 * @author Csonge Bence
 	 */
 	public Map() {
-		initFields();
-	}
-	
-	/**
-	 * Mezok tarolojanak inicializalasa, proto allapotban a mezoket es a mezok kozotti kapcsolatokat
-	 * parancsokkal kell beallitani.
-	 * @author Csonge Bence
-	 */
-	private void initFields() 
-	{
 		fields = new ArrayList<Field>();
 	}
 	
 	/**
-	 * Hovihar hivasa a palya osszes mezojen.
-	 * @author Csonge Bence
+	 * Tárgyak generálása pályán a jégbe
+	 * @author Balczer Dominik
 	 */
-	public void callBlizzardOnFields()
-	{
-		for(Field f: fields) {
-			f.generateBlizzard();
-		}
-	}
-	
-	/**
-	 * A palya mezoin talalhato epuletek tick-elese, ertesitese uj kor kezdeterol.
-	 * @author Csonge Bence
-	 */
-	public void tickBuildings() {
-		for(Field f: fields) {
-			f.tickBuilding();
-		}
-	}
-	
-	public ArrayList<Field> getFields(){
-		return fields;
-	}
-	
-	/**
-	 * A tovabbi metodusok getter/setter, valamint teszteleshez hasznalt metodusok.
-	 */
-	
-	public Field getField(int i) {
-		return fields.get(i);
-		
-	}
-	
-	public int getFieldNumber(Field f)
-	{
-		return fields.indexOf(f);
-	}
-	
-	public ArrayList<Item> generateInstances(int count, String klass){
-		ArrayList<Item> array = new ArrayList<Item>();
-		for(int i = 0; i < count; i++) {
-			try {
-					Class.forName(klass).newInstance();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		}
-		return array;
-	}
-	
 	private void generateItems() {
+		//Generálandó tárgyak
 		ArrayList<Item> items = new ArrayList<Item>();
 		
+		//Lekérünk bizonyos mennyiséget véletlenszerûen minden eldobható tárgyaból
 		try {
 			items.addAll(new Food().generateInstances((int)(Math.random()*10)+15));
 			items.addAll(new Rope().generateInstances((int)(Math.random()*3)+3));
@@ -107,10 +52,12 @@ public class Map
 			e.printStackTrace();
 		}
 		
+		//Létrehozzuk a jelzõpisztoly alkatrészeit
 		items.add(new Barrel());
 		items.add(new Rocket());
 		items.add(new Grip());
 		
+		//Elhelyezzük a generálandó tárgyakat a mezõkben
 		for(Item item : items) {
 			int fieldIndex = (int)(Math.random()*fields.size());
 			while(!fields.get(fieldIndex).addFrozenItem(item))
@@ -118,12 +65,16 @@ public class Map
 		}
 	}
 	
+	/**
+	 * Pálya alaphelyzetbe állitása
+	 * @param playerCount : Hányan fogják játszani a játékot
+	 * @author Balczer Dominik
+	 */
 	public void Reset(int playerCount) {
 
 		fields = new ArrayList<Field>();
 		
-		// EGY FIELD 95 hosszú, 30 mélység/sor, 47 eltolás (CSAK EGYSZER) felsõ és alsó sor között
-		
+		//Megjelenitéshez szükséges konstansok
 		int offsetX = 95;
 		int offsetXRows = 47;
 		int offsetY = 30;
@@ -132,6 +83,7 @@ public class Map
 		int startX = 88;
 		int startY = 110;
 		
+		//Mezõk létrehozása
 		for(int row = 0; row < rows; row++) {
 			
 			int x = startX;
@@ -155,11 +107,47 @@ public class Map
 			}
 		}
 		
+		//Kezdõmezõ stabillá tétele
 		fields.set(0, new IceField(startX, startY, playerCount));
 		
+		//Szomszéd kapcsolatok kialakitása
 		for(Field f : fields)
 			f.discoverNeighbours(fields);
 		
 		generateItems();
+	}
+	
+	/**
+	 * Hóvihar eseményõl értesités küldése az összes mezõnek
+	 * @author Csonge Bence
+	 */
+	public void callBlizzardOnFields(){
+		for(Field f: fields) 
+			f.generateBlizzard();
+	}
+	
+	/**
+	 * Épületek tick-elése az összes mezõn
+	 * @author Csonge Bence
+	 */
+	public void tickBuildings() {
+		for(Field f: fields) 
+			f.tickBuilding();
+	}
+	
+	/**
+	 * Visszaadja a mezõket tároló tömbböt
+	 * @author Csonge Bence
+	 */
+	public ArrayList<Field> getFields(){
+		return fields;
+	}
+	
+	/**
+	 * Visszaadja a pálya adott sorszámú mezõjét
+	 * @author Balczer Dominik
+	 */
+	public Field getField(int i) {
+		return fields.get(i);
 	}
 }

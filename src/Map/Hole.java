@@ -1,12 +1,8 @@
 package Map;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-
-import Core.Game;
 import Player.Character;
 import Player.Direction;
 import Visual.View;

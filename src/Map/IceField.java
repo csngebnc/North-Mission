@@ -148,7 +148,6 @@ public class IceField extends Field {
 	 */
 	@Override
 	public void draw(View v) {
-		
 		//Ha beszakadt alattuk a jég nem rajzoljuk ki
 		if(characters.size() > maxplayers)
 			return;
@@ -173,13 +172,5 @@ public class IceField extends Field {
 		if(limitRevealed) {
 			v.drawThing(x + 85, y + 20, Integer.toString(maxplayers));
 		}
-	}
-	
-	public void setBuilding(Building b) {
-		this.building = b;
-	}
-	
-	public void addItem(Item i) {
-		itemOnGround.add(i);
 	}
 }

@@ -19,13 +19,11 @@ public class UnstableField extends IceField
 	}
 	
 	/**
-	 * Karakter atvetele egy masik mezotol. Amennyiben az atvetel utan a mezon tobb karakter tartozkodik,
-	 * mint a teherbirasa, akkor atfordul, a jatek pedig vegeter.
+	 * Karakter átvétele instabil mezõre, ha többen vannak a mezõn mint a teherbirása, átfordul a mezõ és meghal rajta mindenki
 	 * @param c: atvett karakter
 	 * @author Csonge Bence
 	 */
-	public void acceptCharacter(Character c)
-	{
+	public void acceptCharacter(Character c){
 		super.acceptCharacter(c);
 		if(characters.size()>maxplayers)
 			for(Character ci : characters)

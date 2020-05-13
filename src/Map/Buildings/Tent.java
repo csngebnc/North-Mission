@@ -11,16 +11,22 @@ import Player.Player;
 import Visual.ImgType;
 
 /**
- * A sator epuletet es targyat megvalosito osztaly.
+ * Sátort reprezentáló osztály
  * @author Csonge Bence
- *
  */
 public class Tent extends Throwable implements Building{
-	
-	public Tent() {}
-
 	/**
-	 * Sator hasznalata, azaz megepitese
+	 * Konstruktor, betölti a sátorhoz tartozó képeket
+	 * @author Csonge Bence
+	 */
+	public Tent() {
+		sprites = new Image[3];
+		sprites[ImgType.DROPPED.VALUE] = new ImageIcon("./assets/items_buildings/tent_item.png").getImage();
+		sprites[ImgType.FROZEN.VALUE] = new ImageIcon("./assets/items_buildings/tent_frozen.png").getImage();
+		sprites[ImgType.BUILT.VALUE] = new ImageIcon("./assets/items_buildings/tent.png").getImage();
+	}
+	/**
+	 * Tárgyként lehet használni, használatra megpróbáljuk felállitani a játékos mezején
 	 * @author Csonge Bence
 	 */
 	public void use(Player p) {
@@ -31,7 +37,7 @@ public class Tent extends Throwable implements Building{
 	}
 
 	/**
-	 * A tick() metodus jelen esetben true ertekkel ter vissza, mivel egy sator elettartama egy korre szol.
+	 * Mivel a sátor nem robosztus, tick-elés során tönkre fog menni, true-val tér vissza
 	 * @author Csonge Bence
 	 */
 	@Override
@@ -40,8 +46,7 @@ public class Tent extends Throwable implements Building{
 	}
 
 	/**
-	 * Az attack() metodus jelen esetben true ertekkel ter vissza, mivel egy olyan mezon meg lehet jatekosokat megtamadni,
-	 * ahol sator van felepítve.
+	 * Mivel a sátor nem robosztus, lehet támadni, nem megvédi a játékosokat, false-al tér vissza
 	 * @author Csonge Bence
 	 */
 	@Override
@@ -50,28 +55,12 @@ public class Tent extends Throwable implements Building{
 	}
 	
 	/**
-	 * Visszaadja a példány nevét, ami sátor.
+	 * Visszaadja a sátor nevét
 	 * @author Csonge Bence
 	 */
 	@Override
 	public String getName() {
 		return "Tent";
-	}
-	
-	/**
-	 * Visszaadja a sátor azon képét, amelyre szükség van a kirajzoláshoz.
-	 * @param form Lehetséges eldobott, befagyott, vagy egyébként megépített sátor.
-	 * @author Csonge Bence
-	 */
-	@Override
-	public Image getImg(ImgType form) {
-		if(form==ImgType.DROPPED) {
-			return new ImageIcon("./assets/items_buildings/tent_item.png").getImage();
-		}else if(form==ImgType.FROZEN) {
-			return new ImageIcon("./assets/items_buildings/tent_frozen.png").getImage();
-		}else{
-			return new ImageIcon("./assets/items_buildings/tent.png").getImage();
-		}
 	}
 	
 	/**

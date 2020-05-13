@@ -61,7 +61,7 @@ public abstract class Field extends FieldView{
 	 */
 	public Field(int x, int y) {
 		super(x,y);
-		snowLayers = (int)(Math.random()*20);
+		snowLayers = (int)(Math.random()*2);
 		characters = new ArrayList<Character>();
 		neighbours = new ArrayList<Field>();
 		
