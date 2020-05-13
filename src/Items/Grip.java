@@ -2,6 +2,8 @@ package Items;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+
+import Core.Game;
 import Visual.ImgType;
 
 /**
@@ -19,6 +21,15 @@ public class Grip extends GunPart {
 		sprites[ImgType.DROPPED.VALUE] = new ImageIcon("./assets/items_buildings/grip.png").getImage();
 		sprites[ImgType.FROZEN.VALUE] = new ImageIcon("./assets/items_buildings/grip_frozen.png").getImage();
 		sprites[ImgType.BUILT.VALUE] = new ImageIcon("./assets/items_buildings/grip.png").getImage();
+	}
+	
+	/**
+	 * Tárgy felvétel.
+	 * Amennyiben felveszik, akkor a szól a játéknak, hogy megtalálták az alkatrészt.
+	 */
+	@Override
+	public void pickUp() {
+		Game.incGunParts(2);
 	}
 	
 	/**

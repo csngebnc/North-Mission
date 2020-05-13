@@ -229,6 +229,22 @@ public class View extends JPanel{
 			g2d.setFont(font.deriveFont(12f));
 			g2d.drawString("VICTORY! PRESS ANY BUTTON TO RETURN TO THE MENU.", 350, 670);
 		}
+		
+		//foundGunPats
+		g2d.setFont(font.deriveFont(15f));
+		g2d.drawString("FOUND GUNPARTS:", 900, 665);
+		if(Game.getFoundGunPart(0))
+			g2d.drawImage(new ImageIcon("./assets/items_buildings/rocket.png").getImage(), 1115, 643, null);
+		else
+			g2d.drawImage(new ImageIcon("./assets/items_buildings/rocket_frozen.png").getImage(), 1115, 643, null);
+		if(Game.getFoundGunPart(1))
+			g2d.drawImage(new ImageIcon("./assets/items_buildings/barrel.png").getImage(), 1145, 643, null);
+		else
+			g2d.drawImage(new ImageIcon("./assets/items_buildings/barrel_frozen.png").getImage(), 1145, 643, null);
+		if(Game.getFoundGunPart(2))
+			g2d.drawImage(new ImageIcon("./assets/items_buildings/grip.png").getImage(), 1175, 643, null);
+		else
+			g2d.drawImage(new ImageIcon("./assets/items_buildings/grip_frozen.png").getImage(), 1175, 643, null);
 	}
 	
 	/**

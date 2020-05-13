@@ -78,9 +78,9 @@ public class WindowFrame extends JFrame {
 	 * Elinditja a játékot és a fõpanelen átvált az játék paneljére
 	 * @author Balczer Dominik
 	 */
-	public static void switchToGame(ArrayList<String> eskimos, ArrayList<String> scientists) {
+	public static void switchToGame(ArrayList<String> playerNames, ArrayList<String> playerTypes) {
 		cl.show(contPanel, "game");
-		Game.getInstance().Reset(eskimos, scientists);
+		Game.getInstance().Reset(playerNames, playerTypes);
 		gamePanel.requestFocus();
 	}
 	

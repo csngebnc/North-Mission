@@ -40,11 +40,9 @@ public abstract class GunPart implements Item {
 	
 	/**
 	 * Tárgy felvétel.
-	 * Amennyiben felveszik, akkor a szól a játéknak, hogy megtaláltak egy alkatrészt.
+	 * Amennyiben felveszik, akkor a szól a játéknak, hogy megtalálták az alkatrészt.
 	 */
-	public void pickUp() {
-		Game.incGunParts();
-	}
+	public abstract void pickUp();
 	
 	/**
 	 * Visszaadja a tárgy képét adott állapotban

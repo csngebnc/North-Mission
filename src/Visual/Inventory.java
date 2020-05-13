@@ -78,7 +78,6 @@ public class Inventory extends JDialog{
 	public Inventory(Player p)
 	{
 		initComponents();
-		
 		dialog = this;
 		player = p;
 		items = player.getInventory();
@@ -128,6 +127,7 @@ public class Inventory extends JDialog{
 				}
 			}
 		});
+		this.setVisible(true);
 	}
 	
 	/**

@@ -201,16 +201,16 @@ public class Menu extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e){
 			if(names!=null){
-				ArrayList<String> eskimos = new ArrayList<String>();
-				ArrayList<String> scientists = new ArrayList<String>();
-				
+				ArrayList<String> Names = new ArrayList<String>();
+				ArrayList<String> Types = new ArrayList<String>();
 				for(int i = 0; i < names.length; i++) {
 					if(playerTypes[i].getSelectedItem() == "Eskimo")
-						eskimos.add(names[i].getText());
+						Types.add("eskimo");
 					else
-						scientists.add(names[i].getText());
+						Types.add("scientist");
+					Names.add(names[i].getText());
 				}
-				WindowFrame.switchToGame(eskimos, scientists);
+				WindowFrame.switchToGame(Names, Types);
 			}
 		}
 	}

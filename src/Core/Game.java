@@ -33,7 +33,7 @@ public class Game {
 	 * A játékosok által megtalált alkatrészek száma
 	 * @author Csonge Bence
 	 */
-	private static int foundGunParts;
+	private static boolean foundGunParts[];
 	
 	/**
 	 * A pálya amin a játék játszódik
@@ -87,13 +87,17 @@ public class Game {
 	 * Játék alaphelyzetbe állitása, inicializálása és elinditása
 	 * @author Balczer Dominik
 	 */
-	public void Reset(ArrayList<String> eskimos, ArrayList<String> scientists) {
+	public void Reset(ArrayList<String> playerNames, ArrayList<String> playerTypes) {
 		
 		roundNum = 0;
 		roundsUntilBlizzard = -1;
-		foundGunParts = 0;
+		foundGunParts = new boolean[3];
 		
-		int playerCount = eskimos.size() + scientists.size();
+		foundGunParts[0] = false;
+		foundGunParts[1] = false;
+		foundGunParts[2] = false;
+		
+		int playerCount = playerNames.size();
 		
 		map = new Map();
 		map.Reset(playerCount);
@@ -101,10 +105,12 @@ public class Game {
 		players = new ArrayList<Player>();
 		characters = new ArrayList<Character>();
 		
-		for(String name : eskimos)
-			addEskimo(0, name);
-		for(String name : scientists)
-			addScientist(0, name);
+		for(int i = 0; i < playerCount; i++) {
+			if(playerTypes.get(i) == "eskimo")
+				addEskimo(0, playerNames.get(i));
+			else
+				addScientist(0, playerNames.get(i));
+		}
 		
 		addPolarBear((int)(Math.random()*30) + 60);
 		
@@ -235,11 +241,22 @@ public class Game {
 	
 	/**
 	 * Game értesitése jelzõpisztoly alkatrész megtalálásáról
+	 * @param i : Azonositja melyiket találtuk meg
 	 * @author Csonge Bence
 	 */
-	public static void incGunParts()
+	public static void incGunParts(int i)
 	{
-		foundGunParts++;	
+		foundGunParts[i] = true;
+	}
+	
+	/**
+	 * foundGunParts gettere
+	 * param i : gunPart indexe
+	 * @author Csonge Bence
+	 */
+	public static boolean getFoundGunPart(int i)
+	{
+		return foundGunParts[i];
 	}
 	
 	/**
@@ -248,7 +265,11 @@ public class Game {
 	 * @author Csonge Bence
 	 */
 	public static void winGame(Field f) {
-		if(foundGunParts==3 && (f.getCharacters().size()==players.size()))
+		for(boolean found : foundGunParts)
+			if(!found)
+				return;
+		
+		if(f.getCharacters().size()==players.size())
 			state = GameState.WON;
 	}
 	
