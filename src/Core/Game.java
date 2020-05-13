@@ -19,12 +19,6 @@ import Player.Scientist;
 public class Game {
 	
 	/**
-	 * A játékosok száma
-	 * @author Csonge Bence
-	 */
-	private static int playerCount = 0;
-	
-	/**
 	 * A körök száma
 	 * @author Csonge Bence
 	 */
@@ -100,10 +94,10 @@ public class Game {
 		roundsUntilBlizzard = -1;
 		foundGunParts = 0;
 		
-		playerCount = eskimos.size() + scientists.size();
+		int playerCount = eskimos.size() + scientists.size();
 		
 		map = new Map();
-		map.Reset();
+		map.Reset(playerCount);
 		
 		players = new ArrayList<Player>();
 		characters = new ArrayList<Character>();
@@ -255,7 +249,7 @@ public class Game {
 	 * @author Csonge Bence
 	 */
 	public static void winGame(Field f) {
-		if(foundGunParts==3 && (f.getCharacters().size()==playerCount))
+		if(foundGunParts==3 && (f.getCharacters().size()==players.size()))
 			state = GameState.WON;
 	}
 	
@@ -316,8 +310,12 @@ public class Game {
 		return state;
 	}
 	
+	/**
+	 * Visszaadja a játékosok számát
+	 * @author Balczer Dominik
+	 */
 	public static int getPlayerCount() {
-		return playerCount;
+		return players.size();
 	}
 	
 	public ArrayList<Character> getCharacters()

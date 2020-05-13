@@ -33,12 +33,12 @@ public class IceField extends Field
 	 * Jelenleg tesztek miatt alapertelmezetten nem tartalmaz targyat, paranccsal allithato be egy targy a mezore.
 	 * @author Csonge Bence
 	 */
-	public IceField(int x, int y) {
-		super(x,y);
+	public IceField(int x, int y, int playerCount) {
+		super(x, y);
 		sprites[0] = new ImageIcon("./assets/fields/ice.png").getImage();
 		frozenItem = null;
 		itemOnGround = new ArrayList<Item>();
-		maxplayers = Game.getPlayerCount();
+		maxplayers = playerCount;
 	}
 	
 	/**

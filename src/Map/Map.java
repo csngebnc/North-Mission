@@ -118,7 +118,7 @@ public class Map
 		}
 	}
 	
-	public void Reset() {
+	public void Reset(int playerCount) {
 
 		fields = new ArrayList<Field>();
 		
@@ -144,9 +144,9 @@ public class Map
 				double fieldSeed = Math.random()*100;
 				
 				if(fieldSeed < 75)
-					fields.add(new IceField(x, y));
+					fields.add(new IceField(x, y, playerCount));
 				else if(fieldSeed < 92) {
-					fields.add(new UnstableField(x, y));
+					fields.add(new UnstableField(x, y, playerCount));
 				}
 				else if(fieldSeed < 97)
 					fields.add(new Hole(x, y));
@@ -155,7 +155,7 @@ public class Map
 			}
 		}
 		
-		fields.set(0, new IceField(startX, startY));
+		fields.set(0, new IceField(startX, startY, playerCount));
 		
 		for(Field f : fields)
 			f.discoverNeighbours(fields);

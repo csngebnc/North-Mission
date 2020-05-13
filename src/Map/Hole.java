@@ -22,11 +22,10 @@ public class Hole extends Field
 	 * @author Csonge Bence
 	 */
 	public Hole(int x, int y) {
-		super(x,y);
+		super(x, y);
 		sprites[0] = new ImageIcon("./assets/fields/hole.png").getImage();
-		maxplayers = (int)Math.random()*Game.getPlayerCount();
+		maxplayers = 0;
 	}
-	
 	
 	/**
 	 * Amennyiben legalabb egy karakter van a mezon, akkor onnan valasztunk egyet, es megprobaljuk kimenteni a save() metodusaval.
