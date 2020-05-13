@@ -1,9 +1,7 @@
 package Items;
 
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
-
 import Player.Player;
 import Visual.ImgType;
 
@@ -18,7 +16,15 @@ public class LimitedShovel extends Shovel{
 	 */
 	private int remainingUses;
 	
+	/**
+	 * Konstruktor, beállitja a képeket
+	 * @author Balczer Dominik
+	 */
 	public LimitedShovel() {
+		sprites = new Image[3];
+		sprites[ImgType.DROPPED.VALUE] = new ImageIcon("./assets/items_buildings/limited_shovel.png").getImage();
+		sprites[ImgType.FROZEN.VALUE] = new ImageIcon("./assets/items_buildings/limited_shovel_frozen.png").getImage();
+		sprites[ImgType.BUILT.VALUE] = new ImageIcon("./assets/items_buildings/limited_shovel.png").getImage();
 		remainingUses = 3;
 	}
 	
@@ -29,10 +35,8 @@ public class LimitedShovel extends Shovel{
 	 * @param p a játékos aki használja a limitált ásót.
 	 * @author Norbi
 	 */
-	public void use(Player p) 
-	{
-		if(remainingUses > 0 && p.getField().digSnow(2))
-		{
+	public void use(Player p) {
+		if(remainingUses > 0 && p.getField().digSnow(2)){
 				p.drainStamina();
 				remainingUses--;
 		}
@@ -45,21 +49,5 @@ public class LimitedShovel extends Shovel{
 	@Override
 	public String getName() {
 		return "Copper Shovel (" + remainingUses + " uses left)";
-	}
-	
-	/**
-	 * Visszaadja az alkatrész azon képét, amelyre szükség van a kirajzoláshoz.
-	 * @param form Lehetséges formák: befagyott, földön lévõ.
-	 * @author Csonge Bence
-	 */
-	@Override
-	public Image getImg(ImgType form) {
-		if(form==ImgType.DROPPED) {
-			return new ImageIcon("./assets/items_buildings/limited_shovel.png").getImage();
-		}else if(form==ImgType.FROZEN) {
-			return new ImageIcon("./assets/items_buildings/limited_shovel_frozen.png").getImage();
-		}else{
-			return null;
-		}
 	}
 }

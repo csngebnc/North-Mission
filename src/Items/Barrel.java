@@ -1,33 +1,24 @@
 package Items;
 
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
-
-import Core.Game;
-import Player.Player;
 import Visual.ImgType;
 
 /**
  * Pisztolycsövet reprezentáló osztály
  * @author Norbi
  */
-public class Barrel extends GunPart
-{
+public class Barrel extends GunPart{
+	
 	/**
-	 * Visszaadja az alkatrész azon képét, amelyre szükség van a kirajzoláshoz.
-	 * @param form Lehetséges formák: befagyott, földön lévõ.
-	 * @author Csonge Bence
+	 * Konstruktor, beállitja a képeket
+	 * @author Balczer Dominik
 	 */
-	@Override
-	public Image getImg(ImgType form) {
-		if(form==ImgType.DROPPED) {
-			return new ImageIcon("./assets/items_buildings/barrel.png").getImage();
-		}else if(form==ImgType.FROZEN) {
-			return new ImageIcon("./assets/items_buildings/barrel_frozen.png").getImage();
-		}else{
-			return null;
-		}
+	public Barrel() {
+		sprites = new Image[3];
+		sprites[ImgType.DROPPED.VALUE] = new ImageIcon("./assets/items_buildings/barrel.png").getImage();
+		sprites[ImgType.FROZEN.VALUE] = new ImageIcon("./assets/items_buildings/barrel_frozen.png").getImage();
+		sprites[ImgType.BUILT.VALUE] = new ImageIcon("./assets/items_buildings/barrel.png").getImage();
 	}
 	
 	/**

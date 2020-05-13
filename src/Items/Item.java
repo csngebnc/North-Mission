@@ -1,4 +1,5 @@
 package Items;
+
 import java.awt.Image;
 import Map.Field;
 import Player.Player;
@@ -9,8 +10,8 @@ import Visual.ImgType;
  * Kötelezõvé teszi olyan metódusok megvalósítását, melyek egy tárgy esetén létfontosságúak.
  * @author Norbi
  */
-public interface Item
-{
+public interface Item{
+	
 	/**
 	 * Tárgy felvétele.
 	 * Leszármazottak saját maguk valósítják meg.
@@ -19,7 +20,6 @@ public interface Item
 	 */
 	public void use(Player p);
 	
-	
 	/**
 	 * Tárgy eldobása.
 	 * Leszármazottak saját maguk valósítják meg.
@@ -27,7 +27,6 @@ public interface Item
 	 * @author Norbi?
 	 */
 	public abstract boolean throwTo(Field f);
-	
 	
 	/**
 	 * Tárgy felvétele.

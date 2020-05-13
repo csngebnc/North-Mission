@@ -1,17 +1,26 @@
 package Items;
 
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
-
 import Visual.ImgType;
 
 /**
  * Pisztoly markolatot reprezentáló osztály.
  * @author Norbi
  */
-public class Grip extends GunPart 
-{
+public class Grip extends GunPart {
+	
+	/**
+	 * Konstruktor, beállitja a képeket
+	 * @author Balczer Dominik
+	 */
+	public Grip() {
+		sprites = new Image[3];
+		sprites[ImgType.DROPPED.VALUE] = new ImageIcon("./assets/items_buildings/grip.png").getImage();
+		sprites[ImgType.FROZEN.VALUE] = new ImageIcon("./assets/items_buildings/grip_frozen.png").getImage();
+		sprites[ImgType.BUILT.VALUE] = new ImageIcon("./assets/items_buildings/grip.png").getImage();
+	}
+	
 	/**
 	 * Visszaadja a tárgy nevét.
 	 * @author Csonge Bence
@@ -19,21 +28,5 @@ public class Grip extends GunPart
 	@Override
 	public String getName() {
 		return "Grip";
-	}
-	
-	/**
-	 * Visszaadja az alkatrész azon képét, amelyre szükség van a kirajzoláshoz.
-	 * @param form Lehetséges formák: befagyott, földön lévõ.
-	 * @author Csonge Bence
-	 */
-	@Override
-	public Image getImg(ImgType form) {
-		if(form==ImgType.DROPPED) {
-			return new ImageIcon("./assets/items_buildings/grip.png").getImage();
-		}else if(form==ImgType.FROZEN) {
-			return new ImageIcon("./assets/items_buildings/grip_frozen.png").getImage();
-		}else{
-			return null;
-		}
 	}
 }

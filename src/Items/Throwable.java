@@ -1,8 +1,9 @@
 package Items;
 
+import java.awt.Image;
 import java.util.ArrayList;
-
 import Map.Field;
+import Visual.ImgType;
 
 /**
  * Egy absztrakt osztály, az eldobható tárgyak õse. 
@@ -10,14 +11,19 @@ import Map.Field;
  * így ennek az osztálynak a bevezetése szükséges.
  * @author Norbi 
  */
-public abstract class Throwable implements Item 
-{
+public abstract class Throwable implements Item {
+	
+	/**
+	 * A tárgyhoz tartozó képek
+	 * @author Balczer Dominik
+	 */
+	Image[] sprites;
+	
 	/**
 	 * Tárgy eldobása egy mezõre. Eldobható tárgy esete.
 	 * @param f az a mezõ akire dobjuk a tárgyat.
 	 */
-	public boolean throwTo(Field f) 
-	{
+	public boolean throwTo(Field f) {
 		f.acceptItem(this);
 		return true;
 	}
@@ -25,10 +31,7 @@ public abstract class Throwable implements Item
 	/**
 	 * Eldobható, nem alkatrész tárgy felvétele.
 	 */
-	public void pickUp() 
-	{
-		return;
-	}
+	public void pickUp() {	}
 	
 	/**
 	 * Megadott számú példányt állít elõ az osztályból.
@@ -41,4 +44,14 @@ public abstract class Throwable implements Item
         }
         return array;
     }
+	
+	/**
+	 * Visszaadja a tárgy képét adott állapotban
+	 * @param form : A kép tipusa
+	 * @author Balczer Dominik
+	 */
+	@Override
+	public Image getImg(ImgType form) {
+		return sprites[form.VALUE];
+	}
 }
