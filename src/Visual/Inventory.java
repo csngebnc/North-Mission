@@ -6,9 +6,14 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JRootPane;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 
 import Core.Game;
 import Items.Item;
@@ -33,12 +38,6 @@ public class Inventory extends JDialog{
 	 * @author Balczer Dominik
 	 */
 	private ArrayList<Item> items;
-	
-	/**
-	 * Saját magára mutató változó
-	 * @author Balczer Dominik
-	 */
-	private JDialog dialog;
 	
 	/**
 	 * Leltár elemeit tároló ListModel
@@ -78,7 +77,6 @@ public class Inventory extends JDialog{
 	public Inventory(Player p)
 	{
 		initComponents();
-		dialog = this;
 		player = p;
 		items = player.getInventory();
 		this.setTitle("Inventory");
@@ -96,11 +94,12 @@ public class Inventory extends JDialog{
 		
 		useButton.addActionListener(new ActionListener(){
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				int chosen = list.getSelectedIndex();
 				if (chosen >= 0) {
 					Item item = player.getItem(chosen);
-					dialog.dispose();
+					Inventory frame = (Inventory) SwingUtilities.getRoot((JButton)e.getSource());
+					frame.dispose();
 					item.use(player);
 				}
 				Game.notifyView();		
@@ -109,7 +108,7 @@ public class Inventory extends JDialog{
 		
 		dropButton.addActionListener(new ActionListener(){
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				int chosen = list.getSelectedIndex();
 				if (chosen >= 0) {
 					Item item = player.getItem(chosen);
@@ -120,7 +119,8 @@ public class Inventory extends JDialog{
 						listModel.remove(chosen);
 						pane.revalidate();
 						if(player.getStamina() == 0) {
-							dialog.dispose();
+							Inventory frame = (Inventory) SwingUtilities.getRoot((JButton)e.getSource());
+							frame.dispose();
 						}
 						Game.notifyView();
 					}

@@ -278,7 +278,7 @@ public class Menu extends JPanel{
 			
 			JComboBox cb = new JComboBox();
 			
-			for(int i = 1; i < 21; i++)
+			for(int i = 3; i < 21; i++)
 				cb.addItem(new Integer(i));
 			
 			HowManyPlayerListener hmpl = new HowManyPlayerListener();
