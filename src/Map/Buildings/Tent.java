@@ -49,11 +49,20 @@ public class Tent extends Throwable implements Building{
 		return true;
 	}
 	
+	/**
+	 * Visszaadja a példány nevét, ami sátor.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public String getName() {
 		return "Tent";
 	}
 	
+	/**
+	 * Visszaadja a sátor azon képét, amelyre szükség van a kirajzoláshoz.
+	 * @param form Lehetséges eldobott, befagyott, vagy egyébként megépített sátor.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public Image getImg(ImgType form) {
 		if(form==ImgType.DROPPED) {
@@ -65,6 +74,10 @@ public class Tent extends Throwable implements Building{
 		}
 	}
 	
+	/**
+	 * Megadott számú példányt állít elõ az osztályból.
+	 * @author Csonge Bence
+	 */
 	public ArrayList<Item> generateInstances(int count) throws IllegalAccessException, InstantiationException {
         ArrayList<Item> array = new ArrayList<Item>();
         for (int i = 0; i < count; i++) {
