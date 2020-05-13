@@ -9,15 +9,17 @@ import Map.Buildings.Igloo;
  * A Player osztály leszármazottja.
  * @author Zalan
  */
-public class Eskimo extends Player 
-{
-	
+public class Eskimo extends Player {
 	/**
 	 * A builtIgloo attribútum igaz értéke jelzi, hogy az eszkimó épített-e már iglut.
 	 * @author Zalan
 	 */
 	private boolean builtIgloo;
 	
+	/**
+	 * Eszkimó és képeinek inicializálása
+	 * @author Zalan
+	 */
 	public Eskimo() {
 		super();
 		health = 5;
@@ -34,8 +36,7 @@ public class Eskimo extends Player
  	 * Ekkor az eszkimó staminája 1-gyel csökken.
 	 * @author Zalan
 	 */
-	public void doSkill() 
-	{
+	public void doSkill() {
 		if (!builtIgloo) 
 			if (field.buildBuilding(new Igloo())) {
 				builtIgloo = true;

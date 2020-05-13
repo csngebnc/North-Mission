@@ -2,34 +2,35 @@ package Player;
 
 import java.awt.Image;
 import java.awt.event.KeyEvent;
-
-import Core.Game;
 import Map.Field;
 import Visual.Viewable;
+
 /**
- * A karaktereket reprezentáló osztály.
+ * A játékban résztvevõ karaktereket reprezentáló osztály.
  * Leszármazottai a Player és a PolarBear
  * @author Zalan
  */
 public abstract class Character implements Viewable{
-	
 	/**
-	 * A field amin a karakter aktuálisan tartózkodik.
+	 * A field amin a karakter aktuálisan tartózkodik
 	 * @author Zalan
 	 */
 	protected Field field;
+	
 	/**
-	 * Tárolja, hogy a karakter épp fuldoklik-e.
+	 * Tárolja, hogy a karakter épp fuldoklik-e
 	 * @author Csonge Bence
 	 */
 	protected boolean isDrowning;
+	
 	/**
-	 * A karakter staminája.
+	 * A karakter staminája
 	 * @author Csonge Bence
 	 */
 	protected int stamina;
+	
 	/**
-	 * A karakterhez tartozó, megjelenítéshez szükséges képek tárolója.
+	 * A karakterhez tartozó, megjelenítéshez szükséges képek tárolója
 	 * @author Csonge Bence
 	 */
 	protected Image[] sprites;
@@ -39,8 +40,7 @@ public abstract class Character implements Viewable{
 	 * @param b játékos fulladásának értéke, true ha fullad, false ha nem
 	 * @author Csonge Bence
 	 */
-	public void setDrowning(boolean b) 
-	{ 
+	public void setDrowning(boolean b) { 
 		isDrowning = b;
 		if(isDrowning)
 			stamina = 0;
@@ -54,8 +54,7 @@ public abstract class Character implements Viewable{
 	}
 
 	/**
-	 * A karakter köre.
-	 * Leszármazottak saját maguk valósítják meg.
+	 * Karakter köre
 	 * @author Zalan
 	 */
 	public abstract void doTurn(KeyEvent e);
@@ -67,12 +66,14 @@ public abstract class Character implements Viewable{
 	 * @author Csonge Bence
 	 */
 	public abstract void move(KeyEvent e);
+	
 	/**
 	 * A karakter értesítése, hogy kezdõdik a kör.
 	 * A szükséges értékeket beállítja a körkezdéshez.
 	 * @author Csonge Bence
 	 */
 	public abstract void startTurn();
+	
 	/**
 	 * A karakter életének változtatása.
 	 * Leszármazottak saját maguk valósítják meg.
@@ -104,14 +105,13 @@ public abstract class Character implements Viewable{
 	 */
 	public abstract void collideWith(Character c);
 	
-	
 	/**
 	 * Karakter ütközése jegesmedvével.
 	 * Leszármazottak saját maguk valósítják meg.
 	 * @param pb a jegesmedve, akivel ütközött.
 	 * @author Zalan
 	 */
-	public void hitBy(PolarBear pb) {}
+	public void hitBy(PolarBear pb) {	}
 	
 	/**
 	 * Karakter ütközése játékossal.
@@ -119,8 +119,7 @@ public abstract class Character implements Viewable{
 	 * @param pl a játékos, akivel ütközött.
 	 * @author Zalan
 	 */
-	public void hitBy(Player pl) {}
-	
+	public void hitBy(Player pl) {	}
 	
 	/**
 	 * Karakter mezõjének beállítása.
@@ -151,12 +150,4 @@ public abstract class Character implements Viewable{
 	 * @author Zalan
 	 */
 	public abstract String getName();
-	
-	
-	/**
-	 * Teszteléshez
-	 */
-	public void Properties()
-	{
-	}
 }

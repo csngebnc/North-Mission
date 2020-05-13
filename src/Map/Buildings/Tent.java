@@ -1,11 +1,7 @@
 package Map.Buildings;
 
 import java.awt.Image;
-import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
-
-import Items.Item;
 import Items.Throwable;
 import Player.Player;
 import Visual.ImgType;
@@ -62,16 +58,4 @@ public class Tent extends Throwable implements Building{
 	public String getName() {
 		return "Tent";
 	}
-	
-	/**
-	 * Megadott számú példányt állít elõ az osztályból.
-	 * @author Csonge Bence
-	 */
-	public ArrayList<Item> generateInstances(int count) throws IllegalAccessException, InstantiationException {
-        ArrayList<Item> array = new ArrayList<Item>();
-        for (int i = 0; i < count; i++) {
-            array.add(this.getClass().newInstance());
-        }
-        return array;
-    }
 }

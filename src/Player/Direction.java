@@ -1,4 +1,5 @@
 package Player;
+
 /**
  * Irányok enumerációja, tartalmazza az összes olyan irányt, amely felé interakciót lehet végezni.
  * @author Csonge Bence

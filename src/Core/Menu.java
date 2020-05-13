@@ -136,10 +136,15 @@ public class Menu extends JPanel{
 		public void itemStateChanged(ItemEvent event) {
 			if (event.getStateChange() == ItemEvent.SELECTED) {
 
-				if(names!=null)
+				if(names != null)
 					for(int i = 0; i < names.length; i++)
 						mainLabel.remove(names[i]);
 		    	   
+				if(playerTypes != null)
+					for(int i = 0; i < playerTypes.length; i++)
+						mainLabel.remove(playerTypes[i]);
+				
+				
 	    	   int playerCount = (int) event.getItem();
 	    	   
 	    	   if(playerCount < 9) {
@@ -174,8 +179,7 @@ public class Menu extends JPanel{
 	    	   nev.setFont(new Font("Arcade Normal", Font.PLAIN, 20));
 	    	   mainLabel.add(nev);
 	    	   
-	    	   for(int i=0; i<playerCount;i++)
-	    	   {
+	    	   for(int i=0; i<playerCount;i++) {
 	    		   names[i]=new JTextField();
 	    		   
 	    		   if(i > 9)

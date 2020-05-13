@@ -7,7 +7,6 @@ import Core.Game;
 import Core.GameState;
 import Items.DivingSuit;
 import Items.Item;
-import Items.Rope;
 import Map.Field;
 import Visual.Inventory;
 import Visual.View;
@@ -17,33 +16,37 @@ import Visual.View;
  * Leszármazottai az Eskimo és a Scientist.
  * @author Zalan
  */
-public abstract class Player extends Character
-{
+public abstract class Player extends Character{
 	/**
 	 * Játékos neve
 	 * @author Csonge Bence
 	 */
 	protected String name;
+	
 	/**
 	 * Játékos életereje
 	 * @author Csonge Bence
 	 */
 	protected int health;
+	
 	/**
 	 * Tárolja, hogy a játékoson van-e búvárruha. True - igen, false - nem
 	 * @author Csonge Bence
 	 */
 	protected boolean dSuitOn;
+	
 	/**
 	 * Játékos hátizsákja, inventoryja. Tárolja az összes olyan tárgyat, ami a játékosnál van.
 	 * @author Csonge Bence
 	 */
 	protected ArrayList<Item> inventory;
+	
 	/**
 	 * Játékos különleges képessége, leszármazottanként eltérõ megvalósítással.
 	 * @author Csonge Bence
 	 */
 	public abstract void doSkill();
+	
 	/**
 	 * A megjelenítés során a stamina értékét reprezentáló képek.
 	 * @author Csonge Bence
@@ -70,8 +73,7 @@ public abstract class Player extends Character
 	 * Játékos inventory-jának megjelenítése.
 	 * @author Zalan
 	 */
-	protected void openInventory() 
-	{
+	protected void openInventory() {
 		new Inventory(this);
 	}
 	
@@ -81,8 +83,7 @@ public abstract class Player extends Character
 	 * Ezután, ha van még staminája, akkor szándékainak megfelelõen cselekedhet.
 	 * @author Zalan
 	 */
-	public void doTurn(KeyEvent e) 
-	{
+	public void doTurn(KeyEvent e) {
 		if(Game.getInstance().getState() != GameState.ONGOING) {
 			alterHealth(-150);
 			return;
@@ -103,10 +104,8 @@ public abstract class Player extends Character
 	 */
 	public void startTurn() {
 		stamina = 3;
-		if(isDrowning && !dSuitOn) {
+		if(isDrowning && !dSuitOn)
 			alterHealth(-150);
-			return;
-		}
 	}
 	
 	/**
@@ -115,63 +114,55 @@ public abstract class Player extends Character
 	 */
 	public void move(KeyEvent e) {
 		switch(e.getKeyCode()) {
-			case KeyEvent.VK_Q:
-				if(field.getNeighbour(Direction.UPPER_LEFT)!=null) {
+			case KeyEvent.VK_W:
+				if(field.getNeighbour(Direction.UPPER_LEFT)!=null) 
 					field.moveMeTo(this, Direction.UPPER_LEFT);
-				}
 				break;
 			case KeyEvent.VK_E:
-				if(field.getNeighbour(Direction.UPPER_RIGHT)!=null) {
+				if(field.getNeighbour(Direction.UPPER_RIGHT)!=null) 
 					field.moveMeTo(this, Direction.UPPER_RIGHT);
-				}
 				break;
 			case KeyEvent.VK_A:
-				if(field.getNeighbour(Direction.LEFT)!=null) {
+				if(field.getNeighbour(Direction.LEFT)!=null) 
 					field.moveMeTo(this, Direction.LEFT);
-				}
 				break;
 			case KeyEvent.VK_D:
-				if(field.getNeighbour(Direction.RIGHT)!=null) {
+				if(field.getNeighbour(Direction.RIGHT)!=null) 
 					field.moveMeTo(this, Direction.RIGHT);
-				}
 				break;
 			case KeyEvent.VK_Y:
-				if(field.getNeighbour(Direction.BOTTOM_LEFT)!=null) {
+				if(field.getNeighbour(Direction.BOTTOM_LEFT)!=null) 
 					field.moveMeTo(this, Direction.BOTTOM_LEFT);
-				}
 				break;
 			case KeyEvent.VK_X:
-				if(field.getNeighbour(Direction.BOTTOM_RIGHT)!=null) {
+				if(field.getNeighbour(Direction.BOTTOM_RIGHT)!=null) 
 					field.moveMeTo(this, Direction.BOTTOM_RIGHT);
-				}
 				break;
 			case KeyEvent.VK_S:
-				//skill használat
 				doSkill();
 				break;
-			case KeyEvent.VK_H:
-				//kézzel ásás
+			case KeyEvent.VK_Q:
 				if(field.digSnow(1))
-				drainStamina();
+					drainStamina();
 				break;
 			case KeyEvent.VK_I:
 				openInventory();
-				System.out.println("Stamina:" + stamina);
 				break;
-			//Passzolás
 			case KeyEvent.VK_P:
 				stamina = 1;
 				drainStamina();
 				return;
-			//Tárgyfelvétel
 			case KeyEvent.VK_F:
 				Item pickUpItem = field.pickUpItem(this);
 				if(pickUpItem != null)
 					inventory.add(pickUpItem);
 				break;
-			//Kiaszabitás
-			case KeyEvent.VK_M:
+			case KeyEvent.VK_G:
 				field.removeItemFromIce(this);
+				return;
+			case KeyEvent.VK_C:
+				if(changeSuit(null))
+					drainStamina();
 				return;
 			default:
 				break;
@@ -184,8 +175,7 @@ public abstract class Player extends Character
 	 * @author Zalan
 	 * @param dsuit a a búvárruha amit felveszünk. Null értékû, ha le kell vennünk magunkról a búvárruhát.
 	 */
-	public boolean changeSuit(DivingSuit dsuit) 
-	{
+	public boolean changeSuit(DivingSuit dsuit) {
 		if (dsuit == null) {
 			if(dSuitOn) {
 				dSuitOn = false;

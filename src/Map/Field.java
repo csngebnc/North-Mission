@@ -50,7 +50,7 @@ public abstract class Field extends FieldView{
 	 * Jelzi ha a mezõn használták a revealLimetet.
 	 * @author Norbi
 	 */
-	protected boolean limitRevealed = false;
+	protected boolean limitRevealed;
 	
 	/**
 	 * Konstruktor
@@ -61,6 +61,7 @@ public abstract class Field extends FieldView{
 	 */
 	public Field(int x, int y) {
 		super(x,y);
+		limitRevealed = false;
 		snowLayers = (int)(Math.random()*2);
 		characters = new ArrayList<Character>();
 		neighbours = new ArrayList<Field>();
