@@ -72,18 +72,7 @@ public class Game {
 	
 	private static Game instance = new Game();
 	
-	private Game() {
-		roundNum = 0;
-		roundsUntilBlizzard = -1;
-		foundGunParts = 0;
-		map = new Map();
-		characters = new ArrayList<Character>();
-		players = new ArrayList<Player>();
-		state = GameState.ONGOING;
-		Reset();
-		activeCharacter = characters.get(0);
-		activeCharacter.startTurn();
-	}
+	private Game() {	}
 	
 	public static void attachView(View v) {
 		view = v;
@@ -145,6 +134,7 @@ public class Game {
 	
 	public void InputCame(KeyEvent e) {
 		if(state!=GameState.ONGOING) {
+			WindowFrame.switchToMenu();
 			return;
 		}
 		activeCharacter.doTurn(e);
@@ -200,8 +190,7 @@ public class Game {
 	 */
 	public static void incGunParts()
 	{
-		foundGunParts++;
-		System.out.println("Found gunparts incremented, num: "+foundGunParts);		
+		foundGunParts++;	
 	}
 	
 	/*
@@ -224,21 +213,30 @@ public class Game {
 		return foundGunParts;
 	}
 	
-	public void Reset() {
-		characters = new ArrayList<Character>();
-		playerCount = 8;
+	public void Reset(ArrayList<String> eskimos, ArrayList<String> scientists) {
 		
+		roundNum = 0;
+		roundsUntilBlizzard = -1;
+		foundGunParts = 0;
+		
+		playerCount = eskimos.size() + scientists.size();
+		
+		map = new Map();
 		map.Reset();
-
-		addScientist(0, "Elton");
-		addEskimo(0, "Joulupukkii");
-		addScientist(0, "Michael");
-		addEskimo(0, "Inu");
-		addScientist(0, "John");
-		addScientist(0, "Joe");
-		addScientist(0, "Morris");
-		addScientist(0, "Chuck");
+		
+		players = new ArrayList<Player>();
+		characters = new ArrayList<Character>();
+		
+		for(String name : eskimos)
+			addEskimo(0, name);
+		for(String name : scientists)
+			addScientist(0, name);
+		
 		addPolarBear((int)(Math.random()*30) + 60);
+		
+		state = GameState.ONGOING;
+		activeCharacter = characters.get(0);
+		activeCharacter.startTurn();
 	}
 	
 	public void addScientist(int fieldIndex, String name) {

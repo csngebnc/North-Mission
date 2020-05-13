@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import Core.Game;
+import Core.GameState;
 import Map.Map;
 import Map.Field;
 import Player.Player;
@@ -70,6 +71,8 @@ public class View extends JPanel{
 	
 	public void drawHUD(Graphics g, ArrayList<Player> players) {
 		
+		ArrayList<Player> toDraw = new ArrayList<Player>();
+		
 		//Font
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(Color.WHITE);
@@ -80,8 +83,32 @@ public class View extends JPanel{
 		int y = 15;
 		int frameOffset = 150;
 		
+		if(players.size() > 8) {
+			
+			Player firstPlayer = players.get(0);
+			
+			for(Player p : players)
+				if(p.getStamina() > 0) {
+					firstPlayer = p;
+					break;
+				}
+			
+			int current = players.indexOf(firstPlayer);
+			
+			for(int i = 0; i < 8; i++) {
+				if(current == players.size())
+					current = 0;
+
+				toDraw.add(players.get(current++));
+			}
+		}
+		else
+			for(Player p : players) {
+				toDraw.add(p);
+			}
+		
 		//Playercards
-		for(Player p : players) {
+		for(Player p : toDraw) {
 			
 			//Frame
 			if(p.getStamina() > 0)
@@ -129,6 +156,17 @@ public class View extends JPanel{
 			g2d.drawString(String.valueOf(Game.getInstance().getRoundsUntilBlizzard()), 58, 633);
 			g2d.drawString("turns", 76, 633);
 			g.drawImage(blizzardImage, 13, 600, null);
+		}
+		
+		//Losing
+		if(Game.getInstance().getState() == GameState.LOST) {
+			g2d.setFont(font.deriveFont(12f));
+			g2d.drawString("GAME OVER! PRESS ANY BUTTON TO RETURN TO THE MENU.", 200, 670);
+		}
+		//Winning
+		if(Game.getInstance().getState() == GameState.WON) {
+			g2d.setFont(font.deriveFont(12f));
+			g2d.drawString("VICTORY! PRESS ANY BUTTON TO RETURN TO THE MENU.", 200, 670);
 		}
 	}
 	

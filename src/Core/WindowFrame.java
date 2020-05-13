@@ -3,7 +3,9 @@ package Core;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -34,6 +36,8 @@ public class WindowFrame extends JFrame {
 		//gamePanel.createBufferStrategy(2);
 		Game.attachView(gamePanel);
 		
+		this.setTitle("North Mission");
+		this.setIconImage(new ImageIcon("./assets/icon.png").getImage());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(1280,720);
 		this.setPreferredSize(this.getSize());
@@ -43,8 +47,14 @@ public class WindowFrame extends JFrame {
 		this.setVisible(true);
 	}
 	
-	public static void switchToGame() {
+	public static void switchToGame(ArrayList<String> eskimos, ArrayList<String> scientists) {
 		cl.show(contPanel, "game");
+		Game.getInstance().Reset(eskimos, scientists);
 		gamePanel.requestFocus();
+	}
+	
+	public static void switchToMenu() {
+		cl.show(contPanel, "menu");
+		menuPanel.requestFocus();
 	}
 }

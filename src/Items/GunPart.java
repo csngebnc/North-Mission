@@ -17,6 +17,7 @@ public abstract class GunPart implements Item
 	 */
 	public void use(Player p) 
 	{
+		Game.winGame(p.getField());
 	}
 	
 	/**

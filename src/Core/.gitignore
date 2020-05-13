@@ -1,3 +1,12 @@
 /Game.class
 /GameState.class
 /Main.class
+/Menu$BackPressedListener.class
+/Menu$CreditsPressedListener.class
+/Menu$ExitPressedListener.class
+/Menu$GoButtonPressed.class
+/Menu$HowManyPlayerListener.class
+/Menu$MouseHover.class
+/Menu$StartPressedListener.class
+/Menu.class
+/WindowFrame.class

@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -28,8 +29,10 @@ public class Menu extends JPanel{
 	JLabel label;
 	JLabel nev, nev2, kaszt1, kaszt2;
 	JButton bStart, bCredits, bExit;
+	JLabel titleLabel1, titleLabel2;
 	JTextField[] nevek;
 	JComboBox[] kaszt;
+	Font font;
 	
 	public Menu()
 	{
@@ -38,16 +41,33 @@ public class Menu extends JPanel{
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("./assets/HUD/ARCADE_N.ttf")));
 		} catch (Exception e) {e.printStackTrace();}
 		
+		font = new Font("Arcade Normal", Font.PLAIN, 30);
+		
 		this.setSize(new Dimension(1200,740));
 
-		//Icon imgIcon = new ImageIcon("C:\\Users\\barab\\eclipse-workspace\\Menu\\src\\menu_bg2.gif");
-		Icon imgIcon = new ImageIcon("./assets/menu_bg.gif");
+		Icon imgIcon = new ImageIcon("./assets/menu_bg2.gif");
 		label = new JLabel(imgIcon);
 		this.add(label);
 		
+		//Cim
+		titleLabel1 = new JLabel("North");
+		titleLabel2 = new JLabel("Mission");
+		titleLabel1.setBounds(30,50,300,30);
+		titleLabel2.setBounds(30,85,500,70);
+		titleLabel1.setFont(font.deriveFont(30f));
+		titleLabel2.setFont(font.deriveFont(50f));
+		titleLabel1.setForeground(Color.WHITE);
+		titleLabel2.setForeground(Color.WHITE);
+		titleLabel1.setOpaque(false);
+		titleLabel2.setOpaque(false);
+		titleLabel1.setFocusable(false);
+		titleLabel2.setFocusable(false);
+		label.add(titleLabel1);
+		label.add(titleLabel2);
+		
 		//Start gomb
 		bStart = new JButton("START");
-		bStart.setBounds(100, 140, 250, 70);
+		bStart.setBounds(450, 30, 330, 70);
 		bStart.setForeground(Color.white);
 		bStart.setFont(new Font("Arcade Normal", Font.PLAIN, 30));
 		bStart.setOpaque(false);
@@ -61,7 +81,7 @@ public class Menu extends JPanel{
 		
 		//Credits gomb
 		bCredits = new JButton("CREDITS");
-		bCredits.setBounds(450, 140, 330, 70);
+		bCredits.setBounds(450, 90, 330, 70);
 		bCredits.setForeground(Color.white);
 		bCredits.setFont(new Font("Arcade Normal", Font.PLAIN, 30));
 		bCredits.setOpaque(false);
@@ -74,7 +94,7 @@ public class Menu extends JPanel{
 		
 		//Exit gomb
 		bExit = new JButton("EXIT");
-		bExit.setBounds(850, 140, 250, 70);
+		bExit.setBounds(450, 150, 330, 70);
 		bExit.setForeground(Color.white);
 		bExit.setFont(new Font("Arcade Normal", Font.PLAIN, 30));
 		bExit.setOpaque(false);
@@ -90,6 +110,8 @@ public class Menu extends JPanel{
 	
 	public void InitMenu() {
 
+		label.add(titleLabel1);
+		label.add(titleLabel2);
 		label.add(bStart);
 		label.add(bCredits);
 		label.add(bExit);
@@ -173,8 +195,16 @@ public class Menu extends JPanel{
 		{
 			if(nevek!=null)
 			{
-				WindowFrame.switchToGame();
+				ArrayList<String> eskimos = new ArrayList<String>();
+				ArrayList<String> scientists = new ArrayList<String>();
 				
+				for(int i = 0; i < nevek.length; i++) {
+					if(kaszt[i].getSelectedItem() == "Eskimo")
+						eskimos.add(nevek[i].getText());
+					else
+						scientists.add(nevek[i].getText());
+				}
+				WindowFrame.switchToGame(eskimos, scientists);
 			}
 		}
 		
@@ -183,13 +213,10 @@ public class Menu extends JPanel{
 	private class StartPressedListener implements ActionListener {
 		
 	    public void actionPerformed(ActionEvent e) {
-	/*		label.remove(bStart);
-			label.remove(bCredits);
-			label.remove(bExit);*/
 			label.removeAll();
 	    	
 	    	JButton bBack = new JButton("BACK");
-	    	bBack.setBounds(900, 40, 300, 70);
+	    	bBack.setBounds(0, 30, 300, 70);
 	    	bBack.setForeground(Color.white);
 	    	bBack.setFont(new Font("Arcade Normal", Font.PLAIN, 30));
 			bBack.setOpaque(false);
@@ -202,7 +229,7 @@ public class Menu extends JPanel{
 	    	
 	    	
 	    	JButton bGo = new JButton("GO");
-	    	bGo.setBounds(5, 40, 300, 70);
+	    	bGo.setBounds(530, 42, 120, 50);
 	    	bGo.setForeground(Color.white);
 	    	bGo.setFont(new Font("Arcade Normal", Font.PLAIN, 30));
 			bGo.setOpaque(false);
@@ -241,7 +268,7 @@ public class Menu extends JPanel{
 	    	   label.add(kaszt2);
 	    	   
     		   
-			JLabel label2 = new JLabel("Hany jatekos? ");
+			JLabel label2 = new JLabel("PLAYERS: ");
 			label2.setForeground(Color.white);
 			label2.setBounds(300,50,300,30);
 			label2.setFont(new Font("Arcade Normal", Font.PLAIN, 20));
@@ -253,7 +280,7 @@ public class Menu extends JPanel{
 			{
 				cb.addItem(new Integer(i));
 			}
-			cb.setBounds(600,50,50,30);
+			cb.setBounds(470,50,50,30);
 			cb.addItemListener(new HowManyPlayerListener());
 			label.add(cb);
 			
