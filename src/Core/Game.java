@@ -87,11 +87,11 @@ public class Game {
 	
 	public static void attachView(View v) {
 		view = v;
-		view.revalidate(map, players);
+		view.revalidate();
 	}
 	
 	public static void notifyView() {
-		view.revalidate(map, players);
+		view.revalidate();
 	}
 	
 	public static Game getInstance() {
@@ -157,7 +157,7 @@ public class Game {
 	public void callBlizzard() 
 	{
 		map.callBlizzardOnFields();
-		view.revalidate(map, players);
+		view.revalidate();
 	}
 	
 	/**

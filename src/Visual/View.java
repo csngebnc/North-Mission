@@ -13,14 +13,14 @@ import java.io.File;
 import java.util.ArrayList;
 import java.awt.event.KeyAdapter;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import Core.Game;
 import Map.Map;
 import Map.Field;
 import Player.Player;
 
-public class View extends Canvas{
+public class View extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -31,9 +31,11 @@ public class View extends Canvas{
 	private Image backgroundImage = new ImageIcon("./assets/fields/backg.png").getImage();
 	private Image blizzardImage = new ImageIcon("./assets/HUD/cloud.png").getImage();
 	
+	private Graphics GG;
+	
 	public View() {
-		this.setSize(1280,720);
-		this.setPreferredSize(this.getSize());
+		/*this.setSize(1280,720);
+		this.setPreferredSize(this.getSize());*/
 		this.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -48,14 +50,22 @@ public class View extends Canvas{
 		
 	}
 	
-	public void revalidate(Map map, ArrayList<Player> players) {
-		Graphics g = this.getBufferStrategy().getDrawGraphics();
+	@Override
+	public void revalidate() {
+		//Graphics g = this.getBufferStrategy().getDrawGraphics();
+		repaint();
+		//this.getBufferStrategy().show();
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		GG = g;
+		super.paintComponent(g);
 		g.drawImage(backgroundImage,0,0, null);
-		drawHUD(g, players);
-		for(Field f : map.getFields()) {
+		drawHUD(g, Game.players);
+		for(Field f : Game.getInstance().getMap().getFields()) {
 			f.draw(this);
 		}
-		this.getBufferStrategy().show();
 	}
 	
 	public void drawHUD(Graphics g, ArrayList<Player> players) {
@@ -123,7 +133,7 @@ public class View extends Canvas{
 	}
 	
 	public void drawThing(int x, int y, Image img) {
-		this.getBufferStrategy().getDrawGraphics().drawImage(img, x, y, null);
+		GG.drawImage(img, x, y, null);
 	}
 	
 	/**
@@ -135,7 +145,7 @@ public class View extends Canvas{
 	 * @author Norbi
 	 */
 	public void drawThing(int x, int y, String limit) {
-		Graphics2D g2d = (Graphics2D) this.getBufferStrategy().getDrawGraphics();
+		Graphics2D g2d = (Graphics2D) GG;
 		Color color = new Color(16, 121, 181);
 		g2d.setColor(color);
 		Font playerFont = new Font("Arcade Normal", Font.PLAIN, 8);

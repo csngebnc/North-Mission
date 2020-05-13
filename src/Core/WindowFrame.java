@@ -31,7 +31,7 @@ public class WindowFrame extends JFrame {
 		
 		this.setVisible(true);
 		
-		gamePanel.createBufferStrategy(2);
+		//gamePanel.createBufferStrategy(2);
 		Game.attachView(gamePanel);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
