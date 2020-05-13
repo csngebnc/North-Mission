@@ -38,11 +38,20 @@ public class LimitedShovel extends Shovel{
 		}
 	}
 	
+	/**
+	 * Visszaadja a tárgy nevét.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public String getName() {
 		return "Copper Shovel (" + remainingUses + " uses left)";
 	}
 	
+	/**
+	 * Visszaadja az alkatrész azon képét, amelyre szükség van a kirajzoláshoz.
+	 * @param form Lehetséges formák: befagyott, földön lévõ.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public Image getImg(ImgType form) {
 		if(form==ImgType.DROPPED) {
