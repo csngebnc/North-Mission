@@ -317,9 +317,4 @@ public class Game {
 	public static int getPlayerCount() {
 		return players.size();
 	}
-	
-	public ArrayList<Character> getCharacters()
-	{
-		return characters;	
-	}
 }

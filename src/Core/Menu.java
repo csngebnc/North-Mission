@@ -24,14 +24,27 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
+import Map.IceField;
+
+/**
+ * A jatek allapotait tartalmazo enumeracio.
+ * @author Barabás Dániel
+ * @author Gyarmati Zalán
+ */
 public class Menu extends JPanel{
 
-	JLabel label;
-	JLabel nev, nev2, kaszt1, kaszt2;
+	/**
+	 * Szerializáláshoz szükséges
+	 * @author Balczer Dominik
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	JLabel mainLabel;
+	JLabel name1, name2, playerType1, playerType2;
 	JButton bStart, bCredits, bExit;
 	JLabel titleLabel1, titleLabel2;
-	JTextField[] nevek;
-	JComboBox[] kaszt;
+	JTextField[] names;
+	JComboBox[] playerTypes;
 	Font font;
 	
 	public Menu()
@@ -46,8 +59,8 @@ public class Menu extends JPanel{
 		this.setSize(new Dimension(1200,740));
 
 		Icon imgIcon = new ImageIcon("./assets/menu_bg2.gif");
-		label = new JLabel(imgIcon);
-		this.add(label);
+		mainLabel = new JLabel(imgIcon);
+		this.add(mainLabel);
 		
 		//Cim
 		titleLabel1 = new JLabel("North");
@@ -62,8 +75,8 @@ public class Menu extends JPanel{
 		titleLabel2.setOpaque(false);
 		titleLabel1.setFocusable(false);
 		titleLabel2.setFocusable(false);
-		label.add(titleLabel1);
-		label.add(titleLabel2);
+		mainLabel.add(titleLabel1);
+		mainLabel.add(titleLabel2);
 		
 		//Start gomb
 		bStart = new JButton("START");
@@ -76,7 +89,7 @@ public class Menu extends JPanel{
 		bStart.addMouseListener(new MouseHover());
 		bStart.addActionListener(new StartPressedListener());
 		bStart.setFocusable(false);
-		label.add(bStart);
+		mainLabel.add(bStart);
 		
 		
 		//Credits gomb
@@ -90,7 +103,7 @@ public class Menu extends JPanel{
 		bCredits.addMouseListener(new MouseHover());
 		bCredits.addActionListener(new CreditsPressedListener());
 		bCredits.setFocusable(false);
-		label.add(bCredits);
+		mainLabel.add(bCredits);
 		
 		//Exit gomb
 		bExit = new JButton("EXIT");
@@ -103,7 +116,7 @@ public class Menu extends JPanel{
 		bExit.addMouseListener(new MouseHover());
 		bExit.setFocusable(false);
 		bExit.addActionListener(new ExitPressedListener());
-		label.add(bExit);
+		mainLabel.add(bExit);
 		
 		this.setVisible(true);
 	}
@@ -117,82 +130,72 @@ public class Menu extends JPanel{
 		bCredits.setForeground(Color.white);
 		bCredits.setFont(new Font("Arcade Normal", Font.PLAIN, 30));
 		
-		label.add(titleLabel1);
-		label.add(titleLabel2);
-		label.add(bStart);
-		label.add(bCredits);
-		label.add(bExit);
+		mainLabel.add(titleLabel1);
+		mainLabel.add(titleLabel2);
+		mainLabel.add(bStart);
+		mainLabel.add(bCredits);
+		mainLabel.add(bExit);
 	}
 	
 	private class HowManyPlayerListener implements ItemListener{
 
 		@Override
 		public void itemStateChanged(ItemEvent event) {
-		       if (event.getStateChange() == ItemEvent.SELECTED) {
+			if (event.getStateChange() == ItemEvent.SELECTED) {
+
+				if(names!=null)
+					for(int i = 0; i < names.length; i++)
+						mainLabel.remove(names[i]);
 		    	   
-		    	   //Ha véletlenül többet írtunk elsõre, mint akartunk
-		    	   if(nevek!=null)
-		    	   { 
-			    	   for(int i=0;i<nevek.length;i++)
-			    	   {
-			    		   label.remove(nevek[i]);
-			    		   label.remove(kaszt[i]);
-			    	   }
-		    	   }
-		    	   
-		    	   int hanyan = (int) event.getItem();
-		    	   if(hanyan < 9) {
-		    		   nev2.setVisible(false);
-		    		   kaszt2.setVisible(false);
-		    	   }
-		    	   else {
-		    		   nev2.setVisible(true);
-		    		   kaszt2.setVisible(true);
-		    	   }
-		    	   nevek = new JTextField[hanyan];
-		    	   kaszt = new JComboBox[hanyan];
-		    	   for(int i=0; i<hanyan; i++)
-		    	   {
-		    		   kaszt[i]=new JComboBox();
-		    		   kaszt[i].addItem("Scientist");
-		    		   kaszt[i].addItem("Eskimo");
-		    		   if(i>9)
-		    		   {
-		    			   kaszt[i].setBounds(950,150+i*50-500,80,30);
-		    		   }
-		    		   else
-		    		   {
-		    			   kaszt[i].setBounds(450,150+i*50,80,30);	   
-		    		   }
-		    		   label.add(kaszt[i]);
-		    	   }
-		    	  
-		    	   JLabel nev = new JLabel("Név");
-		    	   nev.setBounds(300,100,40,40);
-		    	   nev.setForeground(Color.white);
-		    	   nev.setFont(new Font("Arcade Normal", Font.PLAIN, 20));
-		    	   label.add(nev);
-		    	   for(int i=0; i<hanyan;i++)
-		    	   {
-		    		   nevek[i]=new JTextField();
-		    		   if(i>9)
-		    		   {
-		    			   nevek[i].setBounds(800,150+i*50-500,120,30);
-		    		   }
-		    		   else
-		    		   {
-		    			   nevek[i].setBounds(300,150+i*50,120,30);		   
-		    		   }
-		    		   nevek[i].setBackground(new Color(130,130,130,230));
-		    		   
-		    		   nevek[i].setForeground(Color.white);
-		    		   
-		    		   label.add(nevek[i]);
-		    	   }
-		    	   
-		   
-	  
-		       }		
+	    	   int playerCount = (int) event.getItem();
+	    	   
+	    	   if(playerCount < 9) {
+	    		   name2.setVisible(false);
+	    		   playerType2.setVisible(false);
+	    	   }
+	    	   else {
+	    		   name2.setVisible(true);
+	    		   playerType2.setVisible(true);
+	    	   }
+	    	   
+	    	   names = new JTextField[playerCount];
+	    	   playerTypes = new JComboBox[playerCount];
+	    	   
+	    	   for(int i = 0; i < playerCount; i++)
+	    	   {
+	    		   playerTypes[i]=new JComboBox();
+	    		   playerTypes[i].addItem("Scientist");
+	    		   playerTypes[i].addItem("Eskimo");
+	    		   
+	    		   if(i > 9)
+	    			   playerTypes[i].setBounds(950, 150 + i * 50 - 500, 80, 30);
+	    		   else
+	    			   playerTypes[i].setBounds(450, 150 + i * 50, 80, 30);	   
+	    		   
+	    		   mainLabel.add(playerTypes[i]);
+	    	   }
+	    	  
+	    	   JLabel nev = new JLabel("Név");
+	    	   nev.setBounds(300,100,40,40);
+	    	   nev.setForeground(Color.white);
+	    	   nev.setFont(new Font("Arcade Normal", Font.PLAIN, 20));
+	    	   mainLabel.add(nev);
+	    	   
+	    	   for(int i=0; i<playerCount;i++)
+	    	   {
+	    		   names[i]=new JTextField();
+	    		   
+	    		   if(i > 9)
+	    			   names[i].setBounds(800,150+i*50-500,120,30);
+	    		   else
+	    			   names[i].setBounds(300,150+i*50,120,30);		   
+	    		   
+	    		   names[i].setBackground(new Color(130,130,130,230));
+	    		   names[i].setForeground(Color.white);
+	    		   
+	    		   mainLabel.add(names[i]);
+	    	   }
+			}		
 		}
 	}
 	
@@ -200,16 +203,16 @@ public class Menu extends JPanel{
 	private class GoButtonPressed implements ActionListener{
 		public void actionPerformed(ActionEvent e)
 		{
-			if(nevek!=null)
+			if(names!=null)
 			{
 				ArrayList<String> eskimos = new ArrayList<String>();
 				ArrayList<String> scientists = new ArrayList<String>();
 				
-				for(int i = 0; i < nevek.length; i++) {
-					if(kaszt[i].getSelectedItem() == "Eskimo")
-						eskimos.add(nevek[i].getText());
+				for(int i = 0; i < names.length; i++) {
+					if(playerTypes[i].getSelectedItem() == "Eskimo")
+						eskimos.add(names[i].getText());
 					else
-						scientists.add(nevek[i].getText());
+						scientists.add(names[i].getText());
 				}
 				WindowFrame.switchToGame(eskimos, scientists);
 			}
@@ -220,7 +223,7 @@ public class Menu extends JPanel{
 	private class StartPressedListener implements ActionListener {
 		
 	    public void actionPerformed(ActionEvent e) {
-			label.removeAll();
+			mainLabel.removeAll();
 	    	
 	    	JButton bBack = new JButton("BACK");
 	    	bBack.setBounds(0, 30, 300, 70);
@@ -232,7 +235,7 @@ public class Menu extends JPanel{
 			bBack.addMouseListener(new MouseHover());
 			bBack.setFocusable(false);
 			bBack.addActionListener(new BackPressedListener());
-			label.add(bBack);
+			mainLabel.add(bBack);
 	    	
 	    	
 	    	JButton bGo = new JButton("GO");
@@ -245,41 +248,41 @@ public class Menu extends JPanel{
 			bGo.addMouseListener(new MouseHover());
 			bGo.setFocusable(false);
 			bGo.addActionListener(new GoButtonPressed());
-			label.add(bGo);
+			mainLabel.add(bGo);
 
 			
-	    	   nev = new JLabel("Name");
-	    	   nev.setBounds(300,100, 60,50);
-	    	   nev.setForeground(Color.white);
-	    	   nev.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
-	    	   label.add(nev);
+	    	   name1 = new JLabel("Name");
+	    	   name1.setBounds(300,100, 60,50);
+	    	   name1.setForeground(Color.white);
+	    	   name1.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
+	    	   mainLabel.add(name1);
 	    	   
-	    	   nev2 = new JLabel("Name");
-	    	   nev2.setBounds(800,100,60,50);
-	    	   nev2.setForeground(Color.white);
-	    	   nev2.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
-	    	   nev2.setVisible(false);
-	    	   label.add(nev2);
+	    	   name2 = new JLabel("Name");
+	    	   name2.setBounds(800,100,60,50);
+	    	   name2.setForeground(Color.white);
+	    	   name2.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
+	    	   name2.setVisible(false);
+	    	   mainLabel.add(name2);
 	    	   
-	    	   kaszt1 = new JLabel("Type");
-	    	   kaszt1.setBounds(450,100,70,50);
-	    	   kaszt1.setForeground(Color.white);
-	    	   kaszt1.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
-	    	   label.add(kaszt1);
+	    	   playerType1 = new JLabel("Type");
+	    	   playerType1.setBounds(450,100,70,50);
+	    	   playerType1.setForeground(Color.white);
+	    	   playerType1.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
+	    	   mainLabel.add(playerType1);
 	    	   
-	    	   kaszt2 = new JLabel("Type");
-	    	   kaszt2.setBounds(900,100,70,50);
-	    	   kaszt2.setForeground(Color.white);
-	    	   kaszt2.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
-	    	   kaszt2.setVisible(false);
-	    	   label.add(kaszt2);
+	    	   playerType2 = new JLabel("Type");
+	    	   playerType2.setBounds(900,100,70,50);
+	    	   playerType2.setForeground(Color.white);
+	    	   playerType2.setFont(new Font("Arcade Normal", Font.PLAIN, 15));
+	    	   playerType2.setVisible(false);
+	    	   mainLabel.add(playerType2);
 	    	   
     		   
 			JLabel label2 = new JLabel("PLAYERS: ");
 			label2.setForeground(Color.white);
 			label2.setBounds(300,50,300,30);
 			label2.setFont(new Font("Arcade Normal", Font.PLAIN, 20));
-			label.add(label2);
+			mainLabel.add(label2);
 			
 			
 			JComboBox cb = new JComboBox();
@@ -289,7 +292,7 @@ public class Menu extends JPanel{
 			}
 			cb.setBounds(470,50,50,30);
 			cb.addItemListener(new HowManyPlayerListener());
-			label.add(cb);
+			mainLabel.add(cb);
 			
 	    }
 	}
@@ -304,7 +307,7 @@ public class Menu extends JPanel{
 	private class BackPressedListener implements ActionListener{
 		public void actionPerformed(ActionEvent e)
 		{
-			label.removeAll();
+			mainLabel.removeAll();
 			InitMenu();
 		}
 	}
@@ -312,34 +315,34 @@ public class Menu extends JPanel{
 	private class CreditsPressedListener implements ActionListener{
 		public void actionPerformed(ActionEvent e)
 		{
-			label.removeAll();
+			mainLabel.removeAll();
 			
 			JLabel l1, l2, l3, l4, l5;
 			l1 = new JLabel("Balczer Dominik");
 			l1.setBounds(50, 30, 440, 50);
 			l1.setForeground(Color.white);
 	    	l1.setFont(new Font("Arcade Normal", Font.PLAIN, 20));
-	    	label.add(l1);
+	    	mainLabel.add(l1);
 			l2 = new JLabel("Barabas Daniel");
 			l2.setBounds(50, 90, 440, 50);
 			l2.setForeground(Color.white);
 	    	l2.setFont(new Font("Arcade Normal", Font.PLAIN, 20));
-	    	label.add(l2);
+	    	mainLabel.add(l2);
 			l3 = new JLabel("Csonge Bence");
 			l3.setBounds(480, 30, 440, 50);
 			l3.setForeground(Color.white);
 	    	l3.setFont(new Font("Arcade Normal", Font.PLAIN, 20));
-	    	label.add(l3);
+	    	mainLabel.add(l3);
 			l4 = new JLabel("Gyarmati Zalan");
 			l4.setBounds(480, 90, 440, 50);
 			l4.setForeground(Color.white);
 	    	l4.setFont(new Font("Arcade Normal", Font.PLAIN, 20));
-	    	label.add(l4);
+	    	mainLabel.add(l4);
 			l5 = new JLabel("Nagy Norbert");
 			l5.setBounds(290, 150, 440, 50);
 			l5.setForeground(Color.white);
 	    	l5.setFont(new Font("Arcade Normal", Font.PLAIN, 20));
-	    	label.add(l5);
+	    	mainLabel.add(l5);
 			
 			
 	    	JButton bBack = new JButton("BACK");
@@ -352,7 +355,7 @@ public class Menu extends JPanel{
 			bBack.addMouseListener(new MouseHover());
 			bBack.setFocusable(false);
 			bBack.addActionListener(new BackPressedListener());
-			label.add(bBack);
+			mainLabel.add(bBack);
 		}
 	}
 	private class MouseHover extends MouseAdapter{
