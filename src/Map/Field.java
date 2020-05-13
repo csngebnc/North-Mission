@@ -1,9 +1,7 @@
 package Map;
+
 import java.awt.Image;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
-
 import Items.Item;
 import Map.Buildings.Building;
 import Player.Character;
@@ -13,81 +11,85 @@ import Visual.FieldView;
 import Visual.View;
 
 /**
- * A Field, azaz az altalanos mezo osztalya.
+ * Absutrakt mezõ osztálya
  * @author Csonge Bence
  */
-public abstract class Field extends FieldView
-{
+public abstract class Field extends FieldView{
+	
 	/**
-	 * A mezohoz tartozo horeteg szama.
+	 * Mezõn levõ hóréteg nagysága
 	 * @author Csonge Bence
 	 */
 	protected int snowLayers;
+	
 	/**
-	 * A mezohoz tartozo teherbiras.
+	 * Mezõ teherbirása
 	 * @author Csonge Bence
 	 */
 	protected int maxplayers;
+	
 	/**
-	 * A mezohoz tartozo karakterek.
+	 * Mezõn tartózkodó karakterek
 	 * @author Csonge Bence
 	 */
 	protected ArrayList<Character> characters;
+	
 	/**
-	 * A mezo szomszedai
+	 * Mezõ szomszédai
 	 * @author Csonge Bence
 	 */
 	protected ArrayList<Field> neighbours;
+	
 	/**
-	 * A mezon talalhato epulet
+	 * Mezõn található épület
 	 * @author Csonge Bence
 	 */
 	protected Building building;
 	
 	/**
-	 * Jelzi ha a mezõn használták a revalLimetet
-	 * Alapértéke hamis
+	 * Jelzi ha a mezõn használták a revealLimetet.
 	 * @author Norbi
 	 */
 	protected boolean limitRevealed = false;
 	
 	/**
-	 * Az osztaly konstruktora. 
-	 * Beallitja a horeteget egy veletlenszeru szamra, letrehozza az ures listakat, a buildinget null-ra allitja. 
+	 * Konstruktor
+	 * Inicializálja a mezõ változóit, feltölti egyenlõre null-okkal a szomszédjait tároló tömbböt.
+	 * @param x : A mezõ képernyõn elfoglalt poziciójának X koordinátája
+	 * @param y : A mezõ képernyõn elfoglalt poziciójának Y koordinátája
 	 * @author Csonge Bence
 	 */
 	public Field(int x, int y) {
 		super(x,y);
-		snowLayers = (int)Math.random()*6;
+		snowLayers = (int)(Math.random()*20);
 		characters = new ArrayList<Character>();
 		neighbours = new ArrayList<Field>();
-		for(int i=0;i<6;i++) {
+		
+		for(int i = 0; i < 6; i++) 
 			neighbours.add(null);
-		}
+		
 		building = null;
 	}
 	
 	/**
-	 * Hovihar generalasa a mezon, melynek hatasara a mezon levo horeteg megno egy veletlenszeru szammal, ami maximalizalva van.
+	 * Hóvihar esemény kezelése, generál havat a mezõre és ha nincs rajta épület,
+	 * sebzi a rajta tartózkodó játékosokat.
 	 * @author Csonge Bence
 	 */
-	public void generateBlizzard() 
-	{
+	public void generateBlizzard() {
 		snowLayers += Math.random()*5;
-		
 		if(building == null)
 			for(Character c : characters)
 				c.alterHealth(-1);
 	}
 	
 	/**
-	 * Egy jatekos elmozditasa a mezojerol a mezoje egy szomszedjara.
-	 * @param c: mozditando karakter
-	 * @param next: karakter mezojenek megadott sorszamu szomszedja
+	 * Mezõn tartókodó játékos mozgatása adott irányban levõ szomszédos mezõre
+	 * @param c: Mozditandó karakter
+	 * @param DIR : Mozgatás iránya
 	 * @author Csonge Bence
 	 */
-	public void moveMeTo(Character c, Direction DIR) 
-	{
+	public void moveMeTo(Character c, Direction DIR) {
 		if(DIR.VALUE >= neighbours.size())
 			return;
 		
@@ -97,15 +99,11 @@ public abstract class Field extends FieldView
 	}
 	
 	/**
-	 * A sarkkutato karakter specialis kepessegevel ezt a metodust hivja, melynek hatasara
-	 * kiirasra kerul a mezo teherbirasa.
-	 * 
-	 * Új funkció a limitrevealed beállítása
-	 * 
+	 * Sarkkutató felfedi a mezõ teherbirását, ha még nem fedték fel elõtte le von egy staminát is.
+	 * @param p : A sarkkutató aki a felfedést végzi
 	 * @author Csonge Bence
 	 */
-	public void revealLimit(Player p) 
-	{
+	public void revealLimit(Player p) {
 		if(limitRevealed)
 			return;
 		
@@ -114,45 +112,47 @@ public abstract class Field extends FieldView
 	}
 	
 	/**
-	 *  A leszarmazottak maguk valositjak meg.
-	 *  Feladata: karakter atvetele
-	 *  @param c: atvett karakter
+	 * 	Karakter fogadása
+	 *  @param c: Fogadandó karakter
 	 *  @author Csonge Bence
 	 */
 	public abstract void acceptCharacter(Character c);
 	
 	/**
-	 *  A leszarmazottak maguk valositjak meg.
-	 *  Alapimplementacio pedig nem csinal semmit. lsd.: lyuk
-	 *  Feladata: targy atvetele mezore (radobas)
-	 *  @param i: mezore helyezett targy
+	 *  Tárgy eldobása mezõre, alapesetben nem csinál semmit, ahol van értelme ott felül van definiálva.
+	 *  @param i: Eldobandó tárgy
 	 *  @author Csonge Bence
 	 */
 	public void acceptItem(Item i) {}
 	
 	/**
-	 *  A leszarmazottak maguk valositjak meg.
-	 *  Alapimplementacio pedig null-t ad vissza. lsd.: lyuk
-	 *  Feladata: targy felvetele mezorol
-	 *  @param p: jatekos, aki felveszi a targyat
+	 *  Tárgy felvétele mezõrõl, alapesetben nem csinál semmit, ahol van értelme ott felül van definiálva.
+	 *  @param p: Tárgyat felvevõ játékos
 	 *  @author Csonge Bence
 	 */
-	public Item pickUpItem(Player p) 
-	{
+	public Item pickUpItem(Player p) {
 		return null;
 	}
 	
 	/**
-	 *  A leszarmazottak maguk valositjak meg. A mezon torteno hoasasert felel.
-	 *  Alapimplementacio pedig false-t ad vissza. lsd.: lyuk
-	 *  @param amount: asas mennyisege
+	 *  Hó ásása a mezõn, visszatérési értékben visszaadja sikerült-e az ásás
+	 *  @param amount: Hány réteg havat ásunk
 	 *  @author Csonge Bence
 	 */
-	public boolean digSnow(int amount) 
-	{
-		return false;
+	public boolean digSnow(int amount) {
+		if(snowLayers==0) 
+			return false;
+		
+		snowLayers-=amount;
+		if(snowLayers < 0)
+			snowLayers = 0;
+		return true;
 	}
 	
+	/**
+	 *  Visszaadja a mezõ képét attól függõen hány réteg hó van rajta
+	 *  @author Balczer Dominik
+	 */
 	public Image getSprite() {
 		if(snowLayers==0) 
 			return sprites[0];
@@ -163,102 +163,41 @@ public abstract class Field extends FieldView
 	}
 
 	/**
-	 *  A leszarmazottak maguk valositjak meg.
-	 *  Alapimplementacio pedig nem csinal semmit. lsd.: lyuk
-	 *  Feladata: befagyott targy kiszedese jegbol, mezon elhelyezese
-	 *  @param p: a jatekos, aki kiszabaditja a targyat a jegbol
-	 *  @author Csonge Bence
+	 *  Tárgy kiszabaditása a jégbõl, alapesetben nem csinál semmit, ahol van értelme ott felül van definiálva.
+	 *  @param p: Játékos aki végzi a cselekvést
+	 *  @author	Balczer Dominik
 	 */
 	public void removeItemFromIce(Player p) {}
 	
 	/**
-	 * A leszarmazottak valositjak meg.
-	 * Alapimplementacio nem csinal semmit, mivel nem minden mezorol lehet jatekost menteni. lsd.: stabil mezo
-	 * Feladata: jatekos mozditasa biztonsagos mezore.
-	 * @param safeField: biztonsagos mezo, ahova mozditas tortenik
-	 * @author Csonge Bence
+	 *  Játékos kimentése, alapesetben nem csinál semmit, ahol van értelme ott felül van definiálva, visszaadja sikerült-e.
+	 *  @param safeField: A mezõ ahova mentjük a játékost
+	 *  @author	Balczer Dominik
 	 */
-	public boolean savePerson(Field safeField)
-	{
+	public boolean savePerson(Field safeField){
 		return false;
 	}
 	
 	/**
-	 * A leszarmazottak valositjak meg.
-	 * Alapimplementacio nem csinal semmit, mivel nem minden mezore lehet epiteni. lsd.: lyuk
-	 * Feladata: parameterkent kapott epulet elhelyezese a mezon.
-	 * @param b: epulet, amit el kell helyezni a mezon
-	 * @author Csonge Bence
+	 *  Épület épitése a mezõn, alapesetben nem csinál semmit, ahol van értelme ott felül van definiálva, visszaadja sikerült-e.
+	 *  @param b: Épitendõ épület
+	 *  @author	Balczer Dominik
 	 */
-	public boolean buildBuilding(Building b) 
-	{
+	public boolean buildBuilding(Building b) {
 		return false;
 	}
-	
+
 	/**
-	 * A leszarmazottak valositjak meg.
-	 * Alapimplementacio nem csinal semmit, mivel nem minden mezore lehet epiteni, emiatt az ottani epulet nem tick-elheto. lsd.: lyuk
-	 * Feladata: mezo epuletenek tick-elese.
-	 * @author Csonge Bence
+	 *  Mezpn található épület tick-elése, alapesetben nem csinál semmit, ahol van értelme ott felül van definiálva, visszaadja sikerült-e.
+	 *  @author	Balczer Dominik
 	 */
 	public void tickBuilding() {}
 	
 	/**
-	 * A tovabbiakban getter/setter, valamint teszteleshez hasznalt metodusok talalhatok.
+	 *  Megkeresi és beállitja a mezõ a szomszédjait
+	 *  @param fields : A pálya összes mezejét tartalmazó lista
+	 *  @author	Balczer Dominik
 	 */
-	
-	public Field getNeighbour(Direction DIR)
-	{
-		return neighbours.get(DIR.VALUE);
-	}
-	
-	public ArrayList<Field> getNeighbours(){
-		return neighbours;
-	}
-	
-	public void addNeighbour(int num, Field f) {
-		neighbours.set(num, f);
-	}
-	
-	public boolean addFrozenItem(Item i) {
-		return false;
-	}
-	
-	public void addItem(Item i) {
-		
-	}
-	
-	public boolean hasBuilding() {
-		return building!=null;
-	}
-
-	public ArrayList<Character> getCharacters()
-	{
-		return characters;
-	}
-	
-	public void setLimit(int limit) {
-		
-	}
-	
-	public void setBuilding(Building b) {
-		
-	}
-	
-	public void setSnowLayers(int n)
-	{
-		snowLayers=n;
-	}
-	
-	public void setMaxPlayers(int n)
-	{
-		maxplayers=n;
-	}
-	
-	public void draw(View v) {
-		v.drawThing(x, y, getSprite());
-	}
-	
 	public void discoverNeighbours(ArrayList<Field> fields) {
 		for(Field candidate : fields) {
 			int candX = candidate.GetX();
@@ -280,5 +219,58 @@ public abstract class Field extends FieldView
 			else if(x - 95 == candX && y == candY) 
 				neighbours.set(Direction.LEFT.VALUE, candidate);
 		}
+	}
+	
+	/**
+	 *  Visszaadja adott irányban a mezõ szomszédját
+	 *  @param DIR : Lekért szomszéd iránya
+	 *  @author	Balczer Dominik
+	 */
+	public Field getNeighbour(Direction DIR){
+		return neighbours.get(DIR.VALUE);
+	}
+	
+	/**
+	 *  Visszaadja a mezõ szomszédjait
+	 *  @author	Balczer Dominik
+	 */
+	public ArrayList<Field> getNeighbours(){
+		return neighbours;
+	}
+	
+	/**
+	 *  Tárgyat ad a mezõn a jégbe, visszaadja hogy volt-e már itt másik tárgy
+	 *  (tehát sikerült-e az elhelyezés), alapesetben mindig false-al tér vissza, ahol van értelme ott
+	 *  felül van definiálva.
+	 *  @param i : A jégba adandó tárgy 
+	 *  @author	Balczer Dominik
+	 */
+	public boolean addFrozenItem(Item i) {
+		return false;
+	}
+	
+	/**
+	 *  Visszaadja hogy van-e a mezõn épület
+	 *  @author	Balczer Dominik
+	 */
+	public boolean hasBuilding() {
+		return building!=null;
+	}
+
+	/**
+	 *  Visszaadja a mezõn tartózkodó karaktereket
+	 *  @author	Balczer Dominik
+	 */
+	public ArrayList<Character> getCharacters(){
+		return characters;
+	}
+	
+	/**
+	 *  Kirajzolja a mezõt
+	 *  @param view : A játékpanel amelyre
+	 *  @author	Balczer Dominik
+	 */
+	public void draw(View v) {
+		v.drawThing(x, y, getSprite());
 	}
 }

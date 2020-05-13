@@ -1,14 +1,10 @@
 package Core;
 
 import java.awt.CardLayout;
-import java.awt.Dimension;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import Visual.View;
 
 /**
@@ -16,6 +12,11 @@ import Visual.View;
  * @author Balczer Dominik
  */
 public class WindowFrame extends JFrame {
+
+	/**
+	 * SerialID
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Fõpanel, ezen van rajta a menü és maga a játék

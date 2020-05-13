@@ -1,4 +1,5 @@
 package Core;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -9,22 +10,15 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.util.ArrayList;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-
-import Map.IceField;
 
 /**
  * A jatek allapotait tartalmazo enumeracio.
@@ -44,7 +38,7 @@ public class Menu extends JPanel{
 	JButton bStart, bCredits, bExit;
 	JLabel titleLabel1, titleLabel2;
 	JTextField[] names;
-	JComboBox[] playerTypes;
+	JComboBox<String>[] playerTypes;
 	Font font;
 	
 	public Menu()
@@ -162,7 +156,7 @@ public class Menu extends JPanel{
 	    	   
 	    	   for(int i = 0; i < playerCount; i++)
 	    	   {
-	    		   playerTypes[i]=new JComboBox();
+	    		   playerTypes[i]=new JComboBox<String>();
 	    		   playerTypes[i].addItem("Scientist");
 	    		   playerTypes[i].addItem("Eskimo");
 	    		   

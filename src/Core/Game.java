@@ -1,9 +1,8 @@
 package Core;
+
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-
 import Visual.View;
-
 import Map.Field;
 import Map.Map;
 import Player.Character;

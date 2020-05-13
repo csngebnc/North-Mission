@@ -1,9 +1,7 @@
 package Map;
+
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
-
-import Core.Game;
 import Map.Buildings.Building;
 import Items.Item;
 import Player.Player;
@@ -12,25 +10,28 @@ import Visual.View;
 import Player.Character;
 
 /*
- * A normalis jegmezo osztalya.
+ * Stabil jégmezõt osztálya
  * @author Csonge Bence
  */
-public class IceField extends Field 
-{
+public class IceField extends Field {
+	
 	/**
-	 * A mezobe befagyott targy
+	 * Mezõn jégbe fagyott tárgy
 	 * @author Csonge Bence
 	 */
 	protected Item frozenItem;
+	
 	/**
-	 * A mezon levo targyak
+	 * Mezõn a földön levõ tárgyak
 	 * @author Csonge Bence
 	 */
 	protected ArrayList<Item> itemOnGround;
 	
 	/**
-	 * Normal jegtabla konstruktora, alapertelmezett ertekek beallitasa.
-	 * Jelenleg tesztek miatt alapertelmezetten nem tartalmaz targyat, paranccsal allithato be egy targy a mezore.
+	 * Konstruktor, inicializálja a mezõ változóit és betölti a képét
+	 * @param x : A mezõ képernyõn elfoglalt poziciójának X koordinátája
+	 * @param y : A mezõ képernyõn elfoglalt poziciójának Y koordinátája
+	 * @param playerCount : Játékban résztvevõ játékosok száma, a teherbitás beállitásához kell
 	 * @author Csonge Bence
 	 */
 	public IceField(int x, int y, int playerCount) {
@@ -42,28 +43,23 @@ public class IceField extends Field
 	}
 	
 	/**
-	 * Karakter atvetele egy masik mezotol.
-	 * @param c: atvett karakter
+	 * Karakter fogadás, átveszi a karaktert és ha nincs iglu rajta, ütközteti a mezõ többi karakterével
+	 * @param c: Fogadott karakter
 	 * @author Csonge Bence
 	 */
-	public void acceptCharacter(Character c)
-	{
+	public void acceptCharacter(Character c) {
 		c.setField(this);
-		c.setDrowning(false);
 		characters.add(c);
-		if(building!=null){
-			if(building.attack()) {
-				for(Character ch : characters) {
-					if(!ch.equals(c))
-						c.collideWith(ch);
-				}
-			}
-		}else {
-			for(Character ch : characters) {
-				if(!ch.equals(c))
-					c.collideWith(ch);
-			}
+		c.setDrowning(false);
+		
+		if(building!=null) {
+			if(building.attack()) 
+				for(Character collider : characters) 
+					c.collideWith(collider);	
 		}
+		else 
+			for(Character collider : characters) 
+				c.collideWith(collider);
 	}
 	
 	/**
@@ -77,16 +73,15 @@ public class IceField extends Field
 	}
 	
 	/**
-	 *  Teszteles miatt nem teljes implementacio.
-	 *  Visszaadja a mezon talalhato targyat, melyet a jatekos eltarol az inventoryjaban.
-	 *  @param p: jatekos, aki felveszi a targyat
+	 *  Tárgy felvétele a mezõn a földrõl, mindig a 0-s indexû tárgyat adja vissza
+	 *  @param p: Játékos aki felveszi a tárgyat
 	 *  @author Csonge Bence
 	 */
 	public Item pickUpItem(Player p) 
 	{
-		if(itemOnGround.isEmpty()) {
+		if(itemOnGround.isEmpty()) 
 			return null;
-		}
+		
 		p.drainStamina();
 		Item i = itemOnGround.get(0);
 		i.pickUp();
@@ -95,8 +90,8 @@ public class IceField extends Field
 	}
 	
 	/**
-	 *  Befagyott targy kiszabaditasa jegbol, mezon torteno elhelyezese
-	 *  @param p: a jatekos, aki kiszabaditja a targyat a jegbol
+	 *  Tárgy kiszabaditása a mezõn a jégbõl
+	 *  @param p: Kiszabaditó játékos
 	 *  @author Csonge Bence
 	 */
 	public void removeItemFromIce(Player p) 
@@ -110,51 +105,34 @@ public class IceField extends Field
 	}
 	
 	/**
-	 *  Asas a mezon, horeteg csokkentese
-	 *  @param amount: asas mennyisege
-	 *  @author Csonge Bence
-	 */
-	public boolean digSnow(int amount) {
-		if(snowLayers>0) {
-			snowLayers-=amount;
-			if(snowLayers < 0)
-				snowLayers = 0;
-			return true;
-		}
-		return false;
-	}
-	
-	/**
-	 * Építés, parameterkent kapott epulet elhelyezese a mezon.
-	 * @param b: epulet, amit el kell helyezni a mezon
+	 * Építés a mezõn, visszaadja hogy sikerült-e
+	 * @param b: Épitendõ épület
 	 * @author Csonge Bence
 	 */
 	@Override
 	public boolean buildBuilding(Building b) {
-		if(building == null) {
-			building = b;
-			return true;
-		}
-		return false;
+		if(building != null) 
+			return false;
+		building = b;
+		return true;
 	}
 	
 	/**
-	 * A mezo epuletenek tick-elese, szukseg eseten mezorol torteno eltavolitasa.
+	 * Mezõn található épület tick-elése
 	 * @author Csonge Bence
 	 */
 	@Override
 	public void tickBuilding() {
-		if(building != null) {
-			if(building.tick()) {
+		if(building != null) 
+			if(building.tick()) 
 				building = null;
-			}
-		}
 	}
 	
 	/**
-	 * A tovabbiakban getter/setter, valamint teszteleshez hasznalt metodusok talalhatok.
+	 * Jégbe tárgy helyezése, visszaadja sikerült-e
+	 * @param Elhelyezendõ tárgy
+	 * @author Csonge Bence
 	 */
-	
 	@Override
 	public boolean addFrozenItem(Item i) {
 		if(frozenItem != null)
@@ -164,8 +142,14 @@ public class IceField extends Field
 		return true;
 	}
 
+	/**
+	 * Mezõ és a a hozzátartozó objektumok kirajzolása (karakterek, épület, tárgyak)
+	 * @author Csonge Bence
+	 */
 	@Override
 	public void draw(View v) {
+		
+		//Ha beszakadt alattuk a jég nem rajzoljuk ki
 		if(characters.size() > maxplayers)
 			return;
 		
