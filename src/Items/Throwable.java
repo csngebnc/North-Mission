@@ -30,6 +30,10 @@ public abstract class Throwable implements Item
 		return;
 	}
 	
+	/**
+	 * Megadott számú példányt állít elõ az osztályból.
+	 * @author Csonge Bence
+	 */
 	public ArrayList<Item> generateInstances(int count) throws IllegalAccessException, InstantiationException {
         ArrayList<Item> array = new ArrayList<Item>();
         for (int i = 0; i < count; i++) {

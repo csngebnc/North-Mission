@@ -33,6 +33,10 @@ public class Igloo implements Building{
 		return false;
 	}
 
+	/**
+	 * Visszaadja az iglu kirajzolandó képét.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public Image getImg(ImgType form) {
 		

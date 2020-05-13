@@ -19,11 +19,35 @@ import Visual.View;
  */
 public abstract class Player extends Character
 {
+	/**
+	 * Játékos neve
+	 * @author Csonge Bence
+	 */
 	protected String name;
+	/**
+	 * Játékos életereje
+	 * @author Csonge Bence
+	 */
 	protected int health;
+	/**
+	 * Tárolja, hogy a játékoson van-e búvárruha. True - igen, false - nem
+	 * @author Csonge Bence
+	 */
 	protected boolean dSuitOn;
+	/**
+	 * Játékos hátizsákja, inventoryja. Tárolja az összes olyan tárgyat, ami a játékosnál van.
+	 * @author Csonge Bence
+	 */
 	protected ArrayList<Item> inventory;
+	/**
+	 * Játékos különleges képessége, leszármazottanként eltérõ megvalósítással.
+	 * @author Csonge Bence
+	 */
 	public abstract void doSkill();
+	/**
+	 * A megjelenítés során a stamina értékét reprezentáló képek.
+	 * @author Csonge Bence
+	 */
 	protected Image staminaSprites[];
 	
 	/**
@@ -48,7 +72,7 @@ public abstract class Player extends Character
 	 */
 	protected void openInventory() 
 	{
-		Inventory inv = new Inventory(this);
+		new Inventory(this);
 	}
 	
 	/**
@@ -72,6 +96,11 @@ public abstract class Player extends Character
 		}
 	}
 	
+	/**
+	 * Játékos körének kezdése, stamina értékének beállítása
+	 * Amennyiben fullad és nincs rajta búvárruha, életét csökkentjük, hogy a játék véget érjen.
+	 * @author Csonge Bence
+	 */
 	public void startTurn() {
 		stamina = 3;
 		if(isDrowning && !dSuitOn) {
@@ -80,6 +109,10 @@ public abstract class Player extends Character
 		}
 	}
 	
+	/**
+	 * A nézetre érkezett billentyû lenyomás feldolgozása, annak megfelelõen történõ cselekvés.
+	 * @author Csonge Bence
+	 */
 	public void move(KeyEvent e) {
 		switch(e.getKeyCode()) {
 			case KeyEvent.VK_Q:
@@ -216,6 +249,10 @@ public abstract class Player extends Character
 		inventory.remove(i);
 	}
 	
+	/**
+	 * A játékos kirajzolása a paraméterként kapott megjelenítõre a megfelelõ avatárral.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public void draw(View v) {
 		
@@ -262,6 +299,10 @@ public abstract class Player extends Character
 		return field;
 	}
 	
+	/**
+	 * A játékos aktuális állapotának megfelelõen visszaadja hozzá tartozó képet.
+	 * @author Csonge Bence
+	 */
 	public Image getAvatar() {
 		if(isDrowning) {
 			if(dSuitOn)
@@ -335,6 +376,10 @@ public abstract class Player extends Character
 		stamina = s;
 	}
 	
+	/**
+	 * Visszaadja a játékos életerejének értékét.
+	 * @author Csonge Bence
+	 */
 	public int getHealth() {
 		return health;
 	}

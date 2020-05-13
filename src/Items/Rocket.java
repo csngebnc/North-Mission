@@ -13,10 +13,20 @@ import Visual.ImgType;
 public class Rocket extends GunPart
 {
 	
+	/**
+	 * Visszaadja a tárgy nevét.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public String getName() {
 		return "Flare";
 	}
+	
+	/**
+	 * Visszaadja az alkatrész azon képét, amelyre szükség van a kirajzoláshoz.
+	 * @param form Lehetséges formák: befagyott, földön lévõ.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public Image getImg(ImgType form) {
 		if(form==ImgType.DROPPED) {

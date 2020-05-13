@@ -4,6 +4,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import Core.Game;
 import Player.Player;
 import Visual.ImgType;
 
@@ -14,15 +15,10 @@ import Visual.ImgType;
 public class Barrel extends GunPart
 {
 	/**
-	 * Az õsének használ metódusát fogja meghívni.
+	 * Visszaadja az alkatrész azon képét, amelyre szükség van a kirajzoláshoz.
+	 * @param form Lehetséges formák: befagyott, földön lévõ.
+	 * @author Csonge Bence
 	 */
-	public Barrel() {
-		super();
-	}
-	
-	public void use(Player p) {
-	}
-
 	@Override
 	public Image getImg(ImgType form) {
 		if(form==ImgType.DROPPED) {
@@ -34,6 +30,10 @@ public class Barrel extends GunPart
 		}
 	}
 	
+	/**
+	 * Visszaadja a tárgy nevét.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public String getName() {
 		return "Gun Barrel";

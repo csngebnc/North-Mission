@@ -36,7 +36,14 @@ public interface Item
 	 */
 	public abstract void pickUp();
 	
+	/**
+	 * Visszaadja az alkatrész azon képét, amelyre szükség van a kirajzoláshoz.
+	 * @author Csonge Bence
+	 */
 	public Image getImg(ImgType form);
 	
+	/**
+	 * Visszaadja a tárgy nevét.
+	 */
 	public abstract String getName();
 }

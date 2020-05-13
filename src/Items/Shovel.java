@@ -26,11 +26,20 @@ public class Shovel extends Throwable
 		}
 	}
 	
+	/**
+	 * Visszaadja a tárgy nevét.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public String getName() {
 		return "Iron Shovel";
 	}
 	
+	/**
+	 * Visszaadja az alkatrész azon képét, amelyre szükség van a kirajzoláshoz.
+	 * @param form Lehetséges formák: befagyott, földön lévõ.
+	 * @author Csonge Bence
+	 */
 	@Override
 	public Image getImg(ImgType form) {
 		if(form==ImgType.DROPPED) {
