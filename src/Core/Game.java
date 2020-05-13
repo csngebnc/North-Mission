@@ -19,200 +19,81 @@ import Player.Scientist;
 public class Game {
 	
 	/**
-	 * A jatekosok szama
+	 * A játékosok száma
 	 * @author Csonge Bence
 	 */
 	private static int playerCount = 0;
+	
 	/**
-	 * A korok szama
+	 * A körök száma
 	 * @author Csonge Bence
 	 */
 	private static int roundNum;
+	
 	/**
-	 * A korok hoviharig
+	 * Hány kör múlva lesz hóvihar, -1 ha jelenleg nincsen közelgõ hóvihar
 	 * @author Csonge Bence
 	 */
 	private int roundsUntilBlizzard;
+	
 	/**
-	 * A jatekosok altal megtalalt alkatreszek szama
+	 * A játékosok által megtalált alkatrészek száma
 	 * @author Csonge Bence
 	 */
 	private static int foundGunParts;
+	
 	/**
-	 * A jatekhoz tartozo palya
+	 * A pálya amin a játék játszódik
 	 * @author Csonge Bence
 	 */
 	private static Map map;
 	
 	/**
-	 * A jatekban resztvevo karakterek
+	 * A játékban részvevõ karakterek
 	 * @author Csonge Bence
 	 */
 	public ArrayList<Character> characters;
 	
 	/**
-	 * A jatekban resztvevo játékosok
+	 * A játékban résztvevõ játékosok
 	 * @author Csonge Bence
 	 */
 	public static ArrayList<Player> players;
 	
 	/**
-	 * A jatek allapota
+	 * A játék állapota
 	 * @author Csonge Bence
 	 */
 	private static GameState state;
 	
 	/**
-	 * Game osztaly konstruktora, alapertelmezett ertekek beallitasa
+	 * A játék nézete, ez jeleniti meg a játékot
 	 * @author Csonge Bence
 	 */
-	
 	private static View view;
+	
+	/**
+	 * Az éppen soron levõ karakter
+	 * @author Balczer Dominik
+	 */
 	private Character activeCharacter;
 	
+	/**
+	 * Singleton tervezési minta alapján a Game osztály egyetlen példánya
+	 * @author Balczer Dominik
+	 */
 	private static Game instance = new Game();
 	
+	/**
+	 * Üres konstruktor, priváttá téve a Singleton elveket követve
+	 * @author Balczer Dominik
+	 */
 	private Game() {	}
 	
-	public static void attachView(View v) {
-		view = v;
-		view.revalidate();
-	}
-	
-	public static void notifyView() {
-		view.revalidate();
-	}
-	
-	public static Game getInstance() {
-		return instance;
-	}
-
 	/**
-	 * A jatek elinditasara es korok vezenylesere szolgalo metodus
-	 * Veletlenszeruen bekovetkezhet egy hovihar, valamint minden karakter "leptetese" egy korben
-	 * egeszen addig, amig a jatekot nem veszitik, vagy nem nyerik meg.
-	 * @author Csonge Bence
+	 * Játék alaphelyzetbe állitása, inicializálása és elinditása
+	 * @author Balczer Dominik
 	 */
-	public void doRound() 
-	{
-		if(state == GameState.ONGOING) {
-			map.tickBuildings();
-			roundNum++;
-			if(roundsUntilBlizzard == -1) {
-				int hovihar_esely = (int) (Math.random()*5);
-				if(hovihar_esely == 2) {
-					roundsUntilBlizzard = (int) (Math.random()*4+2);
-				}
-			}
-			
-			if(roundsUntilBlizzard>0) {
-				roundsUntilBlizzard--;
-				if(roundsUntilBlizzard == 0) {
-					roundsUntilBlizzard--;
-					callBlizzard();
-				}
-			}
-		}
-	}
-	
-	public static View getView() {
-		return view;
-	}
-	
-	public void nextCharacter() {
-		if(characters.indexOf(activeCharacter) == characters.size()-1) {
-			doRound();
-			activeCharacter = characters.get(0);
-			activeCharacter.startTurn();
-		}else {
-			activeCharacter = characters.get(characters.indexOf(activeCharacter)+1);
-			activeCharacter.startTurn();
-		}
-		notifyView();
-	}
-	
-	
-	public void InputCame(KeyEvent e) {
-		if(state!=GameState.ONGOING) {
-			WindowFrame.switchToMenu();
-			return;
-		}
-		activeCharacter.doTurn(e);
-	}
-	
-	/**
-	 * Hovihar bekovetkezesenek tovabbitasa a palya fele.
-	 * @author Csonge Bence
-	 */
-	public void callBlizzard() 
-	{
-		map.callBlizzardOnFields();
-		view.revalidate();
-	}
-	
-	/**
-	 * A Game osztaly ertesitese arrol, hogy a jatekosok megnyertek a jatekot.
-	 * Megtortenik a feltetelek teljesulesenek vizsgalata, majd aszerint allitja be a jatek allapotat.
-	 * @param f : A mezo, amelyen az osszes jatekos tartózkodni kell a gyozelemhez.
-	 * @author Csonge Bence
-	 */
-	public static void winGame(Field f) {
-		if(foundGunParts==3 && (f.getCharacters().size()==playerCount)) {
-			state = GameState.WON;
-			System.out.println("The players won the game.");
-		}		
-	}
-	
-	/**
-	 * A Game osztaly ertesitese arrol, hogy a jatekot elvesztettek a jatekosok valamilyen okbol,
-	 * a jatek allapota beallitasra kerul.
-	 * @author Csonge Bence 
-	 */
-	public static void loseGame() 
-	{
-		state = GameState.LOST;
-		System.out.println("The players lost the game.");
-		notifyView();
-	}
-	
-	public static int getRoundNum() {
-		return roundNum;
-	}
-	
-	public int getRoundsUntilBlizzard() {
-		return roundsUntilBlizzard;
-	}
-	
-	/**
-	 * A Game osztaly ertesitese arrol, hogy a jatekosok osszegyujtottek egy, 
-	 * a jatek megnyeresehez szukseges alkatreszt.
-	 * @author Csonge Bence
-	 */
-	public static void incGunParts()
-	{
-		foundGunParts++;	
-	}
-	
-	/*
-	 * A tovabbiakban getter/setter, valamint a teszteleshez szukseges metodusok talalhatok.
-	 */
-	
-	public Map getMap() {
-		return map;
-	}
-	
-	public GameState getState() {
-		return state;
-	}
-	
-	public void setFoundGunParts(int i) {
-		foundGunParts = i;
-	}
-	
-	public int getFoundGunparts() {
-		return foundGunParts;
-	}
-	
 	public void Reset(ArrayList<String> eskimos, ArrayList<String> scientists) {
 		
 		roundNum = 0;
@@ -239,6 +120,10 @@ public class Game {
 		activeCharacter.startTurn();
 	}
 	
+	/**
+	 * Kutató hozzáadása a játékhoz
+	 * @author Balczer Dominik
+	 */
 	public void addScientist(int fieldIndex, String name) {
 		Scientist newScientist = new Scientist();
 		newScientist.setName(name);
@@ -247,6 +132,10 @@ public class Game {
 		players.add(newScientist);
 	}
 	
+	/**
+	 * Eszkimó hozzáadása a játékhoz
+	 * @author Balczer Dominik
+	 */
 	public void addEskimo(int fieldIndex, String name) {
 		Eskimo newEskimo = new Eskimo();
 		newEskimo.setName(name);
@@ -255,10 +144,176 @@ public class Game {
 		players.add(newEskimo);
 	}
 	
+	/**
+	 * Jegesmedve hozzáadása a játékhoz
+	 * @author Balczer Dominik
+	 */
 	public void addPolarBear(int fieldIndex) {
 		PolarBear newPolarBear = new PolarBear();
 		map.getField(fieldIndex).acceptCharacter(newPolarBear);
 		characters.add(newPolarBear);
+	}
+	
+	/**
+	 * Nézet csatolása a játékhoz
+	 * @param v : A csatolandó View
+	 * @author Balczer Dominik
+	 */
+	public static void attachView(View v) {
+		view = v;
+	}
+	
+	/**
+	 * Nézet értesitése hogy megváltozott a pálya, ki kell újra rajzolni
+	 * @author Balczer Dominik
+	 */
+	public static void notifyView() {
+		view.revalidate();
+	}
+
+	/**
+	 * Ha még nem vesztettünk akkor léptetjük a játékot a következõ körbe.
+	 * Növeljük a körök számát és ha nincs jelenleg közelgõ hóvihar akkor véletlenszerûen generálunk egyet,
+	 * ha pedig éppen most kell bekövetkeznie, akkor hóvihart hivunk a pályán.
+	 * @author Csonge Bence
+	 */
+	public void doRound() {
+		if(state != GameState.ONGOING)
+			return;
+		
+		map.tickBuildings();
+		roundNum++;
+				
+		//Ha nincs közelgõ hóvihar, véletlenszerûen létrehozunk egyet
+		if(roundsUntilBlizzard == -1)
+			if((int) (Math.random()*5) == 2)
+				roundsUntilBlizzard = (int) (Math.random()*4+2);
+			
+		//Ha van közelgõ hóvihar, léptetjük
+		if(roundsUntilBlizzard>0) 
+			roundsUntilBlizzard--;
+		
+		//Ha most jött el a hóvihar ideje, akkor meghivjuk a pályán
+		if(roundsUntilBlizzard == 0) {
+			roundsUntilBlizzard--;
+			callBlizzard();
+		}
+	}
+	
+	/**
+	 * Soron következõ karakter kiválasztása, ha körbeértünk akkor új kör inditása doRound()-al
+	 * @author Csönge Bence
+	 */
+	public void nextCharacter() {
+		if(characters.indexOf(activeCharacter) == characters.size()-1) {
+			doRound();
+			activeCharacter = characters.get(0);;
+		}
+		else
+			activeCharacter = characters.get(characters.indexOf(activeCharacter)+1);
+		
+		activeCharacter.startTurn();
+		notifyView();
+	}
+	
+	/**
+	 * Input kezelõ, ha vége a játéknak visszadob a menübe,
+	 * egyébként átadja az inputot lekezelésre a soron levõ karakternek.
+	 * @param e : Megnyomott billentyû KeyEvent-je
+	 * @author Balczer Dominik
+	 */
+	public void InputCame(KeyEvent e) {
+		if(state!=GameState.ONGOING) {
+			WindowFrame.switchToMenu();
+			return;
+		}
+		activeCharacter.doTurn(e);
+	}
+	
+	/**
+	 * Hóvihar hivása
+	 * @author Balczer Dominik
+	 */
+	public void callBlizzard() 
+	{
+		map.callBlizzardOnFields();
+		view.revalidate();
+	}
+	
+	/**
+	 * Game értesitése jelzõpisztoly alkatrész megtalálásáról
+	 * @author Csonge Bence
+	 */
+	public static void incGunParts()
+	{
+		foundGunParts++;	
+	}
+	
+	/**
+	 * Játék megnyerésének kezdeményezése, ha a feltételek teljesülnek, a játékállapot WON lesz.
+	 * @param f : A kezdeményezést inditó játékos mezõje
+	 * @author Csonge Bence
+	 */
+	public static void winGame(Field f) {
+		if(foundGunParts==3 && (f.getCharacters().size()==playerCount))
+			state = GameState.WON;
+	}
+	
+	/**
+	 * Játék értesitése arról hogy vesztettünk
+	 * @author Csonge Bence 
+	 */
+	public static void loseGame() 
+	{
+		state = GameState.LOST;
+	}
+	
+	/**
+	 * Visszaadja a Game osztály egyetlen példányát
+	 * @author Balczer Dominik
+	 */
+	public static Game getInstance() {
+		return instance;
+	}
+	
+	/**
+	 * Visszaadja a view-t
+	 * @author Balczer Dominik
+	 */
+	public static View getView() {
+		return view;
+	}
+	
+	/**
+	 * Visszaadja a jelenlegi kör számát
+	 * @author Balczer Dominik
+	 */
+	public static int getRoundNum() {
+		return roundNum;
+	}
+	
+	/**
+	 * Visszaadja hány kör van még hóviharig
+	 * @author Balczer Dominik
+	 */
+	public int getRoundsUntilBlizzard() {
+		return roundsUntilBlizzard;
+	}
+	
+	/**
+	 * Visszaadja a pályamodelt
+	 * @author Balczer Dominik
+	 */
+	public Map getMap() {
+		return map;
+	}
+	
+	/**
+	 * Visszaadja a játék állapotát
+	 * @author Balczer Dominik
+	 */
+	public GameState getState() {
+		return state;
 	}
 	
 	public static int getPlayerCount() {
