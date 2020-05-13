@@ -1,11 +1,11 @@
 package Visual;
+
 import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -20,24 +20,54 @@ import Player.Character;
 import Player.Direction;
 import Player.Player;
 
+/**
+ * Irány kiválasztására alkalmas dialógusablak
+ * @author Balczer Dominik
+ */
 public abstract class DirectionDialog extends JDialog{
 	
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * A játékos aki megnyitotta a dialógusablakot
+	 * @author Balczer Dominik
+	 */
 	protected Player player;
+	
+	/**
+	 * A játékos mezõje
+	 * @author Balczer Dominik
+	 */
 	protected Field centerField;
+	
+	/**
+	 * A dialógusablak háttere
+	 * @author Balczer Dominik
+	 */
 	protected Image DialogBackground;
 	
+	/**
+	 * Konstruktor, inicializálja és megnyitja a dialógusablakot
+	 * @author Balczer Dominik
+	 */
 	public DirectionDialog(Player p) {		
 		super();
 		JPanel dPanel = new JPanel() {
+			
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void paintComponent(Graphics g) {
 				drawDialog(g);
 			}
 		};
+		
 		dPanel.setBackground(new Color(0,0,0,0));
 		DialogBackground = new ImageIcon("./assets/HUD/DialogPanelBackG.png").getImage();
+		
 		this.player = p;
 		centerField = p.getField();
+		
 		this.add(dPanel);
 		this.setSize(340, 340);
 		this.setPreferredSize(this.getSize());
@@ -50,22 +80,27 @@ public abstract class DirectionDialog extends JDialog{
 		this.setAlwaysOnTop(true);
 		this.setVisible(true);
 		this.setLocationRelativeTo(Game.getView());
+		
 		this.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				notifyField(e.getKeyCode());
 			}
-
 		});
 	}
 	
+	/**
+	 * Dialógus ablak kirajzolásáért felelõs függvény
+	 * @param g : Graphics
+	 * @author Balczer Dominik
+	 */
 	private void drawDialog(Graphics g) {
 		
 		g.drawImage(DialogBackground, 2, 110, null);
 		
 		ArrayList<Field> fields = new ArrayList<Field>();
 		int[] fieldIndex = {5,0,4,6,1,3,2};
-		String[] fieldKeyBinds = {"Q","E","A","S","D","Y","X"};
+		String[] fieldKeyBinds = {"W","E","A","S","D","Y","X"};
 		
 		for(int i = 0; i < 7; i++) {
 			if(fieldIndex[i] == 6)
@@ -118,7 +153,11 @@ public abstract class DirectionDialog extends JDialog{
 		}		
 	}
 	
-	
+	/**
+	 * Billenytû kód alapján meghatározza a célmezõt és továbbitja a doActivity()-nek
+	 * @param charCode : Kiválasztott mezõ billentyû kódja
+	 * @author Balczer Dominik
+	 */
 	private void notifyField(int charCode) {
 		
 		Field target = null;
@@ -157,18 +196,10 @@ public abstract class DirectionDialog extends JDialog{
 		return;
 	}
 	
+	/**
+	 * Végrehajtja a dialógusablak tipusa szerint a cselekvést a kiválasztott mezõn
+	 * @param target : A kiválasztott mezõ
+	 * @author Balczer Dominik
+	 */
 	protected abstract void doActivity(Field target);
-	
-	private class DialogPanel extends JPanel{
-		
-		public DialogPanel() {
-			this.setBackground(new Color(0,0,0,0));
-		}
-		
-		@Override
-		public void paintComponent(Graphics g) {
-			drawDialog(g);
-		}
-	}
-	
 }

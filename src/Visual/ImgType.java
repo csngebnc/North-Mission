@@ -17,7 +17,7 @@ public enum ImgType {
 	
 	/**
 	 * Inicializálása
-	 * @param d enumhoz tartozó érték
+	 * @param d : enumhoz tartozó érték
 	 * @author Balczer Dominik
 	 */
 	ImgType(int d){
@@ -26,7 +26,7 @@ public enum ImgType {
 	
 	/**
 	 * Visszaadja a számként kapott állapothoz tartozó enumerációt
-	 * @param Enumerációt meghatározó szám
+	 * @param n : Enumerációt meghatározó szám
 	 * @author Balczer Domoinik
 	 */
 	public static ImgType FromInt(int n) {
@@ -41,5 +41,4 @@ public enum ImgType {
 			return null;
 		}
 	}
-	
 }

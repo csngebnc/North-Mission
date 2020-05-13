@@ -1,22 +1,12 @@
 package Visual;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
@@ -24,18 +14,67 @@ import Core.Game;
 import Items.Item;
 import Player.Player;
 
+/**
+ * Játékos leltárát megjelenitõ dialógusablak
+ * @author Balczer Dominik
+ */
 public class Inventory extends JDialog{
 
-	private Player player;
-	private ArrayList<Item> items;
-	private JDialog dialog;
-	DefaultListModel<String> listModel;
+	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * A játékos akinek a leltárját megjelenitjük
+	 * @author Balczer Dominik
+	 */
+	private Player player;
+	
+	/**
+	 * A játékos tárgyai
+	 * @author Balczer Dominik
+	 */
+	private ArrayList<Item> items;
+	
+	/**
+	 * Saját magára mutató változó
+	 * @author Balczer Dominik
+	 */
+	private JDialog dialog;
+	
+	/**
+	 * Leltár elemeit tároló ListModel
+	 * @author Balczer Dominik
+	 */
+	private DefaultListModel<String> listModel;
+	
+	/**
+	 * A Use gomb (ezzel használjuk a tárgyat)
+	 * @author Balczer Dominik
+	 */
 	private JButton useButton;
+	
+	/**
+	 * A Drop gomb (ezzel dobhatjuk el a tárgyat)
+	 * @author Balczer Dominik
+	 */
     private JButton dropButton;
+    
+    /**
+	 * ListModelünket tároló JList
+	 * @author Balczer Dominik
+	 */
     private JList<String> list;
+    
+    /**
+	 * Görgethetõ panelje a dialógusablaknak
+	 * @author Balczer Dominik
+	 */
     private JScrollPane pane;
 	
+    /**
+	 * Konstruktor, létrehozza az ablakot és megjeleniti
+	 * @param p : A játékos akinek a leltárát megjelenitjük
+	 * @author Balczer Dominik
+	 */
 	public Inventory(Player p)
 	{
 		initComponents();
@@ -56,11 +95,45 @@ public class Inventory extends JDialog{
 		list.setModel(listModel);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		dropButton.addActionListener(new DropButtonListener());
-		useButton.addActionListener(new UseButtonListener());
-		this.setVisible(true);
+		useButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				int chosen = list.getSelectedIndex();
+				if (chosen >= 0) {
+					Item item = player.getItem(chosen);
+					dialog.dispose();
+					item.use(player);
+				}
+				Game.notifyView();		
+			}
+		});
+		
+		dropButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				int chosen = list.getSelectedIndex();
+				if (chosen >= 0) {
+					Item item = player.getItem(chosen);
+					
+					if (item.throwTo(player.getField())) {
+						player.removeItem(item);
+						player.drainStamina();
+						listModel.remove(chosen);
+						pane.revalidate();
+						if(player.getStamina() == 0) {
+							dialog.dispose();
+						}
+						Game.notifyView();
+					}
+				}
+			}
+		});
 	}
 	
+	/**
+	 * Inicializáláshoz használt függvény
+	 * @author Balczer Dominik
+	 */
 	private void initComponents() {
 
         pane = new javax.swing.JScrollPane();
@@ -99,42 +172,6 @@ public class Inventory extends JDialog{
                     .addComponent(dropButton))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
-
         pack();
     } 
-	
-	private class DropButtonListener implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			int chosen = list.getSelectedIndex();
-			if (chosen >= 0) {
-				Item item = player.getItem(chosen);
-				
-				if (item.throwTo(player.getField())) {
-					player.removeItem(item);
-					player.drainStamina();
-					listModel.remove(chosen);
-					pane.revalidate();
-					if(player.getStamina() == 0) {
-						dialog.dispose();
-					}
-					Game.notifyView();
-				}
-			}
-		}
-	}
-		
-	private class UseButtonListener implements ActionListener{
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			int chosen = list.getSelectedIndex();
-			if (chosen >= 0) {
-				Item item = player.getItem(chosen);
-				dialog.dispose();
-				item.use(player);
-			}
-			Game.notifyView();		
-		}
-	}
 }

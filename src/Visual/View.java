@@ -1,8 +1,6 @@
 package Visual;
 
-import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -14,29 +12,73 @@ import java.util.ArrayList;
 import java.awt.event.KeyAdapter;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
 import Core.Game;
 import Core.GameState;
-import Map.Map;
 import Map.Field;
 import Player.Player;
 
+/**
+ * A játék megjelenitésért felelõs JPanel
+ * @author Balczer Dominik
+ */
 public class View extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private Image playerFrame = new ImageIcon("./assets/HUD/player_frame.png").getImage();
-	private Image playerFrameSelected = new ImageIcon("./assets/HUD/player_frame_selected.png").getImage();
-	private Image heart = new ImageIcon("./assets/HUD/heart.png").getImage();
-	private Image heartGold = new ImageIcon("./assets/HUD/heart_gold.png").getImage();
-	private Image backgroundImage = new ImageIcon("./assets/fields/backg.png").getImage();
-	private Image blizzardImage = new ImageIcon("./assets/HUD/cloud.png").getImage();
+	/**
+	 * Játékos HUD-on levõ keretjének a képe ha éppen nem õ van soron
+	 * @author Balczer Dominik
+	 */
+	private Image playerFrame;
 	
-	private Graphics GG;
+	/**
+	 * Játékos HUD-on levõ keretjének a képe ha éppen õ van soron
+	 * @author Balczer Dominik
+	 */
+	private Image playerFrameSelected;
 	
+	/**
+	 * HUD-on életerõ kijelzésére használt sziv képe (1-6 életerõ)
+	 * @author Balczer Dominik
+	 */
+	private Image heart;
+	
+	/**
+	 * HUD-on életerõ kijelzésére használt sziv képe (7+)
+	 * @author Balczer Dominik
+	 */
+	private Image heartGold;
+	
+	/**
+	 * Játék háttere
+	 * @author Balczer Dominik
+	 */
+	private Image backgroundImage;
+	
+	/**
+	 * HUD-on közelgõ hóvihart jelzõ kép
+	 * @author Balczer Dominik
+	 */
+	private Image blizzardImage;
+	
+	/**
+	 * Graphics elem amivel rajzolunk
+	 * @author Balczer Dominik
+	 */
+	private Graphics graphics;
+	
+	/**
+	 * Konstruktor
+	 * @author Balczer Dominik
+	 */
 	public View() {
-		/*this.setSize(1280,720);
-		this.setPreferredSize(this.getSize());*/
+		playerFrame = new ImageIcon("./assets/HUD/player_frame.png").getImage();
+		playerFrameSelected = new ImageIcon("./assets/HUD/player_frame_selected.png").getImage();
+		heart = new ImageIcon("./assets/HUD/heart.png").getImage();
+		heartGold = new ImageIcon("./assets/HUD/heart_gold.png").getImage();
+		backgroundImage = new ImageIcon("./assets/fields/backg.png").getImage();
+		blizzardImage = new ImageIcon("./assets/HUD/cloud.png").getImage();
+		
 		this.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -51,16 +93,23 @@ public class View extends JPanel{
 		
 	}
 	
+	/**
+	 * Panel érvénytelenitése
+	 * @author Balczer Dominik
+	 */
 	@Override
 	public void revalidate() {
-		//Graphics g = this.getBufferStrategy().getDrawGraphics();
 		repaint();
-		//this.getBufferStrategy().show();
 	}
 	
+	/**
+	 * Panel rajzolása
+	 * @param g : Graphics elem
+	 * @author Balczer Dominik
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
-		GG = g;
+		graphics = g;
 		super.paintComponent(g);
 		g.drawImage(backgroundImage,0,0, null);
 		drawHUD(g, Game.players);
@@ -69,8 +118,15 @@ public class View extends JPanel{
 		}
 	}
 	
+	/**
+	 * HUD kirajzolása
+	 * @param g : Graphics elem
+	 * @param players : Játékban részt vevõ játékosok
+	 * @author Balczer Dominik
+	 */
 	public void drawHUD(Graphics g, ArrayList<Player> players) {
 		
+		//Kirajzolandó játékosok
 		ArrayList<Player> toDraw = new ArrayList<Player>();
 		
 		//Font
@@ -83,10 +139,12 @@ public class View extends JPanel{
 		int y = 15;
 		int frameOffset = 150;
 		
+		//Ha nem fér ki mindenki, akkor legelõl mindig a jelenlegi játékos van (több mint 8-an játszanak)
 		if(players.size() > 8) {
 			
 			Player firstPlayer = players.get(0);
 			
+			//Megkeressük ki van éppen soron
 			for(Player p : players)
 				if(p.getStamina() > 0) {
 					firstPlayer = p;
@@ -95,6 +153,7 @@ public class View extends JPanel{
 			
 			int current = players.indexOf(firstPlayer);
 			
+			//Kiválasztjuk a soron következõ játékost és az utána következõ 7-et
 			for(int i = 0; i < 8; i++) {
 				if(current == players.size())
 					current = 0;
@@ -102,12 +161,14 @@ public class View extends JPanel{
 				toDraw.add(players.get(current++));
 			}
 		}
+		
+		//Ha kifér mindenki (8-an vagy kevesebben játszanak)
 		else
 			for(Player p : players) {
 				toDraw.add(p);
 			}
 		
-		//Playercards
+		//Playercardok kirajzolása
 		for(Player p : toDraw) {
 			
 			//Frame
@@ -143,13 +204,13 @@ public class View extends JPanel{
 			x += frameOffset;
 		}
 		
-		//Turn counter
+		//Turn counter kirajzolása
 		g2d.setFont(font.deriveFont(15f));
 		g2d.drawString("Turn: ", 10, 665);
 		g2d.setFont(font.deriveFont(30f));
 		g2d.drawString(String.valueOf(Game.getRoundNum()+1), 90, 670);
 		
-		//Blizzard
+		//Blizzard jelzõ kirajzolása
 		if(Game.getInstance().getRoundsUntilBlizzard() > 0) {
 			g2d.setFont(font.deriveFont(15f));
 			g2d.drawString("IN", 58, 613);
@@ -158,32 +219,38 @@ public class View extends JPanel{
 			g.drawImage(blizzardImage, 13, 600, null);
 		}
 		
-		//Losing
+		//Losing message
 		if(Game.getInstance().getState() == GameState.LOST) {
 			g2d.setFont(font.deriveFont(12f));
 			g2d.drawString("GAME OVER! PRESS ANY BUTTON TO RETURN TO THE MENU.", 340, 670);
 		}
-		//Winning
+		//Winning message
 		if(Game.getInstance().getState() == GameState.WON) {
 			g2d.setFont(font.deriveFont(12f));
 			g2d.drawString("VICTORY! PRESS ANY BUTTON TO RETURN TO THE MENU.", 350, 670);
 		}
 	}
 	
+	/**
+	 * Kép kirajzolása a panelra
+	 * @param x : Pozició X koordinátája
+	 * @param y : Pozició Y koordinátája
+	 * @param img : kirajzolandó kép
+	 * @author Balczer Dominik
+	 */
 	public void drawThing(int x, int y, Image img) {
-		GG.drawImage(img, x, y, null);
+		graphics.drawImage(img, x, y, null);
 	}
 	
 	/**
-	 * Szöveg vastagítása majd kiírása egy jégtábla sarkára
-	 * 
+	 * Szöveg kirajzolása a panelra
 	 * @param x mezõ x koordinátája
 	 * @param y mezõ y koordinátája
 	 * @param limit mezõ maxplayers tulajdonsága
 	 * @author Norbi
 	 */
 	public void drawThing(int x, int y, String limit) {
-		Graphics2D g2d = (Graphics2D) GG;
+		Graphics2D g2d = (Graphics2D) graphics;
 		Color color = new Color(16, 121, 181);
 		g2d.setColor(color);
 		Font playerFont = new Font("Arcade Normal", Font.PLAIN, 8);

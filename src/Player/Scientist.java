@@ -1,9 +1,7 @@
 package Player;
 
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
-
 import Visual.RevealDialog;
 
 /**
@@ -31,9 +29,7 @@ public class Scientist extends Player {
 	 * Sarkkutató speciális képessége. Megjelenít egy irányválasztó ablakot, melyben a kiválasztott irányú szomszédra felfedi a teherbírást.
 	 * @author Csonge Bence
 	 */
-	public void doSkill() 
-	{
+	public void doSkill() {
 		new RevealDialog(this);
 	}
-	
 }

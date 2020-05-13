@@ -138,5 +138,4 @@ public class PolarBear extends Character{
 				v.drawThing(field.GetX()+25, field.GetY(), getAvatar());	
 		}	
 	}
-
 }
