@@ -199,24 +199,40 @@ public abstract class Player extends Character{
 	 * @author Zalan
 	 * @param n ennyivel változik a játékos élete
 	 */
-	public void alterHealth(int n) 
-	{
+	public void alterHealth(int n) {
 		health += n;
-		
 		if(health <= 0)
 			Game.loseGame();
+	}
+	
+	/**
+	 * A játékos a paraméterként kapott karaktert összeütközteti saját magával.
+	 * @param c a karakter akivel összeütköztetjük magunkat
+	 * @author Zalan
+	 */
+	public void collideWith(Character c) {
+		c.hitBy(this);
+	}
+
+	/**
+	 * Ha a játékos jegesmedvével ütközött, akkor a játékot elveszítették a játékosok.
+	 * @param pb a jegesmedve amivel a játékos összeütközött
+	 * @author Zalan
+	 */
+	@Override
+	public void hitBy(PolarBear pb) {
+		health = 0;
+		Game.loseGame();
 	}
 	
 	/**
 	 * Játékos staminájának csökkentése 1-gyel.
 	 * @author Zalan
 	 */
-	public void drainStamina() 
-	{
+	public void drainStamina() {
 		stamina -= 1;
-		if(stamina == 0) {
+		if(stamina == 0) 
 			Game.getInstance().nextCharacter();
-		}
 	}
 	
 	/**
@@ -245,7 +261,6 @@ public abstract class Player extends Character{
 	 */
 	@Override
 	public void draw(View v) {
-		
 		Image sprite = getAvatar();
 		
 		//Pozició meghatározása
@@ -275,8 +290,7 @@ public abstract class Player extends Character{
 	 * @param f a field új értéke
 	 * @author Zalan
 	 */
-	public void setField(Field f) 
-	{
+	public void setField(Field f) {
 		field = f;
 	}
 	
@@ -284,8 +298,7 @@ public abstract class Player extends Character{
 	 * Játékos mezõjének lekérdezése.
 	 * @author Zalan
 	 */
-	public Field getField() 
-	{
+	public Field getField() {
 		return field;
 	}
 	
@@ -312,8 +325,7 @@ public abstract class Player extends Character{
 	 * Játékos nevének lekérdezése.
 	 * @author Zalan
 	 */
-	public String getName()
-	{
+	public String getName(){
 		return name;
 	}
 	
@@ -330,8 +342,7 @@ public abstract class Player extends Character{
 	 * A metódus visszaadja, hogy van-e a játékoson búvárruha.
 	 * @author Zalan
 	 */
-	public boolean getdSuitOn()
-	{
+	public boolean getdSuitOn(){
 		return dSuitOn;
 	}
 	
@@ -340,8 +351,7 @@ public abstract class Player extends Character{
 	 * @param b a dSuitOn új értéke
 	 * @author Zalan
 	 */
-	public void setdSuitOn(boolean b)
-	{
+	public void setdSuitOn(boolean b){
 		dSuitOn=b;
 	}
 
@@ -357,16 +367,6 @@ public abstract class Player extends Character{
 	}
 	
 	/**
-	 * A játékos staminájának beállítása.
-	 * @param s stamina új értéke
-	 * @author Zalan
-	 */
-	public void setStamina(int s)
-	{
-		stamina = s;
-	}
-	
-	/**
 	 * Visszaadja a játékos életerejének értékét.
 	 * @author Csonge Bence
 	 */
@@ -375,30 +375,10 @@ public abstract class Player extends Character{
 	}
 	
 	/**
-	 * A játékos életének beállítása beállítása.
-	 * @param h health új értéke
-	 * @author Zalan
-	 */
-	public void setHealth(int h)
-	{
-		health = h;
-	}
-	
-	/**
-	 * A metódus új, üres inventory-t hoz létre a játékosnak.
-	 * @author Zalan
-	 */
-	public void resetInventory()
-	{
-		inventory=new ArrayList<Item>();
-	}
-	
-	/**
 	 * A metódus visszatér a játékos inventory-jával.
 	 * @author Zalan
 	 */
-	public ArrayList<Item> getInventory()
-	{
+	public ArrayList<Item> getInventory(){
 		return inventory;
 	}
 	
@@ -406,28 +386,7 @@ public abstract class Player extends Character{
 	 * A metódus visszatér a játékos staminájával.
 	 * @author Zalan
 	 */
-	public int getStamina()
-	{
+	public int getStamina(){
 		return stamina;
-	}
-	
-	/**
-	 * A játékos a paraméterként kapott karaktert összeütközteti saját magával.
-	 * @param c a karakter akivel összeütköztetjük magunkat
-	 * @author Zalan
-	 */
-	public void collideWith(Character c) {
-		c.hitBy(this);
-	}
-
-	/**
-	 * Ha a játékos jegesmedvével ütközött, akkor a játékot elveszítették a játékosok.
-	 * @param pb a jegesmedve amivel a játékos összeütközött
-	 * @author Zalan
-	 */
-	@Override
-	public void hitBy(PolarBear pb) {
-		health = 0;
-		Game.loseGame();
 	}
 }

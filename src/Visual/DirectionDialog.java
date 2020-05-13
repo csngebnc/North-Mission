@@ -24,19 +24,22 @@ public abstract class DirectionDialog extends JDialog{
 	
 	protected Player player;
 	protected Field centerField;
-	protected int centerX = 640;
-	protected int centerY = 360;
-	protected int dialogSize = 340;
-	protected Point diaLocation;
-	protected DialogPanel dPanel = new DialogPanel();
-	protected Image DialogBackground = new ImageIcon("./assets/HUD/DialogPanelBackG.png").getImage();
+	protected Image DialogBackground;
 	
 	public DirectionDialog(Player p) {		
 		super();
+		JPanel dPanel = new JPanel() {
+			@Override
+			public void paintComponent(Graphics g) {
+				drawDialog(g);
+			}
+		};
+		dPanel.setBackground(new Color(0,0,0,0));
+		DialogBackground = new ImageIcon("./assets/HUD/DialogPanelBackG.png").getImage();
 		this.player = p;
 		centerField = p.getField();
 		this.add(dPanel);
-		this.setSize(dialogSize, dialogSize);
+		this.setSize(340, 340);
 		this.setPreferredSize(this.getSize());
 		this.setLocation(Game.getView().getLocation());
 		this.setUndecorated(true);
@@ -71,8 +74,8 @@ public abstract class DirectionDialog extends JDialog{
 				fields.add(centerField.getNeighbour(Direction.FromInt(fieldIndex[i])));
 		}
 		
-		int centerFieldX = dialogSize/2 - 47;
-		int centerFieldY = dialogSize/2 - 15;
+		int centerFieldX = 340/2 - 47;
+		int centerFieldY = 340/2 - 15;
 		
 		int[] xOffset = {47, 95, 47, -47, -95, -47, 0};
 		int[] yOffset = {-30, 0, 30, 30, 0, -30, 0};

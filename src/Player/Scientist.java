@@ -11,8 +11,7 @@ import Visual.RevealDialog;
  * A Player osztály leszármazottja.
  * @author Zalan
  */
-public class Scientist extends Player 
-{	
+public class Scientist extends Player {	
 	/**
 	 * Sarkkutató karakter speciális képességének használata. 
 	 * Meghívja a mezõje revealLimit metódusát, és csökkenti a stamináját 1-gyel.
