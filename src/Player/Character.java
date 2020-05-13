@@ -18,10 +18,27 @@ public abstract class Character implements Viewable{
 	 * @author Zalan
 	 */
 	protected Field field;
+	/**
+	 * Tárolja, hogy a karakter épp fuldoklik-e.
+	 * @author Csonge Bence
+	 */
 	protected boolean isDrowning;
+	/**
+	 * A karakter staminája.
+	 * @author Csonge Bence
+	 */
 	protected int stamina;
+	/**
+	 * A karakterhez tartozó, megjelenítéshez szükséges képek tárolója.
+	 * @author Csonge Bence
+	 */
 	protected Image[] sprites;
 	
+	/**
+	 * Beállítja a játékos fulladását.
+	 * @param b játékos fulladásának értéke, true ha fullad, false ha nem
+	 * @author Csonge Bence
+	 */
 	public void setDrowning(boolean b) 
 	{ 
 		isDrowning = b;
@@ -29,6 +46,9 @@ public abstract class Character implements Viewable{
 			stamina = 0;
 	}
 	
+	/**
+	 * Visszaadja, hogy a játékos ép fuldoklik-e
+	 */
 	public boolean getDrowning() {
 		return isDrowning;
 	}
@@ -40,7 +60,17 @@ public abstract class Character implements Viewable{
 	 */
 	public abstract void doTurn(KeyEvent e);
 	
+	/**
+	 * A megnyomott billentyû által kiváltott eseményt dolgozza fel, annak megfelelõen cselekszik.
+	 * Karaktertípusonként más megvalósítás lehet (player vs. polarbear)
+	 * @param e A megnyomott billentyûhöz tartozó esemény.
+	 * @author Csonge Bence
+	 */
 	public abstract void move(KeyEvent e);
+	/**
+	 * A karakter 
+	 * @author Csonge Bence
+	 */
 	public abstract void startTurn();
 	/**
 	 * A karakter életének változtatása.
