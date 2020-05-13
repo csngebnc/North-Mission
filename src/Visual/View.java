@@ -161,12 +161,12 @@ public class View extends JPanel{
 		//Losing
 		if(Game.getInstance().getState() == GameState.LOST) {
 			g2d.setFont(font.deriveFont(12f));
-			g2d.drawString("GAME OVER! PRESS ANY BUTTON TO RETURN TO THE MENU.", 200, 670);
+			g2d.drawString("GAME OVER! PRESS ANY BUTTON TO RETURN TO THE MENU.", 340, 670);
 		}
 		//Winning
 		if(Game.getInstance().getState() == GameState.WON) {
 			g2d.setFont(font.deriveFont(12f));
-			g2d.drawString("VICTORY! PRESS ANY BUTTON TO RETURN TO THE MENU.", 200, 670);
+			g2d.drawString("VICTORY! PRESS ANY BUTTON TO RETURN TO THE MENU.", 350, 670);
 		}
 	}
 	

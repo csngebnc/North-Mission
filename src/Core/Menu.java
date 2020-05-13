@@ -110,6 +110,13 @@ public class Menu extends JPanel{
 	
 	public void InitMenu() {
 
+		bStart.setForeground(Color.white);
+		bStart.setFont(new Font("Arcade Normal", Font.PLAIN, 30));
+		bExit.setForeground(Color.white);
+		bExit.setFont(new Font("Arcade Normal", Font.PLAIN, 30));
+		bCredits.setForeground(Color.white);
+		bCredits.setFont(new Font("Arcade Normal", Font.PLAIN, 30));
+		
 		label.add(titleLabel1);
 		label.add(titleLabel2);
 		label.add(bStart);
