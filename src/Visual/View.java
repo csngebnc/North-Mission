@@ -206,9 +206,9 @@ public class View extends JPanel{
 		
 		//Turn counter kirajzolása
 		g2d.setFont(font.deriveFont(15f));
-		g2d.drawString("Turn: ", 10, 665);
+		g2d.drawString("Turn: ", 13, 670);
 		g2d.setFont(font.deriveFont(30f));
-		g2d.drawString(String.valueOf(Game.getRoundNum()+1), 90, 670);
+		g2d.drawString(String.valueOf(Game.getRoundNum()+1), 93, 675);
 		
 		//Blizzard jelzõ kirajzolása
 		if(Game.getInstance().getRoundsUntilBlizzard() > 0) {
@@ -222,29 +222,29 @@ public class View extends JPanel{
 		//Losing message
 		if(Game.getInstance().getState() == GameState.LOST) {
 			g2d.setFont(font.deriveFont(12f));
-			g2d.drawString("GAME OVER! PRESS ANY BUTTON TO RETURN TO THE MENU.", 340, 670);
+			g2d.drawString("GAME OVER! PRESS ANY BUTTON TO RETURN TO THE MENU.", 260, 670);
 		}
 		//Winning message
 		if(Game.getInstance().getState() == GameState.WON) {
 			g2d.setFont(font.deriveFont(12f));
-			g2d.drawString("VICTORY! PRESS ANY BUTTON TO RETURN TO THE MENU.", 350, 670);
+			g2d.drawString("VICTORY! PRESS ANY BUTTON TO RETURN TO THE MENU.", 280, 670);
 		}
 		
 		//foundGunPats
 		g2d.setFont(font.deriveFont(15f));
-		g2d.drawString("FOUND GUNPARTS:", 900, 665);
+		g2d.drawString("FOUND GUNPARTS:", 935, 670);
 		if(Game.getFoundGunPart(0))
-			g2d.drawImage(new ImageIcon("./assets/items_buildings/rocket.png").getImage(), 1115, 643, null);
+			g2d.drawImage(new ImageIcon("./assets/items_buildings/rocket.png").getImage(), 1150, 648, null);
 		else
-			g2d.drawImage(new ImageIcon("./assets/items_buildings/rocket_frozen.png").getImage(), 1115, 643, null);
+			g2d.drawImage(new ImageIcon("./assets/items_buildings/rocket_frozen.png").getImage(), 1150, 648, null);
 		if(Game.getFoundGunPart(1))
-			g2d.drawImage(new ImageIcon("./assets/items_buildings/barrel.png").getImage(), 1145, 643, null);
+			g2d.drawImage(new ImageIcon("./assets/items_buildings/barrel.png").getImage(), 1180, 648, null);
 		else
-			g2d.drawImage(new ImageIcon("./assets/items_buildings/barrel_frozen.png").getImage(), 1145, 643, null);
+			g2d.drawImage(new ImageIcon("./assets/items_buildings/barrel_frozen.png").getImage(), 1180, 648, null);
 		if(Game.getFoundGunPart(2))
-			g2d.drawImage(new ImageIcon("./assets/items_buildings/grip.png").getImage(), 1175, 643, null);
+			g2d.drawImage(new ImageIcon("./assets/items_buildings/grip.png").getImage(), 1210, 648, null);
 		else
-			g2d.drawImage(new ImageIcon("./assets/items_buildings/grip_frozen.png").getImage(), 1175, 643, null);
+			g2d.drawImage(new ImageIcon("./assets/items_buildings/grip_frozen.png").getImage(), 1210, 643, null);
 	}
 	
 	/**
