@@ -105,7 +105,7 @@ public abstract class Player extends Character{
 	public void startTurn() {
 		stamina = 3;
 		if(isDrowning && !dSuitOn)
-			alterHealth(health);
+			alterHealth(-health);
 	}
 	
 	/**

@@ -170,7 +170,7 @@ public class IceField extends Field {
 		}
 		
 		if(limitRevealed) {
-			v.drawThing(x + 85, y + 20, Integer.toString(maxplayers));
+			v.drawThing(x + 5, y + 20, Integer.toString(maxplayers));
 		}
 	}
 }
