@@ -23,7 +23,7 @@ import Player.Player;
  * Játékos leltárát megjelenitõ dialógusablak
  * @author Balczer Dominik
  */
-public class Inventory extends JDialog{
+public class InventoryDialog extends JDialog{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -74,7 +74,7 @@ public class Inventory extends JDialog{
 	 * @param p : A játékos akinek a leltárát megjelenitjük
 	 * @author Balczer Dominik
 	 */
-	public Inventory(Player p)
+	public InventoryDialog(Player p)
 	{
 		initComponents();
 		player = p;
@@ -98,7 +98,7 @@ public class Inventory extends JDialog{
 				int chosen = list.getSelectedIndex();
 				if (chosen >= 0) {
 					Item item = player.getItem(chosen);
-					Inventory frame = (Inventory) SwingUtilities.getRoot((JButton)e.getSource());
+					InventoryDialog frame = (InventoryDialog) SwingUtilities.getRoot((JButton)e.getSource());
 					frame.dispose();
 					item.use(player);
 				}
@@ -119,7 +119,7 @@ public class Inventory extends JDialog{
 						listModel.remove(chosen);
 						pane.revalidate();
 						if(player.getStamina() == 0) {
-							Inventory frame = (Inventory) SwingUtilities.getRoot((JButton)e.getSource());
+							InventoryDialog frame = (InventoryDialog) SwingUtilities.getRoot((JButton)e.getSource());
 							frame.dispose();
 						}
 						Game.notifyView();

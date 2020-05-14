@@ -8,7 +8,7 @@ import Core.GameState;
 import Items.DivingSuit;
 import Items.Item;
 import Map.Field;
-import Visual.Inventory;
+import Visual.InventoryDialog;
 import Visual.View;
 
 /**
@@ -74,7 +74,7 @@ public abstract class Player extends Character{
 	 * @author Zalan
 	 */
 	protected void openInventory() {
-		new Inventory(this);
+		new InventoryDialog(this);
 	}
 	
 	/**
