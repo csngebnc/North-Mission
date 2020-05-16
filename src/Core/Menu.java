@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * A jatek allapotait tartalmazo enumeracio.
+ * A játék fõmenüjét megjelenitõ JPanel
  * @author Barabás Dániel
  * @author Gyarmati Zalán
  */
@@ -33,14 +33,52 @@ public class Menu extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Háttér JLabel, ehhez kerülnek további elemek a menü képernyõn hozzáadásra
+	 * @author Balczer Dominik
+	 */
 	JLabel mainLabel;
+	
+	/**
+	 * Név és Kaszt oszlopok cimeit megjelenitõ JLabel
+	 * @author Balczer Dominik
+	 */
 	JLabel name1, name2, playerType1, playerType2;
+	
+	/**
+	 * Menü navigálására használt gombok
+	 * @author Balczer Dominik
+	 */
 	JButton bStart, bCredits, bExit;
+	
+	/**
+	 * A játék cimét megjelenitõ JLabel
+	 * @author Balczer Dominik
+	 */
 	JLabel titleLabel1, titleLabel2;
+	
+	/**
+	 * Játék beállitásakor a neveket megjelenitõ JTextField-ek tömbje
+	 * @author Balczer Dominik
+	 */
 	JTextField[] names;
+	
+	/**
+	 * Játék beállitásakor a kasztokat megjelenitõ JTextField-ek tömbje
+	 * @author Balczer Dominik
+	 */
 	JComboBox<String>[] playerTypes;
+	
+	/**
+	 * A menüben használt betûtipus
+	 * @author Balczer Dominik
+	 */
 	Font font;
 	
+	/**
+	 * Konstruktor, inicializálja és megjeleniti a fõmenüt
+	 * @author Balczer Dominik
+	 */
 	public Menu()
 	{
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -115,6 +153,10 @@ public class Menu extends JPanel{
 		this.setVisible(true);
 	}
 	
+	/**
+	 * Menü inicializálása
+	 * @author Balczer Dominik
+	 */
 	public void InitMenu() {
 
 		bStart.setForeground(Color.white);
@@ -131,6 +173,10 @@ public class Menu extends JPanel{
 		mainLabel.add(bExit);
 	}
 	
+	/**
+	 * Ha átállitjuk hányan akarnak játszani ez a listener módositja az elérhetõ név és kaszt beállitó mezõk számát
+	 * @author Balczer Dominik
+	 */
 	private class HowManyPlayerListener implements ItemListener{
 		@Override
 		public void itemStateChanged(ItemEvent event) {
@@ -196,7 +242,10 @@ public class Menu extends JPanel{
 		}
 	}
 	
-	
+	/**
+	 * A játék inditására szolgáló Go gomb megnyomását kezelõ Listener
+	 * @author Balczer Dominik
+	 */
 	private class GoButtonPressed implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e){
@@ -215,6 +264,10 @@ public class Menu extends JPanel{
 		}
 	}
 	
+	/**
+	 * A beállitó képernyõre vezetõ Start gomb megnyomását kezelõ Listener
+	 * @author Balczer Dominik
+	 */
 	private class StartPressedListener implements ActionListener {
 		@Override
 	    public void actionPerformed(ActionEvent e) {
@@ -290,6 +343,10 @@ public class Menu extends JPanel{
 	    }
 	}
 	
+	/**
+	 * Ezit gomb megnyomását kezelõ Listener
+	 * @author Balczer Dominik
+	 */
 	private class ExitPressedListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e){
@@ -297,6 +354,10 @@ public class Menu extends JPanel{
 		}
 	}
 	
+	/**
+	 * Vissza gomb megnyomását kezelõ Listener
+	 * @author Balczer Dominik
+	 */
 	private class BackPressedListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e){
@@ -305,6 +366,10 @@ public class Menu extends JPanel{
 		}
 	}
 	
+	/**
+	 * Credits gomb megnyomását kezelõ Listener
+	 * @author Balczer Dominik
+	 */
 	private class CreditsPressedListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e){
@@ -352,6 +417,10 @@ public class Menu extends JPanel{
 		}
 	}
 	
+	/**
+	 * Ha az egeret ráhúzzuk az egyik menüelemre akkor ez a Listener kiemeli kékkel
+	 * @author Balczer Dominik
+	 */
 	private class MouseHover extends MouseAdapter{
 		@Override
         public void mouseEntered(MouseEvent me) {
