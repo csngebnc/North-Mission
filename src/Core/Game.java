@@ -184,7 +184,7 @@ public class Game {
 				
 		//Ha nincs közelgõ hóvihar, véletlenszerûen létrehozunk egyet
 		if(roundsUntilBlizzard == -1)
-			if((int) (Math.random()*10) == 2)
+			if((int) (Math.random()*20) == 2)
 				roundsUntilBlizzard = (int) (Math.random()*4+2);
 			
 		//Ha van közelgõ hóvihar, léptetjük
