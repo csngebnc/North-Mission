@@ -79,5 +79,8 @@ public class Hole extends Field
 		for(Character c : characters) {
 			c.draw(v);
 		}
+		if(limitRevealed) {
+			v.drawThing(x + 5, y + 20, Integer.toString(maxplayers));
+		}
 	}
 }
