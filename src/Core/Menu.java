@@ -157,7 +157,7 @@ public class Menu extends JPanel{
 	    	   }
 	    	   
 	    	   names = new JTextField[playerCount];
-	    	   playerTypes = new JComboBox<String>[playerCount];
+	    	   playerTypes = new JComboBox[playerCount];
 	    	   
 	    	   for(int i = 0; i < playerCount; i++)
 	    	   {

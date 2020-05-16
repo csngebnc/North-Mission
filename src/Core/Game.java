@@ -211,7 +211,8 @@ public class Game {
 		else
 			activeCharacter = characters.get(characters.indexOf(activeCharacter)+1);
 		
-		activeCharacter.startTurn();
+		if(state == GameState.ONGOING)
+			activeCharacter.startTurn();
 		notifyView();
 	}
 	

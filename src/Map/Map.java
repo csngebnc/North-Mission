@@ -109,6 +109,8 @@ public class Map {
 		
 		//Kezdõmezõ stabillá tétele
 		fields.set(0, new IceField(startX, startY, playerCount));
+		fields.set(1, new IceField(startX+95, startY, playerCount));
+		fields.set(2, new IceField(startX+190, startY, playerCount));
 		
 		//Szomszéd kapcsolatok kialakitása
 		for(Field f : fields)
