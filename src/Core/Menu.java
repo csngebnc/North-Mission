@@ -157,7 +157,7 @@ public class Menu extends JPanel{
 	    	   }
 	    	   
 	    	   names = new JTextField[playerCount];
-	    	   playerTypes = new JComboBox[playerCount];
+	    	   playerTypes = new JComboBox<String>[playerCount];
 	    	   
 	    	   for(int i = 0; i < playerCount; i++)
 	    	   {
@@ -276,7 +276,7 @@ public class Menu extends JPanel{
 			label2.setFont(new Font("Arcade Normal", Font.PLAIN, 20));
 			mainLabel.add(label2);
 			
-			JComboBox cb = new JComboBox();
+			JComboBox<Integer> cb = new JComboBox<Integer>();
 			
 			for(int i = 3; i < 21; i++)
 				cb.addItem(new Integer(i));
