@@ -180,7 +180,6 @@ public class Game {
 		if(state != GameState.ONGOING)
 			return;
 		
-		map.tickBuildings();
 		roundNum++;
 				
 		//Ha nincs közelgõ hóvihar, véletlenszerûen létrehozunk egyet
@@ -197,6 +196,8 @@ public class Game {
 			roundsUntilBlizzard--;
 			callBlizzard();
 		}
+		
+		map.tickBuildings();
 	}
 	
 	/**
