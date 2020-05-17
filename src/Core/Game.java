@@ -205,6 +205,15 @@ public class Game {
 	 * @author Csönge Bence
 	 */
 	public void nextCharacter() {
+		int mennyi = getPlayerCount();
+		for(int i=0; i< players.size(); i++) 
+			if(players.get(i).getDrowning()) 
+				mennyi--;
+			
+		if(mennyi==0) {
+			state = GameState.LOST;
+			return;
+		}
 		if(characters.indexOf(activeCharacter) == characters.size()-1) {
 			doRound();
 			activeCharacter = characters.get(0);;
