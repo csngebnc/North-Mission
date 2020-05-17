@@ -205,12 +205,12 @@ public class Game {
 	 * @author Csönge Bence
 	 */
 	public void nextCharacter() {
-		int mennyi = getPlayerCount();
+		int drowningPlayersCount = players.size();
 		for(int i=0; i< players.size(); i++) 
 			if(players.get(i).getDrowning()) 
-				mennyi--;
+				drowningPlayersCount--;
 			
-		if(mennyi==0) {
+		if(drowningPlayersCount==0) {
 			state = GameState.LOST;
 			return;
 		}
