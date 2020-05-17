@@ -214,6 +214,7 @@ public class Game {
 			state = GameState.LOST;
 			return;
 		}
+		
 		if(characters.indexOf(activeCharacter) == characters.size()-1) {
 			doRound();
 			activeCharacter = characters.get(0);;
