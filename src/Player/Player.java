@@ -84,16 +84,24 @@ public abstract class Player extends Character{
 	 * @author Zalan
 	 */
 	public void doTurn(KeyEvent e) {
-		if(Game.getInstance().getState() != GameState.ONGOING) {
+		if(Game.getInstance().getState() != GameState.ONGOING)
 			alterHealth(-150);
+
+		if(isDrowning) {
+			stamina = 0;
+			Game.getInstance().nextCharacter();
+			Game.notifyView();
 			return;
 		}
+		
 		move(e);
 		Game.notifyView();
 			
 		if(isDrowning) {
+			stamina = 0;
 			Game.getInstance().nextCharacter();
 			Game.notifyView();
+			return;
 		}
 	}
 	
